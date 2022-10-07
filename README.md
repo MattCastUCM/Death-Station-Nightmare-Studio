@@ -14,4 +14,4 @@ Se puede jugar aquí: [Death Station](https://mattcastucm.github.io/Death-Statio
 
 (Capturas del juego aquí)
 
-¡Nos puedes seguir en nuestro Twitter! [Twitter](www.twitter.com/N1ghtm4r3-Stud10/)
+¡Nos puedes seguir en nuestro Twitter! [Twitter](www.twitter.com/N1ghtm4r3Stud10/)
