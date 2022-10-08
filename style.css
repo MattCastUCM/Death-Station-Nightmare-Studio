@@ -19,7 +19,7 @@ body {
 header {
 
     padding: 0em;
-
+    background: black;
     border-radius: 1.5em;
     /* margin:2em; */
 }
@@ -48,6 +48,48 @@ header ul li a {
     display: block;
     padding: 0.5rem 1rem;
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }
+  
+  .sticky + .content {
+    padding-top: 110px;
+  } 
+
+
+/*scrooll-Top*/
+html {
+    scroll-behavior: smooth;
+  }
+.scroll-Top{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background: #fff ; 
+    background-image: url(./imagenes/up.png);
+    border-radius: 25%;
+    background-size: 40px;
+    background-position: center;
+    background-repeat: no-repeat; 
+    cursor: pointer;
+    z-index: 100000;
+    visibility: hidden;
+    opacity: 0;
+    transition: 1s;
+
+}
+
+.scroll-Top.active{
+    bottom: 40px;
+    visibility: visible;
+    opacity: 1;
+}
+
 
 
 /*titulo*/
