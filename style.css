@@ -141,6 +141,7 @@ padding:10em 10em 15em 10em;
     /*centrar dentro del main*/
 
     margin:1em;
+   
 }
 
 .section-title {
@@ -151,7 +152,6 @@ padding:10em 10em 15em 10em;
     width: 600px;
 
     font-size: 15px;
-
     padding: 1px;
     border-radius: 1.5em;
     margin: 2em  auto;
@@ -162,10 +162,13 @@ padding:10em 10em 15em 10em;
 
 .texto{
     color:#c5c5c5;
-    font-size:2px;text-indent: 40px;
-    padding:0 20em 0 20em;line-height: 4;
+    font-size:0.6em;
+    text-indent: 40px;
+    line-height: 4;
 }
-
+.parrafo{
+    padding-top: 3em;
+}
 /*FOOTER---------------------------------------------------*/
 
 /* Solid border */
@@ -205,7 +208,7 @@ footer img:hover {
 
 footer p {
     color: #c5c5c5;
-    font-size: 1px;
+    font-size: 0.5em;
     line-height: 2;
 }
 
