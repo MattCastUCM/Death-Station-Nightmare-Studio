@@ -1,29 +1,156 @@
+<!-- Título del juego y nombre del estudio
+     Canvas en el que se ejecuta el juego.
+    Instrucciones del juego (objetivo y controles)
+    Descripción breve del juego
+    Autores y Créditos
+    Redes sociales -->
+
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="logo.png" type="assets/img/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=2.0" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- <script src="phaser.js"></script> -->
+
   <meta charset="utf-8">
-  <title>HTML</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="estilo.css"> <!-- Esto cargaria un archivo de estilo, pero no es necesario en Fiddle porque lo hace automáticamente -->
-  <script src="script.js"></script> <!--Aquí podriamos cargar los scripts, también se puede en el <body>, y pasa lo mismo que con el css de antes, en verdad aquí no estamos cargando nada-->
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Death Station-Nighmate Studio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Google Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+  <!-- Template Main CSS File -->
+  <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-  <h1>Esto es un título de primer nivel.</h1>
-  <div>
-    <h2 class=clase>Este es de 2º y hay más</h2>
 
-    <p class=clase id="magico"> Esto es un párrafo. Y abajo aparece una imagen con un link a la UCM</p>
-    <a href="https://www.ucm.es/" taget="_blank">
-      <img src="https://www.ucm.es/themes/ucm16/media/img/logo.png" alt="Si la imagen no se carga, se ve esto"><!--Modifica el atributo src y verás como se muestra el mensaje, pero el link (etiqueta <a>) seguirá funcionando al ser un hijo -->
-    </a>
-  </div>
-  <div>
-    <button onclick="alert(devuelveTextoDeAlerta())">Soy un botón de Alerta</button>
-  </div>
-  <div>
-    <button onclick=document.getElementById('magico').style.visibility='hidden';> Desaparece!!! </button>
-    <button onclick=desaparece('magico') > Desaparece!!! (pero usando una función) </button>
-  </div>
+  <!-- ======= Header ======= -->
+  <header>
+    <div class="header-container">
+
+      <div class="titulo-container">
+        <div class="titulo-icon">
+          <div class="icon-sangre"><img src="./imagenes/logotipo-tren.png"></img>
+          </div>
+          <h1 class="titulo-juego"> <a href="#game">DEATH STATION</a> </h1> <!-- Al pulsar vuelve al juego -->
+        </div>
+        <h3 class="nombre-studio"><span> NIGHTMARE STUDIO</span>
+          </h1>
+      </div>
+
+      <nav class="nav-menu ">
+        <ul>
+          <li><a href="#description">Descripción</a></li>
+          <li><a href="#aboutUs">Sobre Nosotros</a></li>
+          <li><a href="#links">Links</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+
+  <main id="main">
+
+    <!-- ======= GAME Section ======= -->
+    <div id="game" class="fullWindow">
+      <div id="GameContainer">
+
+        <!-- <script type="module">
+
+          var config = {
+            type: Phaser.AUTO,
+            width: 1000,
+            height: 600,
+            // parent: 'game',
+            //       pixelArt: true,
+            //       input: {
+            //           gamepad: true
+            //       },
+            //       scale: {
+            //           mode: Phaser.Scale.FIT,
+            //           autoCenter: Phaser.Scale.CENTER_BOTH
+            //       },
+            //       scene: [ MainMenu ,ChargeScene, Level1, Level2,Level3, YouWinScene],
+            //       physics: { default: 'arcade', arcade: { gravity: { y: 900 }, debug: false } }
+          };
+         // new Phaser.Game(config); -->
+        </script>
+
+
+      </div>
+    </div>
+
+    <!-- End Game Section -->
+
+
+    <!-- ======= Game Description Section ======= -->
+
+    <section id="description" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Descripción del Juego</h2>
+        </div>
+        <p class="texto">
+          Juego de terror estilo RPG, mezclando niveles de combate y puzle.
+          Los niveles de combate consistirán en sobrevivir y derrotar oleadas de enemigos en un espacio cerrado,
+          mientras que los niveles de puzle consistirán en explorar, interactuar con el entorno y resolver acertijos
+          para encontrar
+          objetos o desbloquear distintas partes del nivel.
+        </p>
+
+      </div>
+    </section><!-- End Game Description Section -->
+
+
+
+    <!-- ======= About Us Section ======= -->
+    <section id="aboutUs" class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Sobre Nosotros</h2>
+        </div>
+        
+          <ul>
+
+            <li> <p class="texto">Likang Wu</p></li>
+            <li> <p class="texto">Matt Castellanos Silva</p></li>
+            <li> <p class="texto">Nanxi Qin</p></li>
+            <li> <p class="texto">Claudia Zarzuela </p></li>
+            <li> <p class="texto">Santiago Tienda</p> </li>
+          </ul>
+    
+        </p>
+      </div>
+    </section><!-- End About Us Section -->
+  </main>
+
+  <hr class="solid"> <!-- Divider -->
+  <footer id="links">
+
+    <div class="footer-container">
+
+      <div class="col-12">
+        <nav>
+
+          <!-- github -->
+          <a href=""><img src="./imagenes/github_logo.png"></img></a>
+          <!-- twitter -->
+          <a href=""><img src="./imagenes/twitter_icon.png"></img></a>
+        </nav>
+        <p> © Copyright 2022-2023 NIGHTMARE STUDIO - Todos los derechos reservados</p>
+
+      </div>
+    </div>
+  </footer>
+
 </body>
+
 </html>
