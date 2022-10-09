@@ -3,9 +3,9 @@
 
 ## Descripción de los assets:
 
-Death Station es un juego cuya ambientación está inspirada en una red de metro abandonada. Por esta, los assets que utilizamos son, en su mayoría, elementos típicos de estaciones de tren y el interior de los mismos, como lo pueden ser escaleras automáticas, asientos, papeleras, o los trenes en sí.
+Death Station es un juego cuya ambientación está inspirada en una red de metro abandonada. Por ello, los assets que utilizamos son, en su mayoría, elementos típicos de estaciones de tren y sus interiores, como pueden ser: escaleras automáticas, asientos, papeleras, trenes, personas, etc.
 
-Además, al ser un juego de  terror, también se utilizan assets como efectos de sangre o monstruos horrendos, además de objetos que puedan encontrarse en una estación de tren y ser utilizados como armas, como botellas de cristal o barras de metal.
+Al ser un juego de  terror también se utilizan assets como efectos de sangre, monstruos horrendos u objetos que puedan encontrarse en una estación de tren y ser utilizados como armas, como botellas de cristal o barras de metal.
 
 
 ## Fuentes
@@ -16,3 +16,4 @@ Gran parte de los assets son creaciones originales de Nightmare Studio, en espec
 * [Vehicles](http://nanikasiratkool.web.fc2.com/automobile/mobile01.html) por nanikasiratkool
 * [RPG Maker VX Ace resource library](https://www.rpgmakervx-fr.com/t20706-bibliotheque-des-ressources-vx-ace-tilesets)
 * [RPG Maker subway material](http://chocobana.my.coocan.jp/data/data/material/map.html) por 抹茶ちゃもも / Matchachamomo
+* [Characters and weapons](https://www.aigei.com/) por Aigei Network Technology Center
