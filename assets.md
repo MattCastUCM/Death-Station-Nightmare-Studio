@@ -17,3 +17,7 @@ Gran parte de los assets son creaciones originales de Nightmare Studio, en espec
 * [RPG Maker VX Ace resource library](https://www.rpgmakervx-fr.com/t20706-bibliotheque-des-ressources-vx-ace-tilesets)
 * [RPG Maker subway material](http://chocobana.my.coocan.jp/data/data/material/map.html) por 抹茶ちゃもも / Matchachamomo
 * [Characters and weapons](https://www.aigei.com/) por Aigei Network Technology Center
+* [Combat knife](http://pixelartmaker.com/art/f75afb5cc588ba1) por 60acc8
+* [Monsters Creatures Fantasy](https://www.artstation.com/marketplace/p/RrDgw/monsters-creatures-fantasy) por Luiz Melo
+* [Survival Kit](https://www.artstation.com/marketplace/p/7OqKd/survival-kit) por Talha Gübahar
+* [Pixel bottles](https://pngtree.com/freepng/pixel-bottles_8363664.html) por evasata
