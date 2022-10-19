@@ -15,10 +15,10 @@ export default class Menu extends Phaser.Scene {
 	 * Cargamos todos los assets que vamos a necesitar
 	 */
 	preload(){
-		this.load.image('start', 'assets/GUI/start.png');
+		this.load.image('start', 'assets/Mapa/start.png');
 		this.load.image('fondo', 'assets/Mapa/boceto_interiorTren.png');
-		this.load.spritesheet('personaje', 'assets/personajes/Estudiante1.png', {frameWidth: 32, frameHeight: 48})
-		this.load.spritesheet('box', 'assets/Box/box.png', {frameWidth: 64, frameHeight: 64})
+		//this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', {frameWidth: 32, frameHeight: 48})
+		//this.load.spritesheet('box', 'assets/Box/box.png', {frameWidth: 64, frameHeight: 64})
 	}
 	
 	/**
@@ -32,6 +32,7 @@ export default class Menu extends Phaser.Scene {
 
 		//Pintamos un botón de Empezar
 		var sprite = this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'start')
+		sprite.setScale(0.25);
 		sprite.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
 
 		// Escuchamos los eventos del ratón cuando interactual con nuestro sprite de "Start"

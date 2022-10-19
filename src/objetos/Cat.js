@@ -1,4 +1,5 @@
-export default class Personaje extends Phaser.GameObjects.Sprite {
+
+export default class Cat extends Phaser.GameObjects.Sprite {
 	/**
 	 * Constructor de Knight, nuestro caballero medieval con espada y escudo
 	 * @param {Scene} scene - escena en la que aparece
@@ -6,7 +7,7 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 	 * @param {number} y - coordenada y
 	 */
 	constructor(scene, x, y) {
-		super(scene, x, y, 'personaje');
+		super(scene, x, y, 'cat');
 		this.speed = 140; // Nuestra velocidad de movimiento será 140
 		//this.disableJump(); // Por defecto no podemos saltar hasta que estemos en una plataforma del juego
 		//this.isAttacking = false;
@@ -14,32 +15,32 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 		this.scene.add.existing(this); //Añadimos el perosnaje a la escena
 		//Creamos las animaciones
 		this.scene.anims.create({
-			key: 'idle',
-			frames: scene.anims.generateFrameNumbers('personaje', {start:1, end:1}),
+			key: 'cat_idle',
+			frames: scene.anims.generateFrameNumbers('cat', {start:1, end:1}),
 			frameRate: 5,
 			repeat: -1
 		});
 		this.scene.anims.create({
-			key: 'up',
-			frames: scene.anims.generateFrameNumbers('personaje', {start:9, end:11}),
+			key: 'cat_up',
+			frames: scene.anims.generateFrameNumbers('cat', {start:9, end:11}),
 			frameRate: 5,
 			repeat: -1
 		});
         this.scene.anims.create({
-			key: 'down',
-			frames: scene.anims.generateFrameNumbers('personaje', {start:0, end:2}),
+			key: 'cat_down',
+			frames: scene.anims.generateFrameNumbers('cat', {start:0, end:2}),
 			frameRate: 5,
 			repeat: -1
 		});
 		this.scene.anims.create({
-			key: 'left',
-			frames: scene.anims.generateFrameNumbers('personaje', {start:3, end:5}),
+			key: 'cat_left',
+			frames: scene.anims.generateFrameNumbers('cat', {start:3, end:5}),
 			frameRate: 5,
 			repeat: -1
 		});
         this.scene.anims.create({
-			key: 'rigth',
-			frames: scene.anims.generateFrameNumbers('personaje', {start:6, end:8}),
+			key: 'cat_rigth',
+			frames: scene.anims.generateFrameNumbers('cat', {start:6, end:8}),
 			frameRate: 5,
 			repeat: -1
 		});
@@ -47,14 +48,9 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 		
 
 		// La animación a ejecutar según se genere el personaje será 'idle'
-		this.play('idle');
+		this.play('cat_idle');
+        this.cursors = scene.input.keyboard.createCursorKeys();
 
-		// Seteamos las teclas para mover al personaje
-		this.wKey = this.scene.input.keyboard.addKey('W'); //saltar
-		this.aKey = this.scene.input.keyboard.addKey('A'); //izquierda
-		this.sKey = this.scene.input.keyboard.addKey('S'); //parar animación
-		this.dKey = this.scene.input.keyboard.addKey('D'); //derecha
-		this.ctrKey = this.scene.input.keyboard.addKey('SPACE'); //atacar
 
 		// Agregamos el personaje a las físicas para que Phaser lo tenga en cuenta
 		scene.physics.add.existing(this);
@@ -83,45 +79,44 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 		// Es muy imporante llamar al preUpdate del padre (Sprite), sino no se ejecutará la animación
 		super.preUpdate(t, dt);
 
-		// Mientras pulsemos la tecla 'A' movelos el personaje en la X
-		if(this.aKey.isDown &&!this.dKey.isDown){
+		
+		if(this.cursors.left.isDown &&!this.cursors.right.isDown){
 			//this.setFlip(true, false)
 			this.anims.isPlaying=true;
-			if(this.anims.currentAnim.key !== 'left'){
-				this.play('left');
+			if(this.anims.currentAnim.key !== 'cat_left'){
+				this.play('cat_left');
 			}
 			
 			//this.x -= this.speed*dt / 1000;
 			this.body.setVelocityX(-this.speed);
 		}
 
-		// Mientras pulsemos la tecla 'D' movelos el personaje en la X
-		if(this.dKey.isDown &&!this.aKey.isDown){
+	
+		if(this.cursors.right.isDown &&!this.cursors.left.isDown){
 			//this.setFlip(false, false)
 			this.anims.isPlaying=true;
-			if(this.anims.currentAnim.key !== 'rigth'){
-				this.play('rigth');
+			if(this.anims.currentAnim.key !== 'cat_rigth'){
+				this.play('cat_rigth');
 			}
 			//this.x += this.speed*dt / 1000;
 			this.body.setVelocityX(this.speed);
 		}
 
-        // Mientras pulsemos la tecla 'A' movelos el personaje en la Y
-		if(this.wKey.isDown&&!this.sKey.isDown){
+		if(this.cursors.up.isDown&&!this.cursors.down.isDown){
 			this.anims.isPlaying=true;
 			//this.setFlip(false, false)
-			if(this.anims.currentAnim.key !== 'up'&&!this.aKey.isDown&&!this.dKey.isDown ){
-				this.play('up');
+			if(this.anims.currentAnim.key !== 'cat_up'&&!this.cursors.left.isDown&&!this.cursors.right.isDown ){
+				this.play('cat_up');
 			}
 			//this.x += this.speed*dt / 1000;
 			this.body.setVelocityY(-this.speed);
 		}
 
-        if(this.sKey.isDown &&!this.wKey.isDown){
+        if(this.cursors.down.isDown &&!this.cursors.up.isDown){
 			this.anims.isPlaying=true;
 			//this.setFlip(false, false)
-			if(this.anims.currentAnim.key !== 'down'&&!this.aKey.isDown&&!this.dKey.isDown ){
-				this.play('down');
+			if(this.anims.currentAnim.key !== 'cat_down'&&!this.cursors.left.isDown&&!this.cursors.right.isDown ){
+				this.play('cat_down');
 			}
 			//this.x += this.speed*dt / 1000;
 			this.body.setVelocityY(this.speed);
@@ -132,7 +127,7 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 
 		// Si dejamos de pulsar 'A' o 'D' volvemos al estado de animación'idle'
 		// Phaser.Input.Keyboard.JustUp y Phaser.Input.Keyboard.JustDown nos aseguran detectar la tecla una sola vez (evitamos repeticiones)
-		if(Phaser.Input.Keyboard.JustUp(this.aKey) || Phaser.Input.Keyboard.JustUp(this.dKey)){
+		if(Phaser.Input.Keyboard.JustUp(this.cursors.left) || Phaser.Input.Keyboard.JustUp(this.cursors.right)){
 			// if( this.anims.isPlaying === true){
 			// 	this.play('idle');
 			// }
@@ -140,7 +135,7 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 			this.body.setVelocityX(0);
 		}
         //caso de W S
-        if(Phaser.Input.Keyboard.JustUp(this.wKey) || Phaser.Input.Keyboard.JustUp(this.sKey)){
+        if(Phaser.Input.Keyboard.JustUp(this.cursors.up) || Phaser.Input.Keyboard.JustUp(this.cursors.down)){
 			this.anims.isPlaying=false;
 			// if(this.anims.isPlaying === true){
 			// 	this.play('idle');
