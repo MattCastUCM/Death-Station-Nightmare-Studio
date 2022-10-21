@@ -21,3 +21,4 @@ Gran parte de los assets son creaciones originales de Nightmare Studio, en espec
 * [Monsters Creatures Fantasy](https://www.artstation.com/marketplace/p/RrDgw/monsters-creatures-fantasy) por Luiz Melo
 * [Survival Kit](https://www.artstation.com/marketplace/p/7OqKd/survival-kit) por Talha Gübahar
 * [Pixel bottles](https://pngtree.com/freepng/pixel-bottles_8363664.html) por evasata
+* Enemigos: [Persecutor](https://opengameart.org/content/lpc-zombie), [Topo](https://foozlecc.itch.io/lucifer-necromancer), [Lanzador](https://foozlecc.itch.io/lucifer-goblin-slinger-enemy),[Gato]
