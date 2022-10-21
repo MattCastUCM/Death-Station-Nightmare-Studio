@@ -61,15 +61,11 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 
 		// Decimos que el personaje colisiona con los límites del mundo
 		this.body.setCollideWorldBounds();
-
-		// Ajustamos el "collider"
-		// this.bodyOffset = this.body.width/4;
-		// this.bodyWidth = this.body.width/2;
 		
-		// this.body.setOffset(this.bodyOffset, 0);
-		// this.body.width = this.bodyWidth;
+		//modificar tamaño box collider
+		this.body.setSize(20, 20)
+		this.body.setOffset(5, 30);
         
-
 
 	}
 

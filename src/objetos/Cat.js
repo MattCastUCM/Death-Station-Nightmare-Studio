@@ -67,7 +67,8 @@ export default class Cat extends Phaser.GameObjects.Sprite {
 		
 		// this.body.setOffset(this.bodyOffset, 0);
 		// this.body.width = this.bodyWidth;
-        
+        this.body.setSize(30, 20)
+		this.body.setOffset(0, 15);
 
 
 	}

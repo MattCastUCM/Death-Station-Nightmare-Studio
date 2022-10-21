@@ -1,5 +1,6 @@
 html {
     min-height: 100%;
+
 }
 
 body {
@@ -10,7 +11,8 @@ body {
     font-family: 'Press Start 2P';
     word-wrap: break-word;
     align-items: center;
-
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -18,9 +20,9 @@ body {
 
 header {
 
-    padding: 0em;
+    padding: 0em 0 1em 0;
     background: black;
-    border-radius: 1.5em;
+    height: 4em;
     /* margin:2em; */
 }
 
@@ -53,29 +55,30 @@ header ul li a {
     position: fixed;
     top: 0;
     width: 100%
-  }
-  
-  .sticky + .content {
+}
+
+.sticky+.content {
     padding-top: 110px;
-  } 
+}
 
 
 /*scrooll-Top*/
 html {
     scroll-behavior: smooth;
-  }
-.scroll-Top{
+}
+
+.scroll-Top {
     position: fixed;
     bottom: 40px;
     right: 40px;
     width: 60px;
     height: 60px;
-    background: #fff ; 
+    background: #fff;
     background-image: url(./imagenes/up.png);
     border-radius: 25%;
     background-size: 40px;
     background-position: center;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     cursor: pointer;
     z-index: 100000;
     visibility: hidden;
@@ -84,7 +87,7 @@ html {
 
 }
 
-.scroll-Top.active{
+.scroll-Top.active {
     bottom: 40px;
     visibility: visible;
     opacity: 1;
@@ -95,7 +98,6 @@ html {
 /*titulo*/
 .titulo-container {
     padding: 0em 0.5em 1em 1em;
-
 }
 
 .titulo-icon {
@@ -109,7 +111,7 @@ html {
     height: 3em;
     border-radius: 1em;
     padding-top: 0.8em;
-    margin:0.1em;
+    margin: 0.1em;
 }
 
 .titulo-juego a {
@@ -159,9 +161,6 @@ nav a {
 
 /*GAME CANVAS---------------------------------------------------*/
 
-#main {
-    margin-top: 1em;
-}
 
 #game {
     background: rgb(109, 109, 109);
@@ -178,17 +177,17 @@ nav a {
 /*SECTION---------------------------------------------------*/
 
 .about {
-  
-padding:10em 10em 15em 10em;
+
+    padding: 10em 10em 15em 10em;
     /*centrar dentro del main*/
 
-    margin:1em;
-   
+    margin: 1em;
+
 }
 
 .section-title {
 
-    border:3px solid rgb(153, 0, 0);
+    border: 3px solid rgb(153, 0, 0);
     text-align: center;
     color: #c5c5c5;
     width: 600px;
@@ -196,21 +195,23 @@ padding:10em 10em 15em 10em;
     font-size: 15px;
     padding: 1px;
     border-radius: 1.5em;
-    margin: 2em  auto;
+    margin: 2em auto;
     /*centrar dentro del main*/
 
 
 }
 
-.texto{
-    color:#c5c5c5;
-    font-size:0.6em;
+.texto {
+    color: #c5c5c5;
+    font-size: 0.6em;
     text-indent: 40px;
     line-height: 4;
 }
-.parrafo{
+
+.parrafo {
     padding-top: 3em;
 }
+
 /*FOOTER---------------------------------------------------*/
 
 /* Solid border */
@@ -229,8 +230,8 @@ footer {
 .footer-container {
     width: 80%;
     margin: 0 auto;
-   
-     justify-content: space-between; 
+
+    justify-content: space-between;
 
 }
 
@@ -254,7 +255,7 @@ footer p {
     line-height: 2;
 }
 
-footer nav{
-   margin: 0 auto;
+footer nav {
+    margin: 0 auto;
     width: 100%;
 }
