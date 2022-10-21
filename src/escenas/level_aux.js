@@ -34,7 +34,7 @@ export default class level_aux extends Phaser.Scene {
 		let peronaje = new perosnaje(this, 20,this.sys.game.canvas.height/2 );
         peronaje.setScale(2);
 
-		let gato=new Cat(this,60,this.sys.game.canvas.height/2 )
+		let gato=new Cat(this,200,this.sys.game.canvas.height/2 )
 		
 		let wall1=new Wall(this,this.sys.game.canvas.height-50);
 		// let box1 = new Box(this, 200, 0, boxes);

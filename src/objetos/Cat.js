@@ -13,6 +13,7 @@ export default class Cat extends Phaser.GameObjects.Sprite {
 		//this.isAttacking = false;
 
 		this.scene.add.existing(this); //Añadimos el perosnaje a la escena
+
 		//Creamos las animaciones
 		this.scene.anims.create({
 			key: 'cat_idle',
@@ -58,12 +59,14 @@ export default class Cat extends Phaser.GameObjects.Sprite {
 		// Decimos que el personaje colisiona con los límites del mundo
 		this.body.setCollideWorldBounds();
 
+		this.body.setImmovable(true); //para que no se mueva 
+
 		// Ajustamos el "collider"
-		this.bodyOffset = this.body.width/4;
-		this.bodyWidth = this.body.width/2;
+		// this.bodyOffset = this.body.width/4;
+		// this.bodyWidth = this.body.width/2;
 		
-		this.body.setOffset(this.bodyOffset, 0);
-		this.body.width = this.bodyWidth;
+		// this.body.setOffset(this.bodyOffset, 0);
+		// this.body.width = this.bodyWidth;
         
 
 

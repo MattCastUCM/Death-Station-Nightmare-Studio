@@ -63,11 +63,11 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 		this.body.setCollideWorldBounds();
 
 		// Ajustamos el "collider"
-		this.bodyOffset = this.body.width/4;
-		this.bodyWidth = this.body.width/2;
+		// this.bodyOffset = this.body.width/4;
+		// this.bodyWidth = this.body.width/2;
 		
-		this.body.setOffset(this.bodyOffset, 0);
-		this.body.width = this.bodyWidth;
+		// this.body.setOffset(this.bodyOffset, 0);
+		// this.body.width = this.bodyWidth;
         
 
 
