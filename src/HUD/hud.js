@@ -1,16 +1,30 @@
-import healthBar from './HealthBar.js';
-
-export default class HUD {
-    constructor(scene, x, y) {
-        this.bar = new Phaser.GameObjects.Graphics(scene);
-
-        this.x = x;
-        this.y = y;
-        createHealthBar(scene);
+import HealthBar from './HealthBar.js';
+/**
+ * Escena de HUD.
+ * @extends Phaser.Scene
+ */
+export default class HUD extends Phaser.Scene {
+    constructor() {
+        super({key: 'hudAux'});
     }
-    createHealthBar() {
-        let healthBar = new HealthBar(scene, x, y);
+
+    preload() {
+        this.load.image('heartImg', 'assets/HUD/corazon.png');
+        this.load.image('inventory', 'assets/HUD/inventario.png');
+        this.load.image('pausa', 'assets/HUD/pausa.png');
+        this.load.image('level', 'assets/HUD/level.png');
+
     }
+    create() {
+        this.add.image(220, 18, 'heartImg').setOrigin(0, 0);
+        this.add.image(350, 470, 'inventory').setOrigin(0, 0);
+        this.add.image(900, 13, 'pausa').setOrigin(0, 0);
+        this.add.image(800, 18, 'level').setOrigin(0, 0);
+       
+        let healthBar = new HealthBar(this, 30, 20, 180, 20, 10);
+    }
+
+    
 
 
 }

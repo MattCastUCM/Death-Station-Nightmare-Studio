@@ -1,15 +1,17 @@
 export default class HealthBar {
 
-    constructor(scene, x, y) {
+    constructor(scene, x, y, w, h, borderWidth) {
         this.bar = new Phaser.GameObjects.Graphics(scene);
 
         this.x = x;
         this.y = y;
+        this.h = h; //altura
+        this.w = w; //anchura
         this.value = 100;
-        this.p = 76 / 100;
+        this.p = 100 / 100;
         this.color = 0Xc13030;
         this.draw();
-
+        this.borderWidth = borderWidth;
         scene.add.existing(this.bar);
     }
 
@@ -30,20 +32,19 @@ export default class HealthBar {
 
         //  Border
         this.bar.fillStyle(0x000000);
-        this.bar.fillRect(this.x, this.y, 80, 16);
+        this.bar.fillRect(this.x - 3.5, this.y - 3.5,this.w + 7, this.h + 7);
 
         //  BG
 
         this.bar.fillStyle(0xffffff);
-        this.bar.fillRect(this.x + 2, this.y + 2, 76, 12);
+        this.bar.fillRect(this.x, this.y, this.w, this.h);
 
         // Life color
         this.bar.fillStyle(this.color);
 
 
         var d = Math.floor(this.p * this.value);
-
-        this.bar.fillRect(this.x + 2, this.y + 2, d, 12);
+        this.bar.fillRect(this.x, this.y, d * this.w / 100, this.h);
     }
 
 }
