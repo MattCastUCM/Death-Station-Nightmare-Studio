@@ -1,6 +1,6 @@
 import level_aux from './escenas/level_aux.js';
 import Menu from './escenas/menu.js'
-import HUD from './hud/HUD.js' //
+import HUD from './HUD/hud.js'
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
