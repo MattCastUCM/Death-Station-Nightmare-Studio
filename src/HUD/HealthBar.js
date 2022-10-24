@@ -14,19 +14,6 @@ export default class HealthBar {
         this.borderWidth = borderWidth;
         scene.add.existing(this.bar);
     }
-
-    decrease(amount) {
-        this.value -= amount;
-
-        if (this.value < 0) {
-            this.value = 0;
-        }
-
-        this.draw();
-
-        return (this.value === 0);
-    }
-
     draw() {
         this.bar.clear();
 
@@ -47,4 +34,17 @@ export default class HealthBar {
         this.bar.fillRect(this.x, this.y, d * this.w / 100, this.h);
     }
 
+    decrease() {
+        this.value -= 5;
+
+        if (this.value < 0) {
+            this.value = 0;
+        }
+
+        this.draw();
+
+        return (this.value === 0);
+    }
+
+    
 }

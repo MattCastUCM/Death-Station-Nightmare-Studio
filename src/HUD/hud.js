@@ -21,7 +21,7 @@ export default class HUD extends Phaser.Scene {
         this.add.image(900, 13, 'pausa').setOrigin(0, 0);
         this.add.image(800, 18, 'level').setOrigin(0, 0);
        
-        let healthBar = new HealthBar(this, 30, 20, 180, 20, 10);
+        //let healthBar = new HealthBar(this, 30, 20, 180, 20, 10);
     }
 
     

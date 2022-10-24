@@ -11,6 +11,9 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 		//this.disableJump(); // Por defecto no podemos saltar hasta que estemos en una plataforma del juego
 		//this.isAttacking = false;
 
+		this.hasColided = false;
+		this.helathPoints = 100;
+		this.elapsedTime = 0;
 		this.scene.add.existing(this); //Añadimos el perosnaje a la escena
 		//Creamos las animaciones
 		this.scene.anims.create({
@@ -144,7 +147,22 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 			this.body.setVelocityY(0);
 		}
         this.body.velocity.normalize().scale(this.speed);
+		if(this.hasColided){
+			this.elapsedTime += dt;
+			if(this.elapsedTime >= 500){
+				console.log('entra');
+				this.hasColided = false;
+				this.elapsedTime = 0;	
+			}
+		}
 	
+	}
+	update(t, dt){
+	}
+	DecreaseLife(){
+		this.helathPoints -= 10;
+		this.hasColided = true;
+
 	}
 	
 
