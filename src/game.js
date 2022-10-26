@@ -31,7 +31,7 @@ let config = {
         default: 'arcade', 
         arcade: { 
            // gravity: { y:200 }, 
-            debug: true   //para la visibilidad de box collieder 
+            debug: false   //para la visibilidad de box collieder 
         },
         checkCollision: {
             up: true,
