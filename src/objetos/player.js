@@ -5,51 +5,62 @@ export default class Cat extends gameObject {
     // Constructora que recibe los mismos parámetros que el padre
     // excepto por la textura, que es siempre la misma
     constructor(scene, posX, posY, w, h, offsetX, offsetY, spd) {
-        super(scene, posX, posY, w, h, offsetX, offsetY, 'cat', spd);
+        super(scene, posX, posY, w, h, offsetX, offsetY, 'personaje', spd);
+
+        this.hp = 100;
 
         //Creamos las animaciones
         this.scene.anims.create({
-            key: 'cat_idle',
-            frames: scene.anims.generateFrameNumbers('cat', {start:1, end:1}),
+            key: 'idle',
+            frames: scene.anims.generateFrameNumbers('personaje', {start:1, end:1}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
-            key: 'cat_up',
-            frames: scene.anims.generateFrameNumbers('cat', {start:9, end:11}),
+            key: 'up',
+            frames: scene.anims.generateFrameNumbers('personaje', {start:9, end:11}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
-            key: 'cat_down',
-            frames: scene.anims.generateFrameNumbers('cat', {start:0, end:2}),
+            key: 'down',
+            frames: scene.anims.generateFrameNumbers('personaje', {start:0, end:2}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
-            key: 'cat_left',
-            frames: scene.anims.generateFrameNumbers('cat', {start:3, end:5}),
+            key: 'left',
+            frames: scene.anims.generateFrameNumbers('personaje', {start:3, end:5}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
-            key: 'cat_right',
-            frames: scene.anims.generateFrameNumbers('cat', {start:6, end:8}),
+            key: 'right',
+            frames: scene.anims.generateFrameNumbers('personaje', {start:6, end:8}),
             frameRate: 5,
             repeat: -1
         });
 
 
         // La animación a ejecutar según se genere será 'idle'
-        this.play('cat_idle');
+        this.play('idle');
 
         // Input de teclado
-        this.cursors = this.scene.input.keyboard.createCursorKeys();
+        this.cursors = this.scene.input.keyboard.addKeys({
+            w: Phaser.Input.Keyboard.KeyCodes.W,
+            a: Phaser.Input.Keyboard.KeyCodes.A,
+            s: Phaser.Input.Keyboard.KeyCodes.S,
+            d: Phaser.Input.Keyboard.KeyCodes.D,
 
-        // Hace que body no pueda ser movido por otros colliders
-        this.body.setImmovable(true);
+        });
+
     }
 
+
+    decreaseHP(){
+        this.hp -= 10;
+        this.hasCollided = true;
+    }
 
     // Bucle principal. Actualiza su posición y ejecuta las acciones según el input
     preUpdate(t, dt){
@@ -59,16 +70,16 @@ export default class Cat extends gameObject {
         // No es posible moverse pulsando 2 teclas a la vez
 
         // Si se pulsa hacia la izquierda
-        if(this.cursors.left.isDown && 
-            !this.cursors.right.isDown &&
-            !this.cursors.up.isDown &&
-            !this.cursors.down.isDown) {
+        if(this.cursors.a.isDown && 
+            !this.cursors.d.isDown &&
+            !this.cursors.w.isDown &&
+            !this.cursors.s.isDown) {
                 // Comienza a  reproducir la animación
                 this.anims.isPlaying = true;
 
                 // La reproduce mientras se mueva
-                if(this.anims.currentAnim.key !== 'cat_left'){
-                    this.play('cat_left');
+                if(this.anims.currentAnim.key !== 'left'){
+                    this.play('left');
                 }
 
                 // Mueve el objeto
@@ -76,16 +87,16 @@ export default class Cat extends gameObject {
         }
 
         // Si se pulsa hacia la derecha
-        if(this.cursors.right.isDown && 
-            !this.cursors.left.isDown &&
-            !this.cursors.up.isDown &&
-            !this.cursors.down.isDown) {
+        if(this.cursors.d.isDown && 
+            !this.cursors.a.isDown &&
+            !this.cursors.w.isDown &&
+            !this.cursors.s.isDown) {
                 // Comienza a  reproducir la animación
                 this.anims.isPlaying = true;
 
                 // La reproduce mientras se mueva
-                if(this.anims.currentAnim.key !== 'cat_right'){
-                    this.play('cat_right');
+                if(this.anims.currentAnim.key !== 'right'){
+                    this.play('right');
                 }
 
                 // Mueve el objeto
@@ -93,16 +104,16 @@ export default class Cat extends gameObject {
         }
 
         // Si se pulsa hacia abajo
-        if(this.cursors.down.isDown && 
-            !this.cursors.right.isDown &&
-            !this.cursors.up.isDown &&
-            !this.cursors.left.isDown) {
+        if(this.cursors.s.isDown && 
+            !this.cursors.d.isDown &&
+            !this.cursors.w.isDown &&
+            !this.cursors.a.isDown) {
                 // Comienza a reproducir la animación
                 this.anims.isPlaying = true;
 
                 // La reproduce mientras se mueva
-                if(this.anims.currentAnim.key !== 'cat_down'){
-                    this.play('cat_down');
+                if(this.anims.currentAnim.key !== 'down'){
+                    this.play('down');
                 }
 
                 // Mueve el objeto
@@ -110,16 +121,16 @@ export default class Cat extends gameObject {
         }
 
         // Si se pulsa hacia arriba
-        if(this.cursors.up.isDown && 
-            !this.cursors.right.isDown &&
-            !this.cursors.down.isDown &&
-            !this.cursors.left.isDown) {
+        if(this.cursors.w.isDown && 
+            !this.cursors.d.isDown &&
+            !this.cursors.s.isDown &&
+            !this.cursors.a.isDown) {
                 // Comienza a reproducir la animación
                 this.anims.isPlaying = true;
 
                 // La reproduce mientras se mueva
-                if(this.anims.currentAnim.key !== 'cat_up'){
-                    this.play('cat_up');
+                if(this.anims.currentAnim.key !== 'up'){
+                    this.play('up');
                 }
 
                 // Mueve el objeto
@@ -127,13 +138,21 @@ export default class Cat extends gameObject {
         }
 
         // Si se deja de pulsar, para la animación y deja de mover el objeto
-        if(Phaser.Input.Keyboard.JustUp(this.cursors.left) || 
-            Phaser.Input.Keyboard.JustUp(this.cursors.right) ||
-            Phaser.Input.Keyboard.JustUp(this.cursors.up) ||
-            Phaser.Input.Keyboard.JustUp(this.cursors.down)){
+        if(Phaser.Input.Keyboard.JustUp(this.cursors.a) || 
+            Phaser.Input.Keyboard.JustUp(this.cursors.d) ||
+            Phaser.Input.Keyboard.JustUp(this.cursors.w) ||
+            Phaser.Input.Keyboard.JustUp(this.cursors.s)){
                 this.anims.isPlaying = false;
                 this.move(0,0);
         }
 
     }
+
+    update(t,dt){
+        
+    }
+
+
+
+
 };
