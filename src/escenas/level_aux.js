@@ -67,7 +67,7 @@ export default class level_aux extends Phaser.Scene {
 		//this.hud=new HUD();
 		//this.physics.add.collider(floor, boxes);
 		this.physics.add.collider(this.player, this.walls);
-		this.physics.add.collider(this.player, this.gato,this.DecreaseLife.bind(this),null);
+		this.physics.add.collider(this.player, this.gato, this.DecreaseLife.bind(this),null);
 		
 		//Menu de pausa
 		this.keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);

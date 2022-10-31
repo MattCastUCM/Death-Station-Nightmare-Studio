@@ -8,6 +8,8 @@ export default class Cat extends gameObject {
         super(scene, posX, posY, w, h, offsetX, offsetY, 'personaje', spd);
 
         this.hp = 100;
+        this.hasColided = false;
+        this.elapsedTime = 0;
 
         //Creamos las animaciones
         this.scene.anims.create({
@@ -56,11 +58,6 @@ export default class Cat extends gameObject {
 
     }
 
-
-    decreaseHP(){
-        this.hp -= 10;
-        this.hasCollided = true;
-    }
 
     // Bucle principal. Actualiza su posición y ejecuta las acciones según el input
     preUpdate(t, dt){
@@ -137,6 +134,7 @@ export default class Cat extends gameObject {
                 this.move(0,-1);
         }
 
+
         // Si se deja de pulsar, para la animación y deja de mover el objeto
         if(Phaser.Input.Keyboard.JustUp(this.cursors.a) || 
             Phaser.Input.Keyboard.JustUp(this.cursors.d) ||
@@ -146,12 +144,36 @@ export default class Cat extends gameObject {
                 this.move(0,0);
         }
 
+
+        // Si ha colisionado,
+        if(this.hasColided){
+            console.log(this.hasColided);
+            // Aumenta el tiempo que ha pasado desde la colisión
+            this.elapsedTime += dt;
+                console.log('entra');
+
+            // Si ha pasado un cierto tiempo, se indica que ha
+            // dejado de colisionar y se popne el temporizador a 0
+            if(this.elapsedTime >= 500){
+                this.hasColided = false;
+                this.elapsedTime = 0;   
+            }
+        }
+
+
+
+
     }
 
-    update(t,dt){
-        
-    }
+    update(t,dt){    }
 
+
+    // Método que disminuye la vida e indica que ha colisionado
+    decreaseHP(){
+        this.hp -= 10;
+        this.hasCollided = true;
+    }
+    
 
 
 
