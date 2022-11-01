@@ -3,6 +3,7 @@ import Wall from '../objetos/wall.js';
 import Cat from '../objetos/Cat.js';
 import HealthBar from '../HUD/HealthBar.js';
 import Pause from './pause.js';
+import Player from '../objetos/player.js';
 //import Box from '../objetos/box.js';
 /**
  * Escena principal.
@@ -34,7 +35,7 @@ export default class level_aux extends Phaser.Scene {
 
 		//this.ShowLife()
 		//Instanciamos nuestro personaje, que es un caballero, y la plataforma invisible que hace de suelo
-		this.personaje = new Personaje(this, 20, this.sys.game.canvas.height / 2);
+		this.personaje = new Player(this, 20, this.sys.game.canvas.height / 2);
 		this.personaje.setScale(2);
 
 		this.gato = new Cat(this, 200, this.sys.game.canvas.height / 2)
@@ -55,6 +56,16 @@ export default class level_aux extends Phaser.Scene {
 		
 		//Menu de pausa
 		this.keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+
+		// Ataque del jugador:
+		// Registramos que el motor nos avise si las cajas se solapan con el caballero
+		// y le decimos la funcion que debe ejecutar si esto pasa
+		// Esto sucede cuando nos movemos y atacamos a la vez
+		this.physics.add.overlap(this.personaje, this.gato, (personaje, enemigo) => {
+			if(personaje.atacando) {
+				console.log("Ataque realizado");
+			} 				
+		});
 	}
 	
 	DecreaseLife(){
