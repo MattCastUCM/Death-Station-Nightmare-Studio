@@ -1,52 +1,73 @@
 import TextMessage from "./TextMessage.js";
 
 //recibir el array de textos y controlar TextMessage, y el DialogBox
-export default class DialogManager extends Phaser.GameObjects.Container {
+export default class DialogManager extends Phaser.Scene{
 
-    constructor(scene) {
-        //inicializaciones
-        super(scene, 0, 0);
-        this.text = [];
-        this.scene = scene;
-        this.dialogBox = new Phaser.GameObjects.Sprite(this.scene, this.scene.sys.game.canvas.width / 2, this.scene.sys.game.canvas.height / 2 + 200, 'dialogBox')
-        this.dialogBox.setScale(1.5,0.7);
-
-        this.scene.add.existing(this.dialogBox);
-
-        //eventos
-
-        //this.scene.events.on('dialogBoxClicked', this.changeNode, this);
-
-        // this.on('destroy', () => {
-        //     this.scene.events.off('dialogBoxClicked');
-        // })
+    constructor() {
+        super({ key: 'dialogManager' });
     }
+
+    preload() {
+        this.load.script('WebFont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+        this.load.image('dialogBox', 'assets/HUD/textBox.png');
+    }
+    create() {
+       
+        this.dialogBox = this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2+180, 'dialogBox').setOrigin(0.5, 0.5);
+        this.dialogBox.setScale(1.4, 0.8);
+        this.dialogBox.visible = false;
+        this.dialogBox.setInteractive(); 
+        this.dialogBox.on('pointerup', pointer => { //al clickear sobre el cuadro de texto, salta al siguiente mensaje
+			this.NextMessage();
+	    });
+
+
+        WebFont.load({
+            google: {
+                families: ['Press Start 2P']
+            },
+            loading: function() {
+                console.log("Fonts are being loaded");
+            },
+            active: function() {
+                console.log("Fonts have been rendered")
+            }
+        });
+
+    }
+
     Init(text) {
-        this.text = text;
+        this.text = text; //array de strings
 
-        this.paraCount = 0;
+        this.mesCount = 0; //contador para contar los mensajes ya imprimidos
 
-        this.textMessage = new TextMessage(this.scene, this, 100, this.scene.sys.game.canvas.height -110,this.scene.sys.game.canvas.width-200,this.text[this.paraCount]);      
-        
+        //contenedor donde va a estar el texto, le pasa el primer texto
+        this.textMessage = new TextMessage( this, 160, this.sys.game.canvas.height - 130, this.sys.game.canvas.width - 250, this.text[this.mesCount]);
+       
+        this.dialogBox.visible = true; //el cuadro de texto aparece
+
+        // this.text = this.add.text(300, 500, "dhtddgftt", {
+
+        //     fontFamily:'Press Start 2P',fontSize:600,color:'#000000'
+      
+        //   });
     }
 
-    NextParagraph() {
-        this.paraCount++;
+    /*Pasa el siguiente mensaje al contenedor, llamando a su método setNewMessage*/ 
+    NextMessage() { 
+        this.mesCount++; 
 
-        if (this.paraCount < this.text.length) {
-            console.log(this.textMessage);
-            this.textMessage.setNewMessage(this.text[this.paraCount]);
-           
-            return true;
+        if (this.mesCount < this.text.length) {
+            this.textMessage.setNewMessage(this.text[this.mesCount]);
         }
         else {
-            this.paraCount = 0;
-            this.textMessage.destroy();
+            this.mesCount = 0;
+            this.dialogBox.visible = false; //hacer invisible el cuadro de texto
+            this.textMessage.onMessageFinished();
             return false;
         }
 
     }
+
+
 }
-
-
-
