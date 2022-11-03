@@ -41,9 +41,9 @@ export default class Menu extends Phaser.Scene {
 	    });
 
 	    sprite.on('pointerup', pointer => {
-			this.scene.start('level_aux'); //Cambiamos a la escena de juego
-	    });
-
+			this.scene.start('lightlevel'); //Cambiamos a la escena de juego
+	    });//lightlevel
+//level_aux
 		sprite.on('pointerover', () => {
 			console.log("hola")
 	    });

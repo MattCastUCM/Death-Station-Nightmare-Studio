@@ -1,0 +1,123 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "qqq.json",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "#aux": {
+            "scaleInEditor": 1
+        },
+        "1.tmx": {
+            "scale": 0.5660416666666667,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.52999631947,
+                "y": 272.06477732793525
+            }
+        },
+        "aux.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "emmm.json": {
+            "scale": 0.5680208333333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 477.0951769668073,
+                "y": 274.63781404731344
+            }
+        },
+        "emmm.tmj": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 235,
+                "y": 307
+            }
+        },
+        "jgh.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "mapaprueba.tmj": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 32,
+                "y": 185.33333333333331
+            }
+        },
+        "n.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ooo.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "qqq.json": {
+            "scale": 0.5680208333333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 417.2382174949569,
+                "y": 272.8773152393178
+            }
+        },
+        "qqq.tmj": {
+            "scale": 0.5680208333333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 478.8556757748029,
+                "y": 272.8773152393178
+            }
+        },
+        "samle02.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/mapas",
+    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/assets/enviroment",
+    "map.fixedSize": true,
+    "map.height": 17,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "json",
+    "map.orientation": null,
+    "openFiles": [
+        "samle02.tsx",
+        "qqq.tmj",
+        "ooo.tsx",
+        "qqq.json",
+        "emmm.json"
+    ],
+    "project": "prueba.tiled-project",
+    "recentFiles": [
+        "samle02.tsx",
+        "qqq.tmj",
+        "ooo.tsx",
+        "emmm.json",
+        "qqq.json",
+        "1.tmx",
+        "emmm.tmj",
+        "mapaprueba.tmj",
+        "aux.tsx",
+        "jgh.tsx",
+        "n.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 32,
+        "width": 32
+    }
+}

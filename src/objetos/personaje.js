@@ -63,7 +63,7 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 		scene.physics.add.existing(this);
 
 		// Decimos que el personaje colisiona con los límites del mundo
-		this.body.setCollideWorldBounds();
+		//this.body.setCollideWorldBounds();
 		
 		//modificar tamaño box collider
 		this.body.setSize(20, 20)

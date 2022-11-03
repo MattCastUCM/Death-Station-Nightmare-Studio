@@ -3,6 +3,7 @@ import Wall from '../objetos/wall.js';
 import Cat from '../objetos/Cat.js';
 import HealthBar from '../HUD/HealthBar.js';
 import Pause from './pause.js';
+
 //import Box from '../objetos/box.js';
 /**
  * Escena principal.
@@ -19,6 +20,9 @@ export default class level_aux extends Phaser.Scene {
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('cat', 'assets/personajes/Gato.png', { frameWidth: 34, frameHeight: 34 });
 		//this.load.spritesheet('box', 'assets/Box/box.png', {frameWidth: 64, frameHeight: 64})
+		this.load.image('v','assets/enviroment/mask1.png');
+		// this.load.tilemapTiledJSON('maps','mapas/qqq.json');
+		// this.load.image('tile','assets/enviroment/map07_2.png')
 	}
 
 	/**
@@ -27,7 +31,7 @@ export default class level_aux extends Phaser.Scene {
 	create() {
 
 		//Imagen de fondo
-		this.add.image(0, 0, 'fondo').setOrigin(0, 0);
+		const f=this.add.image(0, 0, 'fondo').setOrigin(0, 0);
 		//back.setScale(2);
 		//this.add.image(0, 0, 'fondo').setOrigin(0, 0);
 		//let wall = this.physics.add.group();
@@ -55,6 +59,62 @@ export default class level_aux extends Phaser.Scene {
 		
 		//Menu de pausa
 		this.keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+
+
+		
+		const width = this.scale.width
+		const height = this.scale.height
+
+		// const backdrop = this.make.image({
+        //     x: width/2,
+        //     y: height/2,
+        //     key: 'fondo',
+        //     add: true
+        // });
+		// make a RenderTexture that is the size of the screen
+		const rt = this.make.renderTexture({
+			width,
+			height
+		}, true)
+
+		//rt.setDepth(4);
+		// fill it with black
+		rt.fill(0x000000, 1)
+
+		// draw the floorLayer into it
+		rt.draw(f)
+		rt.setTint(0x5050b0)
+		//0x0a2948
+		//0x5050b0
+		// set a dark blue tint
+
+
+		this.personaje.vision = this.make.sprite({
+			x: this.personaje.x,
+			y: this.personaje.y,
+			key: 'v',
+			add: false
+		})
+		this.personaje.vision.scale =2;
+		//this.personaje.vision.createGeometryMask();
+		
+
+		//backdrop.mask=new Phaser.Display.Masks.BitmapMask(this, vision);
+	
+		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.personaje.vision);
+		rt.mask.invertAlpha = true;
+
+
+		//camara que sigue a jugador (movimiento suave)
+		this.cameras.main.startFollow(this.personaje,this.cameras.FOLLOW_LOCKON, 0.1, 0.1);
+		//espacio de camara (si jugador sale de este espacio,la camara le sigue)
+		//this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
+		
+
+		// const map = this.make.tilemap({key: 'maps'});
+		// const tileset=map.addTilesetImage('ooo','tile');
+		// map.createLayer('ground',tileset);
+		
 	}
 	
 	DecreaseLife(){
@@ -66,8 +126,12 @@ export default class level_aux extends Phaser.Scene {
 	update(t, dt){
 		this.deltaTime = dt;
 		if(this.keyP.isDown){
-			this.scene.launch('Pause',{me: this.scene});
-			this.scene.pause();
+			//this.scene.launch('Pause',{me: this.scene});
+			//this.scene.pause();
+			
 		}
+		// if(this.personaje.vision){
+		// 	this.personaje.vision.setOrigin(this.personaje.x,this.personaje.y);
+		// }
 	}
 }
