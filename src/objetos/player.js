@@ -14,7 +14,7 @@ export default class Cat extends gameObject {
 
         // Añadimos collider para el ataque
         let colliderAtq = new gameObject(scene, posX, posY, 100, 100, 0, 0, "", 0);
-        colliderAtq.active(false);
+        colliderAtq.active = false;
         console.log("Hola");
 
         //Creamos las animaciones
@@ -142,7 +142,7 @@ export default class Cat extends gameObject {
 
         // Si se pulsa espacio, comienza la secuencia de ataque
         if(Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
-            colliderAtq.active(colliderAtq.active());
+            colliderAtq.active = !colliderAtq.active;
             console.log("Espacio pulsado");
             this.atacando = !this.atacando;
         }

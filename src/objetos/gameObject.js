@@ -28,10 +28,4 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
         // Normaliza el movimiento y lo escala a la velocidad del objeto
         this.body.velocity.normalize().scale(this.speed);
     };
-
-    active(bool) {
-        let hi = me.active;
-        if(typeof bool === "boolean") me.active = bool;
-        return hi;
-    }
 };
