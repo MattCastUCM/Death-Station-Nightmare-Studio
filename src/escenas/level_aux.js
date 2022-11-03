@@ -60,47 +60,34 @@ export default class level_aux extends Phaser.Scene {
 		//Menu de pausa
 		this.keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
 
-
 		
 		const width = this.scale.width
 		const height = this.scale.height
-
-		// const backdrop = this.make.image({
-        //     x: width/2,
-        //     y: height/2,
-        //     key: 'fondo',
-        //     add: true
-        // });
-		// make a RenderTexture that is the size of the screen
 		const rt = this.make.renderTexture({
 			width,
 			height
 		}, true)
-
 		//rt.setDepth(4);
-		// fill it with black
+		// poner fondo a negro
 		rt.fill(0x000000, 1)
-
-		// draw the floorLayer into it
+		// dibuja la escena vacia 
 		rt.draw(f)
+		//poner un toque de azul a mapa 
 		rt.setTint(0x5050b0)
 		//0x0a2948
 		//0x5050b0
-		// set a dark blue tint
 
 
-		this.personaje.vision = this.make.sprite({
-			x: this.personaje.x,
-			y: this.personaje.y,
-			key: 'v',
-			add: false
-		})
-		this.personaje.vision.scale =2;
-		//this.personaje.vision.createGeometryMask();
+		// var vision = this.make.sprite({
+		// 	x: this.personaje.x,
+		// 	y: this.personaje.y,
+		// 	key: 'v',
+		// 	add: false
+		// })
 		
 
-		//backdrop.mask=new Phaser.Display.Masks.BitmapMask(this, vision);
-	
+		// vision.scale =4;
+		//vision.startFollow(this.personaje);
 		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.personaje.vision);
 		rt.mask.invertAlpha = true;
 
@@ -124,6 +111,7 @@ export default class level_aux extends Phaser.Scene {
 		}
 	}
 	update(t, dt){
+		this.personaje.update(t,dt);
 		this.deltaTime = dt;
 		if(this.keyP.isDown){
 			//this.scene.launch('Pause',{me: this.scene});

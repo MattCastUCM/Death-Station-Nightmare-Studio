@@ -15,6 +15,15 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 		this.helathPoints = 100;
 		this.elapsedTime = 0;
 		this.scene.add.existing(this); //Añadimos el perosnaje a la escena
+
+		this.vision=scene.make.sprite({
+			x: this.x,
+			y: this.y,
+			key: 'v',
+			add: false
+		})
+		this.vision.scale =4;
+
 		//Creamos las animaciones
 		this.scene.anims.create({
 			key: 'idle',
@@ -158,6 +167,8 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 	
 	}
 	update(t, dt){
+		this.vision.x = this.x;
+		this.vision.y = this.y;
 	}
 	DecreaseLife(){
 		this.helathPoints -= 10;
