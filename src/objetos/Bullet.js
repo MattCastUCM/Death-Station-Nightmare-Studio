@@ -18,6 +18,6 @@ export default class Bullet  extends Phaser.GameObjects.Sprite {
         super.preUpdate(t, dt);
         this.body.setVelocityX(this.vectorX);
         this.body.setVelocityY(this.vectorY);
-        
+        this.body.velocity.normalize().scale(500);
     }
 }
