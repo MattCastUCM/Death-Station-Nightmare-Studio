@@ -14,14 +14,10 @@ export default class Bullet  extends Phaser.GameObjects.Sprite {
         scene.physics.add.existing(this);
     }
     
-    setVelocityBullet(){
-        return Vector2([this.vectorX, this.vectorY]);
-    }
     preUpdate(t, dt){
         super.preUpdate(t, dt);
-        this.body.SetVelocity(setVelocityBullet()).normalize();
-        //this.body.setVelocityX(this.vectorX);
-        //this.body.setVelocityY(this.vectorY);
+        this.body.setVelocityX(this.vectorX);
+        this.body.setVelocityY(this.vectorY);
         
     }
 }
