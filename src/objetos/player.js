@@ -1,7 +1,7 @@
 import gameObject from './gameobject.js';
 
 // Clase para el gato que hereda de gameObject
-export default class Cat extends gameObject {
+export default class Player extends gameObject {
     // Constructora que recibe los mismos parámetros que el padre
     // excepto por la textura, que es siempre la misma
     constructor(scene, posX, posY, w, h, offsetX, offsetY, spd) {
@@ -56,6 +56,14 @@ export default class Cat extends gameObject {
 
         });
 
+        // Iluminación
+        this.vision=scene.make.sprite({
+			x: this.x,
+			y: this.y,
+			key: 'mask',
+			add: false
+		})
+		this.vision.scale =4;
     }
 
 
@@ -136,15 +144,13 @@ export default class Cat extends gameObject {
 
         this.move(movementX,movementY);
 
-        // Si se deja de pulsar, para la animación y deja de mover el objeto
+        // Si se deja de pulsar, para la animación
         if(Phaser.Input.Keyboard.JustUp(this.cursors.a) || 
             Phaser.Input.Keyboard.JustUp(this.cursors.d) ||
             Phaser.Input.Keyboard.JustUp(this.cursors.w) ||
             Phaser.Input.Keyboard.JustUp(this.cursors.s)){
                 this.anims.isPlaying = false;
-                this.move(0,0);
         }
-
 
         // Si ha colisionado,
         if(this.hasColided){
@@ -161,9 +167,10 @@ export default class Cat extends gameObject {
             }
         }
 
-        
-        
-        
+        // La máscara de iluminación se mueve con el personaje
+        this.vision.x = this.x;
+		this.vision.y = this.y;
+       
     };
     GetPosX(){
         return this.x;
@@ -171,9 +178,4 @@ export default class Cat extends gameObject {
     GetPosY(){
         return this.y;
     }
-
-    
-
-
-
 };

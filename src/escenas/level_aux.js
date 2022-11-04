@@ -24,6 +24,7 @@ export default class level_aux extends Phaser.Scene {
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('persecutor', 'assets/personajes/Anciana.png', { frameWidth: 32, frameHeight: 48 });		
 		this.load.spritesheet('lanzador', 'assets/personajes/Estudiante 2.png', { frameWidth: 32, frameHeight: 48 });
+		this.load.image('mask', 'assets/enviroment/mask1.png');
 
 		//this.load.spritesheet('box', 'assets/Box/box.png', {frameWidth: 64, frameHeight: 64})
 	}
@@ -34,7 +35,7 @@ export default class level_aux extends Phaser.Scene {
 	create() {
 
 		//Imagen de fondo
-		this.add.image(0, 0, 'fondo').setOrigin(0, 0);
+		const f = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
 		//back.setScale(2);
 		//this.add.image(0, 0, 'fondo').setOrigin(0, 0);
 		//let wall = this.physics.add.group();
@@ -89,6 +90,43 @@ export default class level_aux extends Phaser.Scene {
 		//Menu de pausa
 		this.keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
 
+
+		// Iluminación
+		const width = this.scale.width
+		const height = this.scale.height
+		const rt = this.make.renderTexture({
+			width,
+			height
+		}, true)
+		rt.setDepth(4);
+		// poner fondo a negro
+		rt.fill(0x000000, 1)
+		// dibuja la escena vacia 
+		rt.draw(f)
+		//poner un toque de azul a mapa 
+		rt.setTint(0x5050b0)
+		//0x0a2948
+		//0x5050b0
+
+
+		// var vision = this.make.sprite({
+		// 	x: this.personaje.x,
+		// 	y: this.personaje.y,
+		// 	key: 'v',
+		// 	add: false
+		// })
+		
+
+		// vision.scale =4;
+		//vision.startFollow(this.personaje);
+		rt.mask = new Phaser.Display.Masks.BitmapMask(this, player.vision);
+		rt.mask.invertAlpha = true;
+
+
+		//camara que sigue a jugador (movimiento suave)
+		this.cameras.main.startFollow(player,this.cameras.FOLLOW_LOCKON, 0.1, 0.1);
+		//espacio de camara (si jugador sale de este espacio,la camara le sigue)
+		//this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
 	}
 	
 
@@ -102,6 +140,7 @@ export default class level_aux extends Phaser.Scene {
 
 	update(t, dt){
 		this.deltaTime = dt;
+		
 
 		if(this.keyP.isDown){
 			this.scene.launch('Pause',{me: this.scene});

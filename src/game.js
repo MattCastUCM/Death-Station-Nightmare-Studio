@@ -8,11 +8,11 @@ import Pause from './escenas/pause.js'
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
  */
 let config = {
-    type: Phaser.canvas,
-    canvas: document.getElementById("juego"),
+    type: Phaser.AUTO,
+    //canvas: document.getElementById("juego"),
     width:  1000,
     height: 560,
-    //parent: 'game',
+    parent: 'game',
     pixelArt: true,
 	scale: {
 		autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
