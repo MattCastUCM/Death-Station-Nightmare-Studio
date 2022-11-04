@@ -1,5 +1,6 @@
 import Scene_Nanxi from './Scene_Nanxi.js';
 import Menu from '../src/escenas/menu.js'
+import DialogManager from '../src/hud/DialogManager.js'
 import HUD from '../src/hud/hud.js'
 
 /**
@@ -7,11 +8,11 @@ import HUD from '../src/hud/hud.js'
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
  */
 let config = {
-    type: Phaser.canvas,
-    canvas: document.getElementById("juego"),
+    type: Phaser.WEBGL,
+    //canvas: document.getElementById("juego"),
     width:  1000,
     height: 560,
-    //parent: 'game',
+    parent: 'game',
     pixelArt: true,
 	scale: {
 		autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
@@ -26,7 +27,7 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [Menu, Scene_Nanxi,HUD],
+    scene: [Menu, Scene_Nanxi,HUD,DialogManager],
     physics: { 
         default: 'arcade', 
         arcade: { 

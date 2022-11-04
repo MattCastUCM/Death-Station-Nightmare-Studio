@@ -3,7 +3,7 @@ import Wall from '../src/objetos/wall.js';
 import Cat from '../src/objetos/Cat.js';
 import CardBoard from '../src/objetos/CartBoard.js'
 import WoodBox from '../src/objetos/WoodBox.js'
-import DialogManager from '../src/hud/DialogManager.js';
+
 
 /**
  * Escena principal.
@@ -17,7 +17,7 @@ export default class Scene_Nanxi extends Phaser.Scene {
 	}
 	preload() {
 		this.load.image('fondo', 'assets/Mapa/boceto_interiorTren.png');
-		this.load.spritesheet('dialogBox', 'assets/HUD/textBox.png', { frameWidth: 600, frameHeight: 300});
+		this.load.spritesheet('dialogBox', 'assets/HUD/textBox.png', { frameWidth: 600, frameHeight: 300 });
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('cat', 'assets/personajes/Gato.png', { frameWidth: 34, frameHeight: 34 });
 		this.load.spritesheet('cartBoard', 'assets/objects/cajaCarton.png', { frameWidth: 64, frameHeight: 64 });
@@ -67,9 +67,15 @@ export default class Scene_Nanxi extends Phaser.Scene {
 		this.physics.add.collider(personaje, cartBoardBoxes);
 
 		this.physics.add.collider(personaje, woodBoxes);
+//HUD
+this.scene.launch('hudAux');
+this.hud = this.scene.get('hudAux');
 
-		this.dialogManager = new DialogManager(this);
-
+		//DialogManager
+		this.scene.launch('dialogManager');
+		this.dialogManager = this.scene.get('dialogManager');
+		console.log(this.dialogManager);
+		
 
 		//Prueba, en la escena, hay q hacerlo en arma (hacha)
 		this.physics.add.collider(gato, woodBoxes);
@@ -77,16 +83,13 @@ export default class Scene_Nanxi extends Phaser.Scene {
 			if (gameObject1 === gato && gameObject2 === woodBox1) {
 
 				woodBox1.destroyMe();
-				scene.newText(["No puede sbiiiiiiiiiiiiiiiiiiiiiiiiiibsaiwfibfjinhfnrnjsnksnfkjnfks< iibvywbrviwyriuwunksnfkjnfks", "Porqué es así"]); //array de strings
+				scene.dialogManager.Init(["No puede sbiiiiiiiiiiiiiiiiiiiiiiiiiibsaiwfib fjinhfnrnjsn ksnfkjnfks< iibvywbr viwyriu wunksnfkjnfks", "Porqué es así"]); //array de strings
 
 			}
 		});
 		//....................................................
 
-		//HUD
-		this.scene.launch('hudAux');
-		this.hud = this.scene.get('hudAux');
-
+		
 
 
 	}

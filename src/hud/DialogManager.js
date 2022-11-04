@@ -24,7 +24,7 @@ export default class DialogManager extends Phaser.Scene{
 
         WebFont.load({
             google: {
-                families: ['Press Start 2P']
+                families: ['Alfa Slab One','Roboto','Freckle Face'] 
             },
             loading: function() {
                 console.log("Fonts are being loaded");
@@ -46,11 +46,12 @@ export default class DialogManager extends Phaser.Scene{
        
         this.dialogBox.visible = true; //el cuadro de texto aparece
 
-        // this.text = this.add.text(300, 500, "dhtddgftt", {
+        this.text = this.add.text(300, 200, "dhtddgftt", {
 
-        //     fontFamily:'Press Start 2P',fontSize:600,color:'#000000'
+            fontFamily:'Alfa Slab One',fontSize:60,color:'#ff0000'
       
-        //   });
+          });
+          console.log("Hola");
     }
 
     /*Pasa el siguiente mensaje al contenedor, llamando a su método setNewMessage*/ 
