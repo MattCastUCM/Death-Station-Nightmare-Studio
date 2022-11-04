@@ -2,6 +2,7 @@ import Player from '../objetos/player.js';
 import Wall from '../objetos/wall.js';
 import Cat from '../objetos/cat.js';
 import HealthBar from '../HUD/HealthBar.js';
+import EnemyManager from './EnemyManager.js';
 import Pause from './pause.js';
 //import Box from '../objetos/box.js';
 /**
@@ -19,6 +20,11 @@ export default class level_aux extends Phaser.Scene {
 		this.load.image('fondo', 'assets/Mapa/boceto_interiorTren.png');
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('cat', 'assets/personajes/Gato.png', { frameWidth: 34, frameHeight: 34 });
+		this.load.image('cuchillo', 'assets/survival kit/Sprite-0004.png');
+		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
+		this.load.spritesheet('persecutor', 'assets/personajes/Anciana.png', { frameWidth: 32, frameHeight: 48 });		
+		this.load.spritesheet('lanzador', 'assets/personajes/Estudiante 2.png', { frameWidth: 32, frameHeight: 48 });
+
 		//this.load.spritesheet('box', 'assets/Box/box.png', {frameWidth: 64, frameHeight: 64})
 	}
 
@@ -69,6 +75,16 @@ export default class level_aux extends Phaser.Scene {
 		this.physics.add.collider(player, walls);
 		this.physics.add.collider(player, gato);
 		this.physics.add.collider(gato, this.walls);
+
+		//CREACION DE ENEMIGO PERSECUTOR Y TOPO
+		let enemyManager = new EnemyManager(this);
+		this.persecutor = enemyManager.CreateEnemy(20, this.sys.game.canvas.height / 2,'persecutor', player);
+		this.persecutor.setScale(2);
+		this.lanzador = enemyManager.CreateEnemy(20, this.sys.game.canvas.height / 2,'lanzador', player);
+		this.lanzador.setScale(2);
+		this.physics.add.collider(player,this.persecutor);	
+		this.physics.add.collider(player,this.lanzador);	
+		
 
 		//Menu de pausa
 		this.keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);

@@ -161,9 +161,15 @@ export default class Cat extends gameObject {
             }
         }
 
-
-
-
+        
+        
+        
+    };
+    GetPosX(){
+        return this.x;
+    }
+    GetPosY(){
+        return this.y;
     }
 
     
