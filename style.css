@@ -7,7 +7,7 @@ body {
     /* background-image: url("assets/sprites/wall.png"); */
     /* background-repeat:repeat;*/
     /* background-color: rgb(67,67,67); */
-    background-color: black;
+    background-color: #070707;
     font-family: 'Press Start 2P';
     word-wrap: break-word;
     align-items: center;
@@ -17,11 +17,9 @@ body {
 
 
 /*HEADER---------------------------------------------------*/
-
 header {
-
     padding: 0em 0 1em 0;
-    background: black;
+    background: #070707;
     height: 4em;
     /* margin:2em; */
 }
@@ -62,6 +60,7 @@ header ul li a {
 }
 
 
+
 /*scrooll-Top*/
 html {
     scroll-behavior: smooth;
@@ -69,12 +68,12 @@ html {
 
 .scroll-Top {
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: 30px;
+    right: 30px;
     width: 60px;
     height: 60px;
-    background: #fff;
-    background-image: url(./imagenes/up.png);
+    background: #c5c5c5;
+    background-image: url(./assets/Pagina/up.png);
     border-radius: 25%;
     background-size: 40px;
     background-position: center;
@@ -83,8 +82,7 @@ html {
     z-index: 100000;
     visibility: hidden;
     opacity: 0;
-    transition: 1s;
-
+    transition: 0.5s;
 }
 
 .scroll-Top.active {
@@ -159,34 +157,30 @@ nav a {
     color: #c5c5c5;
 }
 
+
+
 /*GAME CANVAS---------------------------------------------------*/
-
-
- #game {
-    padding-top:2em;
-
+#game {
+    padding-top: 7em;
+    padding-bottom: 7em;
 } 
 
 #juego {
     background: rgb(109, 109, 109);
     margin: 2em auto;
     border: 4px solid hsl(0, 100%, 30%);
-
 } 
 
+
+
 /*SECTION---------------------------------------------------*/
-
 .about {
-
-    padding: 10em 10em 15em 10em;
+    padding: 2em 15em 2em 15em;
     /*centrar dentro del main*/
-
     margin: 1em;
-
 }
 
 .section-title {
-
     border: 3px solid rgb(153, 0, 0);
     text-align: center;
     color: #c5c5c5;
@@ -198,19 +192,23 @@ nav a {
     margin: 2em auto;
     /*centrar dentro del main*/
 
-
 }
 
 .texto {
     color: #c5c5c5;
-    font-size: 0.6em;
+    font-size: 0.8em;
     text-indent: 40px;
-    line-height: 4;
+    line-height: 2;
 }
 
+/*
 .parrafo {
     padding-top: 3em;
 }
+/*
+
+
+
 
 /*FOOTER---------------------------------------------------*/
 
@@ -222,8 +220,10 @@ hr.solid {
     margin-top: 5em;
 }
 
+
+
 footer {
-    padding: 1.5em;
+    padding: 1em;
     bottom: 0;
 }
 
@@ -234,8 +234,6 @@ footer {
     justify-content: space-between;
 
 }
-
-
 
 footer img {
     width: 3.5em;

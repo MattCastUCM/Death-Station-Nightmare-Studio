@@ -1,19 +1,19 @@
-/**
- * Clase que representa el suelo, es de tipo Sprite pero no tiene una imagen asociada
- * Tendra un collider para que los personajes no caigan por debajo
- */
- export default class Wall extends Phaser.GameObjects.Sprite {
+// Clase para las paredes (y algunos elementos del escenario).
+// es de tipo Sprite pero no tiene una imagen asociada.
+// Tendrá un collider para que no se puedan atravesar.
+export default class Wall extends Phaser.GameObjects.Sprite {
+    // Constructora que recibe la escena en la que se va a crear,
+    // sus coordenadas, y sus dimensiones
+    constructor(scene, x, y, w, h) {
+        super(scene, x, y);
 
-    constructor(scene, y) {
-      super(scene, 0, scene.sys.game.canvas.height-y);
-  
-      this.scene.add.existing(this);
-      this.scene.physics.add.existing(this, true);
-  
-      this.scene.physics.add.collider(this);
-  
-      // Cambiamos el tamaño del body para ocupar todo el ancho de la escena
-      this.body.width = scene.sys.game.canvas.width+100;
-      this.body.height = 10;
+        // Añade el objeto a la esceba
+        this.scene.add.existing(this);
+
+        // Añade físicas (true = body estático)
+        this.scene.physics.add.existing(this, true);
+
+        // Cambia el tamaño del body (center = false para que no lo centre)
+        this.body.setSize(w,h,false);
     }
-  }
+}

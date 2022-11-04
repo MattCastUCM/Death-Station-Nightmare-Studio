@@ -12,7 +12,6 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
 
         // Añade físicas al personaje y hace que colisione con los bordes del mundo
         this.scene.physics.add.existing(this);
-        this.body.setCollideWorldBounds();
 
         // Cambia el tamaño del body (center = false para que no lo centre)
         this.body.setSize(w, h, false);
