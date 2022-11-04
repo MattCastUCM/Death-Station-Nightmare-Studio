@@ -1,4 +1,5 @@
 import Scene_Claudia from '../src/escenas/Scene_Claudia.js';
+import level_aux from '../src/escenas/level_aux.js';
 import Menu from '../src/escenas/menu.js'
 import HUD from '../src/hud/hud.js'
 import Pause from './escenas/pause.js'
@@ -26,7 +27,7 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [Menu, Scene_Claudia,HUD],
+    scene: [Menu, level_aux,HUD],
     physics: { 
         default: 'arcade', 
         arcade: { 

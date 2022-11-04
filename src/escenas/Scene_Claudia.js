@@ -1,4 +1,4 @@
-import Personaje from '/src/objetos/personaje.js';
+//import Personaje from '/src/objetos/personaje.js';
 import Wall from '/src/objetos/wall.js';
 import Cat from '/src/objetos/Cat.js';
 import HealthBar from '../HUD/HealthBar.js';

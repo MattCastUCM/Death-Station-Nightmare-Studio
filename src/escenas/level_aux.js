@@ -67,7 +67,7 @@ export default class level_aux extends Phaser.Scene {
 		//this.hud=new HUD();
 		//this.physics.add.collider(floor, boxes);
 		this.physics.add.collider(player, walls);
-		this.physics.add.collider(player, gato, this.DecreaseLife.bind(this),null);
+		this.physics.add.collider(player, gato);
 		this.physics.add.collider(gato, this.walls);
 
 		//Menu de pausa
