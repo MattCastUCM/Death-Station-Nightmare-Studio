@@ -59,52 +59,23 @@ export default class Cat extends gameObject {
     }
 
 
+
+    // Método que disminuye la vida e indica que ha colisionado
+    decreaseHP(){
+        this.hp -= 10;
+        this.hasColided = true;
+    }
+
     // Bucle principal. Actualiza su posición y ejecuta las acciones según el input
     preUpdate(t, dt){
         // IMPORTANTE llamar al preUpdate del padre para poder ejecutar la animación
         super.preUpdate(t,dt);
-
-        // No es posible moverse pulsando 2 teclas a la vez
-
-        // Si se pulsa hacia la izquierda
-        if(this.cursors.a.isDown && 
-            !this.cursors.d.isDown &&
-            !this.cursors.w.isDown &&
-            !this.cursors.s.isDown) {
-                // Comienza a  reproducir la animación
-                this.anims.isPlaying = true;
-
-                // La reproduce mientras se mueva
-                if(this.anims.currentAnim.key !== 'left'){
-                    this.play('left');
-                }
-
-                // Mueve el objeto
-                this.move(-1,0);
-        }
-
-        // Si se pulsa hacia la derecha
-        if(this.cursors.d.isDown && 
-            !this.cursors.a.isDown &&
-            !this.cursors.w.isDown &&
-            !this.cursors.s.isDown) {
-                // Comienza a  reproducir la animación
-                this.anims.isPlaying = true;
-
-                // La reproduce mientras se mueva
-                if(this.anims.currentAnim.key !== 'right'){
-                    this.play('right');
-                }
-
-                // Mueve el objeto
-                this.move(1,0);
-        }
+        let movementX = 0;
+        let movementY = 0;
 
         // Si se pulsa hacia abajo
         if(this.cursors.s.isDown && 
-            !this.cursors.d.isDown &&
-            !this.cursors.w.isDown &&
-            !this.cursors.a.isDown) {
+            !this.cursors.w.isDown) {
                 // Comienza a reproducir la animación
                 this.anims.isPlaying = true;
 
@@ -114,14 +85,13 @@ export default class Cat extends gameObject {
                 }
 
                 // Mueve el objeto
-                this.move(0,1);
+                movementY = 1;
+
         }
 
         // Si se pulsa hacia arriba
         if(this.cursors.w.isDown && 
-            !this.cursors.d.isDown &&
-            !this.cursors.s.isDown &&
-            !this.cursors.a.isDown) {
+            !this.cursors.s.isDown) {
                 // Comienza a reproducir la animación
                 this.anims.isPlaying = true;
 
@@ -131,9 +101,40 @@ export default class Cat extends gameObject {
                 }
 
                 // Mueve el objeto
-                this.move(0,-1);
+                movementY = -1;
         }
 
+        // Si se pulsa hacia la izquierda
+        if(this.cursors.a.isDown && 
+            !this.cursors.d.isDown) {
+                // Comienza a  reproducir la animación
+                this.anims.isPlaying = true;
+
+                // La reproduce mientras se mueva
+                if(this.anims.currentAnim.key !== 'left'){
+                    this.play('left');
+                }
+
+                // Mueve el objeto
+                movementX = -1;
+        }
+
+        // Si se pulsa hacia la derecha
+        if(this.cursors.d.isDown && 
+            !this.cursors.a.isDown ) {
+                // Comienza a  reproducir la animación
+                this.anims.isPlaying = true;
+
+                // La reproduce mientras se mueva
+                if(this.anims.currentAnim.key !== 'right'){
+                    this.play('right');
+                }
+
+                // Mueve el objeto
+                movementX = 1;
+        }
+
+        this.move(movementX,movementY);
 
         // Si se deja de pulsar, para la animación y deja de mover el objeto
         if(Phaser.Input.Keyboard.JustUp(this.cursors.a) || 
@@ -165,14 +166,6 @@ export default class Cat extends gameObject {
 
     }
 
-    update(t,dt){    }
-
-
-    // Método que disminuye la vida e indica que ha colisionado
-    decreaseHP(){
-        this.hp -= 10;
-        this.hasCollided = true;
-    }
     
 
 

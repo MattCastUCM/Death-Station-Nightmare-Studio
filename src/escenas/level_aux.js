@@ -40,35 +40,36 @@ export default class level_aux extends Phaser.Scene {
 
 
 		// Jugador
-		this.player = new Player(this, 50, 400, 20, 20, 5, 20, 140);
-		this.player.setScale(2.5);
+		let player = new Player(this, 50, 400, 15, 15, 8, 30, 140);
+		player.setScale(2.5);
 
 		// Gato
-		this.gato = new Cat(this, 200, 400, 34, 34, 0, 0, 140);
+		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
 
 
 		// Grupo de paredes (estático)
-		this.walls = this.physics.add.staticGroup();
-		this.walls.add(new Wall(this, 0, 0, this.sys.game.canvas.width + 15, this.sys.game.canvas.height / 2.7));
-		this.walls.add(new Wall(this, 285, 200, 260, 60));
-		this.walls.add(new Wall(this, 710, 200, 140, 60));
-		this.walls.add(new Wall(this, 285, 530, 260, 60));
-		this.walls.add(new Wall(this, 710, 530, 140, 60));
+		let walls = this.physics.add.staticGroup();
+		walls.add(new Wall(this, 0, 0, this.sys.game.canvas.width + 15, this.sys.game.canvas.height / 2.7));
+		walls.add(new Wall(this, 285, 200, 260, 60));
+		walls.add(new Wall(this, 710, 200, 140, 60));
+		walls.add(new Wall(this, 285, 530, 260, 60));
+		walls.add(new Wall(this, 710, 530, 140, 60));
 
 
 		// let box1 = new Box(this, 200, 0, boxes);
 		// let box2 = new Box(this, 400, 0, boxes);
 	
-		this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del caballero con el suelo
+		player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del caballero con el suelo
 		
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
 		let hud=this.scene.launch('hudAux');
 		this.healthBar = new HealthBar(this, 30, 20, 180, 20, 10);
 		//this.hud=new HUD();
 		//this.physics.add.collider(floor, boxes);
-		this.physics.add.collider(this.player, this.walls);
-		this.physics.add.collider(this.player, this.gato, this.DecreaseLife.bind(this),null);
-		
+		this.physics.add.collider(player, walls);
+		this.physics.add.collider(player, gato, this.DecreaseLife.bind(this),null);
+		this.physics.add.collider(gato, this.walls);
+
 		//Menu de pausa
 		this.keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
 
@@ -76,7 +77,7 @@ export default class level_aux extends Phaser.Scene {
 	
 
 	DecreaseLife(){
-		if(!this.player.hasColided){
+		if(!player.hasColided){
 			this.healthBar.decrease();
 			this.player.decreaseHP();
 		}
