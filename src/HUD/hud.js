@@ -28,7 +28,6 @@ export default class HUD extends Phaser.Scene {
     changeLifeValue(newValue) {
         this.healthBar.changeValue(newValue);
     }
-
 }
 
 
