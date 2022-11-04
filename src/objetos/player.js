@@ -10,6 +10,12 @@ export default class Cat extends gameObject {
         this.hp = 100;
         this.hasColided = false;
         this.elapsedTime = 0;
+        this.atacando = false;
+
+        // Añadimos collider para el ataque
+        let colliderAtq = new gameObject(scene, posX, posY, 100, 100, 0, 0, "", 0);
+        //colliderAtq.enabled = false;
+        colliderAtq.visible = false;
 
         //Creamos las animaciones
         this.scene.anims.create({
@@ -53,7 +59,7 @@ export default class Cat extends gameObject {
             a: Phaser.Input.Keyboard.KeyCodes.A,
             s: Phaser.Input.Keyboard.KeyCodes.S,
             d: Phaser.Input.Keyboard.KeyCodes.D,
-
+            space: Phaser.Input.Keyboard.KeyCodes.SPACE,
         });
 
     }
@@ -142,6 +148,10 @@ export default class Cat extends gameObject {
             Phaser.Input.Keyboard.JustUp(this.cursors.s)){
                 this.anims.isPlaying = false;
                 this.move(0,0);
+        }
+
+        if(Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
+            console.log("Espacio");
         }
 
 
