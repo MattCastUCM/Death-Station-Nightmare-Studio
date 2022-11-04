@@ -10,12 +10,6 @@ export default class Cat extends gameObject {
         this.hp = 100;
         this.hasColided = false;
         this.elapsedTime = 0;
-        this.atacando = false;
-
-        // Añadimos collider para el ataque
-        let colliderAtq = new gameObject(scene, posX, posY, 100, 100, 0, 0, "", 0);
-        colliderAtq.active = false;
-        console.log("Hola");
 
         //Creamos las animaciones
         this.scene.anims.create({
@@ -59,7 +53,7 @@ export default class Cat extends gameObject {
             a: Phaser.Input.Keyboard.KeyCodes.A,
             s: Phaser.Input.Keyboard.KeyCodes.S,
             d: Phaser.Input.Keyboard.KeyCodes.D,
-            space: Phaser.Input.Keyboard.KeyCodes.SPACE,
+
         });
 
     }
@@ -140,13 +134,6 @@ export default class Cat extends gameObject {
                 this.move(0,-1);
         }
 
-        // Si se pulsa espacio, comienza la secuencia de ataque
-        if(Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
-            colliderAtq.active = !colliderAtq.active;
-            console.log("Espacio pulsado");
-            this.atacando = !this.atacando;
-        }
-
 
         // Si se deja de pulsar, para la animación y deja de mover el objeto
         if(Phaser.Input.Keyboard.JustUp(this.cursors.a) || 
@@ -184,7 +171,7 @@ export default class Cat extends gameObject {
     // Método que disminuye la vida e indica que ha colisionado
     decreaseHP(){
         this.hp -= 10;
-        this.hasColided = true;
+        this.hasCollided = true;
     }
     
 
