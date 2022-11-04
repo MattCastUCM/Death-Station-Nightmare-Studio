@@ -7,8 +7,14 @@ export default class HealthBar {
         this.y = y;
         this.h = h; //altura
         this.w = w; //anchura
-        this.value = 100;
-        this.p = 100 / 100;
+        this.actualValue = 100;
+        this.oldValue;
+        this.maxValue=100;
+
+        //animación
+        this.timeLapse=0;
+        this.timeLimit=10;
+
         this.color = 0Xc13030;
         this.draw();
         this.borderWidth = borderWidth;
@@ -19,7 +25,7 @@ export default class HealthBar {
 
         //  Border
         this.bar.fillStyle(0x000000);
-        this.bar.fillRect(this.x - 3.5, this.y - 3.5,this.w + 7, this.h + 7);
+        this.bar.fillRect(this.x - 3.5, this.y - 3.5, this.w + 7, this.h + 7);
 
         //  BG
 
@@ -29,22 +35,17 @@ export default class HealthBar {
         // Life color
         this.bar.fillStyle(this.color);
 
-
-        var d = Math.floor(this.p * this.value);
-        this.bar.fillRect(this.x, this.y, d * this.w / 100, this.h);
+        
+        let lifeArea = Math.floor( this.actualValue * this.w / this.maxValue);
+        this.bar.fillRect(this.x, this.y,lifeArea, this.h);
     }
 
-    decrease() {
-        this.value -= 5;
-
-        if (this.value < 0) {
-            this.value = 0;
+    changeValue(newValue) {
+        this.oldValue=this.actualValue; //guardar el valor anterior
+        this.actualValue = newValue;
+        if (this.actualValue < 0) { //por si sale fuera del rango
+            this.actualValue = 0;
         }
-
-        this.draw();
-
-        return (this.value === 0);
+        this.draw(); //actualiza en la pantalla
     }
-
-    
 }
