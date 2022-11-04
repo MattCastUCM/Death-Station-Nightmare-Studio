@@ -126,9 +126,6 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 			this.body.setVelocityY(this.speed);
 		}
 
-
-
-
 		// Si dejamos de pulsar 'A' o 'D' volvemos al estado de animación'idle'
 		// Phaser.Input.Keyboard.JustUp y Phaser.Input.Keyboard.JustDown nos aseguran detectar la tecla una sola vez (evitamos repeticiones)
 		if(Phaser.Input.Keyboard.JustUp(this.aKey) || Phaser.Input.Keyboard.JustUp(this.dKey)){
@@ -157,13 +154,14 @@ export default class Personaje extends Phaser.GameObjects.Sprite {
 		}
 	
 	}
-	update(t, dt){
-	}
+
 	DecreaseLife(){
 		this.helathPoints -= 10;
 		this.hasColided = true;
 
 	}
-	
+	GetPosX(){return this.x;}
+	GetPosY(){return this.y;}
+
 
 }

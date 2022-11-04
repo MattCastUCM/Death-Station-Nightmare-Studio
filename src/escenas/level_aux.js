@@ -1,7 +1,7 @@
 import Personaje from '../objetos/personaje.js';
 import Wall from '../objetos/wall.js';
 import Cat from '../objetos/Cat.js';
-import HealthBar from '../HUD/HealthBar.js';
+//import HealthBar from '../HUD/HealthBar.js';
 import Pause from './pause.js';
 //import Box from '../objetos/box.js';
 /**
@@ -63,11 +63,11 @@ export default class level_aux extends Phaser.Scene {
 			this.personaje.DecreaseLife();
 		}
 	}
-	update(t, dt){
+	/*update(t, dt){
 		this.deltaTime = dt;
 		if(this.keyP.isDown){
 			this.scene.launch('Pause',{me: this.scene});
 			this.scene.pause();
 		}
-	}
+	}*/
 }
