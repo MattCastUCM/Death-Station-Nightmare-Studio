@@ -51,6 +51,7 @@ export default class Scene_Claudia extends Phaser.Scene {
 		this.lanzador.setScale(2);
 		this.physics.add.collider(this.personaje,this.persecutor, this.DecreaseLife.bind(this),null);	
 		this.physics.add.collider(this.personaje,this.lanzador, this.DecreaseLife.bind(this),null);	
+		
 
 	    
 		//HUD
