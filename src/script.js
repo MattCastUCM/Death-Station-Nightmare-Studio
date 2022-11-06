@@ -1,15 +1,15 @@
 // Pone el focus en el canvas del juego
 window.onload = function () {
-    let focused = document.getElementById('juego');
+    let focused = document.getElementById('game');
     focused.focus();
 };
 
 
-// Añade un botón pulsable
+// Aï¿½ade un botï¿½n pulsable
 window.addEventListener('scroll', function () {
     var scrollButton = document.querySelector(".scroll-Top");
 
-    // Si se ha bajado una cierta altura, aparece el botón.
+    // Si se ha bajado una cierta altura, aparece el botï¿½n.
     // Si no, desaparece
     if (window.scrollY > 300) {
         scrollButton.classList.add("active");
@@ -20,7 +20,7 @@ window.addEventListener('scroll', function () {
 
 }   );
 
-// Sube hasta la parte superior de la página
+// Sube hasta la parte superior de la pï¿½gina
 function scrollToTop() {
     window.scrollTo({ top: 0 });
 };
@@ -38,7 +38,7 @@ function moveHeader() {
     }
 };
 
-// Mueve el header si se baja en la página
+// Mueve el header si se baja en la pï¿½gina
 window.onscroll = function () {
     moveHeader();
 };
