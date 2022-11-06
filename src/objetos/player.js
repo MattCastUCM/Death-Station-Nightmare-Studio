@@ -1,7 +1,8 @@
 import gameObject from './gameobject.js';
+import WeaponManager from './weapons.js';
 
 // Clase para el gato que hereda de gameObject
-export default class Cat extends gameObject {
+export default class Player extends gameObject {
     // Constructora que recibe los mismos parámetros que el padre
     // excepto por la textura, que es siempre la misma
     constructor(scene, posX, posY, w, h, offsetX, offsetY, spd) {
@@ -10,12 +11,9 @@ export default class Cat extends gameObject {
         this.hp = 100;
         this.hasColided = false;
         this.elapsedTime = 0;
-        this.atacando = false;
+        this.facing = "down";
 
-        // Añadimos collider para el ataque
-        let colliderAtq = new gameObject(scene, posX, posY, 100, 100, 0, 0, "", 0);
-        //colliderAtq.enabled = false;
-        colliderAtq.visible = false;
+        this.weaponManager = new WeaponManager(this);
 
         //Creamos las animaciones
         this.scene.anims.create({
@@ -59,7 +57,6 @@ export default class Cat extends gameObject {
             a: Phaser.Input.Keyboard.KeyCodes.A,
             s: Phaser.Input.Keyboard.KeyCodes.S,
             d: Phaser.Input.Keyboard.KeyCodes.D,
-            space: Phaser.Input.Keyboard.KeyCodes.SPACE,
         });
 
     }
@@ -83,6 +80,7 @@ export default class Cat extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'left'){
                     this.play('left');
+                    this.facing = "left";
                 }
 
                 // Mueve el objeto
@@ -100,6 +98,7 @@ export default class Cat extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'right'){
                     this.play('right');
+                    this.facing = "right";
                 }
 
                 // Mueve el objeto
@@ -117,6 +116,7 @@ export default class Cat extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'down'){
                     this.play('down');
+                    this.facing = "down";
                 }
 
                 // Mueve el objeto
@@ -134,6 +134,7 @@ export default class Cat extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'up'){
                     this.play('up');
+                    this.facing = "up";
                 }
 
                 // Mueve el objeto
@@ -148,10 +149,6 @@ export default class Cat extends gameObject {
             Phaser.Input.Keyboard.JustUp(this.cursors.s)){
                 this.anims.isPlaying = false;
                 this.move(0,0);
-        }
-
-        if(Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
-            console.log("Espacio");
         }
 
 
