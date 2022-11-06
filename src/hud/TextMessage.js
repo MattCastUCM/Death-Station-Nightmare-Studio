@@ -28,6 +28,7 @@ export default class TextMessage extends Phaser.GameObjects.Container {
     this.delay = 0;
     this.finished = false;
     this.actWritten = "";
+    this.text.setText(this.actWritten); 
   }
 
 
@@ -43,21 +44,13 @@ export default class TextMessage extends Phaser.GameObjects.Container {
     this.textSpeed = 100; //velocidad al imprimir el texto, en ms
 
     //crear objeto texto
-    this.text = this.scene.add.text(this.x, this.y, "", {
-      font: 'bold 20px "Press Start 2P"',
-      color: "#000000",
+    this.text = this.scene.add.text(this.x,this.y , "", {
+
+      fontFamily:'VT323',fontSize:26,color:'#454545'
 
     });
-    //this.text.setOrigin(0.5,0.5);
+
     this.text.setWordWrapWidth(this.width - 20 * 2);
-
-
-    // //
-    // this.text.setFont('Press Start 2P');
-    // this.text.setFontSize(400);
-    // this.text.setColor('#000');
-    //this.text.anchor.setTo(0.5, 0.5);
-    // this.scene.add.existing(this.text);
   }
 
   /*

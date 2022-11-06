@@ -1,8 +1,8 @@
-import Scene_Claudia from '../src/escenas/Scene_Claudia.js';
 import level_aux from '../src/escenas/level_aux.js';
 import Menu from '../src/escenas/menu.js'
 import HUD from '../src/hud/hud.js'
 import Pause from './escenas/pause.js'
+import DialogManager from '../src/hud/DialogManager.js'
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
@@ -27,7 +27,7 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [Menu, level_aux,HUD],
+    scene: [Menu, level_aux,HUD,DialogManager,Pause],
     physics: { 
         default: 'arcade', 
         arcade: { 

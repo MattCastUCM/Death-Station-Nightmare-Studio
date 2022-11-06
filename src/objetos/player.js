@@ -8,7 +8,7 @@ export default class Player extends gameObject {
         super(scene, posX, posY, w, h, offsetX, offsetY, 'personaje', spd);
 
         this.hp = 100;
-        this.hasColided = false;
+        this.hasCollided = false;
         this.elapsedTime = 0;
 
         //Creamos las animaciones
@@ -65,15 +65,29 @@ export default class Player extends gameObject {
 		})
 		this.vision.scale =4;
     }
+    
+    
+    GetPosX(){
+        return this.x;
+    }
+    GetPosY(){
+        return this.y;
+    }
+    
+    GetHP(){
+        return this.hp;
+    }
 
-
-
+    HasCollided(){
+        return this.hasCollided;
+    }
+    
     // Método que disminuye la vida e indica que ha colisionado
     decreaseHP(){
         this.hp -= 10;
-        this.hasColided = true;
+        this.hasCollided = true;
     }
-
+    
     // Bucle principal. Actualiza su posición y ejecuta las acciones según el input
     preUpdate(t, dt){
         // IMPORTANTE llamar al preUpdate del padre para poder ejecutar la animación
@@ -153,16 +167,16 @@ export default class Player extends gameObject {
         }
 
         // Si ha colisionado,
-        if(this.hasColided){
-            console.log(this.hasColided);
+        if(this.hasCollided){
+
             // Aumenta el tiempo que ha pasado desde la colisión
             this.elapsedTime += dt;
-                console.log('entra');
+           //     console.log('entra');
 
             // Si ha pasado un cierto tiempo, se indica que ha
             // dejado de colisionar y se popne el temporizador a 0
             if(this.elapsedTime >= 500){
-                this.hasColided = false;
+                this.hasCollided = false;
                 this.elapsedTime = 0;   
             }
         }
@@ -172,10 +186,4 @@ export default class Player extends gameObject {
 		this.vision.y = this.y;
        
     };
-    GetPosX(){
-        return this.x;
-    }
-    GetPosY(){
-        return this.y;
-    }
 };
