@@ -54,6 +54,8 @@ class ColliderAtq extends gameObject {
         this.offset = {}
         this.offset.x = offsetX;
         this.offset.y = offsetY;
+        this.width = w;
+        this.height = h;
     }
 
     diff(a, b) {
@@ -82,6 +84,18 @@ class ColliderAtq extends gameObject {
         }
         this.move(movement.x, movement.y);
     }
+
+    setReach(reach) {
+        if(this.width > this.height) {
+            this.width = reach * 2;
+            this.height = reach;
+        } else {
+            this.height = reach * 2;
+            this.width = reach;
+        }
+        this.body.setSize(this.width, this.height);
+        console.log(this);
+    } 
 }
 
 export default class WeaponManager extends gameObject {
@@ -101,18 +115,26 @@ export default class WeaponManager extends gameObject {
         this.colliders.left = new ColliderAtq(player, -37, -19, 25, 100);
 
         // Se hace un grupo en las físicas para permitir añadir la colisión más fácilmente
-        this.colliderGroup = player.scene.physics.add.staticGroup();
-        this.colliderGroup.add(this.colliders.up);
-        this.colliderGroup.add(this.colliders.right);
-        this.colliderGroup.add(this.colliders.down);
-        this.colliderGroup.add(this.colliders.left);
+        this.colliders.colliderGroup = player.scene.physics.add.group();
+        this.colliders.colliderGroup.add(this.colliders.up);
+        this.colliders.colliderGroup.add(this.colliders.right);
+        this.colliders.colliderGroup.add(this.colliders.down);
+        this.colliders.colliderGroup.add(this.colliders.left);
 
-        player.scene.physics.add.collider(this.colliderGroup, player.scene.gato, function() { console.log("col"); }, null);
+        let me = this;
+        //this.col = new Phaser.Physics.Arcade.Collider(player.scene.physics.world, true, this.colliderGroup, player.scene.enemies, function() { console.log("col"); });
+        this.colliders.collisionDetector = player.scene.physics.add.collider(this.colliders.colliderGroup, player.scene.enemies,
+                                                                             function(obj1, obj2) { me.collision(me, obj1, obj2); }, null);
+        this.colliders.collisionDetector.overlapOnly = true;
 
+        // Se genera una tabla para mantener las propiedades de ataque
+        this._attack = {};
+        this._attack.isAttacking = false;
         // Se guarda la última vez que se hizo un ataque
-        this._lastSwing = 0;
+        this._attack.lastSwing = 0;
+        this._attack.damage = 0;
+
         // Se guarda el jugador
-        /** @type {Player} */
         this._player = player;
 
         // Se genera la tabla de booleanos para guardar qué armas se tienen
@@ -121,13 +143,13 @@ export default class WeaponManager extends gameObject {
         this._hasWeapon.botella = false;
         this._hasWeapon.barra = false;
         this._hasWeapon.hacha = false;
-        this.selected = "navaja";
 
         // Se generan las armas
         this.navaja = new Navaja(player);
         this.botella = new Botella(player);
         this.barra = new Barra(player);
         this.hacha = new Hacha(player);
+        this.selected = "navaja";
 
         // Se guardan las teclas para poder recoger el input
         this.input = player.scene.input.keyboard.addKeys({
@@ -161,28 +183,35 @@ export default class WeaponManager extends gameObject {
         }
         // Si se pulsa la barra espaciadora, se hace un ataque.
         if(Phaser.Input.Keyboard.JustDown(this.input.space)) {
+            console.log("V");
             this.attack(t);
+            console.log("H");
         }
     }
 
-    moving() {
-        console.log("Hola");
+    collision(self, obj1, obj2) {
+        if(this._attack.isAttacking && obj1 === self.colliders[self._player.facing]) {
+            (obj2.damage || function() { console.log(obj2, "No tiene método damage"); })();
+        }
     }
 
     /**
        @param {number} t - tiempo transcurrido desde el inicio
     */
     attack(t) {
+        // Se almacena el arma seleccionada en una variable para más comodidad y legibilidad
         let weapon = this[this.selected];
-        if(t >= this._lastSwing + weapon.atkSpeed) {
-            this._lastSwing = t;
+        console.log(t, this._attack.lastSwing);
+        if(t >= this._attack.lastSwing + weapon.atkSpeed) {
+            this._attack.lastSwing = t;
             // Attack
-            console.log(this);
-            console.log(weapon);
+            this._attack.isAttacking = true;
+            this._attack.damage = weapon.damage;
+            
+            //this.colliders.up.setReach(weapon.reach);
+            //this.colliders.right.setReach(weapon.reach);
+            //this.colliders.down.setReach(weapon.reach);
+            //this.colliders.left.setReach(weapon.reach);
         }
     }
-	
-	Log() {
-		console.log("Col");
-	}
 }

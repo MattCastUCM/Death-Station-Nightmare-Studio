@@ -38,6 +38,7 @@ export default class level_aux extends Phaser.Scene {
 		//this.personaje = new P(this, 20, this.sys.game.canvas.height / 2);
 		//this.personaje.setScale(2.5);
 
+		this.enemies = this.physics.add.group();
 
 		// Jugador
 		this.player = new Player(this, 50, 400, 20, 20, 5, 20, 140);
@@ -45,6 +46,13 @@ export default class level_aux extends Phaser.Scene {
 
 		// Gato
 		this.gato = new Cat(this, 200, 400, 34, 34, 0, 0, 140);
+		this.enemies.add(this.gato);
+
+		//this.col = new Phaser.Physics.Arcade.Collider(this.physics.world, true, this.player.weaponManager.colliderGroup, this.enemies, function() { console.log("col"); })
+		//this.physics.add.collider(this.player.weaponManager.colliderGroup, this.enemies, function() { console.log("col"); });
+		//console.log(this.enemies);
+		//console.log(this.player.weaponManager.colliderGroup);
+		//console.log(this.col);
 
 
 		// Grupo de paredes (estático)
