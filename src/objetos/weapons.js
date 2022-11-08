@@ -46,16 +46,16 @@ class Hacha extends Weapon {
 }
 
 class ColliderAtq extends gameObject {
-    constructor(player, offsetX, offsetY, w, h) {
-        super(player.scene, player.x + offsetX, player.y + offsetY, w, h, 0, 0, "", player.speed);
+    constructor(player, offsetX, offsetY, reach, dir) {
+        super(player.scene, player.x + offsetX, player.y + offsetY, 1, 1, 0, 0, "", player.speed);
 
         this.visible = false;
         this._player = player;
         this.offset = {}
         this.offset.x = offsetX;
         this.offset.y = offsetY;
-        this.width = w;
-        this.height = h;
+        this.offset.dir = dir;
+        this.reach = reach;
     }
 
     diff(a, b) {
@@ -63,11 +63,33 @@ class ColliderAtq extends gameObject {
         if(dif < 0) dif = -dif;
         return dif;
     }
-
+    
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
 
-        // Se mueve con el jugador
+        switch(this.offset.dir) {
+            case "up":
+            case "left":
+                this.x = this._player.x + this.offset.x - this.reach;
+                this.y = this._player.y + this.offset.y - this.reach;
+                this.body.setSize(this.reach * 2, this.reach, false);
+                break;
+            case "right":
+                this.x = this._player.x + this.offset.x;
+                this.y = this._player.y + this.offset.y - this.reach;
+                this.body.setSize(this.reach, this.reach * 2, false);
+                break;
+            case "down":
+                this.x = this._player.x + this.offset.x - this.reach;
+                this.y = this._player.y + this.offset.y;
+                this.body.setSize(reach * 2, reach, false);
+                break;
+            case "left":
+                this.x = this._player.x + this.offset.x - this.reach;
+                this.y = this._player.y + this.offset.y - this.reach;
+        }
+        
+        /* Se mueve con el jugador
         let movement = {};
         movement.x = this.offset.x;
         movement.y = this.offset.y;
@@ -82,19 +104,32 @@ class ColliderAtq extends gameObject {
         } else {
             movement.y = 0;
         }
-        this.move(movement.x, movement.y);
+        this.move(movement.x, movement.y); //*/
     }
 
     setReach(reach) {
-        if(this.width > this.height) {
-            this.width = reach * 2;
-            this.height = reach;
-        } else {
-            this.height = reach * 2;
-            this.width = reach;
+        reach *= 10;
+        this._reach = reach;
+        switch(this.offset.dir) {
+            case "up":
+                this.x = this._player.x + this.offset.x - reach;
+                this.y = this._player.y + this.offset.y - reach;
+                this.body.setSize(reach * 2, reach, false);
+                break;
+            case "right":
+                this.y = this._player.y + this.offset.y - reach;
+                this.body.setSize(reach, reach * 2, false);
+                break;
+            case "down":
+                this.x = this._player.x + this.offset.x - reach;
+                this.body.setSize(reach * 2, reach, false);
+                break;
+            case "left":
+                this.x = this._player.x + this.offset.x - reach;
+                this.y = this._player.y + this.offset.y - reach;
+                this.body.setSize(reach, reach * 2, false);
+                break;
         }
-        this.body.setSize(this.width, this.height);
-        console.log(this);
     } 
 }
 
@@ -109,23 +144,24 @@ export default class WeaponManager extends gameObject {
 
         // Se genera la tabla de colliders para detectar el ataque
         this.colliders = {}
-        this.colliders.up = new ColliderAtq(player, -37, -19, 100, 25);
-        this.colliders.right = new ColliderAtq(player, 38, -19, 25, 100);
-        this.colliders.down = new ColliderAtq(player, -37, 56, 100, 25);
-        this.colliders.left = new ColliderAtq(player, -37, -19, 25, 100);
+        // player esquina izquierda = (-12, -19)
+        this.colliders.up = new ColliderAtq(player, 13, 5, 1, "up");
+        this.colliders.right = new ColliderAtq(player, 39, 31, 1, "right");
+        this.colliders.down = new ColliderAtq(player, 13, 56, 1, "down");
+        this.colliders.left = new ColliderAtq(player, -11, 31, 1, "left");
 
         // Se hace un grupo en las físicas para permitir añadir la colisión más fácilmente
-        this.colliders.colliderGroup = player.scene.physics.add.group();
-        this.colliders.colliderGroup.add(this.colliders.up);
-        this.colliders.colliderGroup.add(this.colliders.right);
-        this.colliders.colliderGroup.add(this.colliders.down);
-        this.colliders.colliderGroup.add(this.colliders.left);
+        this.colliderGroup = player.scene.physics.add.group();
+        this.colliderGroup.add(this.colliders.up);
+        this.colliderGroup.add(this.colliders.right);
+        this.colliderGroup.add(this.colliders.down);
+        this.colliderGroup.add(this.colliders.left);
 
         let me = this;
         //this.col = new Phaser.Physics.Arcade.Collider(player.scene.physics.world, true, this.colliderGroup, player.scene.enemies, function() { console.log("col"); });
-        this.colliders.collisionDetector = player.scene.physics.add.collider(this.colliders.colliderGroup, player.scene.enemies,
+        this.collisionDetector = player.scene.physics.add.collider(this.colliderGroup, player.scene.enemies,
                                                                              function(obj1, obj2) { me.collision(me, obj1, obj2); }, null);
-        this.colliders.collisionDetector.overlapOnly = true;
+        this.collisionDetector.overlapOnly = true;
 
         // Se genera una tabla para mantener las propiedades de ataque
         this._attack = {};
@@ -183,15 +219,20 @@ export default class WeaponManager extends gameObject {
         }
         // Si se pulsa la barra espaciadora, se hace un ataque.
         if(Phaser.Input.Keyboard.JustDown(this.input.space)) {
-            console.log("V");
             this.attack(t);
-            console.log("H");
+        }
+
+        if(this._attack.lastSwing + 1000 <= t) {
+            this._attack.isAttacking = false;
         }
     }
 
     collision(self, obj1, obj2) {
         if(this._attack.isAttacking && obj1 === self.colliders[self._player.facing]) {
-            (obj2.damage || function() { console.log(obj2, "No tiene método damage"); })();
+            // Si no existe la propiedad "damage", se ejecuta la segunda función
+            //(obj2.damage || function() { console.log(obj2, "No tiene método damage"); })();
+            // Si la propiedad "damage" no es una función, se ejecuta la segunda función
+            (typeof obj2.damage === "function" ? obj2.damage : function() { console.log(obj2, "No tiene método damage"); })();
         }
     }
 
@@ -201,17 +242,15 @@ export default class WeaponManager extends gameObject {
     attack(t) {
         // Se almacena el arma seleccionada en una variable para más comodidad y legibilidad
         let weapon = this[this.selected];
-        console.log(t, this._attack.lastSwing);
-        if(t >= this._attack.lastSwing + weapon.atkSpeed) {
+        console.log("Tiempo actual: ", t, "   Tiempo del último ataque realizado: ", this._attack.lastSwing);
+        if(t >= this._attack.lastSwing + weapon.atkSpeed * 1000) {
             this._attack.lastSwing = t;
-            // Attack
             this._attack.isAttacking = true;
             this._attack.damage = weapon.damage;
-            
-            //this.colliders.up.setReach(weapon.reach);
-            //this.colliders.right.setReach(weapon.reach);
-            //this.colliders.down.setReach(weapon.reach);
-            //this.colliders.left.setReach(weapon.reach);
+            //* Se cambian las colisiones para que sean iguales al alcance del arma
+            Object.values(this.colliders).forEach(val => {
+                val.setReach(weapon.reach);
+            });//*/
         }
     }
 }
