@@ -36,10 +36,10 @@ export default class level_map extends Phaser.Scene {
 	* Creación de los elementos de la escena principal de juego
 	*/
 	create() {
-       
+		
         //const f = this.add.image(0, 0, 'tiles').setOrigin(0, 0);
         //console.log(this.cache.tilemap.get('map').data);
-        const map = this.make.tilemap({ key: "map"});
+     	const map = this.make.tilemap({ key: "map"});
        const tiles = map.addTilesetImage("tren","tiles");
 	   //const obj=map.addTilesetImage("obj","a")
        var layer = map.createLayer('suelo', tiles, 0, 0);
@@ -47,6 +47,7 @@ export default class level_map extends Phaser.Scene {
 	   //var c=map.createLayer('p',obj,0,0);
        objlayer.setCollisionBetween(0,628);
 
+	  
 
 		// Jugador a centro segun eje Y 
 		let player = new Player(this, 50, this.cameras.main.centerY, 15, 15, 8, 30, 140);
