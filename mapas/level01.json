@@ -64,7 +64,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":3,
+ "nextlayerid":5,
  "nextobjectid":1,
  "orientation":"orthogonal",
  "renderorder":"right-down",
@@ -83,6 +83,29 @@
          "tilecount":629,
          "tileheight":32,
          "tilewidth":32
+        }, 
+        {
+         "columns":0,
+         "firstgid":630,
+         "grid":
+            {
+             "height":1,
+             "orientation":"orthogonal",
+             "width":1
+            },
+         "margin":0,
+         "name":"obj",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":253,
+         "tiles":[
+                {
+                 "id":6,
+                 "image":"..\/assets\/Mapa\/metro_1_asientos_4_pack.png",
+                 "imageheight":253,
+                 "imagewidth":265
+                }],
+         "tilewidth":265
         }],
  "tilewidth":32,
  "type":"map",

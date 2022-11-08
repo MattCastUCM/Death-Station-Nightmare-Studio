@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="38" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="38" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="1">
  <editorsettings>
   <export target="level01.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="tren" tilewidth="32" tileheight="32" tilecount="629" columns="37">
   <image source="../assets/Mapa/boceto_interiorTren.png" width="1190" height="562"/>
+ </tileset>
+ <tileset firstgid="630" name="obj" tilewidth="265" tileheight="253" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="6">
+   <image width="265" height="253" source="../assets/Mapa/metro_1_asientos_4_pack.png"/>
+  </tile>
  </tileset>
  <layer id="1" name="suelo" width="38" height="20">
   <data encoding="csv">

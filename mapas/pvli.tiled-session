@@ -8,12 +8,16 @@
     "expandedProjectPaths": [
         "."
     ],
+    "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
+        "": {
+            "scaleInEditor": 1
+        },
         "level01.json": {
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 389.3939393939394,
+                "x": 389.39393939393926,
                 "y": 421.21212121212113
             }
         },
@@ -22,13 +26,18 @@
         },
         "level01.tmx": {
             "scale": 0.5,
-            "selectedLayer": 1,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 879,
-                "y": 230
+                "x": 658,
+                "y": 334
             }
         },
+        "level01.tmx#obj": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.5
+        },
         "level01.tmx#tren": {
+            "dynamicWrapping": false,
             "scaleInDock": 0.25
         }
     },
@@ -44,5 +53,6 @@
         "level01.tmx",
         "level01.json"
     ],
-    "tileset.embedInMap": true
+    "tileset.embedInMap": true,
+    "tileset.type": 1
 }

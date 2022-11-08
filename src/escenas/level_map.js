@@ -26,6 +26,7 @@ export default class level_map extends Phaser.Scene {
 		// this.load.spritesheet('lanzador', 'assets/personajes/Estudiante 2.png', { frameWidth: 32, frameHeight: 48 });
 		// this.load.image('mask', 'assets/enviroment/mask1.png');
         this.load.image("tiles","assets/Mapa/boceto_interiorTren.png");
+		//this.load.image("a","assets/Mapa/metro_1_asientos_4_pack.png");
         this.load.tilemapTiledJSON('map',"mapas/level01.json");
       
 		//this.load.spritesheet('box', 'assets/Box/box.png', {frameWidth: 64, frameHeight: 64})
@@ -40,8 +41,10 @@ export default class level_map extends Phaser.Scene {
         //console.log(this.cache.tilemap.get('map').data);
         const map = this.make.tilemap({ key: "map"});
        const tiles = map.addTilesetImage("tren","tiles");
+	   //const obj=map.addTilesetImage("obj","a")
        var layer = map.createLayer('suelo', tiles, 0, 0);
        var objlayer=map.createLayer('objetos',tiles,0,0);
+	   //var c=map.createLayer('p',obj,0,0);
        objlayer.setCollisionBetween(0,628);
 
 
