@@ -21,15 +21,15 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
     };
 
 
-    // Función que mueve el sprite según su dirección
+    // mueve según una dir dada
     move(velX, velY) {
         this.velX=velX;
         this.velY=velY;
 
-        this.move();
+        this.moving();
     };
 
-    move(){
+    moving(){ //Función que mueve el sprite según su dirección
         this.body.setVelocityX(this.velX);
         this.body.setVelocityY(this.velY);
 

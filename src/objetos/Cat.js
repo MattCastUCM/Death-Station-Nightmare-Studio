@@ -12,8 +12,7 @@ export default class Cat extends gameObject {
 		this.speed = spd; // Nuestra velocidad de movimiento será 140
 		this.changeDir = false;
 		this.lastDirTime = 0; //tiempo transcurrido desde la ult vez q se cambió dir
-		this.maxTime = Phaser.Math.Between(50, 100); //tiempo límite para cambiar la dir, va a ser aleatorio cada vez
-		this.random = Phaser.Math.Between(50, 100); //prueba
+		this.maxTime = Phaser.Math.Between(1, 3); //tiempo límite para cambiar la dir en s, va a ser aleatorio cada vez
 		this.scene.add.existing(this); //Añadimos a la escena
 		this.body.setImmovable(true); //no puede ser empujado 
 
@@ -56,7 +55,7 @@ export default class Cat extends gameObject {
 			{ dirX: 0, dirY: -1, anim: 'cat_up' },
 			{ dirX: 0, dirY: 1, anim: 'cat_down' },
 			{ dirX: -1, dirY: 0, anim: 'cat_left' },
-			{ dirX: 1, dirY: 1, anim: 'cat_right' }
+			{ dirX: 1, dirY: 0, anim: 'cat_right' }
 		]
 
 		// // Agregamos el personaje a las físicas para que Phaser lo tenga en cuenta
@@ -86,20 +85,20 @@ export default class Cat extends gameObject {
 	 */
 
 	preUpdate(t, dt) {
-		// Es muy imporante llamar al preUpdate del padre (Sprite), sino no se ejecutará la animación
-		// super.preUpdate(t, dt);
-		// this.anims.isPlaying = true;
+		// Es muy importante llamar al preUpdate del padre (Sprite), sino no se ejecutará la animación
+		super.preUpdate(t, dt);
+		this.anims.isPlaying = true;
 
-		// this.lastDirTime += dt;;
-		// if (this.lastDirTime > this.maxTime) {
-		// 	this.lastDirTime = 0;
-		// 	this.maxTime = Phaser.Math.Between(50, 100); //se inicializa a otro tiempo diferente
-		// 	let index = Phaser.Math.Between(0, 3);//aux que sirve como índice para consultarel array
-		// 	this.play(this.directions[index].anim); //animación
-		// 	this.move(this.directions[index].dirX, this.directions[index].dirY) //llama al padre (gameObject) para cambiar de dirección
-		// }
+		this.lastDirTime += dt;;
+		if (this.lastDirTime > this.maxTime*1000) { //*1000 para pasar de ms a s
+			this.lastDirTime = 0;
+			this.maxTime = Phaser.Math.Between(1, 5); //se inicializa a otro tiempo diferente
+			let index = Phaser.Math.Between(0, 3);//aux que sirve como índice para consultarel array
+			this.play(this.directions[index].anim); //animación
+			this.move(this.directions[index].dirX, this.directions[index].dirY) //llama al padre (gameObject) para cambiar de dirección
+		}
 
-		//this.move(); //continua con la dirección
+		this.moving(); //continua con la dirección
 
 		// if (this.cursors.left.isDown && !this.cursors.right.isDown) {
 		// 	//this.setFlip(true, false)

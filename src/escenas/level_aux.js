@@ -63,7 +63,7 @@ export default class level_aux extends Phaser.Scene {
 		player.setScale(2.5);
 
 		// Gato
-		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
+		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 80);
 		gato.body.onCollide = true;
 
 		//CAJAS
@@ -106,7 +106,7 @@ export default class level_aux extends Phaser.Scene {
 		//colisiones con wall
 		this.physics.add.collider(player, walls);
 		this.physics.add.collider(player, gato);
-		this.physics.add.collider(gato, this.walls);
+		this.physics.add.collider(gato, walls);
 
 		//CREACION DE ENEMIGO PERSECUTOR Y TOPO
 		let enemyManager = new EnemyManager(this);
