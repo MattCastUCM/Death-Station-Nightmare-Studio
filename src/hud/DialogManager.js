@@ -24,7 +24,7 @@ export default class DialogManager extends Phaser.Scene{
 
         WebFont.load({
             google: {
-                families: ['Alfa Slab One','Roboto','Freckle Face'] 
+                families: ['VT323','Roboto','Freckle Face'] 
             },
             loading: function() {
                 console.log("Fonts are being loaded");
@@ -33,7 +33,6 @@ export default class DialogManager extends Phaser.Scene{
                 console.log("Fonts have been rendered")
             }
         });
-
     }
 
     Init(text) {
@@ -42,16 +41,14 @@ export default class DialogManager extends Phaser.Scene{
         this.mesCount = 0; //contador para contar los mensajes ya imprimidos
 
         //contenedor donde va a estar el texto, le pasa el primer texto
-        this.textMessage = new TextMessage( this, 160, this.sys.game.canvas.height - 130, this.sys.game.canvas.width - 250, this.text[this.mesCount]);
+        this.textMessage = new TextMessage( this, 145, this.sys.game.canvas.height - 130, this.sys.game.canvas.width - 250, this.text[this.mesCount]);
        
         this.dialogBox.visible = true; //el cuadro de texto aparece
+       
+        this.hud = this.scene.get('hudAux');
 
-        this.text = this.add.text(300, 200, "dhtddgftt", {
+        this.hud.onDialogStarted();
 
-            fontFamily:'Alfa Slab One',fontSize:60,color:'#ff0000'
-      
-          });
-          console.log("Hola");
     }
 
     /*Pasa el siguiente mensaje al contenedor, llamando a su método setNewMessage*/ 
@@ -64,6 +61,7 @@ export default class DialogManager extends Phaser.Scene{
         else {
             this.mesCount = 0;
             this.dialogBox.visible = false; //hacer invisible el cuadro de texto
+            this.hud.onDialogFinished();
             this.textMessage.onMessageFinished();
             return false;
         }

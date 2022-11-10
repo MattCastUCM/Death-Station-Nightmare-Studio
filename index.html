@@ -10,171 +10,138 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="shortcut icon" href="logo.png" type="assets/img/png" />
-  <meta name="viewport" content="width=device-width, initial-scale=2.0" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="src/script.js"></script>   
-  <script src="./lib/phaser.js"></script>
+    <meta charset="UTF-8" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="icon.png" type="assets/img/png" />
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Scripts -->
+    <script src="src/script.js"></script>
+    <script src="./lib/phaser.js"></script>
 
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Death Station-Nighmare Studio</title>
 
-  <title>Death Station-Nighmare Studio</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-  <!-- Google Fonts -->
-  <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-  <script>
-    WebFont.load({
-      google: {
-        families: ['Roboto']
-      }
-    });
-  </script>
-  <!-- Template Main CSS File -->
-  <link href="style.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=2.0" />
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
 </head>
 
 <body>
-<!-- ====== scroll ====== -->
-<div class="scroll-Top" onclick="ScrollToTop();"> 
-</div>
+  
+    <header id="myHeader">
+        <div class="header-container">
+            <div class="titulo-container">
+                <div class="titulo-icon">
+                    <div class="icon-sangre">
+                        <img src="./assets/Pagina/logotipo-tren.png">
+                    </div>
+                    <h1 class="titulo-juego">
+                        <a href="#game">DEATH STATION</a>
+                    </h1>
+                    <!-- Al pulsar vuelve al juego -->
+                </div>
+                <h3 class="nombre-studio">
+                    <span> NIGHTMARE STUDIO</span>
+                </h3>
+            </div>
 
-<script >
-  window.addEventListener('scroll',function(){
-    var scroll =document.querySelector('.scroll-Top');
-    scroll.classList.toggle("active",window.scrollY>500);
-  })  
-</script>
-  <!-- ======= Header ======= -->
-  <header id="myHeader">
-    <div class="header-container">
-
-      <div class="titulo-container">
-        <div class="titulo-icon">
-          <div class="icon-sangre"><img src="./imagenes/logotipo-tren.png"></img>
-          </div>
-          <h1 class="titulo-juego"> <a href="#game">DEATH STATION</a> </h1> <!-- Al pulsar vuelve al juego -->
+            <nav class="nav-menu ">
+                <ul>
+                    <li><a href="#controles">Controles</a></li>
+                    <li><a href="#description">Descripción</a></li>
+                    <li><a href="#aboutUs">Sobre Nosotros</a></li>
+                    <li><a href="#links">Links</a></li>
+                </ul>
+            </nav>
         </div>
-        <h3 class="nombre-studio"><span> NIGHTMARE STUDIO</span>
-          </h1>
-      </div>
-
-      <nav class="nav-menu ">
-        <ul>
-          <li><a href="#controles">Controles</a></li>
-          <li><a href="#description">Descripción</a></li>
-          <li><a href="#aboutUs">Sobre Nosotros</a></li>
-          <li><a href="#links">Links</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
- <script>
-    window.onscroll = function() {moveHeader()};
-    
-    var header = document.getElementById("myHeader");
-    var sticky = header.offsetTop;
-    
-    function moveHeader() {
-      if (window.pageYOffset > sticky) { 
-        header.classList.add("sticky");
-      } else {
-        header.classList.remove("sticky");
-      }
-    }
-    </script>
+    </header>
 
 
-
- 
 
     <!-- ======= GAME Section ======= -->
     <div id="game">
-      <!-- <canvas id="juego"><canvas> -->
+        <!-- <canvas id="juego"></canvas> -->
     </div>
-    <script src="./Nanxi/game.js" type="module"></script>
+    <script src="./src/game.js" type="module"></script>
     <!-- End Game Section -->
 
+
+    <!-- Divider -->
+    <hr class="solid">
+    
     <!-- ======= Game Controles Section ======= -->
     <section id="controles" class="about">
-      <div class="container">
+        <div class="container">
 
-        <div class="section-title">
-          <h2>Controles del Juego</h2>
+            <div class="section-title">
+                <h2>Controles del Juego</h2>
+            </div>
+            <p class="texto">
+                Movimiento del personaje: WASD
+            </p>
         </div>
-        <div class="parrafo">
-        <p class="texto">
-          movimiento de personaje: wasd
-        </p>
-      </div>
-      </div>
     </section>
     <!-- End Game Controles Section -->
+
+
     <!-- ======= Game Description Section ======= -->
 
     <section id="description" class="about">
-      <div class="container">
+        <div class="container">
 
-        <div class="section-title">
-          <h2>Descripción del Juego</h2>
+            <div class="section-title">
+                <h2>Descripción del Juego</h2>
+            </div>
+            <p class="texto">
+                Juego de terror estilo RPG, mezclando niveles de combate y puzle.
+                Los niveles de combate consistirán en sobrevivir y derrotar oleadas de enemigos en un espacio cerrado,
+                mientras que los niveles de puzle consistirán en explorar, interactuar con el entorno y resolver acertijos
+                para encontrar
+                objetos o desbloquear distintas partes del nivel.
+            </p>
         </div>
-        <div class="parrafo">
-        <p class="texto">
-          Juego de terror estilo RPG, mezclando niveles de combate y puzle.
-          Los niveles de combate consistirán en sobrevivir y derrotar oleadas de enemigos en un espacio cerrado,
-          mientras que los niveles de puzle consistirán en explorar, interactuar con el entorno y resolver acertijos
-          para encontrar
-          objetos o desbloquear distintas partes del nivel.
-        </p>
-      </div>
-      </div>
-    </section><!-- End Game Description Section -->
-
+    </section>
+    <!-- End Game Description Section -->
 
 
     <!-- ======= About Us Section ======= -->
     <section id="aboutUs" class="about">
-      <div class="container">
-        <div class="section-title">
-          <h2>Sobre Nosotros</h2>
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nosotros</h2>
+            </div>
+            <div class="parrafo">
+                <ul>
+                    <li> <p class="texto">Likang Wu</p></li>
+                    <li> <p class="texto">Matt Castellanos Silva</p></li>
+                    <li> <p class="texto">Nanxi Qin</p></li>
+                    <li> <p class="texto">Claudia Zarzuela </p></li>
+                    <li> <p class="texto">Santiago Tienda</p> </li>
+                </ul>
+            </div>
         </div>
-        <div class="parrafo">
-          <ul>
+    </section>
+    <!-- End About Us Section -->
 
-            <li> <p class="texto">Likang Wu</p></li>
-            <li> <p class="texto">Matt Castellanos Silva</p></li>
-            <li> <p class="texto">Nanxi Qin</p></li>
-            <li> <p class="texto">Claudia Zarzuela </p></li>
-            <li> <p class="texto">Santiago Tienda</p> </li>
-          </ul>
+
+    <!-- Divider -->
+    <hr class="solid">
+    <footer id="links">
+        <div class="footer-container">
+            <nav>
+                <!-- github -->
+                <a href=""><img src="./assets/Pagina/github_logo.png"></a>
+                <!-- twitter -->
+                <a href=""><img src="./assets/Pagina/twitter_icon.png"></a>
+            </nav>
+            <p> © Copyright 2022-2023 NIGHTMARE STUDIO - Todos los derechos reservados</p>
         </div>
-        </p>
-      </div>
-    </section><!-- End About Us Section -->
+    </footer>
 
-
-  <hr class="solid"> <!-- Divider -->
-  <footer id="links">
-
-    <div class="footer-container">
-
-      <div class="col-12">
-        <nav>
-
-          <!-- github -->
-          <a href=""><img src="./imagenes/github_logo.png"></img></a>
-          <!-- twitter -->
-          <a href=""><img src="./imagenes/twitter_icon.png"></img></a>
-        </nav>
-        <p> © Copyright 2022-2023 NIGHTMARE STUDIO - Todos los derechos reservados</p>
-
-      </div>
-    </div>
-  </footer>
 
 </body>
-
 </html>
