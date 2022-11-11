@@ -9,11 +9,10 @@ export default class Bullet  extends Phaser.GameObjects.Sprite {
         scene.add.existing(this); 
         scene.physics.add.existing(this);
         this.scene.physics.add.overlap(this, target, function(self){ 
-            scene.DecreaseLife(target);
+            target.decreaseHP();
             self.destroy();
         });
     }
-    
     preUpdate(t, dt){
         super.preUpdate(t, dt);
             this.body.setVelocityX(this.vectorX);

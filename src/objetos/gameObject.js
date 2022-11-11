@@ -19,7 +19,7 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
 
         this.velX=0;
         this.velY=0;
-        // Añade el objeto a la esceba
+        // Añade el objeto a la escena
         this.scene.add.existing(this);
 
         // Añade físicas al personaje y hace que colisione con los bordes del mundo

@@ -15,16 +15,20 @@ export default class EnemyManager {
 
     }
     CreateEnemy(x, y, name, target) {
+		let enemy;
 
         if(name == 'persecutor'){
-			return new Persecutor(this.scene,x,y, target);
+			
+			enemy = new Persecutor(this.scene,x,y, target);
         }
 		if(name == 'lanzador'){
-			return new Lanzador(this.scene, x, y, target);
+			enemy = new Lanzador(this.scene, x, y, target);
 		}
 		if(name == 'topo'){
-			return new Topo(this.scene,x,y);
+			enemy = new Topo(this.scene,x,y, target);
 		}
        
+		this.scene.enemies.add(enemy);
+		return enemy;
     }
 }

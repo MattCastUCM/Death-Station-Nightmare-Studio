@@ -102,7 +102,6 @@ export default class WeaponManager extends gameObject {
     constructor(player) {
         // Extendemos de gameObject para que "preUpdate(t, dt)" funcione
         super(player.scene, 0, 0, 0, 0, 0, 0, "", 0); this.visible = false;
-        console.log(this);
 
         // Se genera un nuevo objeto para detectar colisión entre arma y enemigo
         this.collider = new ColliderAtq(player, 1);
@@ -170,7 +169,7 @@ export default class WeaponManager extends gameObject {
             this.attack(t);
         }
 
-        if(this._attack.lastSwing + 1000 <= t) {
+        if(this._attack.lastSwing + 500 <= t) {
             this._attack.isAttacking = false;
         }
     }

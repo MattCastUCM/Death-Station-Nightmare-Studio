@@ -5,6 +5,7 @@ import EnemyManager from './EnemyManager.js';
 import CardBoard from '../objetos/CartBoard.js'
 import WoodBox from '../objetos/WoodBox.js'
 import Trigger from '../objetos/Trigger.js'
+import Enemy from '../objetos/Enemy.js';
 //import Box from '../objetos/box.js';
 /**
  * Escena principal.
@@ -22,12 +23,11 @@ export default class level_aux extends Phaser.Scene {
 		this.load.image('fondo', 'assets/Mapa/boceto_interiorTren.png');
 		//gameObjects
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
-
 		this.load.spritesheet('cat', 'assets/personajes/Gato.png', { frameWidth: 34, frameHeight: 34 });
 		this.load.spritesheet('persecutor', 'assets/personajes/Anciana.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('lanzador', 'assets/personajes/Estudiante 2.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.image('cuchillo', 'assets/survival kit/Sprite-0004.png');
-
+		this.load.spritesheet('topo', 'assets/personajes/Estudiante 8.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('woodBox', 'assets/objects/cajaMadera.png', { frameWidth: 64, frameHeight: 64 })
 		this.load.spritesheet('cartBoard', 'assets/objects/cajaCarton.png', { frameWidth: 64, frameHeight: 64 });
 
@@ -106,21 +106,21 @@ export default class level_aux extends Phaser.Scene {
 		//colisiones con wall
 		this.physics.add.collider(player, walls);
 		this.physics.add.collider(player, gato);
-		this.physics.add.collider(gato, this.walls);
+		this.physics.add.collider(gato, walls);
 
-		//CREACION DE ENEMIGO PERSECUTOR Y TOPO
+		//CREACION DE ENEMIGOS
 		let enemyManager = new EnemyManager(this);
-		this.persecutor = enemyManager.CreateEnemy(40, this.sys.game.canvas.height / 2, 'persecutor', player);
-		this.persecutor.setScale(2);
-		this.lanzador = enemyManager.CreateEnemy(80, this.sys.game.canvas.height / 2, 'lanzador', player);
-		this.lanzador.setScale(2);
+		this.enemies = this.physics.add.group();
+		let persecutor = enemyManager.CreateEnemy(40, this.sys.game.canvas.height / 2, 'persecutor', player);
+		persecutor.setScale(2);
+		let lanzador = enemyManager.CreateEnemy(80, this.sys.game.canvas.height / 2, 'lanzador', player);
+		lanzador.setScale(2);
+		let topo = enemyManager.CreateEnemy(20, this.sys.game.canvas.height / 2,'topo', player);
+		topo.setScale(2);
 
 		//Colisión enemigo
-		this.physics.add.collider(player, this.lanzador);
-		this.physics.add.collider(player, this.persecutor, function () { scene.DecreaseLife(player); });
-
-
-
+		this.physics.add.collider(player, this.enemies, ()=>player.decreaseHP(), null);
+		
 		// Iluminación
 		const width = this.scale.width
 		const height = this.scale.height
@@ -167,10 +167,8 @@ export default class level_aux extends Phaser.Scene {
 
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {
-		if (!player.HasCollided()) {
-			player.decreaseHP();
-			this.hud.changeLifeValue(player.GetHP());
-		}
+		this.hud.changeLifeValue(player.GetHP());
+		
 	}
 
 	/*Para pausar el dialogManager , llamado por el hud*/

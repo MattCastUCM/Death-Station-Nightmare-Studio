@@ -1,15 +1,9 @@
 import Enemy from './Enemy.js';
 export default class Persecutor extends Enemy {
-	constructor(scene, x, y) {
-		super(scene, x, y, 'Topo');
-		this.speed = 40;
-		this.scene.add.existing(this); //Añadimos el personaje a la escena
-        
-		// Agregamos el personaje a las físicas para que Phaser lo tenga en cuenta
-		scene.physics.add.existing(this);
-		// Decimos que el personaje colisiona con los límites del mundo
-		this.body.setCollideWorldBounds();
-		this.body.setImmovable(true); //para que no se mueva 
+	
+	constructor(scene, x, y, target) {
+		super(scene, x, y, 20, 20, 5, 30, 'topo', 40, target, 10);
+		
 		//Creamos las animaciones
 		this.scene.anims.create({
 			key: 'idleTopo',
@@ -42,13 +36,6 @@ export default class Persecutor extends Enemy {
 			repeat: -1
 		});
 
-		// La animación a ejecutar según se genere el personaje será 'idle'
-    
-		
-		//modificar tamaño box collider
-		this.body.setSize(20, 20)
-		
-		this.body.setOffset(5, 30);
 	}
 	
 	PlayAnimation()
@@ -63,11 +50,7 @@ export default class Persecutor extends Enemy {
 	}
 	preUpdate(t, dt) {
 		super.preUpdate(t,dt);
-		this.body.velocity.normalize().scale(this.speed);
-        this.Follow();
-		this.PlayAnimation();
-		
-
 	}
 	
+
 }

@@ -81,15 +81,14 @@ export default class Player extends gameObject {
     GetHP(){
         return this.hp;
     }
-
-    HasCollided(){
-        return this.hasCollided;
-    }
     
     // Método que disminuye la vida e indica que ha colisionado
     decreaseHP(){
-        this.hp -= 10;
-        this.hasCollided = true;
+        if(!this.hasCollided){
+            this.hp -= 10;
+            this.hasCollided = true;
+            this.scene.DecreaseLife(this);
+        }
     }
     
     // Bucle principal. Actualiza su posición y ejecuta las acciones según el input
@@ -108,6 +107,7 @@ export default class Player extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'down'){
                     this.play('down');
+                    this.facing = "down";
                 }
 
                 // Mueve el objeto
@@ -124,6 +124,7 @@ export default class Player extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'up'){
                     this.play('up');
+                    this.facing = "up";
                 }
 
                 // Mueve el objeto
@@ -139,6 +140,7 @@ export default class Player extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'left'){
                     this.play('left');
+                    this.facing = "left";
                 }
 
                 // Mueve el objeto
@@ -154,6 +156,7 @@ export default class Player extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'right'){
                     this.play('right');
+                    this.facing = "right";
                 }
 
                 // Mueve el objeto
@@ -181,7 +184,7 @@ export default class Player extends gameObject {
             // dejado de colisionar y se popne el temporizador a 0
             if(this.elapsedTime >= 500){
                 this.hasCollided = false;
-                this.elapsedTime = 0;   
+                this.elapsedTime = 0;
             }
         }
         // La máscara de iluminación se mueve con el personaje

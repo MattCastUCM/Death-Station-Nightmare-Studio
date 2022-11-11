@@ -1,22 +1,16 @@
 import Enemy from './Enemy.js';
 import Bullet from './Bullet.js';
 export default class Lanzador extends Enemy {
+	/**
+	 * Constructor de Knight, nuestro caballero medieval con espada y escudo
+	 * @param {Scene} scene - escena en la que aparece
+	 * @param {number} x - coordenada x
+	 * @param {number} y - coordenada y
+	 */
+	constructor(scene, x, y, target) {
+		super(scene, x, y, 20, 20, 5, 30, 'lanzador', 10, target, 15);
+        this.elapsedTime = 0;	
 
-	constructor(scene, x, y,target) {
-		super(scene, x, y, 'lanzador');
-        this.x = x;
-        this.y = y;
-        this.scene = scene;
-		this.speed = 10;
-		this.target = target;
-        this.elapsedTime = 0;
-		this.enemy = this.scene.add.existing(this); //Añadimos el personaje a la escena
-        
-		// Agregamos el personaje a las físicas para que Phaser lo tenga en cuenta
-		scene.physics.add.existing(this);
-		// Decimos que el personaje colisiona con los límites del mundo
-		this.body.setCollideWorldBounds();
-		this.body.setImmovable(true); //para que no se mueva 
 		//Creamos las animaciones
 		this.scene.anims.create({
             key: 'idleLanzador',
@@ -49,13 +43,6 @@ export default class Lanzador extends Enemy {
 			repeat: -1
 		});
         
-		// La animación a ejecutar según se genere el personaje será 'idle'
-        
-		
-		//modificar tamaño box collider
-		this.body.setSize(20, 20)
-		
-		this.body.setOffset(5, 30);
 	}
 	
 	PlayAnimation()
