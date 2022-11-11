@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level01.tmx",
+    "activeFile": "level_03.tmx",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
         "."
@@ -11,7 +11,7 @@
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
         "": {
-            "scaleInDock": 0.5,
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "level01.json": {
@@ -26,15 +26,17 @@
             "scaleInDock": 1
         },
         "level01.tmx": {
-            "scale": 0.25,
-            "selectedLayer": 2,
+            "scale": 0.5,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 2290,
-                "y": 496
+                "x": 547,
+                "y": 644
             }
         },
         "level01.tmx#dec": {
-            "dynamicWrapping": true
+            "dynamicWrapping": true,
+            "scaleInDock": 0.33,
+            "scaleInEditor": 1
         },
         "level01.tmx#obj": {
             "dynamicWrapping": true,
@@ -42,19 +44,29 @@
             "scaleInEditor": 1
         },
         "level01.tmx#t": {
-            "dynamicWrapping": false
+            "dynamicWrapping": false,
+            "scaleInDock": 0.75
         },
         "level01.tmx#tren": {
             "dynamicWrapping": false,
-            "scaleInDock": 0.25
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
         },
         "level_03.tmx": {
-            "scale": 1,
-            "selectedLayer": 0,
+            "scale": 0.25,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": -121.5,
-                "y": -1
+                "x": 114,
+                "y": -188
             }
+        },
+        "level_03.tmx#mapa2": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.33
+        },
+        "level_03.tmx#tren": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
         }
     },
     "last.exportedFilePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/mapas",
@@ -63,17 +75,19 @@
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
-        "level01.tmx"
+        "level01.tmx",
+        "level_03.tmx"
     ],
     "project": "pvli.tiled-project",
     "recentFiles": [
         "level01.tmx",
+        "level_03.tmx",
         "level01.json"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {
-        "height": 64,
-        "width": 64
+        "height": 34,
+        "width": 34
     },
-    "tileset.type": 1
+    "tileset.type": 0
 }
