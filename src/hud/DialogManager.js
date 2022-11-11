@@ -45,7 +45,7 @@ export default class DialogManager extends Phaser.Scene{
        
         this.dialogBox.visible = true; //el cuadro de texto aparece
        
-        this.hud = this.scene.get('hudAux');
+        this.hud = this.scene.get('hud');
 
         this.hud.onDialogStarted();
 

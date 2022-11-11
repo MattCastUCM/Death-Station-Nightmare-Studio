@@ -1,7 +1,7 @@
 import level_aux from '../src/escenas/level_aux.js';
 import Menu from '../src/escenas/menu.js'
-import HUD from '../src/hud/hud.js'
-import Pause from './escenas/pause.js'
+import HUD from './hud/hudManager.js'
+//import Pause from './escenas/pause.js'
 import DialogManager from '../src/hud/DialogManager.js'
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
@@ -27,7 +27,7 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [Menu, level_aux,HUD,DialogManager,Pause],
+    scene: [Menu, level_aux,HUD,DialogManager],
     physics: { 
         default: 'arcade', 
         arcade: { 

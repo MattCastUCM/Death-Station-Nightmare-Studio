@@ -1,12 +1,11 @@
 import Player from '../objetos/player.js';
 import Wall from '../objetos/wall.js';
-import Cat from '../objetos/cat.js';
+import Cat from '../objetos/Cat.js';
 import EnemyManager from './EnemyManager.js';
 import CardBoard from '../objetos/CartBoard.js'
 import WoodBox from '../objetos/WoodBox.js'
 import Trigger from '../objetos/Trigger.js'
-import Enemy from '../objetos/Enemy.js';
-//import Box from '../objetos/box.js';
+//import Enemy from '../objetos/Enemy.js';
 /**
  * Escena principal.
  * @extends Phaser.Scene
@@ -53,8 +52,8 @@ export default class level_aux extends Phaser.Scene {
 		this.dialogManager = this.scene.get('dialogManager');
 
 		//HUD (y Pausa)
-		this.scene.launch('hudAux', { me: this });
-		this.hud = this.scene.get('hudAux');
+		this.scene.launch('hud', { me: this });
+		this.hud = this.scene.get('hud');
 		//
 
 		// Jugador
