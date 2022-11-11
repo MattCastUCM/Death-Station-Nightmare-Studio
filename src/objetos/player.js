@@ -1,4 +1,5 @@
 import gameObject from './gameobject.js';
+import WeaponManager from './weapons.js';
 
 // Clase para el gato que hereda de gameObject
 export default class Player extends gameObject {
@@ -10,6 +11,9 @@ export default class Player extends gameObject {
         this.hp = 100;
         this.hasCollided = false;
         this.elapsedTime = 0;
+        this.facing = "down";
+
+        this.weaponManager = new WeaponManager(this);
 
         //Creamos las animaciones
         this.scene.anims.create({
@@ -180,7 +184,6 @@ export default class Player extends gameObject {
                 this.elapsedTime = 0;   
             }
         }
-
         // La máscara de iluminación se mueve con el personaje
         this.vision.x = this.x;
 		this.vision.y = this.y;

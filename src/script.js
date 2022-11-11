@@ -5,6 +5,7 @@ window.onload = function () {
 };
 
 
+
 // A�ade un bot�n pulsable
 window.addEventListener('scroll', function () {
     var scrollButton = document.querySelector(".scroll-Top");

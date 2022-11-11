@@ -1,7 +1,17 @@
 // Clase para los objetos de juego
 export default class gameObject extends Phaser.GameObjects.Sprite {
-    // Constructora que recibe la escena en la que se va a crear,
-    // sus coordenadas, su escala, su textura, y su velocidad
+    /**
+     * Constructora que recibe la escena en la que se va a crear, sus coordenadas, su escala, su textura, y su velocidad
+     * @param {Phaser.Scene} scene - La escena en la que debe instanciarse
+     * @param {number} posX - Su coordenada en el eje X
+     * @param {number} posY - Su coordenada en el eje Y
+     * @param {number} w - Su ancho
+     * @param {number} h - Su alto
+     * @param {number} offsetX - Su offset en el eje X
+     * @param {number} offsetY - Su offset en el eje Y
+     * @param {string} texture - La "key" de la textura
+     * @param {number} spd - La velocidad a la que se mueve (se puede cambiar después con la propiedad "speed")
+     */
     constructor(scene, posX, posY, w, h, offsetX, offsetY, texture, spd) {
 
         super(scene, posX, posY, texture);
