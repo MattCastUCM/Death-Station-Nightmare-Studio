@@ -53,7 +53,7 @@ class ColliderAtq extends gameObject {
         this._player = player;
         this.reach = reach;
 
-        // Creamos tabla de offsets para el jugador
+        // Creamos objetos de offsets para el jugador
         this.offset = {}
         this.offset.up = {}
         this.offset.up.x = 13;
@@ -111,7 +111,7 @@ export default class WeaponManager extends gameObject {
                                                                    function(obj1, obj2) { me.collision(me, obj1, obj2);}, null);
         this.collisionDetector.overlapOnly = true;
 
-        // Se genera una tabla para mantener las propiedades de ataque
+        // Se genera un objeto para mantener las propiedades de ataque
         this._attack = {};
         this._attack.isAttacking = false;
         // Se guarda la última vez que se hizo un ataque
@@ -121,7 +121,7 @@ export default class WeaponManager extends gameObject {
         // Se guarda el jugador
         this._player = player;
 
-        // Se genera la tabla de booleanos para guardar qué armas se tienen
+        // Se genera el objeto de booleanos para guardar qué armas se tienen
         this._hasWeapon = {};
         this._hasWeapon.navaja = true;
         this._hasWeapon.botella = false;
