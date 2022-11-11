@@ -1,4 +1,5 @@
-export default class Enemy extends Phaser.GameObjects.Sprite {
+import gameObject from './gameObject.js';
+export default class Enemy extends gameObject {
 	 constructor(scene, x, y, name) {
         super(scene, x, y, name);
         this.name = name;

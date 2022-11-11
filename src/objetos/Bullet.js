@@ -1,4 +1,5 @@
-export default class Bullet  extends Phaser.GameObjects.Sprite {
+import gameObject from './gameObject.js';
+export default class Bullet  extends gameObject{
     /**
 	 * Constructor de Knight, nuestro caballero medieval con espada y escudo
 	 * @param {Scene} scene - escena en la que aparece
