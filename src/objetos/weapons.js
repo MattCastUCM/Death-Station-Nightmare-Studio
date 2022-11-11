@@ -46,90 +46,51 @@ class Hacha extends Weapon {
 }
 
 class ColliderAtq extends gameObject {
-    constructor(player, offsetX, offsetY, reach, dir) {
-        super(player.scene, player.x + offsetX, player.y + offsetY, 1, 1, 0, 0, "", player.speed);
+    constructor(player, reach) {
+        super(player.scene, player.x, player.y, 1, 1, 0, 0, "", player.speed);
 
         this.visible = false;
         this._player = player;
-        this.offset = {}
-        this.offset.x = offsetX;
-        this.offset.y = offsetY;
-        this.offset.dir = dir;
         this.reach = reach;
-    }
 
-    diff(a, b) {
-        let dif = a - b;
-        if(dif < 0) dif = -dif;
-        return dif;
+        // Creamos tabla de offsets para el jugador
+        this.offset = {}
+        this.offset.up = {}
+        this.offset.up.x = 13;
+        this.offset.up.y = 5;
+        this.offset.right = {}
+        this.offset.right.x = 39;
+        this.offset.right.y = 31;
+        this.offset.down = {};
+        this.offset.down.x = 13;
+        this.offset.down.y = 56;
+        this.offset.left = {};
+        this.offset.left.x = -11;
+        this.offset.left.y = 31;
     }
     
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
 
-        switch(this.offset.dir) {
+        let offs = this.offset[this._player.facing];
+        this.x = this._player.x + offs.x - this.reach;
+        this.y = this._player.y + offs.y - this.reach;
+        switch(this._player.facing) {
+            case "down":
+                this.y = this._player.y + this.offset.down.y;
             case "up":
-            case "left":
-                this.x = this._player.x + this.offset.x - this.reach;
-                this.y = this._player.y + this.offset.y - this.reach;
                 this.body.setSize(this.reach * 2, this.reach, false);
                 break;
             case "right":
-                this.x = this._player.x + this.offset.x;
-                this.y = this._player.y + this.offset.y - this.reach;
+                this.x = this._player.x + this.offset.right.x;
+            case "left":
                 this.body.setSize(this.reach, this.reach * 2, false);
                 break;
-            case "down":
-                this.x = this._player.x + this.offset.x - this.reach;
-                this.y = this._player.y + this.offset.y;
-                this.body.setSize(reach * 2, reach, false);
-                break;
-            case "left":
-                this.x = this._player.x + this.offset.x - this.reach;
-                this.y = this._player.y + this.offset.y - this.reach;
         }
-        
-        /* Se mueve con el jugador
-        let movement = {};
-        movement.x = this.offset.x;
-        movement.y = this.offset.y;
-
-        if(this.diff(this._player.x + movement.x, this.x) > 0.75) {
-            movement.x += this._player.x - this.x;
-        } else {
-            movement.x = 0;
-        }
-        if(this.diff(this._player.y + movement.y, this.y) > 0.75) {
-            movement.y += this._player.y - this.y;
-        } else {
-            movement.y = 0;
-        }
-        this.move(movement.x, movement.y); //*/
     }
 
     setReach(reach) {
-        reach *= 10;
-        this._reach = reach;
-        switch(this.offset.dir) {
-            case "up":
-                this.x = this._player.x + this.offset.x - reach;
-                this.y = this._player.y + this.offset.y - reach;
-                this.body.setSize(reach * 2, reach, false);
-                break;
-            case "right":
-                this.y = this._player.y + this.offset.y - reach;
-                this.body.setSize(reach, reach * 2, false);
-                break;
-            case "down":
-                this.x = this._player.x + this.offset.x - reach;
-                this.body.setSize(reach * 2, reach, false);
-                break;
-            case "left":
-                this.x = this._player.x + this.offset.x - reach;
-                this.y = this._player.y + this.offset.y - reach;
-                this.body.setSize(reach, reach * 2, false);
-                break;
-        }
+        this.reach = reach * 10;
     } 
 }
 
@@ -141,26 +102,13 @@ export default class WeaponManager extends gameObject {
     constructor(player) {
         // Extendemos de gameObject para que "preUpdate(t, dt)" funcione
         super(player.scene, 0, 0, 0, 0, 0, 0, "", 0); this.visible = false;
+        console.log(this);
 
-        // Se genera la tabla de colliders para detectar el ataque
-        this.colliders = {}
-        // player esquina izquierda = (-12, -19)
-        this.colliders.up = new ColliderAtq(player, 13, 5, 1, "up");
-        this.colliders.right = new ColliderAtq(player, 39, 31, 1, "right");
-        this.colliders.down = new ColliderAtq(player, 13, 56, 1, "down");
-        this.colliders.left = new ColliderAtq(player, -11, 31, 1, "left");
-
-        // Se hace un grupo en las físicas para permitir añadir la colisión más fácilmente
-        this.colliderGroup = player.scene.physics.add.group();
-        this.colliderGroup.add(this.colliders.up);
-        this.colliderGroup.add(this.colliders.right);
-        this.colliderGroup.add(this.colliders.down);
-        this.colliderGroup.add(this.colliders.left);
-
+        // Se genera un nuevo objeto para detectar colisión entre arma y enemigo
+        this.collider = new ColliderAtq(player, 1);
         let me = this;
-        //this.col = new Phaser.Physics.Arcade.Collider(player.scene.physics.world, true, this.colliderGroup, player.scene.enemies, function() { console.log("col"); });
-        this.collisionDetector = player.scene.physics.add.collider(this.colliderGroup, player.scene.enemies,
-                                                                             function(obj1, obj2) { me.collision(me, obj1, obj2); }, null);
+        this.collisionDetector = player.scene.physics.add.collider(this.collider, player.scene.enemies,
+                                                                   function(obj1, obj2) { me.collision(me, obj1, obj2);}, null);
         this.collisionDetector.overlapOnly = true;
 
         // Se genera una tabla para mantener las propiedades de ataque
@@ -228,11 +176,11 @@ export default class WeaponManager extends gameObject {
     }
 
     collision(self, obj1, obj2) {
-        if(this._attack.isAttacking && obj1 === self.colliders[self._player.facing]) {
+        if(self._attack.isAttacking) {
             // Si no existe la propiedad "damage", se ejecuta la segunda función
             //(obj2.damage || function() { console.log(obj2, "No tiene método damage"); })();
             // Si la propiedad "damage" no es una función, se ejecuta la segunda función
-            (typeof obj2.damage === "function" ? obj2.damage : function() { console.log(obj2, "No tiene método damage"); })();
+            (typeof obj2.damage === "function" ? obj2.damage : function() { console.log(obj2, "No tiene método damage"); })(self._attack.damage);
         }
     }
 
@@ -246,11 +194,9 @@ export default class WeaponManager extends gameObject {
         if(t >= this._attack.lastSwing + weapon.atkSpeed * 1000) {
             this._attack.lastSwing = t;
             this._attack.isAttacking = true;
-            this._attack.damage = weapon.damage;
-            //* Se cambian las colisiones para que sean iguales al alcance del arma
-            Object.values(this.colliders).forEach(val => {
-                val.setReach(weapon.reach);
-            });//*/
+            this._attack.damage = weapon.dmg;
+            // Se cambian las colisiones para que sean iguales al alcance del arma
+            this.collider.setReach(weapon.reach);
         }
     }
 }
