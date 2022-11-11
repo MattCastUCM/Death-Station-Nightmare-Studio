@@ -16,12 +16,13 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
 
         super(scene, posX, posY, texture);
         this.speed = spd;
-        this._movAngle = 0;
 
-        // Añade el objeto a la escena
+        this.velX=0;
+        this.velY=0;
+        // Añade el objeto a la esceba
         this.scene.add.existing(this);
 
-        // Añade físicas al personaje
+        // Añade físicas al personaje y hace que colisione con los bordes del mundo
         this.scene.physics.add.existing(this);
 
         // Cambia el tamaño del body (center = false para que no lo centre)
@@ -30,16 +31,20 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
     };
 
 
-    /**
-     * Función que mueve el sprite según su dirección
-     * @param {number} velX - El movimiento deseado en el eje X
-     * @param {number} velY - El movimiento deseado en el eje Y
-     */
+    // mueve según una dir dada
     move(velX, velY) {
-        this.body.setVelocityX(velX);
-        this.body.setVelocityY(velY);
+        this.velX=velX;
+        this.velY=velY;
+
+        this.moving();
+    };
+
+    moving(){ //Función que mueve el sprite según su dirección
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
 
         // Normaliza el movimiento y lo escala a la velocidad del objeto
         this.body.velocity.normalize().scale(this.speed);
-    };
+
+    }
 };
