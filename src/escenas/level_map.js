@@ -45,15 +45,16 @@ export default class level_map extends Phaser.Scene {
 		
         //const f = this.add.image(0, 0, 'tiles').setOrigin(0, 0);
         //console.log(this.cache.tilemap.get('map').data);
-     	const map = this.make.tilemap({ key: "map"});
+    	const map = this.make.tilemap({ key: "map"});
        const tiles = map.addTilesetImage("tren","tiles");
 	   const objp=map.addTilesetImage("obj","a")
        var layer = map.createLayer('suelo', tiles, 0, 0);
        var objlayer=map.createLayer('objetos',tiles,0,0);
-	   var c=map.createLayer('p',objp,0,0);
+	   
+	   //var c=map.createLayer('p',objp,0,0);
        objlayer.setCollisionBetween(0,628);
 
-	   let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
+	   this.gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
 		// Jugador a centro segun eje Y 
 		
 		
@@ -62,16 +63,22 @@ export default class level_map extends Phaser.Scene {
 		let cartBoard1 = new CardBoard(this, 300, 300, cartBoardBoxes);
 		let woodBoxes = this.physics.add.group();
 		let woodBox1 = new WoodBox(this, 600, 300, woodBoxes);
+		
+
+		map.createFromObjects(objlayer, {
+		id: 0,
+		classType: this.gato
+		});
 
 		let player = new Player(this, 50, this.cameras.main.centerY, 15, 15, 8, 30, 140);
 		player.setScale(2.5);
-		player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del caballero con el suelo
+		//player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del caballero con el suelo
 
         this.physics.add.collider(player,objlayer);
 		this.physics.add.collider(cartBoardBoxes,objlayer);
-		this.physics.add.collider(gato,objlayer);
+		this.physics.add.collider(this.gato,objlayer);
 
-		this.physics.add.collider(player, gato);
+		this.physics.add.collider(player, this.gato);
 
 		this.physics.add.collider(woodBoxes, cartBoardBoxes);
 
@@ -112,9 +119,9 @@ export default class level_map extends Phaser.Scene {
 
 
 	update(t, dt){
-		this.deltaTime = dt;
-		
 
+		this.deltaTime = dt;
+		this.gato.update();
 		if(this.keyP.isDown){
 			this.scene.launch('Pause',{me: this.scene});
 			this.scene.pause();

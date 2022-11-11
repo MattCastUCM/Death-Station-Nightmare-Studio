@@ -52,9 +52,9 @@ export default class Cat extends gameObject {
 
 
     // Bucle principal. Actualiza su posición y ejecuta las acciones según el input
-    preUpdate(t, dt){
+    update(t, dt){
         // IMPORTANTE llamar al preUpdate del padre para poder ejecutar la animación
-        super.preUpdate(t,dt);
+        super.update(t,dt);
 
         // No es posible moverse pulsando 2 teclas a la vez
 

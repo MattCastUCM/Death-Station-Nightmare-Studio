@@ -11,6 +11,7 @@
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
         "": {
+            "scaleInDock": 0.5,
             "scaleInEditor": 1
         },
         "level01.json": {
@@ -25,16 +26,23 @@
             "scaleInDock": 1
         },
         "level01.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 1,
+            "scale": 0.25,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 657,
-                "y": 334
+                "x": 2290,
+                "y": 496
             }
+        },
+        "level01.tmx#dec": {
+            "dynamicWrapping": true
         },
         "level01.tmx#obj": {
             "dynamicWrapping": true,
-            "scaleInDock": 0.5
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "level01.tmx#t": {
+            "dynamicWrapping": false
         },
         "level01.tmx#tren": {
             "dynamicWrapping": false,
@@ -44,8 +52,8 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 0.5,
-                "y": 0
+                "x": -121.5,
+                "y": -1
             }
         }
     },
@@ -63,5 +71,9 @@
         "level01.json"
     ],
     "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    },
     "tileset.type": 1
 }
