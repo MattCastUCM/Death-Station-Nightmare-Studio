@@ -1,12 +1,7 @@
 import Enemy from './Enemy.js';
 import Bullet from './Bullet.js';
 export default class Lanzador extends Enemy {
-	/**
-	 * Constructor de Knight, nuestro caballero medieval con espada y escudo
-	 * @param {Scene} scene - escena en la que aparece
-	 * @param {number} x - coordenada x
-	 * @param {number} y - coordenada y
-	 */
+
 	constructor(scene, x, y,target) {
 		super(scene, x, y, 'lanzador');
         this.x = x;
@@ -90,11 +85,11 @@ export default class Lanzador extends Enemy {
         super.preUpdate(t,dt);
         this.elapsedTime += dt;
 		if(this.elapsedTime >= 1000){
-            new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY());
+            new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY(), this.target);
             this.elapsedTime = 0;
 		}
 		this.PlayAnimation();
 
 	}
-	
+
 }
