@@ -1,4 +1,4 @@
-import HealthBar from './HealthBar.js';
+import HealthBar from './healthBar.js';
 /**
  * Escena de HUD.
  * @extends Phaser.Scene

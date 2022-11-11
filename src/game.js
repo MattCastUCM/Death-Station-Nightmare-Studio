@@ -1,3 +1,4 @@
+import HealthBar from '../src/hud/healthBar.js';
 import Boot from '../src/escenas/boot.js'
 import Menu from '../src/escenas/menu.js'
 import level_aux from '../src/escenas/level_aux.js';

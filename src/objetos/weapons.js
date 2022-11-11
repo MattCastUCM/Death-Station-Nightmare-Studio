@@ -1,4 +1,4 @@
-import gameObject from "./gameobject.js";
+import gameObject from "./gameObject.js";
 import Player from "./player.js";
 
 class Weapon extends Phaser.GameObjects.Sprite {
