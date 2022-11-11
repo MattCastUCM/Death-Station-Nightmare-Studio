@@ -1,10 +1,10 @@
-import HealthBar from '../src/hud/healthBar.js';
-import Boot from '../src/escenas/boot.js'
-import Menu from '../src/escenas/menu.js'
-import level_aux from '../src/escenas/level_aux.js';
+//import HealthBar from './hud/healthBar.js';
+import Boot from './escenas/boot.js'
+import Menu from './escenas/menu.js'
+import level_aux from './escenas/level_aux.js';
 import HUD from './hud/hudManager.js'
 //import Pause from './escenas/pause.js'
-import DialogManager from '../src/hud/DialogManager.js'
+import DialogManager from './hud/DialogManager.js'
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
