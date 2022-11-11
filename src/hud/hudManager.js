@@ -5,7 +5,7 @@ import HealthBar from './HealthBar.js';
  */
 export default class HUD extends Phaser.Scene {
     constructor() {
-        super({ key: 'hudAux' });
+        super({ key: 'hud' });
     }
     init(level) { //escena de nivel
         this.level = level.me.scene;

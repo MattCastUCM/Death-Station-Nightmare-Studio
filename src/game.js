@@ -1,5 +1,6 @@
-import level_aux from '../src/escenas/level_aux.js';
+import Boot from '../src/escenas/boot.js'
 import Menu from '../src/escenas/menu.js'
+import level_aux from '../src/escenas/level_aux.js';
 import HUD from './hud/hudManager.js'
 //import Pause from './escenas/pause.js'
 import DialogManager from '../src/hud/DialogManager.js'
@@ -27,7 +28,7 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [Menu, level_aux,HUD,DialogManager],
+    scene: [Boot,Menu, level_aux,HUD,DialogManager],
     physics: { 
         default: 'arcade', 
         arcade: { 
