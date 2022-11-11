@@ -28,7 +28,7 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [level_map,Menu, level_aux,HUD],
+    scene: [level_map,level_aux,Menu, HUD],
     physics: { 
         default: 'arcade', 
         arcade: { 

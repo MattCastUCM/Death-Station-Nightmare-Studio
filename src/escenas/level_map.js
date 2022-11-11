@@ -1,10 +1,12 @@
 import Player from '../objetos/player.js';
 // import Wall from '../objetos/wall.js';
-// import Cat from '../objetos/cat.js';
+ import Cat from '../objetos/cat.js';
 // import HealthBar from '../HUD/HealthBar.js';
 // import EnemyManager from './EnemyManager.js';
 // import Pause from './pause.js';
 //import Box from '../objetos/box.js';
+import WoodBox from '../objetos/WoodBox.js';
+import CardBoard from '../objetos/CartBoard.js'
 /**
  * Escena principal.
  * @extends Phaser.Scene
@@ -17,6 +19,7 @@ export default class level_map extends Phaser.Scene {
 	}
 
 	preload() {
+		this.load.spritesheet('cat', 'assets/personajes/Gato.png', { frameWidth: 34, frameHeight: 34 });
 		this.load.image('fondo', 'assets/Mapa/boceto_interiorTren.png');
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
 		// this.load.spritesheet('cat', 'assets/personajes/Gato.png', { frameWidth: 34, frameHeight: 34 });
@@ -25,8 +28,11 @@ export default class level_map extends Phaser.Scene {
 		// this.load.spritesheet('persecutor', 'assets/personajes/Anciana.png', { frameWidth: 32, frameHeight: 48 });		
 		// this.load.spritesheet('lanzador', 'assets/personajes/Estudiante 2.png', { frameWidth: 32, frameHeight: 48 });
 		// this.load.image('mask', 'assets/enviroment/mask1.png');
+		this.load.spritesheet('cartBoard', 'assets/objects/cajaCarton.png', { frameWidth: 64, frameHeight: 64 });
+		this.load.spritesheet('woodBox', 'assets/objects/cajaMadera.png', { frameWidth: 64, frameHeight: 64 });
+
         this.load.image("tiles","assets/Mapa/boceto_interiorTren.png");
-		//this.load.image("a","assets/Mapa/metro_1_asientos_4_pack.png");
+		this.load.image("a","assets/Mapa/metro_1_asientos_4_pack.png");
         this.load.tilemapTiledJSON('map',"mapas/level01.json");
       
 		//this.load.spritesheet('box', 'assets/Box/box.png', {frameWidth: 64, frameHeight: 64})
@@ -41,20 +47,39 @@ export default class level_map extends Phaser.Scene {
         //console.log(this.cache.tilemap.get('map').data);
      	const map = this.make.tilemap({ key: "map"});
        const tiles = map.addTilesetImage("tren","tiles");
-	   //const obj=map.addTilesetImage("obj","a")
+	   const objp=map.addTilesetImage("obj","a")
        var layer = map.createLayer('suelo', tiles, 0, 0);
        var objlayer=map.createLayer('objetos',tiles,0,0);
-	   //var c=map.createLayer('p',obj,0,0);
+	   var c=map.createLayer('p',objp,0,0);
        objlayer.setCollisionBetween(0,628);
 
-	  
-
+	   let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
 		// Jugador a centro segun eje Y 
+		
+		
+
+		let cartBoardBoxes = this.physics.add.group();
+		let cartBoard1 = new CardBoard(this, 300, 300, cartBoardBoxes);
+		let woodBoxes = this.physics.add.group();
+		let woodBox1 = new WoodBox(this, 600, 300, woodBoxes);
+
 		let player = new Player(this, 50, this.cameras.main.centerY, 15, 15, 8, 30, 140);
 		player.setScale(2.5);
 		player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del caballero con el suelo
-		
+
         this.physics.add.collider(player,objlayer);
+		this.physics.add.collider(cartBoardBoxes,objlayer);
+		this.physics.add.collider(gato,objlayer);
+
+		this.physics.add.collider(player, gato);
+
+		this.physics.add.collider(woodBoxes, cartBoardBoxes);
+
+		this.physics.add.collider(player, cartBoardBoxes);
+
+		this.physics.add.collider(player, woodBoxes);
+		
+	
 
 
 
