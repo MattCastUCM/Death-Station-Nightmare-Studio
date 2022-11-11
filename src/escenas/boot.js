@@ -13,8 +13,9 @@ export default class Boot extends Phaser.Scene {
 
 	preload(){
 		this.load.scripts('PostProcess', [
-			'src/hud/HealthBar.js',
+			'src/hud/healthBar.js',
 			'src/hud/TextMessage.js',
+			'src/hud/hudManager.js',
 			'src/objetos/Bullet',
 			'src/objetos/gameObject.js',
 			'src/objetos/Enemy.js',

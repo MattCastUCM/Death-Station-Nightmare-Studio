@@ -1,4 +1,4 @@
-import gameObject from './gameobject.js';
+import gameObject from './gameObject.js';
 import WeaponManager from './weapons.js';
 
 // Clase para el gato que hereda de gameObject
