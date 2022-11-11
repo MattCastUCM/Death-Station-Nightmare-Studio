@@ -1,9 +1,11 @@
 import Personaje from '../objetos/personaje.js';
 import Wall from '../objetos/wall.js';
 import Cat from '../objetos/Cat.js';
+import EnemyManager from './EnemyManager.js';
 //import HealthBar from '../HUD/HealthBar.js';
 import Pause from './pause.js';
 //import Box from '../objetos/box.js';
+
 /**
  * Escena principal.
  * @extends Phaser.Scene
@@ -18,6 +20,10 @@ export default class level_aux extends Phaser.Scene {
 		this.load.image('fondo', 'assets/Mapa/boceto_interiorTren.png');
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('cat', 'assets/personajes/Gato.png', { frameWidth: 34, frameHeight: 34 });
+		this.load.spritesheet('persecutor', 'assets/personajes/Anciana.png', { frameWidth: 32, frameHeight: 48 });		
+		this.load.spritesheet('lanzador', 'assets/personajes/Estudiante 2.png', { frameWidth: 32, frameHeight: 48 });
+		this.load.image('cuchillo', 'assets/survival kit/Sprite-0004.png');
+		this.load.spritesheet('topo', 'assets/personajes/Estudiante 8.png', { frameWidth: 32, frameHeight: 48 });
 		//this.load.spritesheet('box', 'assets/Box/box.png', {frameWidth: 64, frameHeight: 64})
 	}
 
@@ -55,6 +61,18 @@ export default class level_aux extends Phaser.Scene {
 		
 		//Menu de pausa
 		this.keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+		//CREACION DE ENEMIGO PERSECUTOR Y TOPO
+		let enemyManager = new EnemyManager(this);
+		this.persecutor = enemyManager.CreateEnemy(20, this.sys.game.canvas.height / 2,'persecutor', this.personaje);
+		this.persecutor.setScale(2);
+		this.lanzador = enemyManager.CreateEnemy(20, this.sys.game.canvas.height / 2,'lanzador', this.personaje);
+		this.lanzador.setScale(2);
+		this.topo = enemyManager.CreateEnemy(20, this.sys.game.canvas.height / 2,'topo', this.personaje);
+		this.topo.setScale(2);
+		this.physics.add.collider(this.personaje,this.persecutor, this.DecreaseLife.bind(this),null);	
+		this.physics.add.collider(this.personaje,this.lanzador, this.DecreaseLife.bind(this),null);	
+		this.physics.add.collider(this.personaje,this.topo, this.DecreaseLife.bind(this),null);	
+
 	}
 	
 	DecreaseLife(){

@@ -1,15 +1,8 @@
 import Enemy from './Enemy.js';
 export default class Persecutor extends Enemy {
-	/**
-	 * Constructor de Knight, nuestro caballero medieval con espada y escudo
-	 * @param {Scene} scene - escena en la que aparece
-	 * @param {number} x - coordenada x
-	 * @param {number} y - coordenada y
-	 */
-	constructor(scene, x, y,target) {
-		super(scene, x, y, 'Persecutor');
+	constructor(scene, x, y) {
+		super(scene, x, y, 'Topo');
 		this.speed = 40;
-		this.target = target;
 		this.scene.add.existing(this); //Añadimos el personaje a la escena
         
 		// Agregamos el personaje a las físicas para que Phaser lo tenga en cuenta
@@ -19,32 +12,32 @@ export default class Persecutor extends Enemy {
 		this.body.setImmovable(true); //para que no se mueva 
 		//Creamos las animaciones
 		this.scene.anims.create({
-			key: 'idlePersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', {start:1, end:1}),
+			key: 'idleTopo',
+			frames: scene.anims.generateFrameNumbers('topo', {start:1, end:1}),
 			frameRate: 5,
 			repeat: -1
 		});
 		this.scene.anims.create({
-			key: 'upPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', {start:9, end:11}),
+			key: 'upTopo',
+			frames: scene.anims.generateFrameNumbers('topo', {start:9, end:11}),
 			frameRate: 5,
 			repeat: -1
 		});
         this.scene.anims.create({
-			key: 'downPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', {start:0, end:2}),
+			key: 'downTopo',
+			frames: scene.anims.generateFrameNumbers('topo', {start:0, end:2}),
 			frameRate: 5,
 			repeat: -1
 		});
 		this.scene.anims.create({
-			key: 'leftPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', {start:3, end:5}),
+			key: 'leftTopo',
+			frames: scene.anims.generateFrameNumbers('topo', {start:3, end:5}),
 			frameRate: 5,
 			repeat: -1
 		});
         this.scene.anims.create({
-			key: 'rigthPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', {start:6, end:8}),
+			key: 'rigthTopo',
+			frames: scene.anims.generateFrameNumbers('topo', {start:6, end:8}),
 			frameRate: 5,
 			repeat: -1
 		});
@@ -61,24 +54,13 @@ export default class Persecutor extends Enemy {
 	PlayAnimation()
 	{
 		if(this.body.velocity.y < 0){
-			this.play("upPersecutor");
+			this.play("upTopo");
 		}
 		else if(this.body.velocity.y > 0){
-			this.play("downPersecutor");
+			this.play("downTopo");
 		
 		}
-		if(this.body.velocity.x > 0){
-			this.play("rigthPersecutor");
-		}
-		else if(this.body.velocity.x < 0){
-			this.play("leftPersecutor");
-		}
 	}
-
-	Follow () {
-        this.scene.physics.moveToObject(this, this.target, this.speed);
-		super.move(0,0)
-    }
 	preUpdate(t, dt) {
 		super.preUpdate(t,dt);
 		this.body.velocity.normalize().scale(this.speed);
