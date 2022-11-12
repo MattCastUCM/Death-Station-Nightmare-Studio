@@ -56,7 +56,7 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":20,
          "id":2,
-         "name":"objetos",
+         "name":"colision",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
@@ -67,56 +67,8 @@
         {
          "draworder":"topdown",
          "id":8,
-         "name":"cajas",
+         "name":"objeto",
          "objects":[
-                {
-                 "class":"",
-                 "gid":1,
-                 "height":32,
-                 "id":13,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":32,
-                 "x":446,
-                 "y":384
-                }, 
-                {
-                 "class":"",
-                 "gid":1,
-                 "height":32,
-                 "id":14,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":32,
-                 "x":574,
-                 "y":314
-                }, 
-                {
-                 "class":"",
-                 "gid":1,
-                 "height":32,
-                 "id":15,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":32,
-                 "x":592,
-                 "y":428
-                }, 
-                {
-                 "class":"",
-                 "gid":1,
-                 "height":32,
-                 "id":16,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":32,
-                 "x":722,
-                 "y":304
-                }, 
                 {
                  "class":"",
                  "gid":630,
@@ -152,15 +104,123 @@
                  "width":59,
                  "x":365,
                  "y":294
+                }, 
+                {
+                 "class":"",
+                 "gid":639,
+                 "height":63,
+                 "id":31,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":55,
+                 "x":641,
+                 "y":416
+                }, 
+                {
+                 "class":"",
+                 "gid":639,
+                 "height":63,
+                 "id":32,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":55,
+                 "x":621,
+                 "y":284
+                }, 
+                {
+                 "class":"",
+                 "gid":639,
+                 "height":63,
+                 "id":33,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":55,
+                 "x":471,
+                 "y":456
+                }, 
+                {
+                 "class":"",
+                 "gid":640,
+                 "height":72,
+                 "id":34,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":55,
+                 "x":343,
+                 "y":414
+                }, 
+                {
+                 "class":"",
+                 "gid":640,
+                 "height":72,
+                 "id":35,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":55,
+                 "x":481,
+                 "y":346
+                }, 
+                {
+                 "class":"",
+                 "gid":644,
+                 "height":96,
+                 "id":38,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":68,
+                 "x":942,
+                 "y":330
+                }, 
+                {
+                 "class":"",
+                 "gid":644,
+                 "height":96,
+                 "id":39,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":68,
+                 "x":1238,
+                 "y":488
+                }, 
+                {
+                 "class":"",
+                 "gid":645,
+                 "height":124,
+                 "id":40,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":68,
+                 "x":1394,
+                 "y":362
+                }, 
+                {
+                 "class":"",
+                 "gid":645,
+                 "height":124,
+                 "id":41,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":68,
+                 "x":1676,
+                 "y":486
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":31,
+ "nextobjectid":42,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
@@ -249,6 +309,65 @@
                  "imagewidth":61
                 }],
          "tilewidth":265
+        }, 
+        {
+         "columns":0,
+         "firstgid":639,
+         "grid":
+            {
+             "height":1,
+             "orientation":"orthogonal",
+             "width":1
+            },
+         "margin":0,
+         "name":"objetos",
+         "spacing":0,
+         "tilecount":7,
+         "tileheight":124,
+         "tiles":[
+                {
+                 "id":0,
+                 "image":"..\/assets\/objects\/cajaCarton.png",
+                 "imageheight":63,
+                 "imagewidth":55
+                }, 
+                {
+                 "id":1,
+                 "image":"..\/assets\/objects\/cajaMadera.png",
+                 "imageheight":72,
+                 "imagewidth":55
+                }, 
+                {
+                 "id":2,
+                 "image":"..\/assets\/objects\/palanca.png",
+                 "imageheight":73,
+                 "imagewidth":58
+                }, 
+                {
+                 "id":5,
+                 "image":"..\/assets\/enemigos\/e1.png",
+                 "imageheight":96,
+                 "imagewidth":68
+                }, 
+                {
+                 "id":6,
+                 "image":"..\/assets\/enemigos\/e2.png",
+                 "imageheight":124,
+                 "imagewidth":68
+                }, 
+                {
+                 "id":7,
+                 "image":"..\/assets\/enemigos\/e3.png",
+                 "imageheight":101,
+                 "imagewidth":73
+                }, 
+                {
+                 "id":8,
+                 "image":"..\/assets\/enemigos\/gato.png",
+                 "imageheight":66,
+                 "imagewidth":76
+                }],
+         "tilewidth":76
         }],
  "tilewidth":32,
  "type":"map",

@@ -44,13 +44,13 @@ export default class level_map extends Phaser.Scene {
 	*/
 	create() {
 		
-        const f = this.add.image(0, 0, 'elec').setOrigin(0, 0);
+        //const f = this.add.image(0, 0, 'elec').setOrigin(0, 0);
         //console.log(this.cache.tilemap.get('map').data);
     	const map = this.make.tilemap({ key: "map"});
        const tiles = map.addTilesetImage("tren","tiles");
-	   const objp=map.addTilesetImage("obj","a")
+	   
        var layer = map.createLayer('suelo', tiles, 0, 0);
-       var objlayer=map.createLayer('objetos',tiles,0,0);
+       var objlayer=map.createLayer('colision',tiles,0,0);
 	   
        objlayer.setCollisionBetween(0,628);
 
@@ -58,34 +58,54 @@ export default class level_map extends Phaser.Scene {
 		// Jugador a centro segun eje Y 
 
 		let cartBoardBoxes = this.physics.add.group();
-		let cartBoard1 = new CardBoard(this, 300, 300, cartBoardBoxes);
+		//let cartBoard1 = new CardBoard(this, 300, 300, cartBoardBoxes);
 		let woodBoxes = this.physics.add.group();
-		let woodBox1 = new WoodBox(this, 600, 300, woodBoxes);
-		
-		var cajas=map.createFromObjects('cajas',{
-		gid:1,
-		ClassType:  CardBoard,
-		// scene: this,
-		// key: 'cartBoard'
-		});
-		for(let i=0;i<cajas.length;i++){
-			cajas[i]=new CardBoard(this,cajas[i].x,cajas[i].y,cartBoardBoxes)
+		//let woodBox1 = new WoodBox(this, 600, 300, woodBoxes);
+		var cartBoardContainer=this.add.container(this);
+		var woodBoxesContainer=this.add.container(this);
+		var EmenyPersecutorContainer=this.add.container(this);
+		var EmenyLanzadorContainer=this.add.container(this);
+		var objetos=map.createFromObjects('objeto',[
+		{
+			gid:639,
+			//classType:  CardBoard
+			container: cartBoardContainer
+		},
+		{
+			gid:640,
+			container: woodBoxesContainer
+		},
+		{
+			gid:644,
+			container: EmenyPersecutorContainer
+		},
+		{
+			gid:645,
+			container: EmenyLanzadorContainer
+
+		}
+		]);
+		for(let i=0;i<cartBoardContainer.list.length;i++){
+			cartBoardContainer.list[i]=new CardBoard(this,cartBoardContainer.list[i].x,cartBoardContainer.list[i].y,cartBoardBoxes);
+		}
+		for(let i=0;i<woodBoxesContainer.list.length;i++){
+			woodBoxesContainer.list[i]=new WoodBox(this,woodBoxesContainer.list[i].x,woodBoxesContainer.list[i].y,woodBoxes);
 		}
 
-		var elec=map.createFromObjects('cajas',{
-			gid:630,
-			key:'elec'
-		});
-
-		// console.log(cajas.length)
-		// console.log(objlayer)
+		// var elec=map.createFromObjects('objeto',{
+		// 	gid:630,
+		// 	key:'elec'
+		// });
+		// console.log(cartBoardContainer)
 
 		let player = new Player(this, 50, this.cameras.main.centerY, 15, 15, 8, 30, 140);
 		player.setScale(2.5);
 		//player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del caballero con el suelo
 
+
         this.physics.add.collider(player,objlayer);
 		this.physics.add.collider(cartBoardBoxes,objlayer);
+		this.physics.add.collider(cartBoardBoxes, cartBoardBoxes);
 		this.physics.add.collider(this.gato,objlayer);
 
 		this.physics.add.collider(player, this.gato);
@@ -96,9 +116,6 @@ export default class level_map extends Phaser.Scene {
 
 		this.physics.add.collider(player, woodBoxes);
 		
-	
-
-
 
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
 		let hud=this.scene.launch('hudAux');
