@@ -14,16 +14,33 @@
             "scaleInDock": 0.5,
             "scaleInEditor": 1
         },
+        "LEVEL_01.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 5,
+                "y": -72
+            }
+        },
+        "LEVEL_01.tmx#mapa": {
+            "scaleInDock": 1
+        },
+        "LEVEL_01.tmx#obj": {
+            "dynamicWrapping": true
+        },
         "level01.json": {
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 5321.212121212121,
-                "y": 296.969696969697
+                "x": 5319.69696969697,
+                "y": 296.9696969696969
             }
         },
         "level01.json#dec": {
             "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "level01.json#objetos": {
             "scaleInDock": 1
         },
         "level01.json#tren": {
@@ -36,8 +53,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 461,
-                "y": 400
+                "x": 73,
+                "y": -82
             }
         },
         "level01.tmx#dec": {
@@ -67,13 +84,13 @@
             "scale": 0.25,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 990,
-                "y": 580
+                "x": 570,
+                "y": 232
             }
         },
         "level_03.tmx#mapa2": {
             "dynamicWrapping": false,
-            "scaleInDock": 0.33,
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "level_03.tmx#tren": {
@@ -108,7 +125,9 @@
     "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/assets/enemigos",
     "map.fixedSize": true,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
-    "map.lastUsedFormat": "json",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 34,
+    "map.tileWidth": 34,
     "mapScene.enableWorlds": true,
     "openFiles": [
         "level01.tmx",
@@ -116,6 +135,7 @@
         "sin nombre.json"
     ],
     "project": "pvli.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
         "level01.json",
         "sin nombre.json",
