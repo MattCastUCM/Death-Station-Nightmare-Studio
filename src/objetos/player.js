@@ -1,19 +1,24 @@
-import gameObject from './gameObject.js';
-import WeaponManager from './weapons.js';
+import gameObject from './gameobject.js';
 
 // Clase para el gato que hereda de gameObject
 export default class Player extends gameObject {
-    // Constructora que recibe los mismos parámetros que el padre
-    // excepto por la textura, que es siempre la misma
-    constructor(scene, posX, posY, w, h, offsetX, offsetY, spd) {
-        super(scene, posX, posY, w, h, offsetX, offsetY, 'personaje', spd);
+    /**
+	 * Constructora
+	 * @param {Scene} scene - escena en la que aparece
+	 * @param {number} x - coordenada x
+	 * @param {number} y - coordenada y
+     * @param {number} w - ancho
+	 * @param {number} h - alto
+     * @param {number} offsetX - distancia entre la x del sprite y la x de su collider
+	 * @param {number} offsetY - distancia entre la y del sprite y la y de su collider
+     * @param {number} spd - velocidad
+	 */
+    constructor(scene, x, y, w, h, offsetX, offsetY, spd) {
+        super(scene, x, y, w, h, offsetX, offsetY, 'personaje', spd);
 
         this.hp = 100;
         this.hasCollided = false;
         this.elapsedTime = 0;
-        this.facing = "down";
-
-        this.weaponManager = new WeaponManager(this);
 
         //Creamos las animaciones
         this.scene.anims.create({
@@ -81,23 +86,24 @@ export default class Player extends gameObject {
     GetHP(){
         return this.hp;
     }
+
+    HasCollided(){
+        return this.hasCollided;
+    }
     
     // Método que disminuye la vida e indica que ha colisionado
     decreaseHP(){
-        if(!this.hasCollided){
-            this.hp -= 10;
-            this.hasCollided = true;
-            this.scene.DecreaseLife(this);
-        }
+        this.hp -= 10;
+        this.hasCollided = true;
     }
     
     // Bucle principal. Actualiza su posición y ejecuta las acciones según el input
     preUpdate(t, dt){
         // IMPORTANTE llamar al preUpdate del padre para poder ejecutar la animación
         super.preUpdate(t,dt);
-        let movementX = 0;
-        let movementY = 0;
-
+        
+        this.friction();
+        
         // Si se pulsa hacia abajo
         if(this.cursors.s.isDown && 
             !this.cursors.w.isDown) {
@@ -107,11 +113,10 @@ export default class Player extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'down'){
                     this.play('down');
-                    this.facing = "down";
                 }
 
                 // Mueve el objeto
-                movementY = 1;
+                this.move(0,1)
 
         }
 
@@ -124,11 +129,10 @@ export default class Player extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'up'){
                     this.play('up');
-                    this.facing = "up";
                 }
 
                 // Mueve el objeto
-                movementY = -1;
+                this.move(0,-1)
         }
 
         // Si se pulsa hacia la izquierda
@@ -140,11 +144,10 @@ export default class Player extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'left'){
                     this.play('left');
-                    this.facing = "left";
                 }
 
                 // Mueve el objeto
-                movementX = -1;
+                this.move(-1,0)
         }
 
         // Si se pulsa hacia la derecha
@@ -156,20 +159,18 @@ export default class Player extends gameObject {
                 // La reproduce mientras se mueva
                 if(this.anims.currentAnim.key !== 'right'){
                     this.play('right');
-                    this.facing = "right";
                 }
 
                 // Mueve el objeto
-                movementX = 1;
+                this.move(1,0)
         }
-
-        this.move(movementX,movementY);
 
         // Si se deja de pulsar, para la animación
         if(Phaser.Input.Keyboard.JustUp(this.cursors.a) || 
             Phaser.Input.Keyboard.JustUp(this.cursors.d) ||
             Phaser.Input.Keyboard.JustUp(this.cursors.w) ||
             Phaser.Input.Keyboard.JustUp(this.cursors.s)){
+                this.move(0,0)
                 this.anims.isPlaying = false;
         }
 
@@ -184,9 +185,10 @@ export default class Player extends gameObject {
             // dejado de colisionar y se popne el temporizador a 0
             if(this.elapsedTime >= 500){
                 this.hasCollided = false;
-                this.elapsedTime = 0;
+                this.elapsedTime = 0;   
             }
         }
+
         // La máscara de iluminación se mueve con el personaje
         this.vision.x = this.x;
 		this.vision.y = this.y;

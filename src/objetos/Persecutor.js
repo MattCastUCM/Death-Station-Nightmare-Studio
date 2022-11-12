@@ -1,7 +1,7 @@
 import Enemy from './Enemy.js';
 export default class Persecutor extends Enemy {
 	/**
-	 * Constructor de Knight, nuestro caballero medieval con espada y escudo
+	 * Constructora
 	 * @param {Scene} scene - escena en la que aparece
 	 * @param {number} x - coordenada x
 	 * @param {number} y - coordenada y

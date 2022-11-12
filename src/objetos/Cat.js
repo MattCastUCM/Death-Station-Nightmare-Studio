@@ -47,7 +47,7 @@ export default class Cat extends gameObject {
         this.cursors = this.scene.input.keyboard.createCursorKeys();
 
         // Hace que body no pueda ser movido por otros colliders
-        //this.body.setImmovable(true);
+        this.body.setImmovable(true);
     }
 
 

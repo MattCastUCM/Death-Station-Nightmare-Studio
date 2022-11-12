@@ -33,8 +33,10 @@ let config = {
     physics: { 
         default: 'arcade', 
         arcade: { 
-           // gravity: { y:200 }, 
-            debug: true   //para la visibilidad de box collieder 
+           // gravity: { y:200 },
+           
+           //para la visibilidad de box collieder 
+           debug: true   
         },
         checkCollision: {
             up: true,
