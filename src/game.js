@@ -1,9 +1,10 @@
-import Scene_Claudia from '../src/escenas/Scene_Claudia.js';
-import level_aux from '../src/escenas/level_aux.js';
-import Menu from '../src/escenas/menu.js'
-import HUD from '../src/hud/hud.js'
-import Pause from './escenas/pause.js'
-import level_map from './escenas/level_map.js'
+//import HealthBar from './hud/healthBar.js';
+import Boot from './escenas/boot.js'
+import Menu from './escenas/menu.js'
+import level_aux from './escenas/level_aux.js';
+import HUD from './hud/hudManager.js'
+//import Pause from './escenas/pause.js'
+import DialogManager from './hud/DialogManager.js'
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
@@ -28,12 +29,14 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [level_map,level_aux,Menu, HUD],
+    scene: [Boot,Menu, level_aux,HUD,DialogManager],
     physics: { 
         default: 'arcade', 
         arcade: { 
-           // gravity: { y:200 }, 
-            debug: true   //para la visibilidad de box collieder 
+           // gravity: { y:200 },
+           
+           //para la visibilidad de box collieder 
+           debug: true   
         },
         checkCollision: {
             up: true,

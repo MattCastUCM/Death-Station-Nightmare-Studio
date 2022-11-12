@@ -1,8 +1,9 @@
 // Pone el focus en el canvas del juego
 window.onload = function () {
-    let focused = document.getElementById('game');
+    let focused = document.querySelector("#game");
     focused.focus();
 };
+
 
 
 // A�ade un bot�n pulsable

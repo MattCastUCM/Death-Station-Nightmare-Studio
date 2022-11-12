@@ -1,4 +1,4 @@
-import gameObject from './gameobject.js';
+import gameObject from './gameObject.js';
 
 // Clase para el gato que hereda de gameObject
 export default class Cat extends gameObject {
@@ -47,7 +47,7 @@ export default class Cat extends gameObject {
         this.cursors = this.scene.input.keyboard.createCursorKeys();
 
         // Hace que body no pueda ser movido por otros colliders
-        //this.body.setImmovable(true);
+        this.body.setImmovable(true);
     }
 
 
