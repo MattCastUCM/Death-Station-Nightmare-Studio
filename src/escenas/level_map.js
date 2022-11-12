@@ -19,6 +19,7 @@ export default class level_map extends Phaser.Scene {
 	}
 
 	preload() {
+		this.load.image('elec','assets/Mapa/caja electricidad_.png')
 		this.load.spritesheet('cat', 'assets/personajes/Gato.png', { frameWidth: 34, frameHeight: 34 });
 		this.load.image('fondo', 'assets/Mapa/boceto_interiorTren.png');
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
@@ -43,7 +44,7 @@ export default class level_map extends Phaser.Scene {
 	*/
 	create() {
 		
-        //const f = this.add.image(0, 0, 'tiles').setOrigin(0, 0);
+        const f = this.add.image(0, 0, 'elec').setOrigin(0, 0);
         //console.log(this.cache.tilemap.get('map').data);
     	const map = this.make.tilemap({ key: "map"});
        const tiles = map.addTilesetImage("tren","tiles");
@@ -51,24 +52,33 @@ export default class level_map extends Phaser.Scene {
        var layer = map.createLayer('suelo', tiles, 0, 0);
        var objlayer=map.createLayer('objetos',tiles,0,0);
 	   
-	   //var c=map.createLayer('p',objp,0,0);
        objlayer.setCollisionBetween(0,628);
 
 	   this.gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
 		// Jugador a centro segun eje Y 
-		
-		
 
 		let cartBoardBoxes = this.physics.add.group();
 		let cartBoard1 = new CardBoard(this, 300, 300, cartBoardBoxes);
 		let woodBoxes = this.physics.add.group();
 		let woodBox1 = new WoodBox(this, 600, 300, woodBoxes);
 		
-
-		map.createFromObjects(objlayer, {
-		id: 0,
-		classType: this.gato
+		var cajas=map.createFromObjects('cajas',{
+		gid:1,
+		ClassType:  CardBoard,
+		// scene: this,
+		// key: 'cartBoard'
 		});
+		for(let i=0;i<cajas.length;i++){
+			cajas[i]=new CardBoard(this,cajas[i].x,cajas[i].y,cartBoardBoxes)
+		}
+
+		var elec=map.createFromObjects('cajas',{
+			gid:630,
+			key:'elec'
+		});
+
+		// console.log(cajas.length)
+		// console.log(objlayer)
 
 		let player = new Player(this, 50, this.cameras.main.centerY, 15, 15, 8, 30, 140);
 		player.setScale(2.5);
