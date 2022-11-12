@@ -15,7 +15,7 @@ export default class Persecutor extends Enemy {
 		// Agregamos el personaje a las físicas para que Phaser lo tenga en cuenta
 		scene.physics.add.existing(this);
 		// Decimos que el personaje colisiona con los límites del mundo
-		this.body.setCollideWorldBounds();
+		//this.body.setCollideWorldBounds();
 		this.body.setImmovable(true); //para que no se mueva 
 		//Creamos las animaciones
 		this.scene.anims.create({
