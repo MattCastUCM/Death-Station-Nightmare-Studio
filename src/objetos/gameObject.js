@@ -48,24 +48,29 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
 
     }
 
+    // fuerza de rozamiento 
     friction(){
         let fr = 7
-        //fuerza de rozamiento 
+        
+        // Rozamiento horizontal
 		if (this.body.velocity.x > 5) {
 			this.body.velocity.x -= fr;
-		} else if (this.body.velocity.x < -5) {
+		}
+        else if (this.body.velocity.x < -5) {
 			this.body.velocity.x += fr;
 		}
-
-		if (this.body.velocity.y > 5) {
-			this.body.velocity.y -= 5;
-		} else if (this.body.velocity.y < -5) {
-			this.body.velocity.y += fr;
-		}
-		if (this.body.velocity.x <= 5 && this.body.velocity.x > 0 || this.body.velocity.x >= -5 && this.body.velocity.x < 0) {
+        else if (this.body.velocity.x <= 5 && this.body.velocity.x > 0 || this.body.velocity.x >= -5 && this.body.velocity.x < 0) {
 			this.body.velocity.x = 0;
 		}
-		if (this.body.velocity.y <= 5 && this.body.velocity.y > 0 || this.body.velocity.y >= -5 && this.body.velocity.y < 0) {
+
+        // Rozamiento vertical
+		if (this.body.velocity.y > 5) {
+			this.body.velocity.y -= 5;
+		}
+        else if (this.body.velocity.y < -5) {
+			this.body.velocity.y += fr;
+		}
+        else if (this.body.velocity.y <= 5 && this.body.velocity.y > 0 || this.body.velocity.y >= -5 && this.body.velocity.y < 0) {
 			this.body.velocity.y = 0;
 		}
     }

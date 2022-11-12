@@ -8,7 +8,7 @@ export default class Lanzador extends Enemy {
 	 * @param {number} y - coordenada y
 	 */
 	constructor(scene, x, y, target) {
-		super(scene, x, y, 20, 20, 5, 30, 'lanzador', 10, target, 15);
+		super(scene, x, y, 20, 20, 5, 30, 'lanzador', 40, target, 15);
         this.elapsedTime = 0;	
 
 		//Creamos las animaciones
@@ -70,12 +70,25 @@ export default class Lanzador extends Enemy {
     }
 	preUpdate(t, dt) {
         super.preUpdate(t,dt);
+
         this.elapsedTime += dt;
-		if(this.elapsedTime >= 1000){
+
+		// Distancia entre sí y el jugador
+		let dist = Phaser.Math.Distance.BetweenPoints(this, this.target)
+		// Si está muy lejos, se mueve hacia el jugador
+		if(dist > 400 ){
+			this.Follow();
+		}
+		// Si entra en el rango, se detiene
+		else if (dist <= 400 ){
+			this.move(0,0);
+		}
+		// Si está en el rango y ha pasado cierto tiempo, lanza un cuchillo
+		// y reinicia el contador para lanzar más cuchillos
+		if(this.elapsedTime >= 1500 && dist <= 400){
             new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY(), this.target);
             this.elapsedTime = 0;
 		}
-		this.PlayAnimation();
 
 	}
 

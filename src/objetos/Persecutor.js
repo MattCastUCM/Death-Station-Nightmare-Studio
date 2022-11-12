@@ -61,16 +61,12 @@ export default class Persecutor extends Enemy {
 		}
 	}
 	
-	Follow () {
-        this.scene.physics.moveToObject(this, this.target, this.speed);
-    }
+	
 	preUpdate(t, dt) {
 		super.preUpdate(t,dt);
 		this.body.velocity.normalize().scale(this.speed);
         this.Follow();
 		this.PlayAnimation();
-		
-
 	}
 	
 }
