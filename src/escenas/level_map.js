@@ -1,12 +1,9 @@
-import Player from '../objetos/player.js';
-// import Wall from '../objetos/wall.js';
- import Cat from '../objetos/cat.js';
-// import HealthBar from '../HUD/HealthBar.js';
- import EnemyManager from './EnemyManager.js';
-// import Pause from './pause.js';
-//import Box from '../objetos/box.js';
-import WoodBox from '../objetos/WoodBox.js';
+import Player from '../objetos/player.js';;
+import Cat from '../objetos/Cat.js';
+import EnemyManager from '../objetos/EnemyManager.js';
 import CardBoard from '../objetos/CartBoard.js'
+import WoodBox from '../objetos/WoodBox.js'
+import Trigger from '../objetos/Trigger.js'
 /**
  * Escena principal.
  * @extends Phaser.Scene
@@ -94,6 +91,7 @@ export default class level_map extends Phaser.Scene {
 		let player = new Player(this, 50, this.cameras.main.centerY, 15, 15, 8, 30, 140);
 		player.setScale(2.5);
 		let enemyManager = new EnemyManager(this);
+		this.enemies = this.physics.add.group();
 		console.log(EmenyPersecutorContainer);
 		for(let i=0;i<EmenyPersecutorContainer.list.length;i++){
 			EmenyPersecutorContainer.list[i]=enemyManager.CreateEnemy(EmenyPersecutorContainer.list[i].x, EmenyPersecutorContainer.list[i].y,'persecutor', player);

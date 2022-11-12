@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level01.tmx",
+    "activeFile": "LEVEL_01.tmx",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
         "."
@@ -15,25 +15,27 @@
             "scaleInEditor": 1
         },
         "LEVEL_01.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 0,
+            "scale": 0.25,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 5,
-                "y": -72
+                "x": -932,
+                "y": -84
             }
         },
         "LEVEL_01.tmx#mapa": {
+            "dynamicWrapping": false,
             "scaleInDock": 1
         },
         "LEVEL_01.tmx#obj": {
-            "dynamicWrapping": true
+            "dynamicWrapping": true,
+            "scaleInDock": 0.33
         },
         "level01.json": {
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 5319.69696969697,
-                "y": 296.9696969696969
+                "x": 5342.424242424242,
+                "y": 321.21212121212113
             }
         },
         "level01.json#dec": {
@@ -53,8 +55,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 73,
-                "y": -82
+                "x": 5344,
+                "y": 320
             }
         },
         "level01.tmx#dec": {
@@ -69,7 +71,8 @@
         },
         "level01.tmx#objetos": {
             "dynamicWrapping": true,
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "level01.tmx#t": {
             "dynamicWrapping": false,
@@ -84,8 +87,8 @@
             "scale": 0.25,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 570,
-                "y": 232
+                "x": 992,
+                "y": 576
             }
         },
         "level_03.tmx#mapa2": {
@@ -104,13 +107,14 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 796.5,
-                "y": 285
+                "x": 800,
+                "y": 288
             }
         },
         "sin nombre.json#coin": {
             "dynamicWrapping": false,
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "sin nombre.json#f": {
             "dynamicWrapping": true,
@@ -122,7 +126,7 @@
         }
     },
     "last.exportedFilePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/mapas",
-    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/assets/enemigos",
+    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/assets/Mapa",
     "map.fixedSize": true,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
@@ -132,15 +136,18 @@
     "openFiles": [
         "level01.tmx",
         "level_03.tmx",
-        "sin nombre.json"
+        "sin nombre.json",
+        "level01.json",
+        "LEVEL_01.tmx"
     ],
     "project": "pvli.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "level01.json",
-        "sin nombre.json",
+        "level01.tmx",
         "level_03.tmx",
-        "level01.tmx"
+        "sin nombre.json",
+        "level01.json",
+        "LEVEL_01.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {
