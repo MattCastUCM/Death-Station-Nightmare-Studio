@@ -62,7 +62,7 @@ export default class level_aux extends Phaser.Scene {
 		player.setScale(2.5);
 
 		// Gato
-		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
+		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 80);
 		gato.body.onCollide = true;
 
 		//CAJAS
