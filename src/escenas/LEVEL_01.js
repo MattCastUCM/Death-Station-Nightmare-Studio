@@ -98,7 +98,7 @@ export default class LEVEL_01 extends Phaser.Scene {
 		for(let i=0;i<woodBoxesContainer.list.length;i++){
 			woodBoxesContainer.list[i]=new WoodBox(this,woodBoxesContainer.list[i].x,woodBoxesContainer.list[i].y,woodBoxes);
 		}
-        enemigos
+        //enemigos
         for(let i=0;i<EmenyPersecutorContainer.list.length;i++){
 			EmenyPersecutorContainer.list[i]=enemyManager.CreateEnemy(EmenyPersecutorContainer.list[i].x, EmenyPersecutorContainer.list[i].y,'persecutor', player);
 			EmenyPersecutorContainer.list[i].setScale(2);
@@ -127,13 +127,13 @@ export default class LEVEL_01 extends Phaser.Scene {
 
 		//DIALOG
 		//EJEMPLO1:al interactuar con un objeto
-		this.physics.world.on('collide', function (gameObject1, gameObject2, body1, body2) {
-			if (gameObject1 === gato && gameObject2 === woodBox1) {
-				woodBox1.destroyMe();
-				scene.newText(["No puede sbiiiiiiiiiiiiiiiiiiiiiiiiiibsaiwfibfjinhfnrnjsnksnfkjnfks< iibvywbrviwyriuwunksnfkjnfks", "Porqué es así"]); //array de strings
+		// this.physics.world.on('collide', function (gameObject1, gameObject2, body1, body2) {
+		// 	if (gameObject1 === gato && gameObject2 === woodBox1) {
+		// 		woodBox1.destroyMe();
+		// 		scene.newText(["No puede sbiiiiiiiiiiiiiiiiiiiiiiiiiibsaiwfibfjinhfnrnjsnksnfkjnfks< iibvywbrviwyriuwunksnfkjnfks", "Porqué es así"]); //array de strings
 
-			}
-		});
+		// 	}
+		// });
 
 		//EJEMPLO 2: con Trigger
 		let trigger1 = new Trigger(this, 300, 200, 30, 600);
