@@ -12,43 +12,23 @@ export default class HUD extends Phaser.Scene {
     }
 
     preload() {
-
+        this.load.image('heartImg', 'assets/HUD/corazon.png');
+        this.load.image('inventory', 'assets/HUD/inventario.png');
+        this.load.image('pausa', 'assets/HUD/pausa.png');
+        this.load.image('level', 'assets/HUD/level.png');
+        this.load.image('play', 'assets/HUD/play.png');
 
     }
     create() {
-        this.dialogManager = this.level.dialogManager; //coge el dialog manager del nivel
-        //barra de vidas
         this.add.image(220, 18, 'heartImg').setOrigin(0, 0);
-        this.healthBar = new HealthBar(this, 30, 20, 180, 20, 10);
-        //nivel
+        this.add.image(350, 470, 'inventory').setOrigin(0, 0);
+        this.pauseButton = this.add.image(900, 13, 'pausa').setOrigin(0, 0);
         this.add.image(800, 18, 'level').setOrigin(0, 0);
 
-        let offset = 55; //el espacio al primer celda respecto del x del inventario
-        let gap = 4; //espacio entre celdas del inventario
+        this.healthBar = new HealthBar(this, 30, 20, 180, 20, 10);
 
+        this.dialogManager = this.scene.get('dialogManager');
 
-        //INVENTARIO
-        this.inventory = this.add.image(350, 470, 'inventory').setOrigin(0, 0);
-        //imagen de armas
-        this.navaja = this.add.sprite(this.inventory.x + offset - 6, this.inventory.y + (this.inventory.height / 2), 'navaja').setOrigin(0.5, 0.6).setScale(0.12);
-        this.navaja.rotation -= 1;
-
-        this.botella = this.add.sprite(this.inventory.x + (offset + gap) * 2 + 6, this.inventory.y + (this.inventory.height / 2), 'botella').setOrigin(0.5, 0.6).setScale(0.15);
-        this.botella.rotation += 0.8;
-        this.botella.visible = false;
-        
-        this.barra = this.add.sprite(this.inventory.x + (offset + gap) * 3 + 25, this.inventory.y + (this.inventory.height / 2), 'barra').setOrigin(0.5, 0.5).setScale(0.2);
-        this.barra.rotation += 0.8;
-        this.barra.visible = false;
-
-        this.hacha = this.add.sprite(this.inventory.x + (offset + gap * 2) * 4 + 26, this.inventory.y + (this.inventory.height / 2), 'hacha').setOrigin(0.5, 0.5).setScale(0.2);
-        this.hacha.rotation -= 1;
-        this.hacha.visible = false;
-
-        this.selectedFrame = this.add.image(this.navaja.x, this.navaja.y, 'selected').setOrigin(0.5, 0.5).setScale(1);
-
-        //PAUSA 
-        this.pauseButton = this.add.image(900, 13, 'pausa').setOrigin(0, 0);
         //Botón de play que aparece tras pausar la escen
         this.playButton = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'play').setScale(0.3);
         this.playButton.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
@@ -74,16 +54,6 @@ export default class HUD extends Phaser.Scene {
         this.healthBar.changeValue(newValue);
     }
 
-    //llamado por player para indicarle a que arma se ha cambiado
-    changeObject(weapon) {
-        console.log(weapon);
-        this.selectedFrame.x = this[weapon].x;
-        this.selectedFrame.y = this[weapon].y;
-    }
-    //llamado por player para informar de la nueva arma que tienne
-    addInventory(weapon) {
-        this[weapon].visible = true;
-    }
     //menú pausa 
     pauseGame() {
         if (this.onPauseMenu) //se quiere resume
