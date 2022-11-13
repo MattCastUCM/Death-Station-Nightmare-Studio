@@ -5,6 +5,8 @@ import level_aux from './escenas/level_aux.js';
 import HUD from './hud/hudManager.js'
 //import Pause from './escenas/pause.js'
 import DialogManager from './hud/DialogManager.js'
+import level_map from './escenas/level_map.js';
+import LEVEL_01 from './escenas/LEVEL_01.js'
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
@@ -29,7 +31,7 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [Boot,Menu, level_aux,HUD,DialogManager],
+    scene: [Boot,LEVEL_01,Menu, level_aux,HUD,DialogManager],
     physics: { 
         default: 'arcade', 
         arcade: { 
