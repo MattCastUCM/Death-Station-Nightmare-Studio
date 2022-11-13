@@ -7,21 +7,10 @@ export default class Lanzador extends Enemy {
 	 * @param {number} x - coordenada x
 	 * @param {number} y - coordenada y
 	 */
-	constructor(scene, x, y,target) {
-		super(scene, x, y, 'lanzador');
-        this.x = x;
-        this.y = y;
-        this.scene = scene;
-		this.speed = 10;
-		this.target = target;
-        this.elapsedTime = 0;
-		this.enemy = this.scene.add.existing(this); //Añadimos el personaje a la escena
-        
-		// Agregamos el personaje a las físicas para que Phaser lo tenga en cuenta
-		scene.physics.add.existing(this);
-		// Decimos que el personaje colisiona con los límites del mundo
-		this.body.setCollideWorldBounds();
-		this.body.setImmovable(true); //para que no se mueva 
+	constructor(scene, x, y, target) {
+		super(scene, x, y, 20, 20, 5, 30, 'lanzador', 40, target, 15);
+        this.elapsedTime = 0;	
+
 		//Creamos las animaciones
 		this.scene.anims.create({
             key: 'idleLanzador',
@@ -54,13 +43,6 @@ export default class Lanzador extends Enemy {
 			repeat: -1
 		});
         
-		// La animación a ejecutar según se genere el personaje será 'idle'
-        
-		
-		//modificar tamaño box collider
-		this.body.setSize(20, 20)
-		
-		this.body.setOffset(5, 30);
 	}
 	
 	PlayAnimation()
@@ -88,13 +70,26 @@ export default class Lanzador extends Enemy {
     }
 	preUpdate(t, dt) {
         super.preUpdate(t,dt);
+
         this.elapsedTime += dt;
-		if(this.elapsedTime >= 1000){
-            new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY());
+
+		// Distancia entre sí y el jugador
+		let dist = Phaser.Math.Distance.BetweenPoints(this, this.target)
+		// Si está muy lejos, se mueve hacia el jugador
+		if(dist > 400 ){
+			this.Follow();
+		}
+		// Si entra en el rango, se detiene
+		else if (dist <= 400 ){
+			this.move(0,0);
+		}
+		// Si está en el rango y ha pasado cierto tiempo, lanza un cuchillo
+		// y reinicia el contador para lanzar más cuchillos
+		if(this.elapsedTime >= 1500 && dist <= 400){
+            new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY(), this.target);
             this.elapsedTime = 0;
 		}
-		this.PlayAnimation();
 
 	}
-	
+
 }

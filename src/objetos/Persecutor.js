@@ -1,22 +1,15 @@
 import Enemy from './Enemy.js';
 export default class Persecutor extends Enemy {
 	/**
-	 * Constructor de Knight, nuestro caballero medieval con espada y escudo
+	 * Constructora
 	 * @param {Scene} scene - escena en la que aparece
 	 * @param {number} x - coordenada x
 	 * @param {number} y - coordenada y
 	 */
-	constructor(scene, x, y,target) {
-		super(scene, x, y, 'Persecutor');
-		this.speed = 40;
-		this.target = target;
-		this.scene.add.existing(this); //Añadimos el personaje a la escena
-        
-		// Agregamos el personaje a las físicas para que Phaser lo tenga en cuenta
-		scene.physics.add.existing(this);
-		// Decimos que el personaje colisiona con los límites del mundo
-		this.body.setCollideWorldBounds();
-		this.body.setImmovable(true); //para que no se mueva 
+			
+	 constructor(scene, x, y, target) {
+		super(scene, x, y, 20, 20, 5, 30, 'Persecutor', 40, target, 15);
+
 		//Creamos las animaciones
 		this.scene.anims.create({
 			key: 'idlePersecutor',
@@ -48,14 +41,7 @@ export default class Persecutor extends Enemy {
 			frameRate: 5,
 			repeat: -1
 		});
-
-		// La animación a ejecutar según se genere el personaje será 'idle'
-    
 		
-		//modificar tamaño box collider
-		this.body.setSize(20, 20)
-		
-		this.body.setOffset(5, 30);
 	}
 	
 	PlayAnimation()
@@ -74,17 +60,13 @@ export default class Persecutor extends Enemy {
 			this.play("leftPersecutor");
 		}
 	}
-
-	Follow () {
-        this.scene.physics.moveToObject(this, this.target, this.speed);
-    }
+	
+	
 	preUpdate(t, dt) {
 		super.preUpdate(t,dt);
 		this.body.velocity.normalize().scale(this.speed);
         this.Follow();
 		this.PlayAnimation();
-		
-
 	}
 	
 }

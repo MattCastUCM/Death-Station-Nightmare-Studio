@@ -15,6 +15,7 @@ export default class Menu extends Phaser.Scene {
 	 * Cargamos todos los assets que vamos a necesitar
 	 */
 	preload(){
+		
 		this.load.image('start', 'assets/Mapa/Start.png');
 		this.load.image('fondo', 'assets/Mapa/boceto_interiorTren.png');
 		//this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', {frameWidth: 32, frameHeight: 48})
