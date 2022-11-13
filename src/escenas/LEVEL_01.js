@@ -61,9 +61,9 @@ export default class LEVEL_01 extends Phaser.Scene {
 		//
 
 		// Jugador
-		let player = new Player(this, 7000, this.cameras.main.centerY, 15, 15, 8, 30, 140);
-		player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
-		player.setScale(2.5);
+		this.player = new Player(this, 7000, this.cameras.main.centerY, 15, 15, 8, 30, 140);
+		this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
+		this.player.setScale(2.5);
 
 		// Gato
 		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
@@ -100,11 +100,11 @@ export default class LEVEL_01 extends Phaser.Scene {
 		}
         //enemigos
         for(let i=0;i<EmenyPersecutorContainer.list.length;i++){
-			EmenyPersecutorContainer.list[i]=enemyManager.CreateEnemy(EmenyPersecutorContainer.list[i].x, EmenyPersecutorContainer.list[i].y,'persecutor', player);
+			EmenyPersecutorContainer.list[i]=enemyManager.CreateEnemy(EmenyPersecutorContainer.list[i].x, EmenyPersecutorContainer.list[i].y,'persecutor', this.player);
 			EmenyPersecutorContainer.list[i].setScale(2);
 		}
 		for(let i=0;i<EmenyLanzadorContainer.list.length;i++){
-			EmenyLanzadorContainer.list[i]=enemyManager.CreateEnemy(EmenyLanzadorContainer.list[i].x, EmenyLanzadorContainer.list[i].y,'lanzador', player);
+			EmenyLanzadorContainer.list[i]=enemyManager.CreateEnemy(EmenyLanzadorContainer.list[i].x, EmenyLanzadorContainer.list[i].y,'lanzador', this.player);
 			EmenyLanzadorContainer.list[i].setScale(2);
 		}
 
@@ -112,7 +112,7 @@ export default class LEVEL_01 extends Phaser.Scene {
 
 
         //colisión con tile map
-        this.physics.add.collider(player,colisionlayer);
+        this.physics.add.collider(this.player,colisionlayer);
 		this.physics.add.collider(cartBoardBoxes,colisionlayer);
 		this.physics.add.collider(cartBoardBoxes, cartBoardBoxes);
 		this.physics.add.collider(gato,colisionlayer);
@@ -121,8 +121,8 @@ export default class LEVEL_01 extends Phaser.Scene {
 
 		//colisión player-cajas,cajas-cajas
 		this.physics.add.collider(woodBoxes, cartBoardBoxes);
-		this.physics.add.collider(player, cartBoardBoxes);
-		this.physics.add.collider(player, woodBoxes);
+		this.physics.add.collider(this.player, cartBoardBoxes);
+		this.physics.add.collider(this.player, woodBoxes);
 		//enemigos caja
 		this.physics.add.collider(this.enemies, cartBoardBoxes);
 		this.physics.add.collider(this.enemies, woodBoxes);
@@ -146,18 +146,18 @@ export default class LEVEL_01 extends Phaser.Scene {
 
 		//EJEMPLO 2: con Trigger
 		let trigger1 = new Trigger(this, 300, 200, 30, 600);
-		this.physics.add.overlap(player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
+		this.physics.add.overlap(this.player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
 
 		// Grupo de paredes (estático)
 		
-		this.physics.add.collider(player, gato);
+		this.physics.add.collider(this.player, gato);
 
 		//Colisión enemigo
-		this.physics.add.collider(player, this.enemies, ()=>player.decreaseHP(), null);
+		this.physics.add.collider(this.player, this.enemies, ()=>this.player.decreaseHP(), null);
 		
 
 		//camara que sigue a jugador (movimiento suave)
-		this.cameras.main.startFollow(player, this.cameras.FOLLOW_LOCKON, 0.1, 0.1);
+		this.cameras.main.startFollow(this.player, this.cameras.FOLLOW_LOCKON, 0.1, 0.1);
 		//espacio de camara (si jugador sale de este espacio,la camara le sigue)
 		this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
 	}
