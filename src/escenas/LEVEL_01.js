@@ -116,11 +116,20 @@ export default class LEVEL_01 extends Phaser.Scene {
 		this.physics.add.collider(cartBoardBoxes,colisionlayer);
 		this.physics.add.collider(cartBoardBoxes, cartBoardBoxes);
 		this.physics.add.collider(gato,colisionlayer);
+		this.physics.add.collider(this.enemies,colisionlayer);
+
 
 		//colisión player-cajas,cajas-cajas
 		this.physics.add.collider(woodBoxes, cartBoardBoxes);
 		this.physics.add.collider(player, cartBoardBoxes);
 		this.physics.add.collider(player, woodBoxes);
+		//enemigos caja
+		this.physics.add.collider(this.enemies, cartBoardBoxes);
+		this.physics.add.collider(this.enemies, woodBoxes);
+
+		
+		this.physics.add.collider(this.enemies, this.enemies);
+
 
 		//Prueba, en la escena, hay q hacerlo en arma (hacha)
 		this.physics.add.collider(gato, woodBoxes);
