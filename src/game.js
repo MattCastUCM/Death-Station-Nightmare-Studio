@@ -31,7 +31,7 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [LEVEL_01,Boot,Menu, level_aux,HUD,DialogManager],
+    scene: [Boot,LEVEL_01,Menu, level_aux,HUD,DialogManager],
     physics: { 
         default: 'arcade', 
         arcade: { 

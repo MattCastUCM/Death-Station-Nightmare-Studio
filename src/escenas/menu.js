@@ -42,7 +42,7 @@ export default class Menu extends Phaser.Scene {
 	    });
 
 	    sprite.on('pointerup', pointer => {
-			this.scene.start('level_aux'); //Cambiamos a la escena de juego
+			this.scene.start('LEVEL_01'); //Cambiamos a la escena de juego
 	    });
 
 		sprite.on('pointerover', () => {
