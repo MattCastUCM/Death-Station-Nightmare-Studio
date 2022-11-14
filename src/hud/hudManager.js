@@ -8,15 +8,12 @@ export default class HUD extends Phaser.Scene {
         super({ key: 'hud' });
     }
     init(level) { //escena de nivel
-        this.level = level.me.scene;
+        this.level = level.me;
     }
 
-    preload() {
-
-
-    }
     create() {
         this.dialogManager = this.level.dialogManager; //coge el dialog manager del nivel
+        
         //barra de vidas
         this.add.image(220, 18, 'heartImg').setOrigin(0, 0);
         this.healthBar = new HealthBar(this, 30, 20, 180, 20, 10);
@@ -88,27 +85,31 @@ export default class HUD extends Phaser.Scene {
     pauseGame() {
         if (this.onPauseMenu) //se quiere resume
         {
+            console.log(this.level.dialogManager);
             this.dialogManager.scene.resume();
             this.onPauseMenu = false;
-            if (!this.onDialog) this.level.resume(); //si no estaba en diálogo
+            if (!this.onDialog) this.level.scene.resume(); //si no estaba en diálogo
         }
 
         else { //pausa
+            this.level.player.stop();
             this.dialogManager.scene.pause();
             this.onPauseMenu = true;
-            if (!this.onDialog) this.level.pause(); //si ya no estaba pausado por el diálogo
+            if (!this.onDialog) this.level.scene.pause(); //si ya no estaba pausado por el diálogo
         }
     }
 
     //pausa o resume por el diálogo
     onDialogStarted() {
+        console.log(this.level.player);
         this.onDialog = true;
-        this.level.pause();
+        this.level.player.stop();
+        this.level.scene.pause();
     }
 
     onDialogFinished() {
         this.onDialog = false;
-        this.level.resume();
+        this.level.scene.resume();
     }
 
 

@@ -6,67 +6,83 @@ export default class Persecutor extends Enemy {
 	 * @param {number} x - coordenada x
 	 * @param {number} y - coordenada y
 	 */
-			
-	 constructor(scene, x, y, target) {
-		super(scene, x, y, 20, 20, 5, 30, 'Persecutor', 40, target, 15);
 
+	constructor(scene, x, y, target) {
+		super(scene, x, y, 20, 20, 5, 30, 'Persecutor', 40, target, 15);
+		this.persecuteDist = 400;
+		this.persecuting = false;
+		this.target = target;
 		//Creamos las animaciones
 		this.scene.anims.create({
 			key: 'idlePersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', {start:1, end:1}),
+			frames: scene.anims.generateFrameNumbers('persecutor', { start: 1, end: 1 }),
 			frameRate: 5,
 			repeat: -1
 		});
 		this.scene.anims.create({
 			key: 'upPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', {start:9, end:11}),
+			frames: scene.anims.generateFrameNumbers('persecutor', { start: 9, end: 11 }),
 			frameRate: 5,
 			repeat: -1
 		});
-        this.scene.anims.create({
+		this.scene.anims.create({
 			key: 'downPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', {start:0, end:2}),
+			frames: scene.anims.generateFrameNumbers('persecutor', { start: 0, end: 2 }),
 			frameRate: 5,
 			repeat: -1
 		});
 		this.scene.anims.create({
 			key: 'leftPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', {start:3, end:5}),
+			frames: scene.anims.generateFrameNumbers('persecutor', { start: 3, end: 5 }),
 			frameRate: 5,
 			repeat: -1
 		});
-        this.scene.anims.create({
+		this.scene.anims.create({
 			key: 'rigthPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', {start:6, end:8}),
+			frames: scene.anims.generateFrameNumbers('persecutor', { start: 6, end: 8 }),
 			frameRate: 5,
 			repeat: -1
 		});
-		
+		this.play("idlePersecutor");
+
 	}
-	
-	PlayAnimation()
-	{
-		if(this.body.velocity.y < 0){
+
+	PlayAnimation() {
+		if (this.body.velocity.y < 0) {
 			this.play("upPersecutor");
 		}
-		else if(this.body.velocity.y > 0){
+		else if (this.body.velocity.y > 0) {
 			this.play("downPersecutor");
-		
+
 		}
-		if(this.body.velocity.x > 0){
+		if (this.body.velocity.x > 0) {
 			this.play("rigthPersecutor");
 		}
-		else if(this.body.velocity.x < 0){
+		else if (this.body.velocity.x < 0) {
 			this.play("leftPersecutor");
 		}
 	}
-	
-	
+
+
 	preUpdate(t, dt) {
-		super.preUpdate(t,dt);
-		this.body.velocity.normalize().scale(this.speed);
-        this.Follow();
-		this.PlayAnimation();
+		super.preUpdate(t, dt);
+
+		let dist = Phaser.Math.Distance.BetweenPoints(this, this.target)
+
+		//dejar de perseguir si está encima del jugador, o que está muy lejos
+		if (this.persecuting && (dist < 2 || dist > this.persecuteDist)) { //comprobar primero que estás persiguiendo,y ya pararlo
+			this.body.reset(this.x, this.y); //anula el follow
+			this.play("idlePersecutor");
+			this.persecuting = false;
+		}
+		//empieza a perseguir desde cierta distancia, y sin estar encima del jugador
+		else if (dist <= this.persecuteDist && dist >= 2) {
+			this.Follow(); this.PlayAnimation(); this.body.velocity.normalize().scale(this.speed);
+			this.persecuting = true;
+		}
+
+
+
 	}
-	
+
 }

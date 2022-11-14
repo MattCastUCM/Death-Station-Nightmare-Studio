@@ -7,6 +7,7 @@ export default class CardBoard extends gameObject {
 
 	    //añadir al grupo de cajas
 		colliderGroup.add(this);
+		this.setFriction(10);
 	}
 
 	/**

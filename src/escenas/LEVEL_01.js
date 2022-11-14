@@ -4,6 +4,7 @@ import EnemyManager from '../objetos/EnemyManager.js';
 import CardBoard from '../objetos/CartBoard.js'
 import WoodBox from '../objetos/WoodBox.js'
 import Trigger from '../objetos/Trigger.js'
+import gameObject from '../objetos/gameObject.js';
 /**
  * Escena principal.
  * @extends Phaser.Scene
@@ -14,27 +15,6 @@ export default class LEVEL_01 extends Phaser.Scene {
 	constructor() {
 		super({ key: 'LEVEL_01' });
 	}
-
-	preload() {
-		//gameObjects
-		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
-		this.load.spritesheet('cat', 'assets/personajes/Gato.png', { frameWidth: 34, frameHeight: 34 });
-		this.load.spritesheet('persecutor', 'assets/personajes/Anciana.png', { frameWidth: 32, frameHeight: 48 });
-		this.load.spritesheet('lanzador', 'assets/personajes/Estudiante 2.png', { frameWidth: 32, frameHeight: 48 });
-		this.load.image('cuchillo', 'assets/survival kit/Sprite-0004.png');
-		this.load.spritesheet('topo', 'assets/personajes/Dig.png', { frameWidth: 34, frameHeight: 31 });
-		this.load.spritesheet('woodBox', 'assets/objects/cajaMadera.png', { frameWidth: 64, frameHeight: 64 })
-		this.load.spritesheet('cartBoard', 'assets/objects/cajaCarton.png', { frameWidth: 64, frameHeight: 64 });
-
-		//otros
-		this.load.spritesheet('dialogBox', 'assets/HUD/textBox.png', { frameWidth: 600, frameHeight: 300 });
-        //tile map
-        this.load.image("tiles","assets/Mapa/mapa2.png");
-        this.load.tilemapTiledJSON('map',"mapas/LEVEL_01.json");
-      
-
-	}
-
 	/**
 	* Creación de los elementos de la escena principal de juego
 	*/
@@ -70,14 +50,12 @@ export default class LEVEL_01 extends Phaser.Scene {
 		gato.body.onCollide = true;
 
 		//CAJAS
-		let cartBoardBoxes = this.physics.add.group();
-		let woodBoxes = this.physics.add.group();
+		this.cartBoardBoxes = this.physics.add.group();
+		this.woodBoxes = this.physics.add.group();
 
         //CREACION DE ENEMIGOS
 		let enemyManager = new EnemyManager(this);
 		this.enemies = this.physics.add.group();
-
-       
 
         //crea objetos de mapa
         var cartBoardContainer=this.add.container(this);
@@ -93,10 +71,10 @@ export default class LEVEL_01 extends Phaser.Scene {
 		]);
         //cajas
 		for(let i=0;i<cartBoardContainer.list.length;i++){
-			cartBoardContainer.list[i]=new CardBoard(this,cartBoardContainer.list[i].x,cartBoardContainer.list[i].y,cartBoardBoxes);
+			cartBoardContainer.list[i]=new CardBoard(this,cartBoardContainer.list[i].x,cartBoardContainer.list[i].y,this.cartBoardBoxes);
 		}
 		for(let i=0;i<woodBoxesContainer.list.length;i++){
-			woodBoxesContainer.list[i]=new WoodBox(this,woodBoxesContainer.list[i].x,woodBoxesContainer.list[i].y,woodBoxes);
+			woodBoxesContainer.list[i]=new WoodBox(this,woodBoxesContainer.list[i].x,woodBoxesContainer.list[i].y,this.woodBoxes);
 		}
         //enemigos
         for(let i=0;i<EmenyPersecutorContainer.list.length;i++){
@@ -113,26 +91,27 @@ export default class LEVEL_01 extends Phaser.Scene {
 
         //colisión con tile map
         this.physics.add.collider(this.player,colisionlayer);
-		this.physics.add.collider(cartBoardBoxes,colisionlayer);
-		this.physics.add.collider(cartBoardBoxes, cartBoardBoxes);
+		this.physics.add.collider(this.cartBoardBoxes,colisionlayer);
+		this.physics.add.collider(this.cartBoardBoxes, colisionlayer);
 		this.physics.add.collider(gato,colisionlayer);
 		this.physics.add.collider(this.enemies,colisionlayer);
 
 
 		//colisión player-cajas,cajas-cajas
-		this.physics.add.collider(woodBoxes, cartBoardBoxes);
-		this.physics.add.collider(this.player, cartBoardBoxes);
-		this.physics.add.collider(this.player, woodBoxes);
+		this.physics.add.collider(this.woodBoxes, this.cartBoardBoxes);
+		this.physics.add.collider(this.woodBoxes, this.cartBoardBoxes);
+		this.physics.add.collider(this.player, this.cartBoardBoxes);
+		this.physics.add.collider(this.player, this.woodBoxes);
 		//enemigos caja
-		this.physics.add.collider(this.enemies, cartBoardBoxes);
-		this.physics.add.collider(this.enemies, woodBoxes);
+		this.physics.add.collider(this.enemies, this.cartBoardBoxes);
+		this.physics.add.collider(this.enemies, this.woodBoxes);
 
 		
-		this.physics.add.collider(this.enemies, this.enemies);
+		//this.physics.add.collider(this.enemies, this.enemies);
 
 
 		//Prueba, en la escena, hay q hacerlo en arma (hacha)
-		this.physics.add.collider(gato, woodBoxes);
+		this.physics.add.collider(gato, this.woodBoxes);
 
 		//DIALOG
 		//EJEMPLO1:al interactuar con un objeto
@@ -148,12 +127,16 @@ export default class LEVEL_01 extends Phaser.Scene {
 		let trigger1 = new Trigger(this, 300, 200, 30, 600);
 		this.physics.add.overlap(this.player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
 
+		
+		//obtener una nueva arma
+		let nuevaBotella = this.botella = new gameObject(this,7200, 400,200,200,100,0, 'botella',0).setScale(0.2);
+		this.physics.add.overlap(this.player, nuevaBotella,()=>{this.player.HasNewWeapon('botella');nuevaBotella.destroy();});
 		// Grupo de paredes (estático)
 		
 		this.physics.add.collider(this.player, gato);
 
 		//Colisión enemigo
-		this.physics.add.collider(this.player, this.enemies, ()=>this.player.decreaseHP(), null);
+		this.physics.add.overlap(this.player, this.enemies, ()=>this.player.decreaseHP(), null);
 		
 
 		//camara que sigue a jugador (movimiento suave)

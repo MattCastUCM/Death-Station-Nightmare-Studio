@@ -64,13 +64,6 @@ export default class Player extends gameObject {
             a: Phaser.Input.Keyboard.KeyCodes.A,
             s: Phaser.Input.Keyboard.KeyCodes.S,
             d: Phaser.Input.Keyboard.KeyCodes.D,
-            //ataque
-            // //space: Phaser.Input.Keyboard.KeyCodes.SPACE,
-            // one: Phaser.Input.Keyboard.KeyCodes.ONE,
-            // two: Phaser.Input.Keyboard.KeyCodes.TWO,
-            // three: Phaser.Input.Keyboard.KeyCodes.THREE,
-            // four: Phaser.Input.Keyboard.KeyCodes.FOUR
-
         });
 
 
@@ -84,6 +77,11 @@ export default class Player extends gameObject {
         this.vision.scale = 4;
     }
 
+    //llamado por hud cuando se pausa la escena
+    stop() {
+        this.move(0, 0);
+        this.anims.isPlaying = false;
+    }
     /*informa al hud y a weaponManager de que tiene nueva arma*/
     HasNewWeapon(weapon) {
         this.scene.hud.addInventory(weapon);
@@ -103,15 +101,15 @@ export default class Player extends gameObject {
         return this.hp;
     }
 
-    HasCollided() {
-        return this.hasCollided;
-    }
-
     // Método que disminuye la vida e indica que ha colisionado
     decreaseHP() {
-        this.hp -= 10;
-        this.hasCollided = true;
+        if (!this.hasCollided) {
+            this.hp -= 10;
+            this.hasCollided = true;
+            this.scene.DecreaseLife(this);
+        }
     }
+
 
     // Bucle principal. Actualiza su posición y ejecuta las acciones según el input
     preUpdate(t, dt) {
@@ -164,6 +162,7 @@ export default class Player extends gameObject {
 
             // Mueve el objeto
             this.move(-1, 0)
+
         }
 
         // Si se pulsa hacia la derecha
@@ -179,7 +178,10 @@ export default class Player extends gameObject {
 
             // Mueve el objeto
             this.move(1, 0)
+
+            this.keyDown = true;
         }
+
 
         // Si se deja de pulsar, para la animación
         if (Phaser.Input.Keyboard.JustUp(this.input.a) ||
@@ -188,25 +190,8 @@ export default class Player extends gameObject {
             Phaser.Input.Keyboard.JustUp(this.input.s)) {
             this.move(0, 0)
             this.anims.isPlaying = false;
+            this.keyDown = false;
         }
-
-        // // Si se pulsa la tecla "1", se cambia a la navaja (si se tiene)
-        // if (Phaser.Input.Keyboard.JustDown(this.input.one)) {
-        //     //this.selected = "navaja";
-        // }
-        // // Si se pulsa la tecla "2", se cambia a la botella (si se tiene)
-        // if (Phaser.Input.Keyboard.JustDown(this.input.two)) {
-        //     // this.selected = "botella";
-        // }
-        // // Si se pulsa la tecla "3", se cambia a la barra (si se tiene)
-        // if (Phaser.Input.Keyboard.JustDown(this.input.three)) {
-        //     //this.selected = "barra";
-        // }
-        // // Si se pulsa la tecla "4", se cambia al hacha (si se tiene)
-        // if (Phaser.Input.Keyboard.JustDown(this.input.four)) {
-        //     //this.selected = "hacha";
-        // }
-
         // Si ha colisionado,
         if (this.hasCollided) {
 
@@ -221,7 +206,6 @@ export default class Player extends gameObject {
                 this.elapsedTime = 0;
             }
         }
-
         // La máscara de iluminación se mueve con el personaje
         this.vision.x = this.x;
         this.vision.y = this.y;

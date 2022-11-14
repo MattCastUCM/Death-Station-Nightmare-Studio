@@ -6,22 +6,39 @@ export default class Bullet  extends Phaser.GameObjects.Sprite {
         this.lifetime = 0;
 
         // Referencia al objeto
-        self = this;
+        let self = this;
 
         // Se aade a sí misma a la escena
         scene.add.existing(this); 
         scene.physics.add.existing(this);
-
+      
+        this.body.onCollide = true; 
         // Cambia su velocidad
         this.body.setVelocityX(vectorX);
         this.body.setVelocityY(vectorY);
-        this.body.velocity.normalize().scale(500);
+        this.body.velocity.normalize().scale(150);
 
         // Añade un triggr. Si choca con el jugador, le baja la vida y se destruye
+
         this.scene.physics.add.overlap(this, target, function(self){ 
+            target.decreaseHP()
             scene.DecreaseLife(target);
             self.destroy();
         });
+        
+        this.scene.physics.add.overlap(this, scene.cartBoardBoxes, function(self){ 
+           
+
+            self.destroy();
+        });
+        this.scene.physics.add.overlap(this, scene.woodBoxes, function(self){ 
+            self.destroy();
+        });
+        this.scene.physics.add.overlap(this, scene.colisionlayer, function(self){ 
+            self.destroy();
+        });
+
+		
 
     }
     preUpdate(t, dt){

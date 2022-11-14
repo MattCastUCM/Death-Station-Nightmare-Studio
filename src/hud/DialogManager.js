@@ -7,10 +7,6 @@ export default class DialogManager extends Phaser.Scene{
         super({ key: 'dialogManager' });
     }
 
-    preload() {
-        this.load.script('WebFont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
-        this.load.image('dialogBox', 'assets/HUD/textBox.png');
-    }
     create() {
        
         this.dialogBox = this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2+180, 'dialogBox').setOrigin(0.5, 0.5);
