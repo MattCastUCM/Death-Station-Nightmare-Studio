@@ -1,5 +1,5 @@
 import Enemy from './Enemy.js';
-export default class Persecutor extends Enemy {
+export default class Topo extends Enemy {
 	
 	constructor(scene, x, y, target) {
 		super(scene, x, y, 20, 20, 8, 10, 'topo', 40, target, 10);
@@ -8,25 +8,25 @@ export default class Persecutor extends Enemy {
 		//Creamos las animaciones
 		this.scene.anims.create({
 			key: 'idleTopo',
-			frames: scene.anims.generateFrameNumbers('topo', {start:0, end:3}),
+			frames: scene.anims.generateFrameNumbers('topo', {start:6, end:9}),
 			frameRate: 7,
 			repeat: 2
 		});
 		this.scene.anims.create({
 			key: 'upTopo',
-			frames: scene.anims.generateFrameNumbers('topo', {start:11, end:5}),
+			frames: scene.anims.generateFrameNumbers('topo', {start:1, end:5}),
 			frameRate: 7,
 			repeat: 0
 		});
 		this.scene.anims.create({
 			key: 'downTopo',
-			frames: scene.anims.generateFrameNumbers('topo', {start:5, end:11}),
+			frames: scene.anims.generateFrameNumbers('topo', {start:5, end:0}),
 			frameRate: 7,
 			repeat: 0
 		});
 		this.scene.anims.create({
 			key: 'nothing',
-			frames: scene.anims.generateFrameNumbers('topo', {start:11, end:11}),
+			frames: scene.anims.generateFrameNumbers('topo', {start:0, end:0}),
 			frameRate: 7,
 			repeat: -1
 		});
@@ -46,10 +46,11 @@ export default class Persecutor extends Enemy {
 			this.play("upTopo").anims.chain("idleTopo").anims.chain("downTopo");
 		
 		// Si está apareciendo o desapareciendo, se desactiva su trigger
-		//if(this.anims.currentAnim.key === "upTopo" ||this.anims.currentAnim.key === "downTopo" )
-		
+		if(this.anims.currentAnim.key === "upTopo" ||this.anims.currentAnim.key === "downTopo" )
+			this.body.enable = false;
 		// Si ha aparecido, se activa su trigger
-		//else if (this.anims.currentAnim.key === "idleTopo")
+		else if (this.anims.currentAnim.key === "idleTopo")
+			this.body.enable = true;
 
 		// Cuando acaba la animación down, cambia de posición,
 		// vuelve a reproducir nothing, y se reinicia el contador
