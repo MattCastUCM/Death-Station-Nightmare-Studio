@@ -1,1 +1,1 @@
-![diagrama UML](https://raw.githubusercontent.com/MattCastUCM/Death-Station-Nightmare-Studio/main/assets/Repositorio/UML.png)
+![diagrama UML](https://raw.githubusercontent.com/MattCastUCM/Death-Station-Nightmare-Studio/main/Documents/UML.png)

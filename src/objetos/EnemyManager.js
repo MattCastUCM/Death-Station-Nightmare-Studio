@@ -1,6 +1,6 @@
-import Lanzador from '/src/objetos/Lanzador.js';
-import Persecutor from '/src/objetos/Persecutor.js';
-import Topo from '/src/objetos/Topo.js';
+import Lanzador from './Lanzador.js';
+import Persecutor from './Persecutor.js';
+import Topo from './Topo.js';
 
 export default class EnemyManager {
 	/**

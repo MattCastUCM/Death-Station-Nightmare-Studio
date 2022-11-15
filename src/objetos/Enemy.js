@@ -8,6 +8,12 @@ export default class Enemy extends gameObject {
         this.hasCollided = false;
         this.body.setImmovable(true); //para que no se mueva 
     }
+
+    // Sigue al jugador moviéndose hacia su posición
+	Follow () {
+        this.scene.physics.moveToObject(this, this.target, this.speed);
+    }
+
 	damage(damagePoints){
         console.log("intento daño");
         if(!this.hasCollided){
