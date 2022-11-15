@@ -4,7 +4,7 @@ export default class Enemy extends gameObject {
         super(scene, posX, posY, w, h, offsetX, offsetY, texture, spd);
         this.target = target;
         this.life = life;
-        this.elapsedTime = 0;
+        this.collidedTime = 0;
         this.hasCollided = false;
         this.body.setImmovable(true); //para que no se mueva 
     }
@@ -33,13 +33,13 @@ export default class Enemy extends gameObject {
         if(this.hasCollided){
 
             // Aumenta el tiempo que ha pasado desde la colisión
-            this.elapsedTime += dt;
+            this.collidedTime += dt;
 
             // Si ha pasado un cierto tiempo, se indica que ha
             // dejado de colisionar y se popne el temporizador a 0
-            if(this.elapsedTime >= 500){
+            if(this.collidedTime >= 500){
                 this.hasCollided = false;
-                this.elapsedTime = 0;
+                this.collidedTime = 0;
             }
         }
         
