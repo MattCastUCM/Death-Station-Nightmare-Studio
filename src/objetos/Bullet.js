@@ -1,24 +1,53 @@
-import gameObject from './gameObject.js';
-export default class Bullet  extends gameObject{
-    /**
-	 * Constructor de Knight, nuestro caballero medieval con espada y escudo
-	 * @param {Scene} scene - escena en la que aparece
-	 * @param {number} x - coordenada x
-	 * @param {number} y - coordenada y
-	 */
-
-	 constructor(scene, x, y, vectorX, vectorY) {
+export default class Bullet  extends Phaser.GameObjects.Sprite {
+    
+	 constructor(scene, x, y, vectorX, vectorY, target) {
         super(scene, x, y,'cuchillo');
-        this.vectorX = vectorX;
-        this.vectorY = vectorY;
+        
+        this.lifetime = 0;
+
+        // Referencia al objeto
+        let self = this;
+
+        // Se aade a sí misma a la escena
         scene.add.existing(this); 
         scene.physics.add.existing(this);
+      
+        this.body.onCollide = true; 
+        // Cambia su velocidad
+        this.body.setVelocityX(vectorX);
+        this.body.setVelocityY(vectorY);
+        this.body.velocity.normalize().scale(150);
+
+        // Añade un triggr. Si choca con el jugador, le baja la vida y se destruye
+
+        this.scene.physics.add.overlap(this, target, function(self){ 
+            target.decreaseHP()
+            scene.DecreaseLife(target);
+            self.destroy();
+        });
+        
+        this.scene.physics.add.overlap(this, scene.cartBoardBoxes, function(self){ 
+           
+
+            self.destroy();
+        });
+        this.scene.physics.add.overlap(this, scene.woodBoxes, function(self){ 
+            self.destroy();
+        });
+        this.scene.physics.add.overlap(this, scene.colisionlayer, function(self){ 
+            self.destroy();
+        });
+
+		
+
     }
-    
     preUpdate(t, dt){
         super.preUpdate(t, dt);
-        this.body.setVelocityX(this.vectorX);
-        this.body.setVelocityY(this.vectorY);
-        this.body.velocity.normalize().scale(500);
+
+        // Si el tiempo de vida pasa de los 5 segundos, se destruye
+        if(this.lifetime > 5000) this.destroy();
+
+        // Actualiza el tiempo de vida
+        this.lifetime += dt;
     }
 }
