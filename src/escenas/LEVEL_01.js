@@ -38,7 +38,11 @@ export default class LEVEL_01 extends Phaser.Scene {
 		//HUD (y Pausa)
 		this.scene.launch('hud', { me: this });
 		this.hud = this.scene.get('hud');
-		//
+
+		// Grupos
+		this.enemies = this.physics.add.group();
+		this.cartBoardBoxes = this.physics.add.group();
+		this.woodBoxes = this.physics.add.group();
 
 		// Jugador
 		this.player = new Player(this, 7000, this.cameras.main.centerY, 15, 15, 8, 30, 140);
@@ -49,13 +53,8 @@ export default class LEVEL_01 extends Phaser.Scene {
 		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
 		gato.body.onCollide = true;
 
-		//CAJAS
-		this.cartBoardBoxes = this.physics.add.group();
-		this.woodBoxes = this.physics.add.group();
-
         //CREACION DE ENEMIGOS
 		let enemyManager = new EnemyManager(this);
-		this.enemies = this.physics.add.group();
 
         //crea objetos de mapa
         var cartBoardContainer=this.add.container(this);

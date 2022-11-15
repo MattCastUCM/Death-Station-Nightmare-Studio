@@ -15,7 +15,7 @@ export default class Enemy extends gameObject {
     }
 
 	damage(damagePoints){
-        console.log("intento daño");
+        //console.log(this);
         if(!this.hasCollided){
             console.log("daño");
             this.life -= damagePoints;
@@ -28,8 +28,8 @@ export default class Enemy extends gameObject {
         this.destroy();
     }
 	
-    preupdate(t,dt){
-        super.preupdate(t,dt);
+    preUpdate(t,dt){
+        super.preUpdate(t,dt);
         if(this.hasCollided){
 
             // Aumenta el tiempo que ha pasado desde la colisión
