@@ -49,7 +49,7 @@ class ColliderAtq extends gameObject {
     constructor(player, reach) {
         super(player.scene, player.x, player.y, 1, 1, 0, 0, "", player.speed);
 
-        this.visible = true;
+        this.visible = false;
         this._player = player;
         this.reach = reach;
 
@@ -57,16 +57,18 @@ class ColliderAtq extends gameObject {
         this.offset = {}
         this.offset.up = {}
         this.offset.up.x = 13;
-        this.offset.up.y = 5;
+        this.offset.up.y = 31;
         this.offset.right = {}
-        this.offset.right.x = 39;
-        this.offset.right.y = 31;
+        this.offset.right.x = 34;
+        this.offset.right.y = 48;
         this.offset.down = {};
         this.offset.down.x = 13;
-        this.offset.down.y = 56;
+        this.offset.down.y = 68;
         this.offset.left = {};
-        this.offset.left.x = -11;
-        this.offset.left.y = 31;
+        this.offset.left.x = -4;
+        this.offset.left.y = 48;
+
+        console.log(this);
     }
 
     preUpdate(t, dt) {
@@ -112,9 +114,13 @@ export default class WeaponManager extends gameObject {
         // Se genera un nuevo objeto para detectar colisión entre arma y enemigo
         this.collider = new ColliderAtq(player, 1);
         let me = this;
-        this.collisionDetector = player.scene.physics.add.collider(this.collider, player.scene.enemies,
+        this.collisionDetector = {}
+        this.collisionDetector.enemies = player.scene.physics.add.collider(this.collider, player.scene.enemies,
             function (obj1, obj2) { me.collision(me, obj1, obj2); }, null);
-        this.collisionDetector.overlapOnly = true;
+        this.collisionDetector.enemies.overlapOnly = true;
+        this.collisionDetector.boxes = player.scene.physics.add.collider(this.collider, player.scene.woodBoxes,
+            function (obj1, obj2) { me.breakBox(me, obj2); }, null);
+        this.collisionDetector.boxes.overlapOnly = true;
 
         // Se genera un objeto para mantener las propiedades de ataque
         this._attack = {};
@@ -184,12 +190,18 @@ export default class WeaponManager extends gameObject {
     }
 
     collision(self, obj1, obj2) {
-        console.log("colisión con : "+ obj2);
+        //console.log("colisión con : ", obj2);
         if (self._attack.isAttacking) {
             // Si no existe la propiedad "damage", se ejecuta la segunda función
             //(obj2.damage || function() { console.log(obj2, "No tiene método damage"); })();
             // Si la propiedad "damage" no es una función, se ejecuta la segunda función
-            (typeof obj2.damage === "function" ? obj2.damage : function () { console.log(obj2, "No tiene método damage"); })(self._attack.damage);
+            (typeof obj2.damage === "function" ? obj2.damage : function () { console.log(obj2, "No tiene método damage"); }).bind(obj2)(self._attack.damage);
+        }
+    }
+
+    breakBox(self, box) {
+        if(self._attack.isAttacking && self.selected === "hacha") {
+            (typeof box.destroyMe === "function" ? box.destroyMe : function() { console.log(box, "No tiene método de destruir"); }).bind(box)();
         }
     }
 
