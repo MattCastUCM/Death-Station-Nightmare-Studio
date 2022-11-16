@@ -9,7 +9,6 @@ export default class HUD extends Phaser.Scene {
     }
     init(level) { //escena de nivel
         this.level = level.me;
-        console.log(this.level);
     }
 
     create() {
@@ -82,7 +81,7 @@ export default class HUD extends Phaser.Scene {
     }
     //llamado por player para indicarle a que arma se ha cambiado
     changeObject(weapon) {
-        //console.log(weapon);
+        console.log(weapon);
         this.selectedFrame.x = this[weapon].x;
         this.selectedFrame.y = this[weapon].y;
     }
