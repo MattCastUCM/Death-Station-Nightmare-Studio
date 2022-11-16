@@ -17,8 +17,7 @@ Gran parte de los assets son creaciones originales de Nightmare Studio, en espec
 * [RPG Maker VX Ace resource library](https://www.rpgmakervx-fr.com/t20706-bibliotheque-des-ressources-vx-ace-tilesets)
 * [RPG Maker subway material](http://chocobana.my.coocan.jp/data/data/material/map.html) por 抹茶ちゃもも / Matchachamomo
 * [Characters and weapons](https://www.aigei.com/) por Aigei Network Technology Center
-* [Monster and other fine resources](https://forums.rpgmakerweb.com/index.php?threads/deebs-zelda-monster-and-other-fine-resources.27422/) por Deeb
 * [Combat knife](http://pixelartmaker.com/art/f75afb5cc588ba1) por 60acc8
 * [Survival Kit](https://www.artstation.com/marketplace/p/7OqKd/survival-kit) por Talha Gübahar
 * [Pixel bottles](https://pngtree.com/freepng/pixel-bottles_8363664.html) por evasata
-* Enemigos: [Persecutor](https://opengameart.org/content/lpc-zombie), [Topo](https://foozlecc.itch.io/lucifer-necromancer), [Lanzador](https://foozlecc.itch.io/lucifer-goblin-slinger-enemy),[Gato](https://www.aigei.com/s?type=game)
+* Enemigos: [Persecutor](https://opengameart.org/content/lpc-zombie) porBenCreating, [Topo](https://foozlecc.itch.io/lucifer-necromancer) y [Lanzador](https://foozlecc.itch.io/lucifer-goblin-slinger-enemy) por FoozleCC, [Gato](https://forums.rpgmakerweb.com/index.php?threads/deebs-zelda-monster-and-other-fine-resources.27422/) por Deeb

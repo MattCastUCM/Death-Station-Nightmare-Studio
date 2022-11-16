@@ -48,7 +48,7 @@ export default class Boot extends Phaser.Scene {
 	
 		//enemies
 		this.load.spritesheet('cat', 'assets/personajes/Gato.png', { frameWidth: 34, frameHeight: 34 });
-		this.load.spritesheet('persecutor', 'assets/personajes/Anciana.png', { frameWidth: 32, frameHeight: 48 });
+		this.load.spritesheet('persecutor', 'assets/enemigos/Persecutor.png', { frameWidth: 64, frameHeight: 64 });
 		this.load.spritesheet('lanzador', 'assets/personajes/Estudiante 2.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('topo', 'assets/personajes/Dig.png', { frameWidth: 34, frameHeight: 31 });
 		
