@@ -30,8 +30,8 @@ export default class Enemy extends gameObject {
 	
     preUpdate(t,dt){
         super.preUpdate(t,dt);
-        if(this.hasCollided){
 
+        if(this.hasCollided){
             // Aumenta el tiempo que ha pasado desde la colisión
             this.collidedTime += dt;
 

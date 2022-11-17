@@ -19,4 +19,8 @@ export default class WoodBox extends gameObject {
 		this.setActive(false).setVisible(false);
 		this.destroy();
 	}
+
+	preUpdate(t,dt){
+		super.preUpdate(t,dt);
+	}
 }

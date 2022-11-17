@@ -77,4 +77,9 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
     setFriction(fr){
         this.fr=fr;
     }
+
+    preUpdate(t, dt) {
+        super.preUpdate(t,dt);
+        this.depth = this.y;
+        }
 };
