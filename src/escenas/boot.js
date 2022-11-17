@@ -47,13 +47,13 @@ export default class Boot extends Phaser.Scene {
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
 	
 		//enemies
-		this.load.spritesheet('cat', 'assets/personajes/Gato.png', { frameWidth: 34, frameHeight: 34 });
+		this.load.spritesheet('cat', 'assets/enemigos/Gato.png', { frameWidth: 34, frameHeight: 34 });
 		this.load.spritesheet('persecutor', 'assets/enemigos/Persecutor.png', { frameWidth: 64, frameHeight: 64 });
-		this.load.spritesheet('lanzador', 'assets/personajes/Estudiante 2.png', { frameWidth: 32, frameHeight: 48 });
-		this.load.spritesheet('topo', 'assets/personajes/Dig.png', { frameWidth: 34, frameHeight: 31 });
+		this.load.spritesheet('lanzador', 'assets/enemigos/Lanzador.png', { frameWidth: 48, frameHeight: 48 });
+		this.load.spritesheet('topo', 'assets/enemigos/Topo.png', { frameWidth: 36, frameHeight: 32 });
 		
 		//bullet
-		this.load.image('cuchillo', 'assets/survival kit/Sprite-0004.png');
+		this.load.image('roca', 'assets/enemigos/Roca.png');
 		
 		//objetos
 		this.load.spritesheet('woodBox', 'assets/objects/cajaMadera.png', { frameWidth: 64, frameHeight: 64 })

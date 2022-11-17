@@ -82,7 +82,7 @@ export default class LEVEL_01 extends Phaser.Scene {
 		}
 		for(let i=0;i<EmenyLanzadorContainer.list.length;i++){
 			EmenyLanzadorContainer.list[i]=enemyManager.CreateEnemy(EmenyLanzadorContainer.list[i].x, EmenyLanzadorContainer.list[i].y,'lanzador', this.player);
-			EmenyLanzadorContainer.list[i].setScale(2);
+			EmenyLanzadorContainer.list[i].setScale(3);
 		}
 
 

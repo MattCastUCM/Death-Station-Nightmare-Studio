@@ -8,7 +8,7 @@ export default class Topo extends Enemy {
 		//Creamos las animaciones
 		this.scene.anims.create({
 			key: 'idleTopo',
-			frames: scene.anims.generateFrameNumbers('topo', {start:6, end:9}),
+			frames: scene.anims.generateFrameNumbers('topo', {start:6, end:10}),
 			frameRate: 7,
 			repeat: 2
 		});
@@ -46,7 +46,7 @@ export default class Topo extends Enemy {
 			this.play("upTopo").anims.chain("idleTopo").anims.chain("downTopo");
 		
 		// Si está apareciendo o desapareciendo, se desactiva su trigger
-		if(this.anims.currentAnim.key === "upTopo" ||this.anims.currentAnim.key === "downTopo" )
+		if(this.anims.currentAnim.key === "nothing" || this.anims.currentAnim.key === "upTopo" ||this.anims.currentAnim.key === "downTopo" )
 			this.body.enable = false;
 		// Si ha aparecido, se activa su trigger
 		else if (this.anims.currentAnim.key === "idleTopo")

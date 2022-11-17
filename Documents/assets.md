@@ -20,4 +20,5 @@ Gran parte de los assets son creaciones originales de Nightmare Studio, en espec
 * [Combat knife](http://pixelartmaker.com/art/f75afb5cc588ba1) por 60acc8
 * [Survival Kit](https://www.artstation.com/marketplace/p/7OqKd/survival-kit) por Talha Gübahar
 * [Pixel bottles](https://pngtree.com/freepng/pixel-bottles_8363664.html) por evasata
-* Enemigos: [Persecutor](https://opengameart.org/content/lpc-zombie) porBenCreating, [Topo](https://foozlecc.itch.io/lucifer-necromancer) y [Lanzador](https://foozlecc.itch.io/lucifer-goblin-slinger-enemy) por FoozleCC, [Gato](https://forums.rpgmakerweb.com/index.php?threads/deebs-zelda-monster-and-other-fine-resources.27422/) por Deeb
+* [Rock](https://www.pixilart.com/art/rocky-rock-sprite-a14922dff36fa6e) por NotAVoomp
+* Enemigos: [Persecutor](https://opengameart.org/content/lpc-zombie) porBenCreating, [Topo](https://foozlecc.itch.io/lucifer-goblin-beast-boss) y [Lanzador](https://foozlecc.itch.io/lucifer-goblin-slinger-enemy) por FoozleCC, [Gato](https://forums.rpgmakerweb.com/index.php?threads/deebs-zelda-monster-and-other-fine-resources.27422/) por Deeb

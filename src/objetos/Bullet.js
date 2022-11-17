@@ -1,7 +1,7 @@
 export default class Bullet  extends Phaser.GameObjects.Sprite {
     
 	 constructor(scene, x, y, vectorX, vectorY, target) {
-        super(scene, x, y,'cuchillo');
+        super(scene, x, y,'roca');
         
         this.lifetime = 0;
 
