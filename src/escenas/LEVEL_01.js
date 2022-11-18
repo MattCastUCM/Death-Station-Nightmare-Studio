@@ -23,7 +23,7 @@ export default class LEVEL_01 extends Phaser.Scene {
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
 
         //TILE MAP
-        const map = this.make.tilemap({ key: "map"});
+        const map = this.make.tilemap({ key: "level1"});
         const tiles = map.addTilesetImage("mapa","tiles");
         var fondolayer = map.createLayer('fondo', tiles, 0, 0);
         var colisionlayer=map.createLayer('colision',tiles,0,0);
@@ -48,6 +48,16 @@ export default class LEVEL_01 extends Phaser.Scene {
 		this.player = new Player(this, 7000, this.cameras.main.centerY, 15, 15, 8, 30, 140);
 		this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
 		this.player.setScale(2.5);
+
+		 this.nextlevel=new Phaser.GameObjects.Sprite(this,7200,300,'selected');
+		this.add.existing(this.nextlevel);
+		this.physics.add.existing(this.nextlevel);
+
+		// this.physics.add.overlap(this.player,this.nextlevel,function(){
+		// 	console.log(this);
+			
+		// },this);
+		
 
 		// Gato
 		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
@@ -77,13 +87,15 @@ export default class LEVEL_01 extends Phaser.Scene {
 		}
         //enemigos
         for(let i=0;i<EmenyPersecutorContainer.list.length;i++){
-			EmenyPersecutorContainer.list[i]=enemyManager.CreateEnemy(EmenyPersecutorContainer.list[i].x, EmenyPersecutorContainer.list[i].y,'persecutor', this.player);
-			EmenyPersecutorContainer.list[i].setScale(2);
+			enemyManager.CreateEnemy(EmenyPersecutorContainer.list[i].x, EmenyPersecutorContainer.list[i].y,'persecutor', this.player);
+			//EmenyPersecutorContainer.list[i].setScale(2);
 		}
 		for(let i=0;i<EmenyLanzadorContainer.list.length;i++){
-			EmenyLanzadorContainer.list[i]=enemyManager.CreateEnemy(EmenyLanzadorContainer.list[i].x, EmenyLanzadorContainer.list[i].y,'lanzador', this.player);
-			EmenyLanzadorContainer.list[i].setScale(3);
+			enemyManager.CreateEnemy(EmenyLanzadorContainer.list[i].x, EmenyLanzadorContainer.list[i].y,'lanzador', this.player);
+			//EmenyLanzadorContainer.list[i].setScale(3);
 		}
+
+
 
 
 
@@ -142,6 +154,12 @@ export default class LEVEL_01 extends Phaser.Scene {
 		this.cameras.main.startFollow(this.player, this.cameras.FOLLOW_LOCKON, 0.1, 0.1);
 		//espacio de camara (si jugador sale de este espacio,la camara le sigue)
 		this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
+
+		
+	}
+
+	Next(){
+		this.scene.start('level_aux');
 	}
 
 	/*Mandarle a dialogManager el texto que tiene que printear*/
@@ -163,9 +181,12 @@ export default class LEVEL_01 extends Phaser.Scene {
 	resumeDialog() {
 		this.dialogManager.scene.resume();
 	}
-
+	
 
 	update(t, dt) {
-
+		
+		//this.scene.start('menu'); 
+		
 	}
+
 }

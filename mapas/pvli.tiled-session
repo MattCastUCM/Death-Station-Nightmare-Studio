@@ -34,8 +34,8 @@
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 5342.424242424242,
-                "y": 321.21212121212113
+                "x": 5343.939393939394,
+                "y": -93.939393939394
             }
         },
         "level01.json#dec": {
@@ -55,8 +55,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 5344,
-                "y": 320
+                "x": 5338,
+                "y": 53
             }
         },
         "level01.tmx#dec": {
@@ -87,7 +87,7 @@
             "scale": 0.25,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 992,
+                "x": 990,
                 "y": 576
             }
         },
@@ -107,8 +107,8 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 800,
-                "y": 288
+                "x": 799.5,
+                "y": 288.5
             }
         },
         "sin nombre.json#coin": {
