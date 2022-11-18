@@ -28,7 +28,7 @@ export default class Boot extends Phaser.Scene {
 			'src/hud/healthBar.js',
 			'src/hud/TextMessage.js',
 			'src/hud/hudManager.js',
-			'src/objetos/Bullet',
+			'src/objetos/Bullet.js',
 			'src/objetos/gameObject.js',
 			'src/objetos/Enemy.js',
 			'src/objetos/Lanzador.js',
@@ -59,13 +59,13 @@ export default class Boot extends Phaser.Scene {
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
 	
 		//enemies
-		this.load.spritesheet('cat', 'assets/enemigos/Gato.png', { frameWidth: 34, frameHeight: 34 });
-		this.load.spritesheet('persecutor', 'assets/enemigos/Persecutor.png', { frameWidth: 64, frameHeight: 64 });
-		this.load.spritesheet('lanzador', 'assets/enemigos/Lanzador.png', { frameWidth: 48, frameHeight: 48 });
-		this.load.spritesheet('topo', 'assets/enemigos/Topo.png', { frameWidth: 36, frameHeight: 32 });
+		this.load.spritesheet('cat', 'assets/enemies/cat.png', { frameWidth: 34, frameHeight: 34 });
+		this.load.spritesheet('persecutor', 'assets/enemies/persecutr.png', { frameWidth: 64, frameHeight: 64 });
+		this.load.spritesheet('lanzador', 'assets/enemies/shooter.png', { frameWidth: 48, frameHeight: 48 });
+		this.load.spritesheet('topo', 'assets/enemies/mole.png', { frameWidth: 36, frameHeight: 32 });
 		
 		//bullet
-		this.load.image('roca', 'assets/enemigos/Roca.png');
+		this.load.image('roca', 'assets/enemies/rock.png');
 		
 		//objetos
 		this.load.spritesheet('woodBox', 'assets/objects/cajaMadera.png', { frameWidth: 64, frameHeight: 64 })

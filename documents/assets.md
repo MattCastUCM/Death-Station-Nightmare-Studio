@@ -12,6 +12,7 @@ Al ser un juego de  terror también se utilizan assets como efectos de sangre, m
 
 Gran parte de los assets son creaciones originales de Nightmare Studio, en especial de Nanxi Qin y Claudia Zarzuela. Por otro lado, hemos obtenido el resto de assets de las siguientes fuentes: 
 
+*[Pixel keys](https://egordorichev.itch.io/key-set) por Egor Dorichev
 * [Blood effects](https://xyezawr.itch.io/gif-free-pixel-effects-pack-5-blood-effects) y [Mini blood splash](https://xyezawr.itch.io/free-pixel-effects-pack-11-mini-blood-splats) por XYEzawr
 * [Vehicles](http://nanikasiratkool.web.fc2.com/automobile/mobile01.html) por nanikasiratkool
 * [RPG Maker VX Ace resource library](https://www.rpgmakervx-fr.com/t20706-bibliotheque-des-ressources-vx-ace-tilesets)
