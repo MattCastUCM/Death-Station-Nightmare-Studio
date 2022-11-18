@@ -12,6 +12,18 @@ export default class Boot extends Phaser.Scene {
 	}
 
 	preload() {
+		let progressBar = this.add.graphics();
+		let progressBox = this.add.graphics();
+		progressBox.fillStyle(0x222222, 0.8);
+		progressBox.fillRect(340, 230, 320, 50);
+	
+		this.load.on('progress', function (value) {
+		  percentText.setText(parseInt(value * 100) + '%');
+		  progressBar.clear();
+		  progressBar.fillStyle(0xffffff, 1);
+		  progressBar.fillRect(350, 240, 300 * value, 30);
+		});
+
 		this.load.scripts('PostProcess', [
 			'src/hud/healthBar.js',
 			'src/hud/TextMessage.js',
@@ -67,10 +79,45 @@ export default class Boot extends Phaser.Scene {
 		this.load.spritesheet('botella', 'assets/Armas/Botella.png', { frameWidth: 140, frameHeight: 380 });
 		this.load.spritesheet('barra', 'assets/Armas/Barra.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('hacha', 'assets/Armas/Hacha.png', { frameWidth: 100, frameHeight: 220 });
-	}
-
-
-	create() {
+	
+		this.load.on('complete', function () {
+		  progressBar.destroy();
+		  progressBox.destroy();
+		  loadingText.destroy();
+		  percentText.destroy();
+		});
+	
+		let width = this.cameras.main.width;
+		let height = this.cameras.main.height;
+		let loadingText = this.make.text({
+		  x: width / 2,
+		  y: height / 2 - 50,
+		  text: 'Loading...',
+		  style: {
+			font: '20px monospace',
+			fill: '#ffffff'
+		  }
+		});
+		loadingText.setOrigin(0.5, 0.5);
+	
+		let percentText = this.make.text({
+		  x: width / 2,
+		  y: height / 2 - 5,
+		  text: '0%',
+		  style: {
+			font: '18px monospace',
+			fill: '#ffffff'
+		  }
+		});
+		percentText.setOrigin(0.5, 0);
+	  }
+	
+	  /**
+	   * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
+	   * nivel del juego
+	   */
+	  create() {
 		this.scene.start('menu');
-	}
+	  }
+	
 }
