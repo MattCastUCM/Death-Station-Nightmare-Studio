@@ -1,4 +1,4 @@
-import gameObject from './gameobject.js';
+import gameObject from './gameObject.js';
 
 export default class CardBoard extends gameObject {
 
@@ -17,6 +17,7 @@ export default class CardBoard extends gameObject {
 	 * @param {number} dt - Tiempo entre frames
 	 */
 	preUpdate(t, dt) {
+		super.preUpdate(t,dt);
 
 		this.friction();
 

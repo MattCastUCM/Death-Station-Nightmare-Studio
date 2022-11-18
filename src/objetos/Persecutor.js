@@ -8,38 +8,38 @@ export default class Persecutor extends Enemy {
 	 */
 
 	constructor(scene, x, y, target) {
-		super(scene, x, y, 20, 20, 5, 30, 'Persecutor', 40, target, 15);
+		super(scene, x, y, 20, 20, 22, 32, 'Persecutor', 40, target, 15);
 		this.persecuteDist = 400;
 		this.persecuting = false;
 		this.target = target;
 		//Creamos las animaciones
 		this.scene.anims.create({
 			key: 'idlePersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', { start: 1, end: 1 }),
+			frames: scene.anims.generateFrameNumbers('persecutor', { start: 18, end: 18 }),
 			frameRate: 5,
 			repeat: -1
 		});
 		this.scene.anims.create({
 			key: 'upPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', { start: 9, end: 11 }),
+			frames: scene.anims.generateFrameNumbers('persecutor', { start: 0, end: 8 }),
 			frameRate: 5,
 			repeat: -1
 		});
 		this.scene.anims.create({
 			key: 'downPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', { start: 0, end: 2 }),
+			frames: scene.anims.generateFrameNumbers('persecutor', { start: 18, end: 26 }),
 			frameRate: 5,
 			repeat: -1
 		});
 		this.scene.anims.create({
 			key: 'leftPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', { start: 3, end: 5 }),
+			frames: scene.anims.generateFrameNumbers('persecutor', { start: 9, end: 17 }),
 			frameRate: 5,
 			repeat: -1
 		});
 		this.scene.anims.create({
-			key: 'rigthPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', { start: 6, end: 8 }),
+			key: 'rightPersecutor',
+			frames: scene.anims.generateFrameNumbers('persecutor', { start: 27, end: 36 }),
 			frameRate: 5,
 			repeat: -1
 		});
@@ -47,21 +47,25 @@ export default class Persecutor extends Enemy {
 
 	}
 
+	
 	PlayAnimation() {
-		if (this.body.velocity.y < 0) {
-			this.play("upPersecutor");
+		
+		if (this.body.velocity.y < 0 && this.body.velocity.x >-10 && this.body.velocity.x <10 &&this.anims.currentAnim.key !== 'upPersecutor') {
+			this.play('upPersecutor');
+		
 		}
-		else if (this.body.velocity.y > 0) {
-			this.play("downPersecutor");
+		else if (this.body.velocity.y > 0 && this.body.velocity.x >-10 && this.body.velocity.x <10 && this.anims.currentAnim.key !== 'downPersecutor') {
+			this.play('downPersecutor');
 
 		}
-		if (this.body.velocity.x > 0) {
-			this.play("rigthPersecutor");
+		 else if (this.body.velocity.x >= 10 &&this.anims.currentAnim.key !== 'rightPersecutor') {
+			this.play('rightPersecutor');
 		}
-		else if (this.body.velocity.x < 0) {
-			this.play("leftPersecutor");
+		else if (this.body.velocity.x <=-10 && this.anims.currentAnim.key !== 'leftPersecutor') {
+			this.play('leftPersecutor');
 		}
 	}
+
 
 
 	preUpdate(t, dt) {

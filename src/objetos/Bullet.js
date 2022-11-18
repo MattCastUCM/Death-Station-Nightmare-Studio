@@ -1,25 +1,16 @@
-export default class Bullet  extends Phaser.GameObjects.Sprite {
+import gameObject from './gameobject.js';
+export default class Bullet  extends gameObject {
     
 	 constructor(scene, x, y, vectorX, vectorY, target) {
-        super(scene, x, y,'cuchillo');
-        
+        super(scene, x, y, 30,30,0, 0, 'roca', 150);
+
         this.lifetime = 0;
-
-        // Referencia al objeto
-        let self = this;
-
-        // Se aade a sí misma a la escena
-        scene.add.existing(this); 
-        scene.physics.add.existing(this);
-      
+        console.log(this.body);
         this.body.onCollide = true; 
-        // Cambia su velocidad
-        this.body.setVelocityX(vectorX);
-        this.body.setVelocityY(vectorY);
-        this.body.velocity.normalize().scale(150);
+       
+        this.move(vectorX,vectorY);
 
         // Añade un triggr. Si choca con el jugador, le baja la vida y se destruye
-
         this.scene.physics.add.overlap(this, target, function(self){ 
             target.decreaseHP()
             scene.DecreaseLife(target);
@@ -34,7 +25,7 @@ export default class Bullet  extends Phaser.GameObjects.Sprite {
         this.scene.physics.add.overlap(this, scene.woodBoxes, function(self){ 
             self.destroy();
         });
-        this.scene.physics.add.overlap(this, scene.colisionlayer, function(self){ 
+        this.scene.physics.add.collider(this, scene.colisionlayer, function(self){ 
             self.destroy();
         });
 
