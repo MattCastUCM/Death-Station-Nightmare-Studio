@@ -41,8 +41,6 @@ class Hacha extends Weapon {
     constructor(player) {
         super(player, 'hacha', 7, 5, 7);
     }
-
-
 }
 
 class ColliderAtq extends gameObject {
@@ -149,6 +147,18 @@ export default class WeaponManager extends gameObject {
             three: Phaser.Input.Keyboard.KeyCodes.THREE,
             four: Phaser.Input.Keyboard.KeyCodes.FOUR
         })
+
+        this._timeline = this.scene.tweens.createTimeline({
+            targets: () => { return this[this.selected]; },
+            totalDuration: 500,
+            callbackScope: this,
+            tweens: [
+                {
+                    
+                    duration: 0,
+                }
+            ]
+        });
     }
 
     //se informa de que se ha desbloqueado una arma
@@ -218,6 +228,7 @@ export default class WeaponManager extends gameObject {
             this._attack.damage = weapon.dmg;
             // Se cambian las colisiones para que sean iguales al alcance del arma
             this.collider.setReach(weapon.reach);
+            this._timeline.play();
         }
     }
 }
