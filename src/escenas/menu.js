@@ -33,8 +33,8 @@ export default class Menu extends Phaser.Scene {
 		var back = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
 		back.setScale(0.75);
 		
-		var blood = this.add.image(this.sys.game.canvas.width - 340, this.sys.game.canvas.height - 140 , 'sangre')
-		blood.setScale(0.29);
+		//var blood = this.add.image(this.sys.game.canvas.width - 340, this.sys.game.canvas.height - 140 , 'sangre')
+		//blood.setScale(0.29);
 
 	
 		//Pintamos un botón de Empezar

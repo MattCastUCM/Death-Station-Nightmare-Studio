@@ -107,6 +107,10 @@ export default class Player extends gameObject {
             this.hp -= 10;
             this.hasCollided = true;
             this.scene.DecreaseLife(this);
+            for(let i= 0; i<3; i= i+2){
+                setTimeout(()=>{ this.setTint(0xff0000);}, i * 150);
+                setTimeout(()=>{ this.clearTint();}, (i + 1) * 150);
+            }
         }
     }
 
