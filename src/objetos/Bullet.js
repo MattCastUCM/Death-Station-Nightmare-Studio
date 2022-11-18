@@ -1,4 +1,4 @@
-import gameObject from './gameobject.js';
+import gameObject from './gameObject.js';
 export default class Bullet  extends gameObject {
     
 	 constructor(scene, x, y, vectorX, vectorY, target) {
