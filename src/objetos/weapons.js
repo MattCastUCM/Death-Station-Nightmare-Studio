@@ -6,40 +6,72 @@ class Weapon extends Phaser.GameObjects.Sprite {
      * Constructor de arma base
      * @param {Player} player - jugador base
      * @param {string} texture - textura del arma
+     * @param {number} scaleX - escala en el eje X del objeto
+     * @param {number} scaleY - escala en el eje Y del objeto
      * @param {number} dmg - daño que hace el arma
      * @param {number} reach - alcance del arma
      * @param {number} atkSpeed - velocidad de ataque del arma
      */
-    constructor(player, texture, dmg, reach, atkSpeed) {
+    constructor(player, texture, scaleX, scaleY, dmg, reach, atkSpeed) {
         super(player.scene, player.x, player.y, texture);
 
         this.dmg = dmg;
         this.reach = reach;
         this.atkSpeed = atkSpeed;
+        this._player = player;
+        // Añade el objeto a la escena
+        this.scene.add.existing(this);
+        this.setScale(scaleX, scaleY);
+        this.hide();
+
+        this.tween = this.scene.tweens.addCounter({
+            from: 180,
+            to: 0,
+            targets: this,
+            duration: 250,
+            paused: true,
+            callbackScope: this,
+            onUpdate: function(tween) {
+                let auxAngle = 0;
+                switch(this._player.facing) {
+                    case "right":
+                        auxAngle += 90;
+                    case "up":
+                        auxAngle += 90;
+                    case "left":
+                        auxAngle += 90;
+                    break;
+                }
+                this.angle = tween.getValue() + auxAngle;
+            }
+        });
     }
+
+    hide() { this.visible = false; }
+    show() { this.visible = true; }
 }
 
 class Navaja extends Weapon {
     constructor(player) {
-        super(player, 'navaja', 5, 5, 3);
+        super(player, 'navaja', 0.1, 0.1, 5, 5, 3);
     }
 }
 
 class Botella extends Weapon {
     constructor(player) {
-        super(player, 'botella', 3, 5, 5);
+        super(player, 'botella', 0.2, 0.2, 3, 5, 5);
     }
 }
 
 class Barra extends Weapon {
     constructor(player) {
-        super(player, 'barra', 5, 7, 7);
+        super(player, 'barra', 0.2, 0.2, 5, 7, 7);
     }
 }
 
 class Hacha extends Weapon {
     constructor(player) {
-        super(player, 'hacha', 7, 5, 7);
+        super(player, 'hacha', 0.2, 0.2, 7, 5, 7);
     }
 }
 
@@ -104,7 +136,7 @@ export default class WeaponManager extends gameObject {
         super(player.scene, 0, 0, 0, 0, 0, 0, "", 0); this.visible = false;
 
            // Se generan las armas
-           this.navaja = new Navaja(player);
+           this.navaja = new Navaja(player); this.navaja.show();
            this.botella = new Botella(player);
            this.barra = new Barra(player);
            this.hacha = new Hacha(player);
@@ -147,18 +179,6 @@ export default class WeaponManager extends gameObject {
             three: Phaser.Input.Keyboard.KeyCodes.THREE,
             four: Phaser.Input.Keyboard.KeyCodes.FOUR
         })
-
-        this._timeline = this.scene.tweens.createTimeline({
-            targets: () => { return this[this.selected]; },
-            totalDuration: 500,
-            callbackScope: this,
-            tweens: [
-                {
-                    
-                    duration: 0,
-                }
-            ]
-        });
     }
 
     //se informa de que se ha desbloqueado una arma
@@ -171,21 +191,25 @@ export default class WeaponManager extends gameObject {
 
         // Si se pulsa la tecla "1", se cambia a la navaja (si se tiene)
         if (this._hasWeapon.navaja && this.selected != "navaja" && Phaser.Input.Keyboard.JustDown(this.input.one)) {
+            this[this.selected].hide(); this.navaja.show();
             this.selected = "navaja";
             this._player.ChangeWeapon(this.selected);
         }
         // Si se pulsa la tecla "2", se cambia a la botella (si se tiene)
-        if (this._hasWeapon.botella && this.selected != "botella" && Phaser.Input.Keyboard.JustDown(this.input.two)) {
+        if (this._hasWeapon.botella && this.selected != "botella" && Phaser.Input.Keyboard.JustDown(this.input.three)) {
+            this[this.selected].hide(); this.botella.show();
             this.selected = "botella";
             this._player.ChangeWeapon(this.selected);
         }
         // Si se pulsa la tecla "3", se cambia a la barra (si se tiene)
-        if (this._hasWeapon.barra && this.selected != "barra" && Phaser.Input.Keyboard.JustDown(this.input.three)) {
+        if (this._hasWeapon.barra && this.selected != "barra" && Phaser.Input.Keyboard.JustDown(this.input.four)) {
+            this[this.selected].hide(); this.barra.show();
             this.selected = "barra";
             this._player.ChangeWeapon(this.selected);
         }
         // Si se pulsa la tecla "4", se cambia al hacha (si se tiene)
-        if (this._hasWeapon.hacha && this.selected != "hacha" && Phaser.Input.Keyboard.JustDown(this.input.four)) {
+        if (this._hasWeapon.hacha && this.selected != "hacha" && Phaser.Input.Keyboard.JustDown(this.input.two)) {
+            this[this.selected].hide(); this.hacha.show();
             this.selected = "hacha";
             this._player.ChangeWeapon(this.selected);
         }
@@ -228,7 +252,7 @@ export default class WeaponManager extends gameObject {
             this._attack.damage = weapon.dmg;
             // Se cambian las colisiones para que sean iguales al alcance del arma
             this.collider.setReach(weapon.reach);
-            this._timeline.play();
+            weapon.tween.play();
         }
     }
 }

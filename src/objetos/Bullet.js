@@ -1,11 +1,10 @@
-import gameObject from './gameobject.js';
+import gameObject from './gameObject.js';
 export default class Bullet  extends gameObject {
     
 	 constructor(scene, x, y, vectorX, vectorY, target) {
         super(scene, x, y, 30,30,0, 0, 'roca', 150);
 
         this.lifetime = 0;
-        console.log(this.body);
         this.body.onCollide = true; 
        
         this.move(vectorX,vectorY);
