@@ -16,8 +16,10 @@ export default class Menu extends Phaser.Scene {
 	 */
 	preload(){
 		
-		this.load.image('start', 'assets/Mapa/Start.png');
-		this.load.image('fondo', 'assets/Mapa/boceto_interiorTren.png');
+		this.load.image('start', 'assets/Mapa/NuevoStart.png');
+		this.load.image('fondo', 'assets/Mapa/image.png');
+		this.load.image('sangre', 'assets/Mapa/blood.png');
+		
 		//this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', {frameWidth: 32, frameHeight: 48})
 		//this.load.spritesheet('box', 'assets/Box/box.png', {frameWidth: 64, frameHeight: 64})
 	}
@@ -29,11 +31,15 @@ export default class Menu extends Phaser.Scene {
 		//Pintamos un fondo
         
 		var back = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
-       // back.setScale(3,2);
+		back.setScale(0.75);
+		
+		var blood = this.add.image(this.sys.game.canvas.width - 340, this.sys.game.canvas.height - 140 , 'sangre')
+		blood.setScale(0.29);
 
+	
 		//Pintamos un botón de Empezar
-		var sprite = this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'start')
-		sprite.setScale(0.25);
+		var sprite = this.add.image(this.sys.game.canvas.width - 340, this.sys.game.canvas.height - 190 , 'start')
+		sprite.setScale(0.9);
 		sprite.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
 
 		// Escuchamos los eventos del ratón cuando interactual con nuestro sprite de "Start"
@@ -47,10 +53,15 @@ export default class Menu extends Phaser.Scene {
 
 		sprite.on('pointerover', () => {
 			console.log("hola")
+			sprite.setTint(0xff0000);
+			
+		
 	    });
 
 	    sprite.on('pointerout', () => {
 			console.log("adios")
+			sprite.clearTint();
+			
 	    });
 
 	}
