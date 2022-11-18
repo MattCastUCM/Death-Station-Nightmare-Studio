@@ -78,12 +78,11 @@ export default class LEVEL_01 extends Phaser.Scene {
         for(let i=0;i<EnemyPersecutorContainer.list.length;i++){
 			EnemyPersecutorContainer.list[i]=enemyManager.CreateEnemy(EnemyPersecutorContainer.list[i].x, EnemyPersecutorContainer.list[i].y,'persecutor', this.player);
 			EnemyPersecutorContainer.list[i].setScale(2);
-			this.hud.newEnemy(EnemyPersecutorContainer.list[i], this);
 		}
 
-		for(let i=0;i<EmenyLanzadorContainer.list.length;i++){
-			EmenyLanzadorContainer.list[i]=enemyManager.CreateEnemy(EmenyLanzadorContainer.list[i].x, EmenyLanzadorContainer.list[i].y,'lanzador', this.player);
-			EmenyLanzadorContainer.list[i].setScale(3);
+		for(let i=0;i<EnemyLanzadorContainer.list.length;i++){
+			EnemyLanzadorContainer.list[i]=enemyManager.CreateEnemy(EnemyLanzadorContainer.list[i].x, EnemyLanzadorContainer.list[i].y,'lanzador', this.player);
+			EnemyLanzadorContainer.list[i].setScale(3);
 
 		}
 
@@ -166,8 +165,4 @@ export default class LEVEL_01 extends Phaser.Scene {
 		this.dialogManager.scene.resume();
 	}
 
-
-	update(t, dt) {
-		this.hud.updateEnemies();
-	}
 }
