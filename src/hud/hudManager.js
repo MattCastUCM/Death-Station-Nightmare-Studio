@@ -25,25 +25,28 @@ export default class HUD extends Phaser.Scene {
 
 
         //INVENTARIO
-        this.inventory = this.add.image(350, 470, 'inventory').setOrigin(0, 0);
+        this.inventoryImg = this.add.image(350, 470, 'inventory').setOrigin(0, 0);
         //imagen de armas
-        this.navaja = this.add.sprite(this.inventory.x + offset - 6, this.inventory.y + (this.inventory.height / 2), 'navaja').setOrigin(0.5, 0.6).setScale(0.12);
+        this.navaja = this.add.sprite(this.inventoryImg.x + offset - 6  , this.inventoryImg.y + (this.inventoryImg.height / 2), 'navaja').setOrigin(0.5, 0.6).setScale(0.12);
         this.navaja.rotation -= 1;
 
-        this.botella = this.add.sprite(this.inventory.x + (offset + gap) * 2 + 6, this.inventory.y + (this.inventory.height / 2), 'botella').setOrigin(0.5, 0.6).setScale(0.15);
-        this.botella.rotation += 0.8;
-        this.botella.visible = false;
-        
-        this.barra = this.add.sprite(this.inventory.x + (offset + gap) * 3 + 25, this.inventory.y + (this.inventory.height / 2), 'barra').setOrigin(0.5, 0.5).setScale(0.2);
-        this.barra.rotation += 0.8;
-        this.barra.visible = false;
-
-        this.hacha = this.add.sprite(this.inventory.x + (offset + gap * 2) * 4 + 26, this.inventory.y + (this.inventory.height / 2), 'hacha').setOrigin(0.5, 0.5).setScale(0.2);
+        this.hacha = this.add.sprite(this.inventoryImg.x + (offset + gap * 2) * 2-2 , this.inventoryImg.y + (this.inventoryImg.height / 2), 'hacha').setOrigin(0.5, 0.5).setScale(0.2);
         this.hacha.rotation -= 1;
-        this.hacha.visible = false;
+        this.hacha.visible = true;
+      
+        this.botella = this.add.sprite(this.inventoryImg.x + (offset + gap) * 3 + 25, this.inventoryImg.y + (this.inventoryImg.height / 2), 'botella').setOrigin(0.5, 0.6).setScale(0.15);
+        this.botella.rotation += 0.8;
+        this.botella.visible = true;
+        
+        this.barra = this.add.sprite(this.inventoryImg.x + (offset + gap) * 4+ 42, this.inventoryImg.y + (this.inventoryImg.height / 2), 'barra').setOrigin(0.5, 0.5).setScale(0.2);
+        this.barra.rotation += 0.8;
+        this.barra.visible = true;
+
 
         this.selectedFrame = this.add.image(this.navaja.x, this.navaja.y, 'selected').setOrigin(0.5, 0.5).setScale(1);
 
+
+        
         //PAUSA 
         this.pauseButton = this.add.image(900, 13, 'pausa').setOrigin(0, 0);
         //Botón de play que aparece tras pausar la escen

@@ -1,4 +1,4 @@
-import gameObject from './gameobject.js';
+import gameObject from './gameObject.js';
 
 export default class Cat extends gameObject {
 	/**
@@ -10,11 +10,13 @@ export default class Cat extends gameObject {
 	constructor(scene, x, y, w, h, offsetX, offsetY, spd) {
 		super(scene, x, y, w, h, offsetX, offsetY, 'cat', spd);
 		this.speed = spd; // Nuestra velocidad de movimiento será 140
-		this.changeDir = false;
 		this.lastDirTime = 0; //tiempo transcurrido desde la ult vez q se cambió dir
+		this.lastColTime = 0; //tiempo transcurrido desde la ult colisión
 		this.maxTime = Phaser.Math.Between(1, 3); //tiempo límite para cambiar la dir en s, va a ser aleatorio cada vez
 		this.scene.add.existing(this); //Añadimos a la escena
-		this.body.setImmovable(true); //no puede ser empujado 
+		this.hasChangedDir = false; //ha cambiado la dir recientemente, se usa para que no cambia de dir aleatoriamente si se acaba de cambiar por colisión
+		this.body.pushable = false; //para que no lo pueda empujar el player
+		this.maxPlayerOffset=1.5*scene.sys.game.canvas.width; //la máxima distancia que se puede alejar del player
 
 		//Creamos las animaciones
 		this.scene.anims.create({
@@ -58,24 +60,27 @@ export default class Cat extends gameObject {
 			{ dirX: 1, dirY: 0, anim: 'cat_right' }
 		]
 
-		// // Agregamos el personaje a las físicas para que Phaser lo tenga en cuenta
-		// scene.physics.add.existing(this);
+		// //añadir colisión con el mapa de la escena
+		this.scene.physics.add.collider(this, scene.colisionlayer, function (self) {
+			self.hasCollided();
+			console.log("collided cat"); 
+		});
 
-		// // Decimos que el personaje colisiona con los límites del mundo
-		// this.body.setCollideWorldBounds();
+		this.scene=scene;
 
-		// this.body.setImmovable(true); //para que no se mueva 
+	}
+	/*Cambia de dir por colisionar con la pared*/ 
+	hasCollided() {
+		this.changeDir();
+		this.hasChangedDir = true;
+	}
+	changeDir() {
 
-		// // Ajustamos el "collider"
-		// // this.bodyOffset = this.body.width/4;
-		// // this.bodyWidth = this.body.width/2;
-
-		// // this.body.setOffset(this.bodyOffset, 0);
-		// // this.body.width = this.bodyWidth;
-		// this.body.setSize(30, 20)
-		// this.body.setOffset(0, 15);
-
-
+		this.lastDirTime = 0;
+		this.maxTime = Phaser.Math.Between(1, 5); //se inicializa a otro tiempo diferente
+		let index = Phaser.Math.Between(0, 3);//aux que sirve como índice para consultarel array
+		this.play(this.directions[index].anim); //animación
+		this.move(this.directions[index].dirX, this.directions[index].dirY); //llama al padre (gameObject) para cambiar de dirección
 	}
 
 	/**
@@ -88,81 +93,28 @@ export default class Cat extends gameObject {
 		// Es muy importante llamar al preUpdate del padre (Sprite), sino no se ejecutará la animación
 		super.preUpdate(t, dt);
 		this.anims.isPlaying = true;
-
 		this.lastDirTime += dt;;
-		if (this.lastDirTime > this.maxTime*1000) { //*1000 para pasar de ms a s
-			this.lastDirTime = 0;
-			this.maxTime = Phaser.Math.Between(1, 5); //se inicializa a otro tiempo diferente
-			let index = Phaser.Math.Between(0, 3);//aux que sirve como índice para consultarel array
-			this.play(this.directions[index].anim); //animación
-			this.move(this.directions[index].dirX, this.directions[index].dirY) //llama al padre (gameObject) para cambiar de dirección
-		}
+		this.lastColTime += dt;;
 
+		let dist = Phaser.Math.Distance.BetweenPoints(this, this.scene.player)
+		if(dist>this.maxPlayerOffset) //si se aleja demasiado del jugador
+		{
+			//se coloca delante del jugador
+			this.x=this.scene.player.x+this.scene.sys.game.canvas.width;
+			this.y=this.scene.cameras.main.centerY;
+		}
+		if (this.lastColTime > 100) {
+			this.lastColTime = 0;
+			this.hasChangedDir = false;
+		}
+		//si no se ha cambiado de dir por haber colisionado recientemente
+		if (!this.hasChangedDir && this.lastDirTime > this.maxTime * 1000) { //*1000 para pasar de ms a s
+			this.changeDir();
+		}
 		this.moving(); //continua con la dirección
 
-		// if (this.cursors.left.isDown && !this.cursors.right.isDown) {
-		// 	//this.setFlip(true, false)
-		// 	this.anims.isPlaying = true;
-		// 	if (this.anims.currentAnim.key !== 'cat_left') {
-		// 		this.play('cat_left');
-		// 	}
 
-		// 	//this.x -= this.speed*dt / 1000;
-		// 	this.body.setVelocityX(-this.speed);
-		// }
-
-
-		// if (this.cursors.right.isDown && !this.cursors.left.isDown) {
-		// 	//this.setFlip(false, false)
-		// 	this.anims.isPlaying = true;
-		// 	if (this.anims.currentAnim.key !== 'cat_rigth') {
-		// 		this.play('cat_rigth');
-		// 	}
-		// 	//this.x += this.speed*dt / 1000;
-		// 	this.body.setVelocityX(this.speed);
-		// }
-
-		// if (this.cursors.up.isDown && !this.cursors.down.isDown) {
-		// 	this.anims.isPlaying = true;
-		// 	//this.setFlip(false, false)
-		// 	if (this.anims.currentAnim.key !== 'cat_up' && !this.cursors.left.isDown && !this.cursors.right.isDown) {
-		// 		this.play('cat_up');
-		// 	}
-		// 	//this.x += this.speed*dt / 1000;
-		// 	this.body.setVelocityY(-this.speed);
-		// }
-
-		// if (this.cursors.down.isDown && !this.cursors.up.isDown) {
-		// 	this.anims.isPlaying = true;
-		// 	//this.setFlip(false, false)
-		// 	if (this.anims.currentAnim.key !== 'cat_down' && !this.cursors.left.isDown && !this.cursors.right.isDown) {
-		// 		this.play('cat_down');
-		// 	}
-		// 	//this.x += this.speed*dt / 1000;
-		// 	this.body.setVelocityY(this.speed);
-		// }
-
-
-
-
-		// // // Si dejamos de pulsar 'A' o 'D' volvemos al estado de animación'idle'
-		// // // Phaser.Input.Keyboard.JustUp y Phaser.Input.Keyboard.JustDown nos aseguran detectar la tecla una sola vez (evitamos repeticiones)
-		// // if (Phaser.Input.Keyboard.JustUp(this.cursors.left) || Phaser.Input.Keyboard.JustUp(this.cursors.right)) {
-		// // 	// if( this.anims.isPlaying === true){
-		// // 	// 	this.play('idle');
-		// // 	// }
-		// // 	this.anims.isPlaying = false;
-		// // 	this.body.setVelocityX(0);
-		// // }
-		// // //caso de W S
-		// // if (Phaser.Input.Keyboard.JustUp(this.cursors.up) || Phaser.Input.Keyboard.JustUp(this.cursors.down)) {
-		// // 	this.anims.isPlaying = false;
-		// // 	// if(this.anims.isPlaying === true){
-		// // 	// 	this.play('idle');
-		// // 	// }
-		// // 	this.body.setVelocityY(0);
-		// // }
-		// // this.body.velocity.normalize().scale(this.speed);
+	
 
 	}
 

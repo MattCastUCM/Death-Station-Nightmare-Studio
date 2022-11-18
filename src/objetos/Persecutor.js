@@ -47,29 +47,25 @@ export default class Persecutor extends Enemy {
 
 	}
 
+	
 	PlayAnimation() {
-
-		if (this.body.velocity.y < 0
-			&& this.anims.currentAnim.key !== "upPersecutor") {
-			this.play("upPersecutor");
+		
+		if (this.body.velocity.y < 0 && this.body.velocity.x >-10 && this.body.velocity.x <10 &&this.anims.currentAnim.key !== 'upPersecutor') {
+			this.play('upPersecutor');
+		
 		}
-		else if (this.body.velocity.y > 0
-			&& this.anims.currentAnim.key !== "downPersecutor") {
-			this.play("downPersecutor");
-
-		}
-		if (this.body.velocity.x > 0
-			&& this.anims.currentAnim.key !== "rightPersecutor") {
-			this.play("rightPersecutor");
-			console.log("right");
+		else if (this.body.velocity.y > 0 && this.body.velocity.x >-10 && this.body.velocity.x <10 && this.anims.currentAnim.key !== 'downPersecutor') {
+			this.play('downPersecutor');
 
 		}
-		else if (this.body.velocity.x < 0 
-			&& this.anims.currentAnim.key !== "leftPersecutor") {
-			this.play("leftPersecutor");
-
+		 else if (this.body.velocity.x >= 10 &&this.anims.currentAnim.key !== 'rightPersecutor') {
+			this.play('rightPersecutor');
+		}
+		else if (this.body.velocity.x <=-10 && this.anims.currentAnim.key !== 'leftPersecutor') {
+			this.play('leftPersecutor');
 		}
 	}
+
 
 
 	preUpdate(t, dt) {

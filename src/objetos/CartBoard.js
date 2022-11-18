@@ -1,4 +1,4 @@
-import gameObject from './gameobject.js';
+import gameObject from './gameObject.js';
 
 export default class CardBoard extends gameObject {
 
