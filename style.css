@@ -189,8 +189,7 @@ nav a {
     font-size: 15px;
     padding: 1px;
     border-radius: 1.5em;
-    margin: 6em auto;
-    margin-top: 5em;;
+    margin: 3em auto;
     /*centrar dentro del main*/
 
 }
@@ -207,7 +206,16 @@ nav a {
     padding-top: 3em;
 }
 
+ul {
+    color: #c5c5c5;
+}
 
+tr{
+    color: #c5c5c5;
+    font-size: 0.8em;
+    text-align: center;
+    vertical-align: middle;
+}
 
 
 
