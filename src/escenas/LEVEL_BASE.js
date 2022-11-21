@@ -1,10 +1,10 @@
 import Player from '../objetos/player.js';
-import Cat from '../objetos/Cat.js';
-import EnemyManager from '../objetos/EnemyManager.js';
-import CardBoard from '../objetos/CartBoard.js'
-import WoodBox from '../objetos/WoodBox.js'
-import Trigger from '../objetos/Trigger.js'
-import gameObject from '../objetos/gameObject.js';
+// import Cat from '../objetos/Cat.js';
+// import EnemyManager from '../objetos/EnemyManager.js';
+// import CardBoard from '../objetos/CartBoard.js'
+// import WoodBox from '../objetos/WoodBox.js'
+// import Trigger from '../objetos/Trigger.js'
+// import gameObject from '../objetos/gameObject.js';
 /**
  * Escena principal.
  * @extends Phaser.Scene
@@ -13,19 +13,19 @@ import gameObject from '../objetos/gameObject.js';
 export default class LEVEL_BASE extends Phaser.Scene {
     /**
      * Constructora
-     * @param {string} level - nivel actual
      * @param {string} nextlevel - siguiente nivel
      * @param {string} tilemap - mapa
+     * @param {int} tileColision -hasta que numero
      */
-     constructor(level,nextlevel){
-        super({ key: 'LEVEL_BASE' });
+     constructor(nextlevel,tilemap,tileColision){
+        super({ key: 'LEVEL_01' });
          //TILE MAP
-         this.map = this.make.tilemap({ key: tilemap});
-         this.tiles = map.addTilesetImage("mapa","tiles");
-         this.fondolayer = map.createLayer('fondo', tiles, 0, 0);
-         this.colisionlayer=map.createLayer('colision',tiles,0,0);
-         //poner colision a layer
-         this.colisionlayer.setCollisionBetween(0,560);
+         this.nextlevel=nextlevel;
+         this.mapname=tilemap;
+         this.numColision=tileColision;
+     }
+     create(){
+         
          //DIALOGMANAGER
          this.scene.launch('dialogManager');
          this.dialogManager = this.scene.get('dialogManager');
@@ -44,37 +44,58 @@ export default class LEVEL_BASE extends Phaser.Scene {
          this.player = new Player(this, 100, this.cameras.main.centerY, 15, 15, 8, 30, 140);
          this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
          this.player.setScale(2.5);
+         
 
-          //colisión con tile map
-        this.physics.add.collider(this.player,this.colisionlayer);
-		this.physics.add.collider(this.cartBoardBoxes,this.colisionlayer);
-		this.physics.add.collider(this.cartBoardBoxes, this.colisionlayer);
-		this.physics.add.collider(this.cats,this.colisionlayer);
-		this.physics.add.collider(this.enemies,this.colisionlayer);
-
-		//colisión player-cajas,cajas-cajas
-		this.physics.add.collider(this.woodBoxes, this.cartBoardBoxes);
-		this.physics.add.collider(this.cartBoardBoxes, this.cartBoardBoxes);
-		this.physics.add.collider(this.player, this.cartBoardBoxes);
-		this.physics.add.collider(this.player, this.woodBoxes);
-		//enemigos caja
-		this.physics.add.collider(this.enemies, this.cartBoardBoxes);
-		this.physics.add.collider(this.enemies, this.woodBoxes);
-        // gato caja
-        this.physics.add.collider(this.cats, this.cartBoardBoxes);
-		this.physics.add.collider(this.cats, this.woodBoxes);
-
-		//this.physics.add.collider(this.enemies, this.enemies);
-		this.physics.add.collider(this.player, this.cats);
-
-		//Colisión enemigo
-		this.physics.add.overlap(this.player, this.enemies, ()=>this.player.decreaseHP(), null);
+         
 		
 		//camara que sigue a jugador (movimiento suave)
 		this.cameras.main.startFollow(this.player, this.cameras.FOLLOW_LOCKON, 0.1, 0.1);
 		//espacio de camara (si jugador sale de este espacio,la camara le sigue)
 		this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
+        this.CreateMap();
+        this.AddColision();
      }
+
+     Next(){
+        this.scene.start(this.nextlevel);
+     }
+
+     AddColision(){
+         //colisión con tile map
+         this.physics.add.collider(this.player,this.colisionlayer);
+         this.physics.add.collider(this.cartBoardBoxes,this.colisionlayer);
+         this.physics.add.collider(this.cartBoardBoxes, this.colisionlayer);
+         this.physics.add.collider(this.cats,this.colisionlayer);
+         this.physics.add.collider(this.enemies,this.colisionlayer);
+ 
+         //colisión player-cajas,cajas-cajas
+         this.physics.add.collider(this.woodBoxes, this.cartBoardBoxes);
+         this.physics.add.collider(this.cartBoardBoxes, this.cartBoardBoxes);
+         this.physics.add.collider(this.player, this.cartBoardBoxes);
+         this.physics.add.collider(this.player, this.woodBoxes);
+         //enemigos caja
+         this.physics.add.collider(this.enemies, this.cartBoardBoxes);
+         this.physics.add.collider(this.enemies, this.woodBoxes);
+         // gato caja
+         this.physics.add.collider(this.cats, this.cartBoardBoxes);
+         this.physics.add.collider(this.cats, this.woodBoxes);
+ 
+         //this.physics.add.collider(this.enemies, this.enemies);
+         this.physics.add.collider(this.player, this.cats);
+ 
+         //Colisión enemigo
+         this.physics.add.overlap(this.player, this.enemies, ()=>this.player.decreaseHP(), null);
+
+     }
+     CreateMap(){
+        this.map = this.make.tilemap({ key: 'level1'});
+        this.tiles = this.map.addTilesetImage("mapa","tiles");
+         this.fondolayer = this.map.createLayer('fondo', this.tiles, 0, 0);
+         this.colisionlayer=this.map.createLayer('colision',this.tiles,0,0);
+         //poner colision a layer
+         this.colisionlayer.setCollisionBetween(0,this.numColision);
+     }
+
 
 	update(t, dt) {
 

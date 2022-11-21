@@ -6,6 +6,7 @@ import HUD from './hud/hudManager.js'
 //import Pause from './escenas/pause.js'
 import DialogManager from './hud/DialogManager.js'
 import level_map from './escenas/level_map.js';
+//import LEVEL_BASE from './escenas/LEVEL_BASE.js';
 import LEVEL_01 from './escenas/LEVEL_01.js'
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
