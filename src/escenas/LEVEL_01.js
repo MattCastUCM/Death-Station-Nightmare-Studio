@@ -29,7 +29,6 @@ export default class LEVEL_01 extends Phaser.Scene {
         var colisionlayer=map.createLayer('colision',tiles,0,0);
         //poner colision a layer
         colisionlayer.setCollisionBetween(0,560);
-
         
 		//DIALOGMANAGER
 		this.scene.launch('dialogManager');
@@ -63,37 +62,48 @@ export default class LEVEL_01 extends Phaser.Scene {
 		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
 		gato.body.onCollide = true;
 
-        //CREACION DE ENEMIGOS
-		let enemyManager = new EnemyManager(this);
+        // //CREACION DE ENEMIGOS
+		// let enemyManager = new EnemyManager(this);
 
-        //crea objetos de mapa
-        var cartBoardContainer=this.add.container(this);
-		var woodBoxesContainer=this.add.container(this);
-		var EmenyPersecutorContainer=this.add.container(this);
-		var EmenyLanzadorContainer=this.add.container(this);
+        // //crea objetos de mapa
+        // var cartBoardContainer=this.add.container(this);
+		// var woodBoxesContainer=this.add.container(this);
+		// var EnemyPersecutorContainer=this.add.container(this);
+		// var EnemyLanzadorContainer=this.add.container(this);
 
-		var objetos=map.createFromObjects('objetos',[
-		{gid:561, container: cartBoardContainer},//classType:  CardBoard
-		{gid:562, container: woodBoxesContainer},
-		{gid:564, container: EmenyPersecutorContainer},
-		{gid:565, container: EmenyLanzadorContainer}
-		]);
-        //cajas
-		for(let i=0;i<cartBoardContainer.list.length;i++){
-			cartBoardContainer.list[i]=new CardBoard(this,cartBoardContainer.list[i].x,cartBoardContainer.list[i].y,this.cartBoardBoxes);
-		}
-		for(let i=0;i<woodBoxesContainer.list.length;i++){
-			woodBoxesContainer.list[i]=new WoodBox(this,woodBoxesContainer.list[i].x,woodBoxesContainer.list[i].y,this.woodBoxes);
-		}
+		// var objetos=map.createFromObjects('objetos',[
+		// {gid:561, container: cartBoardContainer},//classType:  CardBoard
+		// {gid:562, container: woodBoxesContainer},
+		// {gid:564, container: EnemyPersecutorContainer},
+		// {gid:565, container: EnemyLanzadorContainer}
+		// ]);
+        // //cajas
+		// for(let i=0;i<cartBoardContainer.list.length;i++){
+		// 	cartBoardContainer.list[i]=new CardBoard(this,cartBoardContainer.list[i].x,cartBoardContainer.list[i].y,this.cartBoardBoxes);
+		// }
+		// for(let i=0;i<woodBoxesContainer.list.length;i++){
+		// 	woodBoxesContainer.list[i]=new WoodBox(this,woodBoxesContainer.list[i].x,woodBoxesContainer.list[i].y,this.woodBoxes);
+		// }
         //enemigos
-        for(let i=0;i<EmenyPersecutorContainer.list.length;i++){
-			enemyManager.CreateEnemy(EmenyPersecutorContainer.list[i].x, EmenyPersecutorContainer.list[i].y,'persecutor', this.player);
-			//EmenyPersecutorContainer.list[i].setScale(2);
-		}
-		for(let i=0;i<EmenyLanzadorContainer.list.length;i++){
-			enemyManager.CreateEnemy(EmenyLanzadorContainer.list[i].x, EmenyLanzadorContainer.list[i].y,'lanzador', this.player);
-			//EmenyLanzadorContainer.list[i].setScale(3);
-		}
+        // for(let i=0;i<EmenyPersecutorContainer.list.length;i++){
+		// 	enemyManager.CreateEnemy(EmenyPersecutorContainer.list[i].x, EmenyPersecutorContainer.list[i].y,'persecutor', this.player);
+		// 	//EmenyPersecutorContainer.list[i].setScale(2);
+		// }
+		// for(let i=0;i<EmenyLanzadorContainer.list.length;i++){
+		// 	enemyManager.CreateEnemy(EmenyLanzadorContainer.list[i].x, EmenyLanzadorContainer.list[i].y,'lanzador', this.player);
+		// 	//EmenyLanzadorContainer.list[i].setScale(3);
+
+        // for(let i=0;i<EnemyPersecutorContainer.list.length;i++){
+		// 	EnemyPersecutorContainer.list[i]=enemyManager.CreateEnemy(EnemyPersecutorContainer.list[i].x, EnemyPersecutorContainer.list[i].y,'persecutor', this.player);
+		// 	EnemyPersecutorContainer.list[i].setScale(2);
+		// }
+
+		// for(let i=0;i<EnemyLanzadorContainer.list.length;i++){
+		// 	EnemyLanzadorContainer.list[i]=enemyManager.CreateEnemy(EnemyLanzadorContainer.list[i].x, EnemyLanzadorContainer.list[i].y,'lanzador', this.player);
+		// 	EnemyLanzadorContainer.list[i].setScale(3);
+
+
+		// }
 
 
 
@@ -181,7 +191,6 @@ export default class LEVEL_01 extends Phaser.Scene {
 	resumeDialog() {
 		this.dialogManager.scene.resume();
 	}
-	
 
 	update(t, dt) {
 		

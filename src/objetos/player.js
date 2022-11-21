@@ -30,25 +30,25 @@ export default class Player extends gameObject {
         });
         this.scene.anims.create({
             key: 'up',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 9, end: 11 }),
+            frames: scene.anims.generateFrameNumbers('personaje', { start: 12, end: 15 }),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key: 'down',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 0, end: 2 }),
+            frames: scene.anims.generateFrameNumbers('personaje', { start: 0, end: 3 }),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key: 'left',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 3, end: 5 }),
+            frames: scene.anims.generateFrameNumbers('personaje', { start: 4, end: 7 }),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key: 'right',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 6, end: 8 }),
+            frames: scene.anims.generateFrameNumbers('personaje', { start: 8, end: 11 }),
             frameRate: 5,
             repeat: -1
         });
@@ -107,6 +107,10 @@ export default class Player extends gameObject {
             this.hp -= 10;
             this.hasCollided = true;
             this.scene.DecreaseLife(this);
+            for(let i= 0; i<3; i= i+2){
+                setTimeout(()=>{ this.setTint(0xff0000);}, i * 150);
+                setTimeout(()=>{ this.clearTint();}, (i + 1) * 150);
+            }
         }
     }
 

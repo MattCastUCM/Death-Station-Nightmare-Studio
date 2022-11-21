@@ -21,13 +21,18 @@ export default class Enemy extends gameObject {
             this.life -= damagePoints;
             this.hasCollided = true;
             if(this.life <= 0) this.Die();
+            for(let i= 0; i<5; i= i+2){
+                setTimeout(()=>{ this.setTint(0xff0000);}, i * 200);
+                setTimeout(()=>{ this.clearTint();}, (i + 1) * 200);
+            }
+           
         }
 	}
 
     Die(){
         this.destroy();
     }
-	
+
     preUpdate(t,dt){
         super.preUpdate(t,dt);
 
@@ -37,7 +42,7 @@ export default class Enemy extends gameObject {
 
             // Si ha pasado un cierto tiempo, se indica que ha
             // dejado de colisionar y se popne el temporizador a 0
-            if(this.collidedTime >= 500){
+            if(this.collidedTime >= 300){
                 this.hasCollided = false;
                 this.collidedTime = 0;
             }

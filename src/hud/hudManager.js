@@ -1,4 +1,4 @@
-import HealthBar from './healthBar.js';
+import healthBar from './healthBar.js';
 /**
  * Escena de HUD.
  * @extends Phaser.Scene
@@ -16,7 +16,7 @@ export default class HUD extends Phaser.Scene {
         
         //barra de vidas
         this.add.image(220, 18, 'heartImg').setOrigin(0, 0);
-        this.healthBar = new HealthBar(this, 30, 20, 180, 20, 10);
+        this.healthBar = new healthBar(this, 30, 20, 180, 20, 10);
         //nivel
         this.add.image(800, 18, 'level').setOrigin(0, 0);
 
