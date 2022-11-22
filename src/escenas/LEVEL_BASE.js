@@ -13,15 +13,19 @@ import Player from '../objetos/player.js';
 export default class LEVEL_BASE extends Phaser.Scene {
     /**
      * Constructora
+     * @param {string} level -  nivel
      * @param {string} nextlevel - siguiente nivel
      * @param {string} tilemap - mapa
+     * @param {string} tilename
      * @param {int} tileColision -hasta que numero
      */
-     constructor(nextlevel,tilemap,tileColision){
-        super({ key: 'LEVEL_01' });
+     constructor(level,nextlevel,tilemap,tilename,tileColision){
+        super({ key: level });
          //TILE MAP
+         //this.level=level;
          this.nextlevel=nextlevel;
          this.mapname=tilemap;
+         this.tilename=tilename;
          this.numColision=tileColision;
      }
      create(){
@@ -51,7 +55,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
 		//camara que sigue a jugador (movimiento suave)
 		this.cameras.main.startFollow(this.player, this.cameras.FOLLOW_LOCKON, 0.1, 0.1);
 		//espacio de camara (si jugador sale de este espacio,la camara le sigue)
-		this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
+		//this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
         this.CreateMap();
         this.AddColision();
      }
@@ -88,8 +92,8 @@ export default class LEVEL_BASE extends Phaser.Scene {
 
      }
      CreateMap(){
-        this.map = this.make.tilemap({ key: 'level1'});
-        this.tiles = this.map.addTilesetImage("mapa","tiles");
+        this.map = this.make.tilemap({ key: this.mapname});
+        this.tiles = this.map.addTilesetImage("mapa",this.tilename);
          this.fondolayer = this.map.createLayer('fondo', this.tiles, 0, 0);
          this.colisionlayer=this.map.createLayer('colision',this.tiles,0,0);
          //poner colision a layer

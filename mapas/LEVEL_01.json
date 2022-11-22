@@ -499,7 +499,7 @@
                  "visible":true,
                  "width":55,
                  "x":7975.33,
-                 "y":292
+                 "y":277.333333333333
                 }, 
                 {
                  "class":"",
@@ -511,7 +511,7 @@
                  "visible":true,
                  "width":55,
                  "x":8035.67,
-                 "y":311
+                 "y":295.666666666667
                 }, 
                 {
                  "class":"",
@@ -814,29 +814,29 @@
                 }, 
                 {
                  "id":3,
-                 "image":"..\/assets\/enemigos\/e1.png",
-                 "imageheight":96,
-                 "imagewidth":68
+                 "image":"objetos\/persecutor.png",
+                 "imageheight":99,
+                 "imagewidth":74
                 }, 
                 {
                  "id":4,
-                 "image":"..\/assets\/enemigos\/e2.png",
-                 "imageheight":124,
-                 "imagewidth":68
+                 "image":"objetos\/lanzador.png",
+                 "imageheight":102,
+                 "imagewidth":70
                 }, 
                 {
                  "id":5,
-                 "image":"..\/assets\/enemigos\/e3.png",
-                 "imageheight":101,
-                 "imagewidth":73
+                 "image":"objetos\/topo.png",
+                 "imageheight":71,
+                 "imagewidth":86
                 }, 
                 {
                  "id":6,
-                 "image":"..\/assets\/enemigos\/gato.png",
-                 "imageheight":66,
-                 "imagewidth":76
+                 "image":"objetos\/gato.png",
+                 "imageheight":67,
+                 "imagewidth":81
                 }],
-         "tilewidth":76
+         "tilewidth":86
         }],
  "tilewidth":34,
  "type":"map",

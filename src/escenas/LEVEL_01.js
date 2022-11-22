@@ -13,7 +13,7 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 export default class LEVEL_01 extends LEVEL_BASE {
 	constructor() {
 		let nextlevel="level_aux";
-		super(nextlevel,'level1',560);
+		super("LEVEL_01",nextlevel,'level1','tiles',560);
 	}
 	/**
 	* Creación de los elementos de la escena principal de juego

@@ -36,7 +36,7 @@
    <image width="61" height="87" source="../assets/Mapa/ventana lateral.png"/>
   </tile>
  </tileset>
- <tileset firstgid="639" name="objetos" tilewidth="76" tileheight="124" tilecount="7" columns="0">
+ <tileset firstgid="639" name="objetos" tilewidth="86" tileheight="124" tilecount="7" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="0">
    <image width="55" height="63" source="../assets/objects/cajaCarton.png"/>
@@ -48,16 +48,16 @@
    <image width="58" height="73" source="../assets/objects/palanca.png"/>
   </tile>
   <tile id="5">
-   <image width="68" height="96" source="../assets/enemigos/e1.png"/>
+   <image width="74" height="99" source="objetos/persecutor.png"/>
   </tile>
   <tile id="6">
-   <image width="68" height="124" source="../assets/enemigos/e2.png"/>
+   <image width="70" height="102" source="objetos/lanzador.png"/>
   </tile>
   <tile id="7">
-   <image width="73" height="101" source="../assets/enemigos/e3.png"/>
+   <image width="86" height="71" source="objetos/topo.png"/>
   </tile>
   <tile id="8">
-   <image width="76" height="66" source="../assets/enemigos/gato.png"/>
+   <image width="81" height="67" source="objetos/gato.png"/>
   </tile>
  </tileset>
  <layer id="1" name="suelo" width="334" height="20">
