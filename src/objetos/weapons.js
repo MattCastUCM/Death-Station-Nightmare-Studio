@@ -23,28 +23,6 @@ class Weapon extends Phaser.GameObjects.Sprite {
         this.scene.add.existing(this);
         this.setScale(scaleX, scaleY);
         this.hide();
-
-        this.tween = this.scene.tweens.addCounter({
-            from: 180,
-            to: 0,
-            targets: this,
-            duration: 250,
-            paused: true,
-            callbackScope: this,
-            onUpdate: function(tween) {
-                let auxAngle = 0;
-                switch(this._player.facing) {
-                    case "right":
-                        auxAngle += 90;
-                    case "up":
-                        auxAngle += 90;
-                    case "left":
-                        auxAngle += 90;
-                    break;
-                }
-                this.angle = tween.getValue() + auxAngle;
-            }
-        });
     }
 
     hide() { this.visible = false; }
@@ -134,6 +112,9 @@ export default class WeaponManager extends gameObject {
     constructor(player) {
         // Extendemos de gameObject para que "preUpdate(t, dt)" funcione
         super(player.scene, 0, 0, 0, 0, 0, 0, "", 0); this.visible = false;
+        
+        // Se guarda el jugador
+        this._player = player;
 
            // Se generan las armas
            this.navaja = new Navaja(player); this.navaja.show();
@@ -141,6 +122,8 @@ export default class WeaponManager extends gameObject {
            this.barra = new Barra(player);
            this.hacha = new Hacha(player);
            this.selected = "navaja";
+           this.brazo = new Brazo(this);
+
         // Se genera un nuevo objeto para detectar colisión entre arma y enemigo
         this.collider = new ColliderAtq(player, 1);
         let me = this;
@@ -158,9 +141,6 @@ export default class WeaponManager extends gameObject {
         // Se guarda la última vez que se hizo un ataque
         this._attack.lastSwing = 0;
         this._attack.damage = 0;
-
-        // Se guarda el jugador
-        this._player = player;
 
         // Se genera el objeto de booleanos para guardar qué armas se tienen
         this._hasWeapon = {};
@@ -221,6 +201,9 @@ export default class WeaponManager extends gameObject {
         if (this._attack.lastSwing + 500 <= t) {
             this._attack.isAttacking = false;
         }
+
+        this.brazo.x = this._player.x;
+        this.brazo.y = this._player.y;
     }
 
     collision(self, obj1, obj2) {
@@ -252,7 +235,45 @@ export default class WeaponManager extends gameObject {
             this._attack.damage = weapon.dmg;
             // Se cambian las colisiones para que sean iguales al alcance del arma
             this.collider.setReach(weapon.reach);
-            weapon.tween.play();
+            this.brazo.tween.play();
         }
+    }
+}
+
+
+class Brazo extends Phaser.GameObjects.Container {
+    constructor(weaponManager) {
+        super(weaponManager.scene, weaponManager._player.x, weaponManager._player.y);
+
+        //this.exclusive = false;
+
+        this._player = weaponManager._player;
+
+        this.add(new Phaser.GameObjects.Sprite(this.scene, this.x, this.y, 'brazo'));
+        this.add(weaponManager.navaja); this.add(weaponManager.botella); this.add(weaponManager.barra); this.add(weaponManager.hacha);
+
+        this.scene.add.existing(this);
+        
+        this.tween = this.scene.tweens.addCounter({
+            from: 180,
+            to: 0,
+            targets: this,
+            duration: 250,
+            paused: true,
+            callbackScope: this,
+            onUpdate: function(tween) {
+                let auxAngle = 0;
+                switch(this._player.facing) {
+                    case "right":
+                        auxAngle += 90;
+                    case "up":
+                        auxAngle += 90;
+                    case "left":
+                        auxAngle += 90;
+                    break;
+                }
+                this.angle = tween.getValue() + auxAngle;
+            }
+        });
     }
 }
