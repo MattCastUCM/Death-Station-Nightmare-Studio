@@ -46,7 +46,10 @@ export default class LEVEL_02 extends LEVEL_BASE {
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {
 		this.hud.changeLifeValue(player.GetHP());
-		
+		if(player.GetHP()<=0){
+			this.scene.start('menu'); 
+
+		}
 	}
 
 	/*Para pausar el dialogManager , llamado por el hud*/

@@ -18,8 +18,8 @@
             "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 2874.6666666666665,
-                "y": 450.66666666666663
+                "x": 5354,
+                "y": 340.66666666666663
             }
         },
         "LEVEL_01.json#mapa": {
@@ -38,7 +38,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 5348,
-                "y": 344
+                "y": 340
             }
         },
         "LEVEL_01.tmx#mapa": {

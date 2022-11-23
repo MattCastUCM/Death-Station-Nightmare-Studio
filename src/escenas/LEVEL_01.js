@@ -6,6 +6,7 @@ import Lanzador from '../objetos/Lanzador.js';
 import Trigger from '../objetos/Trigger.js';
 import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
+import EnemyManager from '../objetos/EnemyManager.js';
 /**
  * Escena principal.
  * @extends LEVEL_BASE
@@ -30,7 +31,11 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		// this.physics.add.overlap(this.player,this.nextlevel,function(){
 		// 	console.log(this);
 		// },this);
-		
+		let enemyManager = new EnemyManager(this);
+		let persecutor = enemyManager.CreateEnemy(40, 200, 'persecutor', this.player);
+		persecutor.setScale(2);
+		let lanzador = enemyManager.CreateEnemy(80, 300, 'lanzador', this.player);
+		lanzador.setScale(2);
 
 		// Gato
 		//let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
@@ -85,6 +90,10 @@ export default class LEVEL_01 extends LEVEL_BASE {
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {
 		this.hud.changeLifeValue(player.GetHP());
+		if(player.GetHP()<=0){
+			this.scene.start('menu'); 
+
+		}
 		
 	}
 
