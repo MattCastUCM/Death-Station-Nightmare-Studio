@@ -24,7 +24,7 @@ export default class Boot extends Phaser.Scene {
 		  progressBar.fillRect(350, 240, 300 * value, 30);
 		});
 
-		this.load.scripts('PostProcess', [
+		/*this.load.scripts('PostProcess', [
 			'src/hud/healthBar.js',
 			'src/hud/TextMessage.js',
 			'src/hud/hudManager.js',
@@ -37,7 +37,7 @@ export default class Boot extends Phaser.Scene {
 			'src/objetos/player.js',
 			'src/objetos/Cat.js',
 
-		]);
+		]);*/
 
 		 //tile map
 		 this.load.image("tiles","assets/Mapa/mapa2.png");
