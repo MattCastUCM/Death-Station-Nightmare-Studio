@@ -91,7 +91,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 	DecreaseLife(player) {
 		this.hud.changeLifeValue(player.GetHP());
 		if(player.GetHP()<=0){
-			this.scene.start('menu'); 
+			this.scene.start('restart'); 
 
 		}
 		
