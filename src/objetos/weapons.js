@@ -13,7 +13,7 @@ class Weapon extends Phaser.GameObjects.Sprite {
      * @param {number} atkSpeed - velocidad de ataque del arma
      */
     constructor(player, texture, scaleX, scaleY, dmg, reach, atkSpeed) {
-        super(player.scene, player.x, player.y, texture);
+        super(player.scene, 40, 0, texture);
 
         this.dmg = dmg;
         this.reach = reach;
@@ -31,13 +31,13 @@ class Weapon extends Phaser.GameObjects.Sprite {
 
 class Navaja extends Weapon {
     constructor(player) {
-        super(player, 'navaja', 0.1, 0.1, 5, 5, 3);
+        super(player, 'navaja', 0.1, 0.1, 5, 5, 250);
     }
 }
 
 class Botella extends Weapon {
     constructor(player) {
-        super(player, 'botella', 0.2, 0.2, 3, 5, 5);
+        super(player, 'botella', 0.2, 0.2, 3, 5, 500);
     }
 }
 
@@ -61,22 +61,21 @@ class ColliderAtq extends gameObject {
         this._player = player;
         this.reach = reach;
 
-        // Creamos objetos de offsets para el jugador
-        this.offset = {}
-        this.offset.up = {}
-        this.offset.up.x = 13;
-        this.offset.up.y = 31;
-        this.offset.right = {}
-        this.offset.right.x = 34;
-        this.offset.right.y = 48;
-        this.offset.down = {};
-        this.offset.down.x = 13;
-        this.offset.down.y = 68;
-        this.offset.left = {};
-        this.offset.left.x = -4;
-        this.offset.left.y = 48;
-
-        console.log(this);
+        // Creamos tabla de offsets para el jugador
+        this.offset = {
+            up: {
+                x: 13, y: 31
+            },
+            right: {
+                x: 34, y: 48
+            },
+            down: {
+                x: 13, y: 68
+            },
+            left: {
+                x: -4, y: 48
+            }
+        }
     }
 
     preUpdate(t, dt) {
@@ -145,9 +144,9 @@ export default class WeaponManager extends gameObject {
         // Se genera el objeto de booleanos para guardar qué armas se tienen
         this._hasWeapon = {};
         this._hasWeapon.navaja = true;
-        this._hasWeapon.botella = false;
-        this._hasWeapon.barra = false;
-        this._hasWeapon.hacha = false;
+        this._hasWeapon.botella = true;
+        this._hasWeapon.barra = true;
+        this._hasWeapon.hacha = true;
 
      
 
@@ -159,6 +158,8 @@ export default class WeaponManager extends gameObject {
             three: Phaser.Input.Keyboard.KeyCodes.THREE,
             four: Phaser.Input.Keyboard.KeyCodes.FOUR
         })
+
+        console.log(this);
     }
 
     //se informa de que se ha desbloqueado una arma
@@ -174,36 +175,35 @@ export default class WeaponManager extends gameObject {
             this[this.selected].hide(); this.navaja.show();
             this.selected = "navaja";
             this._player.ChangeWeapon(this.selected);
+            this.brazo.ChangeWeapon(this.navaja);
         }
-        // Si se pulsa la tecla "2", se cambia a la botella (si se tiene)
+        // Si se pulsa la tecla "3", se cambia a la botella (si se tiene)
         if (this._hasWeapon.botella && this.selected != "botella" && Phaser.Input.Keyboard.JustDown(this.input.three)) {
             this[this.selected].hide(); this.botella.show();
             this.selected = "botella";
             this._player.ChangeWeapon(this.selected);
+            this.brazo.ChangeWeapon(this.botella);
         }
-        // Si se pulsa la tecla "3", se cambia a la barra (si se tiene)
+        // Si se pulsa la tecla "4", se cambia a la barra (si se tiene)
         if (this._hasWeapon.barra && this.selected != "barra" && Phaser.Input.Keyboard.JustDown(this.input.four)) {
             this[this.selected].hide(); this.barra.show();
             this.selected = "barra";
             this._player.ChangeWeapon(this.selected);
+            this.brazo.ChangeWeapon(this.barra);
         }
-        // Si se pulsa la tecla "4", se cambia al hacha (si se tiene)
+        // Si se pulsa la tecla "2", se cambia al hacha (si se tiene)
         if (this._hasWeapon.hacha && this.selected != "hacha" && Phaser.Input.Keyboard.JustDown(this.input.two)) {
             this[this.selected].hide(); this.hacha.show();
             this.selected = "hacha";
             this._player.ChangeWeapon(this.selected);
+            this.brazo.ChangeWeapon(this.hacha);
         }
         // Si se pulsa la barra espaciadora, se hace un ataque.
         if (Phaser.Input.Keyboard.JustDown(this.input.space)) {
             this.attack(t);
         }
 
-        if (this._attack.lastSwing + 500 <= t) {
-            this._attack.isAttacking = false;
-        }
-
-        this.brazo.x = this._player.x;
-        this.brazo.y = this._player.y;
+        //this.brazo.update();
     }
 
     collision(self, obj1, obj2) {
@@ -227,14 +227,9 @@ export default class WeaponManager extends gameObject {
     */
     attack(t) {
         // Se almacena el arma seleccionada en una variable para más comodidad y legibilidad
-        let weapon = this[this.selected];
         console.log("Tiempo actual: ", t, "   Tiempo del último ataque realizado: ", this._attack.lastSwing);
-        if (t >= this._attack.lastSwing + weapon.atkSpeed * 1000) {
+        if (t >= this._attack.lastSwing + weapon.atkSpeed) {
             this._attack.lastSwing = t;
-            this._attack.isAttacking = true;
-            this._attack.damage = weapon.dmg;
-            // Se cambian las colisiones para que sean iguales al alcance del arma
-            this.collider.setReach(weapon.reach);
             this.brazo.tween.play();
         }
     }
@@ -248,19 +243,39 @@ class Brazo extends Phaser.GameObjects.Container {
         //this.exclusive = false;
 
         this._player = weaponManager._player;
+        this.weapon = weaponManager.navaja;
 
-        this.add(new Phaser.GameObjects.Sprite(this.scene, this.x, this.y, 'brazo'));
+        this.add(new Phaser.GameObjects.Sprite(this.scene, 0, 0, 'brazo'));
         this.add(weaponManager.navaja); this.add(weaponManager.botella); this.add(weaponManager.barra); this.add(weaponManager.hacha);
 
         this.scene.add.existing(this);
-        
+        this.visible = false;
+        this.depth = 100000000;
+
+        // Creamos tabla de offsets para el jugador
+        this.offset = {
+            up: {
+                x: 13, y: 31
+            },
+            right: {
+                x: 34, y: 48
+            },
+            down: {
+                x: 0, y: 68
+            },
+            left: {
+                x: -4, y: 48
+            }
+        }
+
         this.tween = this.scene.tweens.addCounter({
             from: 180,
             to: 0,
             targets: this,
-            duration: 250,
+            duration: this.weapon.atkSpeed,
             paused: true,
-            callbackScope: this,
+            callbackScope: weaponManager,
+            onUpdateScope: this,
             onUpdate: function(tween) {
                 let auxAngle = 0;
                 switch(this._player.facing) {
@@ -273,7 +288,41 @@ class Brazo extends Phaser.GameObjects.Container {
                     break;
                 }
                 this.angle = tween.getValue() + auxAngle;
+            },
+            onActive: function() {
+                this.brazo.visible = true;
+                this._attack.isAttacking = true;
+                let weapon = this[this.selected];
+                this._attack.damage = weapon.dmg;
+                // Se cambian las colisiones para que sean iguales al alcance del arma
+                this.collider.setReach(weapon.reach);
+            },
+            onComplete: function() {
+                this.brazo.visible = false;
+                this._attack.isAttacking = false;
             }
         });
+
+        this.events = new Phaser.Events.EventEmitter();
+    }
+
+    preUpdate(t, dt) {
+        let offs = this.offset[this._player.facing];
+        this.x = this._player.x + offs.x;
+        this.y = this._player.y + offs.y;
+        switch (this._player.facing) {
+            case "down":
+                this.y = this._player.y + this.offset.down.y;
+            case "up":
+                break;
+            case "right":
+                this.x = this._player.x + this.offset.right.x;
+            case "left":
+                break;
+        }
+    }
+
+    ChangeWeapon(w) {
+        this.tween.once('complete', () => { this.weapon = w; console.log("sidufbsou"); });
     }
 }
