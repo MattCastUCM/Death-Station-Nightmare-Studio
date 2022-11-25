@@ -15,7 +15,6 @@ export default class Menu extends Phaser.Scene {
 		
 		// Pintamos el fondo
 		var back = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
-		back.setScale(0.75);
 		
 		// Pintamos el botón de Empezar
 		var sprite = this.add.image(this.sys.game.canvas.width - 340, this.sys.game.canvas.height - 190 , 'start')
@@ -32,10 +31,15 @@ export default class Menu extends Phaser.Scene {
 			sprite.clearTint();
 	    });
 
-		// Al pulsar el botón
+		// Al pulsar el botón, hace un fade out
 	    sprite.on('pointerup', pointer => {
-			this.scene.start('LEVEL_01'); //Cambiamos a la escena de juego
+			sprite.disableInteractive();
+			this.cameras.main.fadeOut(500,0,0,0);
 	    });
+		// Al terminar el fade out, cambia a la escena del nivel 1
+		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
+			this.scene.start('level1Map');
+		});
 
 
 	}

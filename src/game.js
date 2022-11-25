@@ -1,8 +1,8 @@
 //import HealthBar from './hud/healthBar.js';
 import Boot from './escenas/boot.js'
-import {Logo1, Logo2} from './escenas/present.js'
 import Menu from './escenas/menu.js'
 import Restart from './escenas/Restart.js';
+import {level1Map, level2Map, level3Map, level4Map, endMap} from './escenas/metro_maps.js'
 import level_aux from './escenas/level_aux.js';
 import HUD from './hud/hudManager.js'
 //import Pause from './escenas/pause.js'
@@ -35,7 +35,10 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [Boot, Logo1, Logo2, Menu, LEVEL_01, LEVEL_02, level_aux, HUD, DialogManager, Restart,],
+    scene: [Boot, Menu, 
+        level1Map, level2Map, level3Map, level4Map, endMap,
+        LEVEL_01, LEVEL_02, level_aux,
+        HUD, DialogManager, Restart,],
     physics: { 
         default: 'arcade', 
         arcade: { 

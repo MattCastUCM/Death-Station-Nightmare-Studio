@@ -7,7 +7,7 @@ import Trigger from '../objetos/Trigger.js';
 import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
 /**
- * Escena principal.
+ * Nivel 2
  * @extends LEVEL_BASE
  */
 export default class LEVEL_02 extends LEVEL_BASE {
@@ -21,7 +21,6 @@ export default class LEVEL_02 extends LEVEL_BASE {
 	create() {
 		super.create();
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
-
 		// var cardBoardArray=this.map.createFromObjects('objetos',[
 		// 	{gid:561, classType: CardBoard,key: 'cartBoard'}]);
 

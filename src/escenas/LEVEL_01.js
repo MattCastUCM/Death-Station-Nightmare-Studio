@@ -8,7 +8,7 @@ import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
 import EnemyManager from '../objetos/EnemyManager.js';
 /**
- * Escena principal.
+ * Nivel 1
  * @extends LEVEL_BASE
  */
 export default class LEVEL_01 extends LEVEL_BASE {
@@ -31,7 +31,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		// this.physics.add.overlap(this.player,this.nextlevel,function(){
 		// 	console.log(this);
 		// },this);
-		let enemyManager = new EnemyManager(this);
+		let enemyManager = new EnemyManager(scene);
 		let persecutor = enemyManager.CreateEnemy(40, 200, 'persecutor', this.player);
 		persecutor.setScale(2);
 		let lanzador = enemyManager.CreateEnemy(80, 300, 'lanzador', this.player);
@@ -70,12 +70,12 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		// });
 
 		//EJEMPLO 2: con Trigger
-		let trigger1 = new Trigger(this, 300, 200, 30, 600);
+		let trigger1 = new Trigger(scene, 300, 200, 30, 600);
 		this.physics.add.overlap(this.player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
 
 		
 		//obtener una nueva arma
-		let nuevaBotella = this.botella = new gameObject(this,7200, 400,200,200,100,0, 'botella',0).setScale(0.2);
+		let nuevaBotella = this.botella = new gameObject(scene,7200, 400,200,200,100,0, 'botella',0).setScale(0.2);
 		this.physics.add.overlap(this.player, nuevaBotella,()=>{this.player.HasNewWeapon('botella');nuevaBotella.destroy();});
 
 		

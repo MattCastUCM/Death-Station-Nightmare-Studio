@@ -1,12 +1,6 @@
 import Player from '../objetos/player.js';
-// import Cat from '../objetos/Cat.js';
-// import EnemyManager from '../objetos/EnemyManager.js';
-// import CardBoard from '../objetos/CartBoard.js'
-// import WoodBox from '../objetos/WoodBox.js'
-// import Trigger from '../objetos/Trigger.js'
-// import gameObject from '../objetos/gameObject.js';
 /**
- * Escena principal.
+ * Clase base de la que heredan los niveles
  * @extends Phaser.Scene
  */
 
@@ -105,9 +99,5 @@ export default class LEVEL_BASE extends Phaser.Scene {
  update(t, dt) {
 
  }
-
-  transition(){
-      
-  }
 
 }
