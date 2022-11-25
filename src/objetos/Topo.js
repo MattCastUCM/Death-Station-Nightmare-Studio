@@ -1,8 +1,8 @@
 import Enemy from './Enemy.js';
 export default class Topo extends Enemy {
 	
-	constructor(scene, x, y, target) {
-		super(scene, x, y, 20, 20, 8, 10, 'topo', 40, target, 10);
+	constructor(scene, x, y) {
+		super(scene, x, y, 20, 20, 8, 10, 'topo', 40, scene.player, 10);
 
 		this.elapsedTime = 0;
 		//Creamos las animaciones

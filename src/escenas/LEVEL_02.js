@@ -34,7 +34,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		// 	obj.body.setImmovable();
 		// });
 	
-		
+		//this.hud.
 	}
 
 	/*Mandarle a dialogManager el texto que tiene que printear*/

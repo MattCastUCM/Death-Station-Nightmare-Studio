@@ -7,11 +7,11 @@ export default class Persecutor extends Enemy {
 	 * @param {number} y - coordenada y
 	 */
 
-	constructor(scene, x, y, target) {
-		super(scene, x, y, 20, 20, 22, 32, 'Persecutor', 40, target, 15);
+	constructor(scene, x, y) {
+		super(scene, x, y, 20, 20, 22, 32, 'Persecutor', 40, scene.player, 15);
 		this.persecuteDist = 400;
 		this.persecuting = false;
-		this.target = target;
+		this.target = scene.player;
 		//Creamos las animaciones
 		this.scene.anims.create({
 			key: 'idlePersecutor',
@@ -44,6 +44,7 @@ export default class Persecutor extends Enemy {
 			repeat: -1
 		});
 		this.play("idlePersecutor");
+		
 
 	}
 

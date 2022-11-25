@@ -7,8 +7,8 @@ export default class Lanzador extends Enemy {
 	 * @param {number} x - coordenada x
 	 * @param {number} y - coordenada y
 	 */
-	constructor(scene, x, y, target) {
-		super(scene, x, y, 15, 15, 17, 26, 'lanzador', 40, target, 15);
+	constructor(scene, x, y) {
+		super(scene, x, y, 15, 15, 17, 26, 'lanzador', 40, scene.player, 15);
 		this.elapsedTime = 0;
 		this.shootTime = 2.3;
 		

@@ -32,15 +32,15 @@ export default class HUD extends Phaser.Scene {
 
         this.hacha = this.add.sprite(this.inventoryImg.x + (offset + gap * 2) * 2-2 , this.inventoryImg.y + (this.inventoryImg.height / 2), 'hacha').setOrigin(0.5, 0.5).setScale(0.2);
         this.hacha.rotation -= 1;
-        this.hacha.visible = true;
+        this.hacha.visible = false;
       
         this.botella = this.add.sprite(this.inventoryImg.x + (offset + gap) * 3 + 25, this.inventoryImg.y + (this.inventoryImg.height / 2), 'botella').setOrigin(0.5, 0.6).setScale(0.15);
         this.botella.rotation += 0.8;
-        this.botella.visible = true;
+        this.botella.visible = false;
         
         this.barra = this.add.sprite(this.inventoryImg.x + (offset + gap) * 4+ 42, this.inventoryImg.y + (this.inventoryImg.height / 2), 'barra').setOrigin(0.5, 0.5).setScale(0.2);
         this.barra.rotation += 0.8;
-        this.barra.visible = true;
+        this.barra.visible = false;
 
 
         this.selectedFrame = this.add.image(this.navaja.x, this.navaja.y, 'selected').setOrigin(0.5, 0.5).setScale(1);

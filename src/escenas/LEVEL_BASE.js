@@ -30,13 +30,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
      }
      create(){
          
-         //DIALOGMANAGER
-         this.scene.launch('dialogManager');
-         this.dialogManager = this.scene.get('dialogManager');
- 
-         //HUD (y Pausa)
-         this.scene.launch('hud', { me: this });
-         this.hud = this.scene.get('hud');
+         
  
          // Grupos
          this.enemies = this.physics.add.group();
@@ -45,7 +39,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
          this.cats=this.physics.add.group();
 
          // Jugador
-         this.player = new Player(this, 100, this.cameras.main.centerY, 15, 15, 8, 30, 140);
+         this.player = new Player(this, 7000, this.cameras.main.centerY, 15, 15, 8, 30, 140);
          this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
          this.player.setScale(2.5);
          
@@ -57,10 +51,21 @@ export default class LEVEL_BASE extends Phaser.Scene {
 		//espacio de camara (si jugador sale de este espacio,la camara le sigue)
 		//this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
         this.CreateMap();
+
+        this.levelGoal=this.map.createFromObjects('objetos',[
+			{name: 'next'}]);
+        this.levelGoal[0].visible = false;
+		this.physics.add.existing(this.levelGoal[0]);
+		
+		this.physics.add.overlap(this.player, this.levelGoal[0],()=>this.Next());
+
         this.AddColision();
+
+        
      }
 
      Next(){
+        //this.scene.remove(this.hud);
         this.scene.start(this.nextlevel);
      }
 
@@ -69,16 +74,16 @@ export default class LEVEL_BASE extends Phaser.Scene {
          this.physics.add.collider(this.player,this.colisionlayer);
          this.physics.add.collider(this.cartBoardBoxes,this.colisionlayer);
          this.physics.add.collider(this.cartBoardBoxes, this.colisionlayer);
-         this.physics.add.collider(this.cats,this.colisionlayer);
+        // this.physics.add.collider(this.cats,this.colisionlayer);
          this.physics.add.collider(this.enemies,this.colisionlayer);
  
          //colisión player-cajas,cajas-cajas
          this.physics.add.collider(this.woodBoxes, this.cartBoardBoxes);
          this.physics.add.collider(this.cartBoardBoxes, this.cartBoardBoxes);
-         this.physics.add.collider(this.player, this.cartBoardBoxes);
+         //this.physics.add.collider(this.player, this.cartBoardBoxes);
          this.physics.add.collider(this.player, this.woodBoxes);
          //enemigos caja
-         this.physics.add.collider(this.enemies, this.cartBoardBoxes);
+         //this.physics.add.collider(this.enemies, this.cartBoardBoxes);
          this.physics.add.collider(this.enemies, this.woodBoxes);
          // gato caja
          this.physics.add.collider(this.cats, this.cartBoardBoxes);

@@ -4,7 +4,16 @@ export default class CardBoard extends gameObject {
 
 	constructor(scene, posX, posY) {
 		super(scene, posX, posY, 56,32,0, 32, 'cartBoard', 0);
-		scene.physics.add.existing(this);
+		//scene.physics.add.existing(this);
+		let self=this;
+		this.scene=scene;
+		this.scene.physics.add.collider(this, this.scene.enemies, function (self) {
+			self.body.setImmovable();
+		});
+		this.scene.physics.add.collider(this, this.scene.player, function (self) {
+			self.body.setImmovable(false);
+		});
+		
 		this.setFriction(10);
 	}
 
