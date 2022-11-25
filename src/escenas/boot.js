@@ -12,11 +12,25 @@ export default class Boot extends Phaser.Scene {
 	}
 
 	preload() {
+		this.load.image('phaserLogo', 'assets/logos/phaser_logo.png');
+		this.load.image('phaser', 'assets/logos/phaser.png');
+
+
+		// Menú inicial
+		this.load.image('start', 'assets/Mapa/NuevoStart.png');
+		this.load.image('fondo', 'assets/Mapa/image.png');
+		this.load.image('sangre', 'assets/Mapa/blood.png');
+
+		// Menú de reinicio
+		this.load.image('restartButton', 'assets/Mapa/restart.png');
+		this.load.image('fondoRestart', 'assets/Mapa/restartFondo.png');
+
+		// Barra de cargando página (borde)
 		let progressBar = this.add.graphics();
 		let progressBox = this.add.graphics();
 		progressBox.fillStyle(0x222222, 0.8);
 		progressBox.fillRect(340, 230, 320, 50);
-	
+		// Barra de cargando página
 		this.load.on('progress', function (value) {
 		  percentText.setText(parseInt(value * 100) + '%');
 		  progressBar.clear();
@@ -39,14 +53,15 @@ export default class Boot extends Phaser.Scene {
 
 		]);*/
 
-		 //tile map
+
+		 // Tilemap
 		 this.load.image("tiles","assets/Mapa/mapa2.png");
 		 this.load.tilemapTiledJSON('level1',"mapas/LEVEL_01.json");
 		 this.load.image("tilesLevel2","assets/Mapa/Nivel Claudia.png")
 		 this.load.tilemapTiledJSON('level2',"mapas/LEVEL_02.json");
-		//HUD
-
-
+		
+		
+		 // HUD
 		this.load.image('heartImg', 'assets/HUD/corazon.png');
 		this.load.image('inventory', 'assets/HUD/inventario.png');
 		this.load.image('pausa', 'assets/HUD/pausa.png');
@@ -54,35 +69,35 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('play', 'assets/HUD/play.png');
 		this.load.image('selected', 'assets/HUD/seleccionado.png');
 
-		//dialog
+		// Diálogo
 		this.load.script('WebFont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
 		this.load.image('dialogBox', 'assets/HUD/textBox.png');
 
-		//player
+		// Jugador
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
 	
-		//enemies
+		// Enemigos
 		this.load.spritesheet('cat', 'assets/enemies/cat.png', { frameWidth: 34, frameHeight: 34 });
 		this.load.spritesheet('persecutor', 'assets/enemies/persecutr.png', { frameWidth: 64, frameHeight: 64 });
 		this.load.spritesheet('lanzador', 'assets/enemies/shooter.png', { frameWidth: 48, frameHeight: 48 });
 		this.load.spritesheet('topo', 'assets/enemies/mole.png', { frameWidth: 36, frameHeight: 32 });
-		
-		//bullet
+		// Roca
 		this.load.image('roca', 'assets/enemies/rock.png');
 		
-		//objetos
+		// Obstáculos
 		this.load.spritesheet('woodBox', 'assets/objects/cajaMadera.png', { frameWidth: 64, frameHeight: 64 })
 		this.load.spritesheet('cartBoard', 'assets/objects/cajaCarton.png', { frameWidth: 64, frameHeight: 64 });
 
-		//ilumination
+		// Iluminación
 		this.load.image('mask', 'assets/enviroment/mask1.png');
 
-		//weapons
+		// Armas
 		this.load.spritesheet('navaja', 'assets/Armas/Cuchillo.png', { frameWidth: 210, frameHeight: 480 });
 		this.load.spritesheet('botella', 'assets/Armas/Botella.png', { frameWidth: 140, frameHeight: 380 });
 		this.load.spritesheet('barra', 'assets/Armas/Barra.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('hacha', 'assets/Armas/Hacha.png', { frameWidth: 100, frameHeight: 220 });
-	
+		
+		// Destruye la barra de cargando página
 		this.load.on('complete', function () {
 		  progressBar.destroy();
 		  progressBox.destroy();
@@ -90,6 +105,7 @@ export default class Boot extends Phaser.Scene {
 		  percentText.destroy();
 		});
 	
+		// Textos
 		let width = this.cameras.main.width;
 		let height = this.cameras.main.height;
 		let loadingText = this.make.text({
@@ -115,12 +131,13 @@ export default class Boot extends Phaser.Scene {
 		percentText.setOrigin(0.5, 0);
 	  }
 	
-	  /**
+
+	  /*
 	   * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
 	   * nivel del juego
 	   */
 	  create() {
-		this.scene.start('menu');
+		this.scene.start('logo1');
 	  }
 	
 }
