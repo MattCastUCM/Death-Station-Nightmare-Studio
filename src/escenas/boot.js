@@ -44,15 +44,20 @@ export default class Boot extends Phaser.Scene {
 		 this.load.tilemapTiledJSON('level1',"mapas/LEVEL_01.json");
 		 this.load.image("tilesLevel2","assets/Mapa/Nivel Claudia.png")
 		 this.load.tilemapTiledJSON('level2',"mapas/LEVEL_02.json");
-		//HUD
-
-
+		
+		 //HUD
 		this.load.image('heartImg', 'assets/HUD/corazon.png');
 		this.load.image('inventory', 'assets/HUD/inventario.png');
 		this.load.image('pausa', 'assets/HUD/pausa.png');
-		this.load.image('level', 'assets/HUD/level.png');
+		this.load.image('level1', 'assets/HUD/1.png');
+		this.load.image('level2', 'assets/HUD/2.png');
+		this.load.image('level3', 'assets/HUD/3.png');
+		this.load.image('level4', 'assets/HUD/4.png');
 		this.load.image('play', 'assets/HUD/play.png');
 		this.load.image('selected', 'assets/HUD/seleccionado.png');
+
+
+
 
 		//dialog
 		this.load.script('WebFont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
