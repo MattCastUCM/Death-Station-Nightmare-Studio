@@ -12,6 +12,7 @@ export default class CardBoard extends gameObject {
 		});
 		this.scene.physics.add.collider(this, this.scene.player, function (self) {
 			self.body.setImmovable(false);
+			//console.log(self.body);
 		});
 		
 		this.setFriction(10);

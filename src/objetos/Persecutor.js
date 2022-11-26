@@ -44,6 +44,8 @@ export default class Persecutor extends Enemy {
 			repeat: -1
 		});
 		this.play("idlePersecutor");
+
+		this.body.setMass(0.1);
 		
 
 	}

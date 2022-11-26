@@ -6,6 +6,7 @@ export default class Topo extends Enemy {
 		super(scene, x, y, 20, 20, 8, 10, 'topo', 40, scene.player, 10);
 		this.originX = x;
 		this.originY = y;
+		this.target = scene.player;
 
 
 		this.elapsedTime = 0;

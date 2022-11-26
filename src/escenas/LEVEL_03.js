@@ -21,10 +21,14 @@ export default class LEVEL_03 extends LEVEL_BASE {
 	*/
 	create() {
 		super.create();
+
+        this.dialogManager = this.scene.get('dialogManager');
+        this.hud = this.scene.get('hud');
+        this.hud.level=this;
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
 		//Gato
-		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
-		this.cats.add(gato);
+		 let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
+		 this.cats.add(gato);
 		var cardBoardArray=this.map.createFromObjects('objetos',[
 			{gid:561, classType: CardBoard,key: 'cartBoard'}]);
 
@@ -49,12 +53,12 @@ export default class LEVEL_03 extends LEVEL_BASE {
 			});
 		this.enemies.addMultiple(EmenyLanzadorArray);
 
-        var EmenyTopoArray=this.map.createFromObjects('objetos',[
-            {gid:565, classType: Topo,key:'topo'}]);
-            EmenyTopoArray.forEach(element => {
-               element.setScale(2);
-           });
-       this.enemies.addMultiple(EmenyTopoArray);
+    //     var EmenyTopoArray=this.map.createFromObjects('objetos',[
+    //         {gid:565, classType: Topo,key:'topo'}]);
+    //         EmenyTopoArray.forEach(element => {
+    //            element.setScale(2);
+    //        });
+    //    this.enemies.addMultiple(EmenyTopoArray);
 
         // Iluminación
 		const width = this.fondolayer.width

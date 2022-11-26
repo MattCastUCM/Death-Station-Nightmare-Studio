@@ -39,7 +39,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
          this.cats=this.physics.add.group();
 
          // Jugador
-         this.player = new Player(this, 7000, this.cameras.main.centerY, 15, 15, 8, 30, 140);
+         this.player = new Player(this, 100, this.cameras.main.centerY, 15, 15, 8, 30, 140);
          this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
          this.player.setScale(2.5);
          

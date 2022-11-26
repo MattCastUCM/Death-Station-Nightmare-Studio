@@ -7,6 +7,7 @@ export default class Enemy extends gameObject {
         this.collidedTime = 0;
         this.hasCollided = false;
         this.body.setImmovable(true); //para que no se mueva 
+        
     }
 
     // Sigue al jugador moviéndose hacia su posición

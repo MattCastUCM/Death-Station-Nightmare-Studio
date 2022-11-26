@@ -47,6 +47,7 @@ export default class Boot extends Phaser.Scene {
 		 this.load.image("tileslevel3","assets/Nivel 3/mapa3.png")
 		 this.load.tilemapTiledJSON('level3',"mapas/LEVEL_03.json")
 		//HUD
+		
 
 
 		this.load.image('heartImg', 'assets/HUD/corazon.png');

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "LEVEL_03.tmx",
+    "activeFile": "LEVEL_01.tmx",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
         "."
@@ -11,7 +11,7 @@
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
         "": {
-            "scaleInDock": 0.5,
+            "scaleInDock": 0.015625,
             "scaleInEditor": 1
         },
         "#mapa": {
@@ -37,11 +37,11 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 0.5,
+            "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 8042,
-                "y": 336
+                "x": 942.4242424242424,
+                "y": 375.75757575757564
             }
         },
         "LEVEL_01.tmx#mapa": {
@@ -76,11 +76,11 @@
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 0.125,
+            "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1696,
-                "y": 2968
+                "x": 2039.3939393939395,
+                "y": 1527.272727272727
             }
         },
         "LEVEL_02.tmx#Nivel Claudia": {
@@ -108,8 +108,8 @@
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 4018.181818181818,
-                "y": 330.30303030303037
+                "x": 4281.818181818182,
+                "y": 342.4242424242424
             }
         },
         "LEVEL_03.tmx#mapa": {
@@ -122,16 +122,16 @@
             "scaleInEditor": 1
         },
         "LEVEL_04.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 1,
+            "scale": 0.25,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": -763.6363636363636,
-                "y": 960.6060606060606
+                "x": -768,
+                "y": -908
             }
         },
         "LEVEL_04.tmx#estacion1.3": {
             "dynamicWrapping": false,
-            "scaleInDock": 1
+            "scaleInDock": 0.33
         },
         "LEVEL_04.tmx#obj": {
             "dynamicWrapping": true,
@@ -162,7 +162,7 @@
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 9921.21212121212,
+                "x": 5342.424242424242,
                 "y": 321.21212121212113
             }
         },
@@ -247,17 +247,20 @@
     "openFiles": [
         "LEVEL_01.tmx",
         "LEVEL_02.tmx",
-        "LEVEL_03.tmx"
+        "LEVEL_03.tmx",
+        "level01.tmx",
+        "LEVEL_04.tmx"
     ],
     "project": "pvli.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "LEVEL_01.tmx",
-        "LEVEL_02.tmx",
+        "LEVEL_04.tmx",
+        "level01.tmx",
         "LEVEL_03.tmx",
+        "LEVEL_02.tmx",
+        "LEVEL_01.tmx",
         "level_03.tmx",
         "sin nombre.json",
-        "level01.tmx",
         "level01.json",
         "LEVEL_01.json",
         "LEVEL_02.json"
@@ -267,5 +270,5 @@
         "height": 34,
         "width": 34
     },
-    "tileset.type": 1
+    "tileset.type": 0
 }

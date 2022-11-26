@@ -28,7 +28,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		
 		this.scene.launch('hud', { me: this });
 		this.hud = this.scene.get('hud');
-		
+
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
 		//Gato
 		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
@@ -49,6 +49,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		EmenyPersecutorArray.forEach(element => {
 			element.setScale(2);
 		});
+		
 		this.enemies.addMultiple(EmenyPersecutorArray);
 		var EmenyLanzadorArray=this.map.createFromObjects('objetos',[
 		 	{gid:565, classType: Lanzador,key:'lanzador'}]);
@@ -57,6 +58,9 @@ export default class LEVEL_01 extends LEVEL_BASE {
 			});
 		this.enemies.addMultiple(EmenyLanzadorArray);
 
+		console.log(EmenyPersecutorArray[0]);
+
+		//this.add.image(0, 0, 'nose').setOrigin(0, 0);
 		
 		// scene.physics.world.on('collide', function(gameObject1, gameObject2, body1, body2) {
 			
