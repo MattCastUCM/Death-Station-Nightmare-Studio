@@ -75,8 +75,9 @@ export default class HUD extends Phaser.Scene {
     }
 
     /*cambiar de img*/
-    changeLevel(number){
+    changeLevel(number,scene){
         this.levelImg.setTexture("level"+number);
+        this.level=scene;
     }
     //llamado por player para indicarle a que arma se ha cambiado
     changeObject(weapon) {

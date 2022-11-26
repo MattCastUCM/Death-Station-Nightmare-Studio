@@ -37,11 +37,11 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 0.33,
-            "selectedLayer": 2,
+            "scale": 0.75,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 942.4242424242424,
-                "y": 375.75757575757564
+                "x": 406.66666666666663,
+                "y": 366.66666666666663
             }
         },
         "LEVEL_01.tmx#mapa": {
@@ -248,17 +248,16 @@
         "LEVEL_01.tmx",
         "LEVEL_02.tmx",
         "LEVEL_03.tmx",
-        "level01.tmx",
-        "LEVEL_04.tmx"
+        "level01.tmx"
     ],
     "project": "pvli.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "LEVEL_04.tmx",
         "level01.tmx",
         "LEVEL_03.tmx",
         "LEVEL_02.tmx",
         "LEVEL_01.tmx",
+        "LEVEL_04.tmx",
         "level_03.tmx",
         "sin nombre.json",
         "level01.json",

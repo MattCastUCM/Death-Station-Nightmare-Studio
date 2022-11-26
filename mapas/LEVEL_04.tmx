@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="34" tileheight="34" infinite="1" nextlayerid="4" nextobjectid="12">
- <tileset firstgid="1" name="estacion1.3" tilewidth="34" tileheight="34" tilecount="2700" columns="60">
-  <image source="../assets/Nivel 2/estacion1.3.png" width="2048" height="1536"/>
- </tileset>
-</map>
