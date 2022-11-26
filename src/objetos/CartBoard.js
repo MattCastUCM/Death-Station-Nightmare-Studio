@@ -16,6 +16,9 @@ export default class CardBoard extends gameObject {
 		});
 		
 		this.setFriction(10);
+		this.soundCounter = 0; //contador para emitir sonido
+		this.soundMax = 50 //frecuencia de emisión de sonido 
+		this.on('moving', () => this.movingSound());
 	}
 
 	/**
@@ -25,10 +28,21 @@ export default class CardBoard extends gameObject {
 	 * @param {number} dt - Tiempo entre frames
 	 */
 	preUpdate(t, dt) {
-		super.preUpdate(t,dt);
-
+		super.preUpdate(t, dt);
+		this.soundCounter++;
 		this.friction();
 
 	}
+movingSound(){
+	this.soundCounter++;
+	if(this.soundCounter>this.soundMax){
+		this.soundCounter=0;
+		this.scene.soundManager.play("cartBoard");
+	}
+}
+
+
+
+
 
 }

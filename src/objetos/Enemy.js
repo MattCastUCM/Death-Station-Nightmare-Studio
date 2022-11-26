@@ -18,8 +18,8 @@ export default class Enemy extends gameObject {
 	damage(damagePoints){
         //console.log(this);
         if(!this.hasCollided){
-            console.log("daño");
             this.life -= damagePoints;
+            this.emit('damaged');
             this.hasCollided = true;
             if(this.life <= 0) this.Die();
             for(let i= 0; i<5; i= i+2){

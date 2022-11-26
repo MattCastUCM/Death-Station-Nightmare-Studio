@@ -16,28 +16,16 @@ export default class Boot extends Phaser.Scene {
 		let progressBox = this.add.graphics();
 		progressBox.fillStyle(0x222222, 0.8);
 		progressBox.fillRect(340, 230, 320, 50);
-	
+
 		this.load.on('progress', function (value) {
-		  percentText.setText(parseInt(value * 100) + '%');
-		  progressBar.clear();
-		  progressBar.fillStyle(0xffffff, 1);
-		  progressBar.fillRect(350, 240, 300 * value, 30);
+			percentText.setText(parseInt(value * 100) + '%');
+			progressBar.clear();
+			progressBar.fillStyle(0xffffff, 1);
+			progressBar.fillRect(350, 240, 300 * value, 30);
 		});
 
-		/*this.load.scripts('PostProcess', [
-			'src/hud/healthBar.js',
-			'src/hud/TextMessage.js',
-			'src/hud/hudManager.js',
-			'src/objetos/Bullet.js',
-			'src/objetos/gameObject.js',
-			'src/objetos/Enemy.js',
-			'src/objetos/Lanzador.js',
-			'src/objetos/Persecutor.js',
-			'src/objetos/Topo.js',
-			'src/objetos/player.js',
-			'src/objetos/Cat.js',
 
-		]);*/
+	
 
 		 //tile map
 		 this.load.image("tiles","assets/Mapa/mapa2.png");
@@ -63,73 +51,113 @@ export default class Boot extends Phaser.Scene {
 
 
 
-		//dialog
+		//dialog........................................................................................
 		this.load.script('WebFont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
 		this.load.image('dialogBox', 'assets/HUD/textBox.png');
 
-		//player
+		//player........................................................................................
 		this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', { frameWidth: 32, frameHeight: 48 });
-	
-		//enemies
+
+		//enemies........................................................................................
 		this.load.spritesheet('cat', 'assets/enemies/cat.png', { frameWidth: 34, frameHeight: 34 });
 		this.load.spritesheet('persecutor', 'assets/enemies/persecutr.png', { frameWidth: 64, frameHeight: 64 });
 		this.load.spritesheet('lanzador', 'assets/enemies/shooter.png', { frameWidth: 48, frameHeight: 48 });
 		this.load.spritesheet('topo', 'assets/enemies/mole.png', { frameWidth: 36, frameHeight: 32 });
-		
-		//bullet
+
+		//bullet........................................................................................
 		this.load.image('roca', 'assets/enemies/rock.png');
-		
-		//objetos
+
+		//objetos........................................................................................
 		this.load.spritesheet('woodBox', 'assets/objects/cajaMadera.png', { frameWidth: 64, frameHeight: 64 })
 		this.load.spritesheet('cartBoard', 'assets/objects/cajaCarton.png', { frameWidth: 64, frameHeight: 64 });
 
-		//ilumination
+		//ilumination........................................................................................
 		this.load.image('mask', 'assets/enviroment/mask1.png');
 
-		//weapons
+		//weapons........................................................................................
 		this.load.spritesheet('navaja', 'assets/Armas/Cuchillo.png', { frameWidth: 210, frameHeight: 480 });
 		this.load.spritesheet('botella', 'assets/Armas/Botella.png', { frameWidth: 140, frameHeight: 380 });
 		this.load.spritesheet('barra', 'assets/Armas/Barra.png', { frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('hacha', 'assets/Armas/Hacha.png', { frameWidth: 100, frameHeight: 220 });
+
+		//AUDIO........................................................................................
+		//bg
+		this.load.audio('menu', 'assets/audio/bgMusic/estacion.mp3');
+		this.load.audio('level3', 'assets/audio/bgMusic/level3.wav');
+		this.load.audio('level2', 'assets/audio/bgMusic/level2.wav');
+		this.load.audio('level1', 'assets/audio/bgMusic/level1.wav');
+		this.load.audio('level4', 'assets/audio/bgMusic/level4.wav');
+		this.load.audio('restart', 'assets/audio/bgMusic/dead.wav');
 	
+		//enemies
+		this.load.audio('cat1', 'assets/audio/soundEffects/enemy/Cat1.wav');
+		this.load.audio('cat2', 'assets/audio/soundEffects/enemy/Cat2.wav');
+		this.load.audio('lanzadorHurt', 'assets/audio/soundEffects/enemy/lanzador_hurt.mp3');
+		this.load.audio('lanzadorThrow', 'assets/audio/soundEffects/enemy/lanzador_throw.wav');
+		this.load.audio('persecutorGrowl1', 'assets/audio/soundEffects/enemy/persecutor_growl.wav');
+		this.load.audio('persecutorGrowl2', 'assets/audio/soundEffects/enemy/persecutor_growl2.wav');
+		this.load.audio('persecutorGrowl3', 'assets/audio/soundEffects/enemy/persecutor_growl3.wav');
+		this.load.audio('persecutorHurt', 'assets/audio/soundEffects/enemy/persecutor_hurt.mp3');
+		this.load.audio('topoHurt', 'assets/audio/soundEffects/enemy/topo_hurt.mp3');
+		
+		//objects
+		this.load.audio('bulletDestroy', 'assets/audio/soundEffects/enemy/bullet_destroy.wav');
+		this.load.audio('cartBoard', 'assets/audio/soundEffects/objects/cartBox_Move.wav');
+		this.load.audio('woodBoxExplosion', 'assets/audio/soundEffects/objects/woodBox_Explosion.wav');
+		//player
+		this.load.audio('playerHurt', 'assets/audio/soundEffects/player/hurt.wav');
+		this.load.audio('pickWeapon', 'assets/audio/soundEffects/player/pickWeapon.mp3');
+		this.load.audio('selectWeapon', 'assets/audio/soundEffects/player/selectWeapon.wav');
+		this.load.audio('walk', 'assets/audio/soundEffects/player/walk.mp3');
+		
+		//weapon
+		this.load.audio('barra', 'assets/audio/soundEffects/weapon/barra.wav');
+		this.load.audio('botella', 'assets/audio/soundEffects/weapon/botella.wav');
+		this.load.audio('hacha', 'assets/audio/soundEffects/weapon/hacha.mp3');
+		this.load.audio('navaja', 'assets/audio/soundEffects/weapon/navaja.wav');
+		
+		//menu
+		this.load.audio('click', 'assets/audio/soundEffects/menu/click.mp3');
+		//........................................................................................
+
 		this.load.on('complete', function () {
-		  progressBar.destroy();
-		  progressBox.destroy();
-		  loadingText.destroy();
-		  percentText.destroy();
+			progressBar.destroy();
+			progressBox.destroy();
+			loadingText.destroy();
+			percentText.destroy();
 		});
-	
+
 		let width = this.cameras.main.width;
 		let height = this.cameras.main.height;
 		let loadingText = this.make.text({
-		  x: width / 2,
-		  y: height / 2 - 50,
-		  text: 'Loading...',
-		  style: {
-			font: '20px monospace',
-			fill: '#ffffff'
-		  }
+			x: width / 2,
+			y: height / 2 - 50,
+			text: 'Loading...',
+			style: {
+				font: '20px monospace',
+				fill: '#ffffff'
+			}
 		});
 		loadingText.setOrigin(0.5, 0.5);
-	
+
 		let percentText = this.make.text({
-		  x: width / 2,
-		  y: height / 2 - 5,
-		  text: '0%',
-		  style: {
-			font: '18px monospace',
-			fill: '#ffffff'
-		  }
+			x: width / 2,
+			y: height / 2 - 5,
+			text: '0%',
+			style: {
+				font: '18px monospace',
+				fill: '#ffffff'
+			}
 		});
 		percentText.setOrigin(0.5, 0);
-	  }
-	
-	  /**
-	   * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
-	   * nivel del juego
-	   */
-	  create() {
-		this.scene.start('menu');
-	  }
-	
+	}
+
+	/**
+	 * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
+	 * nivel del juego
+	 */
+	create() {
+		this.scene.start('soundManager');
+	}
+
 }

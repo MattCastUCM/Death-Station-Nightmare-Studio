@@ -21,10 +21,12 @@ export default class LEVEL_03 extends LEVEL_BASE {
 	*/
 	create() {
 		super.create();
-
+		
         this.dialogManager = this.scene.get('dialogManager');
         this.hud = this.scene.get('hud');
         this.hud.level=this;
+
+		this.soundManager.playBGM("level3");
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
 		//Gato
 		 let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
@@ -128,8 +130,8 @@ export default class LEVEL_03 extends LEVEL_BASE {
 	DecreaseLife(player) {
 		this.hud.changeLifeValue(player.GetHP());
 		if(player.GetHP()<=0){
-			this.scene.start('restart'); 
-
+			this.scene.start('restart', { me: this }); 
+			this.soundManager.stopBGM("level3");
 		}
 		
 	}

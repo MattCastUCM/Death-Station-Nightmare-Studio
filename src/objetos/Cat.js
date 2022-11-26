@@ -16,8 +16,11 @@ export default class Cat extends gameObject {
 		this.scene.add.existing(this); //Añadimos a la escena
 		this.hasChangedDir = false; //ha cambiado la dir recientemente, se usa para que no cambia de dir aleatoriamente si se acaba de cambiar por colisión
 		this.body.pushable = false; //para que no lo pueda empujar el player
-		this.maxPlayerOffset=1.5*scene.sys.game.canvas.width; //la máxima distancia que se puede alejar del player
+		this.maxPlayerOffset = 1.5 * scene.sys.game.canvas.width; //la máxima distancia que se puede alejar del player
 
+		this.soundCounter = 0; //contador para emitir sonido
+		this.soundMax = 200; //frecuencia de emisión de sonido 
+		this.growlSound = ["cat1", "cat2"];
 		//Creamos las animaciones
 		this.scene.anims.create({
 			key: 'cat_idle',
@@ -63,13 +66,13 @@ export default class Cat extends gameObject {
 		// //añadir colisión con el mapa de la escena
 		this.scene.physics.add.collider(this, scene.colisionlayer, function (self) {
 			self.hasCollided();
-			console.log("collided cat"); 
+			console.log("collided cat");
 		});
 
-		this.scene=scene;
+		this.scene = scene;
 
 	}
-	/*Cambia de dir por colisionar con la pared*/ 
+	/*Cambia de dir por colisionar con la pared*/
 	hasCollided() {
 		this.changeDir();
 		this.hasChangedDir = true;
@@ -97,11 +100,11 @@ export default class Cat extends gameObject {
 		this.lastColTime += dt;;
 
 		let dist = Phaser.Math.Distance.BetweenPoints(this, this.scene.player)
-		if(dist>this.maxPlayerOffset) //si se aleja demasiado del jugador
+		if (dist > this.maxPlayerOffset) //si se aleja demasiado del jugador
 		{
 			//se coloca delante del jugador
-			this.x=this.scene.player.x+this.scene.sys.game.canvas.width;
-			this.y=this.scene.cameras.main.centerY;
+			this.x = this.scene.player.x + this.scene.sys.game.canvas.width;
+			this.y = this.scene.cameras.main.centerY;
 		}
 		if (this.lastColTime > 100) {
 			this.lastColTime = 0;
@@ -113,8 +116,15 @@ export default class Cat extends gameObject {
 		}
 		this.moving(); //continua con la dirección
 
+		//gestionar sonido
+		this.soundCounter++;
+		if (this.soundCounter > this.soundMax) {
+			this.soundMax = Phaser.Math.Between(300, 600); //para que la frecuencia sea aleatoria
+			this.soundCounter = 0;
+			this.scene.soundManager.play(this.growlSound[Phaser.Math.Between(0, 1)]); //elige entre 3 audios diferentes
 
-	
+		}
+
 
 	}
 
