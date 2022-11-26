@@ -18,7 +18,7 @@ export default class HUD extends Phaser.Scene {
         this.add.image(220, 18, 'heartImg').setOrigin(0, 0);
         this.healthBar = new healthBar(this, 30, 20, 180, 20, 10);
         //nivel
-        this.add.image(800, 18, 'level').setOrigin(0, 0);
+        this.levelImg=this.add.image(800, 18, 'level1').setOrigin(0, 0);
 
         let offset = 55; //el espacio al primer celda respecto del x del inventario
         let gap = 4; //espacio entre celdas del inventario
@@ -74,6 +74,10 @@ export default class HUD extends Phaser.Scene {
         this.healthBar.changeValue(newValue);
     }
 
+    /*cambiar de img*/
+    changeLevel(number){
+        this.levelImg.setTexture("level"+number);
+    }
     //llamado por player para indicarle a que arma se ha cambiado
     changeObject(weapon) {
         console.log(weapon);
