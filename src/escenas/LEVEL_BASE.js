@@ -1,3 +1,4 @@
+import gameObject from '../objetos/gameObject.js';
 import Player from '../objetos/player.js';
 /**
  * Clase base de la que heredan los niveles
@@ -39,11 +40,11 @@ export default class LEVEL_BASE extends Phaser.Scene {
       this.woodBoxes = this.physics.add.group();
       this.cats=this.physics.add.group();
 
-      // Jugador
+      // Jugador)
       this.player = new Player(this, 100, this.cameras.main.centerY, 15, 15, 8, 30, 140);
-      this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
       this.player.setScale(2.5);
-      
+      this.player.fullCollider.setScale(this.player.scale);
+      this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
 
       
      

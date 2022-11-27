@@ -9,12 +9,11 @@ export default class Bullet  extends gameObject {
         this.move(vectorX,vectorY);
 
         // Añade un trigger. Si choca con el jugador, le baja la vida y se destruye
-        this.scene.physics.add.overlap(this, target, function(self){ 
+        this.scene.physics.add.overlap(this, target.fullCollider, function(self){ 
             target.decreaseHP()
             scene.DecreaseLife(target);
             self.destroy();
         });
-        
         this.scene.physics.add.overlap(this, scene.cartBoardBoxes, function(self){ 
             self.destroy();
         });

@@ -1,6 +1,7 @@
 import gameObject from './gameObject.js';
 import WeaponManager from './weapons.js';
-// Clase para el gato que hereda de gameObject
+
+// Clase para el jugador que hereda de gameObject
 export default class Player extends gameObject {
     /**
      * Constructora
@@ -16,6 +17,7 @@ export default class Player extends gameObject {
     constructor(scene, x, y, w, h, offsetX, offsetY, spd) {
         super(scene, x, y, w, h, offsetX, offsetY, 'personaje', spd);
         this.scene = scene;
+        this.fullCollider = new gameObject(scene, x, y, w, 40, offsetX, -3, "", 0);
         this.hp = 100;
         this.hasCollided = false;
         this.elapsedTime = 0;
@@ -120,6 +122,12 @@ export default class Player extends gameObject {
         // IMPORTANTE llamar al preUpdate del padre para poder ejecutar la animación
         super.preUpdate(t, dt);
 
+        // La máscara de iluminación se mueve con el personaje
+        this.vision.x = this.x;
+        this.vision.y = this.y;
+        // El collider de cuerpo completo también
+        this.fullCollider.x = this.x;
+        this.fullCollider.y = this.y;
         this.friction();
 
         // Si se pulsa hacia abajo
@@ -210,9 +218,9 @@ export default class Player extends gameObject {
                 this.elapsedTime = 0;
             }
         }
-        // La máscara de iluminación se mueve con el personaje
-        this.vision.x = this.x;
-        this.vision.y = this.y;
+
 
     };
 };
+
+
