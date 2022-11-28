@@ -6,8 +6,8 @@ export default class Topo extends Enemy {
 		super(scene, x, y, 20, 20, 8, 10, 'topo', 40, scene.player, 10);
 		this.originX = x;
 		this.originY = y;
+		this.hurtSound = "topoHurt";
 		this.target = scene.player;
-
 
 		this.elapsedTime = 0;
 		//Creamos las animaciones
@@ -38,7 +38,7 @@ export default class Topo extends Enemy {
 
 		this.body.setImmovable(true);
 		this.play("nothing");
-
+		this.on('damaged',()=>this.scene.soundManager.play(this.hurtSound));
 	}
 
 

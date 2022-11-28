@@ -3,6 +3,7 @@ import Boot from './escenas/boot.js'
 import Menu from './escenas/menu.js'
 import level_aux from './escenas/level_aux.js';
 import HUD from './hud/hudManager.js'
+import SoundManager from './hud/soundManager.js'
 //import Pause from './escenas/pause.js'
 import DialogManager from './hud/DialogManager.js'
 import level_map from './escenas/level_map.js';
@@ -35,7 +36,7 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [Boot,LEVEL_01,LEVEL_02,LEVEL_03,Menu, level_aux,HUD,DialogManager, Restart],
+    scene: [Boot,SoundManager,LEVEL_01,LEVEL_02,LEVEL_03,Menu, level_aux,HUD,DialogManager, Restart],
     physics: { 
         default: 'arcade', 
         arcade: { 

@@ -5,7 +5,6 @@ export default class Bullet  extends gameObject {
         super(scene, x, y, 30,30,0, 0, 'roca', 150);
 
         this.lifetime = 0;
-        console.log(this.body);
         this.body.onCollide = true; 
        
         this.move(vectorX,vectorY);
@@ -14,22 +13,22 @@ export default class Bullet  extends gameObject {
         this.scene.physics.add.overlap(this, target, function(self){ 
             target.decreaseHP()
             scene.DecreaseLife(target);
+            scene.soundManager.play("bulletDestroy")
             self.destroy();
         });
         
         this.scene.physics.add.overlap(this, scene.cartBoardBoxes, function(self){ 
-           
-
+            scene.soundManager.play("bulletDestroy")
             self.destroy();
         });
         this.scene.physics.add.overlap(this, scene.woodBoxes, function(self){ 
+            scene.soundManager.play("bulletDestroy")
             self.destroy();
         });
         this.scene.physics.add.collider(this, scene.colisionlayer, function(self){ 
+            scene.soundManager.play("bulletDestroy")
             self.destroy();
         });
-
-		
 
     }
     preUpdate(t, dt){

@@ -19,8 +19,9 @@ export default class LEVEL_BASE extends Phaser.Scene {
      * @param {string} tilename
      * @param {int} tileColision -hasta que numero
      */
-     constructor(level,nextlevel,tilemap,tilename,tileColision){
+    constructor(level, nextlevel, tilemap, tilename, tileColision) {
         super({ key: level });
+
          //TILE MAP
          //this.level=level;
          this.nextlevel=nextlevel;
@@ -44,36 +45,41 @@ export default class LEVEL_BASE extends Phaser.Scene {
          });
          this.cats=this.physics.add.group();
 
-         // Jugador
-         this.player = new Player(this, 100, this.cameras.main.centerY, 15, 15, 8, 30, 140);
-         this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
-         this.player.setScale(2.5);
-         
+        //SoundManager
+        this.soundManager = this.scene.get('soundManager');
 
-         
-		
-		//camara que sigue a jugador (movimiento suave)
-		this.cameras.main.startFollow(this.player, this.cameras.FOLLOW_LOCKON, 0.1, 0.1);
-		//espacio de camara (si jugador sale de este espacio,la camara le sigue)
-		//this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
+ 
+
+        // Jugador
+        this.player = new Player(this, 100, this.cameras.main.centerY, 15, 15, 8, 30, 140);
+        this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
+        this.player.setScale(2.5);
+
+
+
+
+        //camara que sigue a jugador (movimiento suave)
+        this.cameras.main.startFollow(this.player, this.cameras.FOLLOW_LOCKON, 0.1, 0.1);
+        //espacio de camara (si jugador sale de este espacio,la camara le sigue)
+        //this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
         this.CreateMap();
 
-        this.levelGoal=this.map.createFromObjects('objetos',[
-			{name: 'next'}]);
+        this.levelGoal = this.map.createFromObjects('objetos', [
+            { name: 'next' }]);
         this.levelGoal[0].visible = false;
-		this.physics.add.existing(this.levelGoal[0]);
-		
-		this.physics.add.overlap(this.player, this.levelGoal[0],()=>this.Next());
+        this.physics.add.existing(this.levelGoal[0]);
+
+        this.physics.add.overlap(this.player, this.levelGoal[0], () => this.Next());
 
         this.AddColision();
 
-        
-     }
 
-     Next(){
+    }
+
+    Next() {
         //this.scene.remove(this.hud);
         this.scene.start(this.nextlevel);
-     }
+    }
 
      AddColision(){
          //colisión con tile map
@@ -101,18 +107,19 @@ export default class LEVEL_BASE extends Phaser.Scene {
          //Colisión enemigo
          this.physics.add.overlap(this.player, this.enemies, ()=>this.player.decreaseHP(), null);
 
-     }
-     CreateMap(){
-        this.map = this.make.tilemap({ key: this.mapname});
-        this.tiles = this.map.addTilesetImage("mapa",this.tilename);
-         this.fondolayer = this.map.createLayer('fondo', this.tiles, 0, 0);
-         this.colisionlayer=this.map.createLayer('colision',this.tiles,0,0);
-         //poner colision a layer
-         this.colisionlayer.setCollisionBetween(0,this.numColision);
-     }
+
+    }
+    CreateMap() {
+        this.map = this.make.tilemap({ key: this.mapname });
+        this.tiles = this.map.addTilesetImage("mapa", this.tilename);
+        this.fondolayer = this.map.createLayer('fondo', this.tiles, 0, 0);
+        this.colisionlayer = this.map.createLayer('colision', this.tiles, 0, 0);
+        //poner colision a layer
+        this.colisionlayer.setCollisionBetween(0, this.numColision);
+    }
 
 
-	update(t, dt) {
+    update(t, dt) {
 
-	}
+    }
 }
