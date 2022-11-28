@@ -46,10 +46,10 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		});
 		var EmenyPersecutorArray=this.map.createFromObjects('objetos',[
 		 	{gid:564, classType: Persecutor,key:'persecutor'}]);
+		
 		EmenyPersecutorArray.forEach(element => {
 			element.setScale(2);
 		});
-		
 		this.enemies.addMultiple(EmenyPersecutorArray);
 		var EmenyLanzadorArray=this.map.createFromObjects('objetos',[
 		 	{gid:565, classType: Lanzador,key:'lanzador'}]);
@@ -58,7 +58,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 			});
 		this.enemies.addMultiple(EmenyLanzadorArray);
 
-		console.log(EmenyPersecutorArray[0]);
+		console.log(EmenyPersecutorArray[0].body);
 
 		//this.add.image(0, 0, 'nose').setOrigin(0, 0);
 		

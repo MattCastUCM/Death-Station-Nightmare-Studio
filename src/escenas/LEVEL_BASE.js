@@ -33,9 +33,15 @@ export default class LEVEL_BASE extends Phaser.Scene {
          
  
          // Grupos
-         this.enemies = this.physics.add.group();
-         this.cartBoardBoxes = this.physics.add.group();
-         this.woodBoxes = this.physics.add.group();
+         this.enemies = this.physics.add.group({
+            
+         });
+         this.cartBoardBoxes = this.physics.add.group({
+            setImmovable:true
+         });
+         this.woodBoxes = this.physics.add.group({
+            setImmovable:true
+         });
          this.cats=this.physics.add.group();
 
          // Jugador
@@ -74,7 +80,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
          this.physics.add.collider(this.player,this.colisionlayer);
          this.physics.add.collider(this.cartBoardBoxes,this.colisionlayer);
          this.physics.add.collider(this.cartBoardBoxes, this.colisionlayer);
-        // this.physics.add.collider(this.cats,this.colisionlayer);
+         this.physics.add.collider(this.cats,this.colisionlayer);
          this.physics.add.collider(this.enemies,this.colisionlayer);
  
          //colisión player-cajas,cajas-cajas
@@ -83,7 +89,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
          //this.physics.add.collider(this.player, this.cartBoardBoxes);
          this.physics.add.collider(this.player, this.woodBoxes);
          //enemigos caja
-         //this.physics.add.collider(this.enemies, this.cartBoardBoxes);
+         this.physics.add.collider(this.enemies, this.cartBoardBoxes);
          this.physics.add.collider(this.enemies, this.woodBoxes);
          // gato caja
          this.physics.add.collider(this.cats, this.cartBoardBoxes);

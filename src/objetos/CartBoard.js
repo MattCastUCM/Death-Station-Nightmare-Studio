@@ -7,16 +7,37 @@ export default class CardBoard extends gameObject {
 		//scene.physics.add.existing(this);
 		let self=this;
 		this.scene=scene;
-		this.scene.physics.add.collider(this, this.scene.enemies, function (self) {
-			self.body.setImmovable();
-		});
-		this.scene.physics.add.collider(this, this.scene.player, function (self) {
-			self.body.setImmovable(false);
-			//console.log(self.body);
+		self.resetImmovable=false;
+		this.scene.physics.add.collider(this, this.scene.player, function () {
+			if(self.scene.player.velX!=0||self.scene.player.velY!=0){
+				self.body.setImmovable(false);
+			}
+			else{
+				self.body.setImmovable();
+			}
+			if(!self.resetImmovable&&!self.body.setImmovable==false){
+				self.resetImmovable=true;
+				setTimeout(()=>{
+					self.body.setImmovable();
+					self.resetImmovable=false;
+				
+				},1000);
+
+			}
+			
+			
 		});
 		
 		this.setFriction(10);
 	}
+	// ResetImmovable(){
+	// 	if(self.velX!=0||self.velY!=0){
+	// 		this.body.setImmovable();
+	// 	}
+	// }
+
+	
+
 
 	/**
 	 * Bucle principal de la caja, comprobamos la velocidad para reducirla y setearla a 0 en ciertos umbrales
@@ -26,7 +47,6 @@ export default class CardBoard extends gameObject {
 	 */
 	preUpdate(t, dt) {
 		super.preUpdate(t,dt);
-
 		this.friction();
 
 	}
