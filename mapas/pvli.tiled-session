@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "LEVEL_01.tmx",
+    "activeFile": "LEVEL_02.tmx",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
         "."
@@ -11,7 +11,7 @@
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
         "": {
-            "scaleInDock": 0.015625,
+            "scaleInDock": 0.25,
             "scaleInEditor": 1
         },
         "#mapa": {
@@ -37,11 +37,11 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 0.75,
-            "selectedLayer": 1,
+            "scale": 0.5,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 406.66666666666663,
-                "y": 366.66666666666663
+                "x": 2094,
+                "y": 402
             }
         },
         "LEVEL_01.tmx#mapa": {
@@ -51,7 +51,7 @@
         "LEVEL_01.tmx#obj": {
             "dynamicWrapping": true,
             "scaleInDock": 0.33,
-            "scaleInEditor": 1
+            "scaleInEditor": 0.5
         },
         "LEVEL_02.json": {
             "scale": 0.25,
@@ -74,13 +74,14 @@
         },
         "LEVEL_02.tmx": {
             "expandedObjectLayers": [
+                7,
                 4
             ],
-            "scale": 0.33,
+            "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2039.3939393939395,
-                "y": 1527.272727272727
+                "x": 580,
+                "y": 1230
             }
         },
         "LEVEL_02.tmx#Nivel Claudia": {
@@ -89,12 +90,12 @@
         },
         "LEVEL_02.tmx#dec": {
             "dynamicWrapping": true,
-            "scaleInDock": 0.03125,
-            "scaleInEditor": 0.0625
+            "scaleInDock": 0.125,
+            "scaleInEditor": 0.25
         },
         "LEVEL_02.tmx#mapa": {
             "dynamicWrapping": false,
-            "scaleInDock": 0.5,
+            "scaleInDock": 0.25,
             "scaleInEditor": 1
         },
         "LEVEL_02.tmx#obj": {
@@ -237,7 +238,7 @@
         }
     },
     "last.exportedFilePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/mapas",
-    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/assets/Nivel 2",
+    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/assets/Armas",
     "map.fixedSize": true,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
@@ -253,10 +254,10 @@
     "project": "pvli.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "LEVEL_01.tmx",
         "level01.tmx",
         "LEVEL_03.tmx",
         "LEVEL_02.tmx",
-        "LEVEL_01.tmx",
         "LEVEL_04.tmx",
         "level_03.tmx",
         "sin nombre.json",
@@ -269,5 +270,5 @@
         "height": 34,
         "width": 34
     },
-    "tileset.type": 0
+    "tileset.type": 1
 }

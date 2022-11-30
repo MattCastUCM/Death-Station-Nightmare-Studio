@@ -4,10 +4,10 @@ export default class CardBoard extends gameObject {
 
 	constructor(scene, posX, posY) {
 		super(scene, posX, posY, 56,32,0, 32, 'cartBoard', 0);
-		//scene.physics.add.existing(this);
 		let self=this;
 		this.scene=scene;
 		self.resetImmovable=false;
+		//colision de player con caja
 		this.scene.physics.add.collider(this, this.scene.player, function () {
 			if(self.scene.player.velX!=0||self.scene.player.velY!=0){
 				self.body.setImmovable(false);
@@ -15,6 +15,7 @@ export default class CardBoard extends gameObject {
 			else{
 				self.body.setImmovable();
 			}
+			//resetear a imovible tras 1s 
 			if(!self.resetImmovable&&!self.body.setImmovable==false){
 				self.resetImmovable=true;
 				setTimeout(()=>{
@@ -22,10 +23,7 @@ export default class CardBoard extends gameObject {
 					self.resetImmovable=false;
 				
 				},1000);
-
-			}
-			
-			
+			}			
 		});
 		
 		this.setFriction(10);

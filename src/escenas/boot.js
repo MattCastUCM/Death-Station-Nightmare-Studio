@@ -30,10 +30,25 @@ export default class Boot extends Phaser.Scene {
 		 //tile map
 		 this.load.image("tiles","assets/Mapa/mapa2.png");
 		 this.load.tilemapTiledJSON('level1',"mapas/LEVEL_01.json");
-		 this.load.image("tilesLevel2","assets/Nivel 2/estacion1.3.png")
+		 this.load.image("tilesLevel2","assets/Nivel_assets_escalados/estacion1.3.png")
 		 this.load.tilemapTiledJSON('level2',"mapas/LEVEL_02.json");
 		 this.load.image("tileslevel3","assets/Nivel 3/mapa3.png")
 		 this.load.tilemapTiledJSON('level3',"mapas/LEVEL_03.json")
+
+		//dec
+		this.load.image("Busura","assets/Nivel_assets_escalados/Busura.png");
+		this.load.image("cabeza","assets/Nivel_assets_escalados/cabeza.png");
+		this.load.image("carrito","assets/Nivel_assets_escalados/carrito bebe.png");
+		this.load.image("cartel2","assets/Nivel_assets_escalados/cartel2.png");
+		this.load.image("dos carteles","assets/Nivel_assets_escalados/dos carteles.png");
+		this.load.image("Latas","assets/Nivel_assets_escalados/Latas.png");
+		this.load.image("Maletas","assets/Nivel_assets_escalados/Maletas.png");
+		this.load.image("Panel","assets/Nivel_assets_escalados/Panel.png");
+		this.load.image("Paneles","assets/Nivel_assets_escalados/Paneles.png");
+		this.load.image("rata","assets/Nivel_assets_escalados/rata.png");
+		this.load.image("señor sin cabeza","assets/Nivel_assets_escalados/señor sin cabeza.png");
+		this.load.image("Silla","assets/Nivel_assets_escalados/Silla.png");
+		this.load.image("sillones","assets/Nivel_assets_escalados/sillones.png");
 		//HUD
 		
 

@@ -21,23 +21,41 @@ export default class LEVEL_02 extends LEVEL_BASE {
 	create() {
 		super.create();
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
+        this.dialogManager = this.scene.get('dialogManager');
+        this.hud = this.scene.get('hud');
+        this.hud.changeLevel(2,this);
 		this.soundManager.playBGM("level2");
 
+		let cardBoardArray = this.map.createFromObjects('objetos', [
+			{ class: 'cardBoard', classType: CardBoard, key: 'cartBoard' }]);
+		this.cartBoardBoxes.addMultiple(cardBoardArray);
+		let woodBoxesArray = this.map.createFromObjects('objetos', [
+			{ name: 'woodBox', classType: WoodBox, key: 'woodBox' }]);
+		this.woodBoxes.addMultiple(woodBoxesArray);
+		woodBoxesArray.forEach(obj => {
+			obj.body.setImmovable();
+		});
+
+		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [
+			{ name: 'persecutor', classType: Persecutor, key: 'persecutor' }]);
+		EmenyPersecutorArray.forEach(element => {
+			element.setScale(2);
+		});
+
+		this.enemies.addMultiple(EmenyPersecutorArray);
+		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [
+			{ name: 'lanzador', classType: Lanzador, key: 'lanzador' }]);
+		EmenyLanzadorArray.forEach(element => {
+			element.setScale(2);
+		});
+		this.enemies.addMultiple(EmenyLanzadorArray);
 
 		
-		// var cardBoardArray=this.map.createFromObjects('objetos',[
-		// 	{gid:561, classType: CardBoard,key: 'cartBoard'}]);
+
+
 
 		
-		// this.cartBoardBoxes.addMultiple(cardBoardArray);
-		// var woodBoxesArray=this.map.createFromObjects('objetos',[
-		// 	{gid:562, classType: WoodBox,key: 'woodBox'}]);
-		// this.woodBoxes.addMultiple(woodBoxesArray);
-		// woodBoxesArray.forEach(obj => {
-		// 	obj.body.setImmovable();
-		// });
-	
-		//this.hud.
+		
 	}
 
 	/*Mandarle a dialogManager el texto que tiene que printear*/

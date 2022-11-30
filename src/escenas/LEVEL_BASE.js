@@ -8,6 +8,7 @@ import Player from '../objetos/player.js';
 /**
  * Escena principal.
  * @extends Phaser.Scene
+ * 
  */
 
 export default class LEVEL_BASE extends Phaser.Scene {
@@ -43,7 +44,9 @@ export default class LEVEL_BASE extends Phaser.Scene {
          this.woodBoxes = this.physics.add.group({
             setImmovable:true
          });
-         this.cats=this.physics.add.group();
+         this.objects=this.physics.add.group({
+            setImmovable:true
+         });
 
         //SoundManager
         this.soundManager = this.scene.get('soundManager');
@@ -51,7 +54,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
  
 
         // Jugador
-        this.player = new Player(this, 100, this.cameras.main.centerY, 15, 15, 8, 30, 140);
+        this.player = new Player(this, 7000, this.cameras.main.centerY, 15, 15, 8, 30, 140);
         this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
         this.player.setScale(2.5);
 
@@ -86,7 +89,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
          this.physics.add.collider(this.player,this.colisionlayer);
          this.physics.add.collider(this.cartBoardBoxes,this.colisionlayer);
          this.physics.add.collider(this.cartBoardBoxes, this.colisionlayer);
-         this.physics.add.collider(this.cats,this.colisionlayer);
+         //this.physics.add.collider(this.cats,this.colisionlayer);
          this.physics.add.collider(this.enemies,this.colisionlayer);
  
          //colisión player-cajas,cajas-cajas
@@ -98,11 +101,11 @@ export default class LEVEL_BASE extends Phaser.Scene {
          this.physics.add.collider(this.enemies, this.cartBoardBoxes);
          this.physics.add.collider(this.enemies, this.woodBoxes);
          // gato caja
-         this.physics.add.collider(this.cats, this.cartBoardBoxes);
-         this.physics.add.collider(this.cats, this.woodBoxes);
+         //this.physics.add.collider(this.cats, this.cartBoardBoxes);
+         //this.physics.add.collider(this.cats, this.woodBoxes);
  
          //this.physics.add.collider(this.enemies, this.enemies);
-         this.physics.add.collider(this.player, this.cats);
+         //this.physics.add.collider(this.player, this.cats);
  
          //Colisión enemigo
          this.physics.add.overlap(this.player, this.enemies, ()=>this.player.decreaseHP(), null);
