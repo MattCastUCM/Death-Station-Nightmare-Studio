@@ -96,7 +96,7 @@ export default class Lanzador extends Enemy {
 			if (this.CalculateVectorX() < -100 && this.anims.currentAnim.key !== "leftLanzador" ){
 				this.play("leftLanzador").anims.chain("shootLeft");
 				this.on("animationcomplete-leftLanzador", ()=>{	
-					new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY(), this.target);
+					this.shootBullet();
 					this.anims.restart();
 				});
 			} 
@@ -104,7 +104,7 @@ export default class Lanzador extends Enemy {
 			else if(this.CalculateVectorX() > 100 && this.anims.currentAnim.key !== "rightLanzador"){
 				this.play("rightLanzador").anims.chain("shootRight");
 				this.on("animationcomplete-rightLanzador", ()=>{	
-					new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY(), this.target);
+					this.shootBullet();
 					this.anims.restart();
 				});
 			} 
@@ -114,7 +114,7 @@ export default class Lanzador extends Enemy {
 				if(this.CalculateVectorY() > 0 && this.anims.currentAnim.key !== "downLanzador"){
 					this.play("downLanzador").anims.chain("shootDown");
 					this.on("animationcomplete-downLanzador", ()=>{	
-						new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY(), this.target);
+						this.shootBullet();
 						this.anims.restart();
 					});
 				} 
@@ -122,7 +122,7 @@ export default class Lanzador extends Enemy {
 				else if(this.CalculateVectorY() < -10 && this.anims.currentAnim.key !== "upLanzador") {
 					this.play("upLanzador").anims.chain("shootUp");
 					this.on("animationcomplete-upLanzador", ()=>{
-						new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY(), this.target);
+						this.shootBullet();
 						this.anims.restart();
 					});
 				}
@@ -130,4 +130,8 @@ export default class Lanzador extends Enemy {
 		}
 	}
 
+	shootBullet(){
+		new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY(), this.target);
+
+	}
 }

@@ -1,0 +1,220 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "LEVEL_02.tmx",
+    "automapping.whileDrawing": false,
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "Todos los archivos (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "LEVEL_01.json": {
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 5354,
+                "y": 340.66666666666663
+            }
+        },
+        "LEVEL_01.json#mapa": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "LEVEL_01.json#obj": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "LEVEL_01.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 0.125,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 5348,
+                "y": 340
+            }
+        },
+        "LEVEL_01.tmx#mapa": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "LEVEL_01.tmx#obj": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.33,
+            "scaleInEditor": 1
+        },
+        "LEVEL_02.json": {
+            "scale": 0.25,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -124,
+                "y": -84
+            }
+        },
+        "LEVEL_02.json#Mapaç": {
+            "scaleInDock": 1
+        },
+        "LEVEL_02.json#Nivel Claudia": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "LEVEL_02.json#obj": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "LEVEL_02.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -80,
+                "y": 296
+            }
+        },
+        "LEVEL_02.tmx#Nivel Claudia": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.5
+        },
+        "LEVEL_02.tmx#mapa": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "LEVEL_02.tmx#obj": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "level01.json": {
+            "scale": 0.33,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 5245.454545454546,
+                "y": 336.3636363636364
+            }
+        },
+        "level01.json#dec": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "level01.json#objetos": {
+            "scaleInDock": 1
+        },
+        "level01.json#tren": {
+            "scaleInDock": 1
+        },
+        "level01.tmx": {
+            "expandedObjectLayers": [
+                8
+            ],
+            "scale": 0.33,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 5343.939393939394,
+                "y": 319.69696969696975
+            }
+        },
+        "level01.tmx#dec": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.33,
+            "scaleInEditor": 1
+        },
+        "level01.tmx#obj": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "level01.tmx#objetos": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "level01.tmx#t": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.75
+        },
+        "level01.tmx#tren": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "level_03.tmx": {
+            "scale": 0.25,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 994,
+                "y": 578
+            }
+        },
+        "level_03.tmx#mapa2": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "level_03.tmx#tren": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "sin nombre.json": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 799.5,
+                "y": 287.5
+            }
+        },
+        "sin nombre.json#coin": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "sin nombre.json#f": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "sin nombre.json#ground_1x1": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/mapas",
+    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/mapas/objetos",
+    "map.fixedSize": true,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 34,
+    "map.tileWidth": 34,
+    "mapScene.enableWorlds": true,
+    "openFiles": [
+        "level01.tmx",
+        "level_03.tmx",
+        "LEVEL_01.tmx",
+        "LEVEL_01.json",
+        "LEVEL_02.tmx"
+    ],
+    "project": "pvli.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "level01.tmx",
+        "level_03.tmx",
+        "LEVEL_01.tmx",
+        "LEVEL_01.json",
+        "LEVEL_02.tmx",
+        "level01.json",
+        "sin nombre.json",
+        "LEVEL_02.json"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 34,
+        "width": 34
+    },
+    "tileset.type": 1
+}

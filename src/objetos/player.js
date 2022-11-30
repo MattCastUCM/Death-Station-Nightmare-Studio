@@ -1,6 +1,7 @@
 import gameObject from './gameObject.js';
 import WeaponManager from './weapons.js';
-// Clase para el gato que hereda de gameObject
+
+// Clase para el jugador que hereda de gameObject
 export default class Player extends gameObject {
     /**
      * Constructora
@@ -16,6 +17,7 @@ export default class Player extends gameObject {
     constructor(scene, x, y, w, h, offsetX, offsetY, spd) {
         super(scene, x, y, w, h, offsetX, offsetY, 'personaje', spd);
         this.scene = scene;
+        this.fullCollider = new gameObject(scene, x, y, w, 40, offsetX, -3, "", 0);
         this.hp = 100;
         this.hasCollided = false;
         this.elapsedTime = 0;
@@ -30,25 +32,25 @@ export default class Player extends gameObject {
         });
         this.scene.anims.create({
             key: 'up',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 9, end: 11 }),
+            frames: scene.anims.generateFrameNumbers('personaje', { start: 12, end: 15 }),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key: 'down',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 0, end: 2 }),
+            frames: scene.anims.generateFrameNumbers('personaje', { start: 0, end: 3 }),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key: 'left',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 3, end: 5 }),
+            frames: scene.anims.generateFrameNumbers('personaje', { start: 4, end: 7 }),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key: 'right',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 6, end: 8 }),
+            frames: scene.anims.generateFrameNumbers('personaje', { start: 8, end: 11 }),
             frameRate: 5,
             repeat: -1
         });
@@ -107,6 +109,10 @@ export default class Player extends gameObject {
             this.hp -= 10;
             this.hasCollided = true;
             this.scene.DecreaseLife(this);
+            for(let i= 0; i<3; i= i+2){
+                setTimeout(()=>{ this.setTint(0xff0000);}, i * 150);
+                setTimeout(()=>{ this.clearTint();}, (i + 1) * 150);
+            }
         }
     }
 
@@ -116,6 +122,12 @@ export default class Player extends gameObject {
         // IMPORTANTE llamar al preUpdate del padre para poder ejecutar la animación
         super.preUpdate(t, dt);
 
+        // La máscara de iluminación se mueve con el personaje
+        this.vision.x = this.x;
+        this.vision.y = this.y;
+        // El collider de cuerpo completo también
+        this.fullCollider.x = this.x;
+        this.fullCollider.y = this.y;
         this.friction();
 
         // Si se pulsa hacia abajo
@@ -206,9 +218,9 @@ export default class Player extends gameObject {
                 this.elapsedTime = 0;
             }
         }
-        // La máscara de iluminación se mueve con el personaje
-        this.vision.x = this.x;
-        this.vision.y = this.y;
+
 
     };
 };
+
+

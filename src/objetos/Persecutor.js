@@ -73,14 +73,14 @@ export default class Persecutor extends Enemy {
 
 		let dist = Phaser.Math.Distance.BetweenPoints(this, this.target)
 
-		//dejar de perseguir si está encima del jugador, o que está muy lejos
-		if (this.persecuting && (dist < 2 || dist > this.persecuteDist)) { //comprobar primero que estás persiguiendo,y ya pararlo
+		//dejar de perseguir si está encima del jugador, o si está muy lejos
+		if (this.persecuting && (dist < 20 || dist > this.persecuteDist)) { //comprobar primero que estás persiguiendo,y ya pararlo
 			this.body.reset(this.x, this.y); //anula el follow
 			this.play("idlePersecutor");
 			this.persecuting = false;
 		}
 		//empieza a perseguir desde cierta distancia, y sin estar encima del jugador
-		else if (dist <= this.persecuteDist && dist >= 2) {
+		else if (dist <= this.persecuteDist && dist >= 20) {
 			this.Follow(); this.PlayAnimation(); this.body.velocity.normalize().scale(this.speed);
 			this.persecuting = true;
 		}

@@ -2,11 +2,9 @@ import gameObject from './gameObject.js';
 
 export default class CardBoard extends gameObject {
 
-	constructor(scene, posX, posY, colliderGroup) {
+	constructor(scene, posX, posY) {
 		super(scene, posX, posY, 56,32,0, 32, 'cartBoard', 0);
-
-	    //añadir al grupo de cajas
-		colliderGroup.add(this);
+		scene.physics.add.existing(this);
 		this.setFriction(10);
 	}
 
