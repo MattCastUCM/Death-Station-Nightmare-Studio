@@ -21,6 +21,10 @@ export default class LEVEL_02 extends LEVEL_BASE {
 	create() {
 		super.create();
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
+		this.soundManager.playBGM("level2");
+
+
+		
 		// var cardBoardArray=this.map.createFromObjects('objetos',[
 		// 	{gid:561, classType: CardBoard,key: 'cartBoard'}]);
 
@@ -33,7 +37,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		// 	obj.body.setImmovable();
 		// });
 	
-		
+		//this.hud.
 	}
 
 	/*Mandarle a dialogManager el texto que tiene que printear*/
@@ -46,8 +50,8 @@ export default class LEVEL_02 extends LEVEL_BASE {
 	DecreaseLife(player) {
 		this.hud.changeLifeValue(player.GetHP());
 		if(player.GetHP()<=0){
-			this.scene.start('menu'); 
-
+			this.scene.start('restart', { me: this }); 
+			this.soundManager.stopBGM("level2");
 		}
 	}
 

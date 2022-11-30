@@ -22,6 +22,8 @@ export default class Player extends gameObject {
         this.hasCollided = false;
         this.elapsedTime = 0;
         this.facing = "down";
+        this.soundCounter = 0; //contador para emitir sonido
+		this.soundMax=25; //frecuencia de emisión de sonido 
         this.weaponManager = new WeaponManager(this)
         //Creamos las animaciones
         this.scene.anims.create({
@@ -55,7 +57,7 @@ export default class Player extends gameObject {
             repeat: -1
         });
 
-
+       
         // La animación a ejecutar según se genere será 'idle'
         this.play('idle');
 
@@ -88,9 +90,11 @@ export default class Player extends gameObject {
     HasNewWeapon(weapon) {
         this.scene.hud.addInventory(weapon);
         this.weaponManager.hasNewWeapon(weapon);
+        this.scene.soundManager.play("pickWeapon");
     }
     ChangeWeapon(weapon) {
         this.scene.hud.changeObject(weapon);
+        this.scene.soundManager.play("selectWeapon");
     }
     GetPosX() {
         return this.x;
@@ -113,6 +117,8 @@ export default class Player extends gameObject {
                 setTimeout(()=>{ this.setTint(0xff0000);}, i * 150);
                 setTimeout(()=>{ this.clearTint();}, (i + 1) * 150);
             }
+            this.scene.soundManager.play("playerHurt")
+
         }
     }
 
@@ -140,7 +146,12 @@ export default class Player extends gameObject {
             if (this.anims.currentAnim.key !== 'down') {
                 this.play('down');
             }
-
+            this.soundCounter++;
+			if(this.soundCounter>this.soundMax){
+				this.soundCounter=0;
+                this.scene.soundManager.play("walk")
+			}
+           
             // Mueve el objeto
             this.move(0, 1)
 
@@ -156,7 +167,12 @@ export default class Player extends gameObject {
             if (this.anims.currentAnim.key !== 'up') {
                 this.play('up');
             }
-
+            this.soundCounter++;
+			if(this.soundCounter>this.soundMax){
+				this.soundCounter=0;
+                this.scene.soundManager.play("walk")
+			}
+           // this.scene.soundManager.play("walk")
             // Mueve el objeto
             this.move(0, -1)
         }
@@ -171,7 +187,12 @@ export default class Player extends gameObject {
             if (this.anims.currentAnim.key !== 'left') {
                 this.play('left');
             }
-
+            this.soundCounter++;
+			if(this.soundCounter>this.soundMax){
+				this.soundCounter=0;
+                this.scene.soundManager.play("walk")
+			}
+           // this.scene.soundManager.play("walk")
             // Mueve el objeto
             this.move(-1, 0)
 
@@ -187,7 +208,12 @@ export default class Player extends gameObject {
             if (this.anims.currentAnim.key !== 'right') {
                 this.play('right');
             }
-
+            this.soundCounter++;
+			if(this.soundCounter>this.soundMax){
+				this.soundCounter=0;
+                this.scene.soundManager.play("walk")
+			}
+          //  this.scene.soundManager.play("walk")
             // Mueve el objeto
             this.move(1, 0)
 
@@ -213,7 +239,7 @@ export default class Player extends gameObject {
 
             // Si ha pasado un cierto tiempo, se indica que ha
             // dejado de colisionar y se popne el temporizador a 0
-            if (this.elapsedTime >= 500) {
+            if (this.elapsedTime >= 600) {
                 this.hasCollided = false;
                 this.elapsedTime = 0;
             }

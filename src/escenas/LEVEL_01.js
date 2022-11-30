@@ -6,58 +6,81 @@ import Lanzador from '../objetos/Lanzador.js';
 import Trigger from '../objetos/Trigger.js';
 import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
-import EnemyManager from '../objetos/EnemyManager.js';
+
+//A BORRAR
+import Topo from '../objetos/Topo.js';
 /**
  * Nivel 1
  * @extends LEVEL_BASE
  */
 export default class LEVEL_01 extends LEVEL_BASE {
 	constructor() {
-		let nextlevel="level_aux";
-		super("LEVEL_01",nextlevel,'level1','tiles',560);
+		let nextlevel = "LEVEL_03";
+		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560);
 	}
 	/**
 	* Creación de los elementos de la escena principal de juego
 	*/
 	create() {
 		super.create();
+		//DIALOGMANAGER
+		this.scene.launch('dialogManager');
+		this.dialogManager = this.scene.get('dialogManager');
+
+		//HUD (y Pausa)
+
+		this.scene.launch('hud', { me: this });
+		this.hud = this.scene.get('hud');
+
+		//BGM
+		this.soundManager.playBGM("level1");
+
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
-        //this.colisionlayer.setCollisionBetween(0,560);
-		this.nextlevel=new Phaser.GameObjects.Sprite(this,7200,300,'selected');
-		this.add.existing(this.nextlevel);
-		this.physics.add.existing(this.nextlevel);
-		//this.CreateMap();
 		
-		// this.physics.add.overlap(this.player,this.nextlevel,function(){
-		// 	console.log(this);
-		// },this);
-		let enemyManager = new EnemyManager(scene);
-		let persecutor = enemyManager.CreateEnemy(40, 200, 'persecutor', this.player);
-		persecutor.setScale(2);
-		let lanzador = enemyManager.CreateEnemy(80, 300, 'lanzador', this.player);
-		lanzador.setScale(2);
+		//Gato
+		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
+		this.cats.add(gato);
+		var cardBoardArray = this.map.createFromObjects('objetos', [
+			{ gid: 561, classType: CardBoard, key: 'cartBoard' }]);
 
-		// Gato
-		//let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
-		//this.cats.add(gato);
-		//console.log(this.map);
-        //crea objetos de mapa
-		var cardBoardArray=this.map.createFromObjects('objetos',[
-			{gid:561, classType: CardBoard,key: 'cartBoard'}]);
 
-		
 		this.cartBoardBoxes.addMultiple(cardBoardArray);
-		var woodBoxesArray=this.map.createFromObjects('objetos',[
-			{gid:562, classType: WoodBox,key: 'woodBox'}]);
+		var woodBoxesArray = this.map.createFromObjects('objetos', [
+			{ gid: 562, classType: WoodBox, key: 'woodBox' }]);
 		this.woodBoxes.addMultiple(woodBoxesArray);
 		woodBoxesArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
-		// var EmenyPersecutorArray=this.map.createFromObjects('objetos',[
-		// 	{gid:562, classType: Persecutor}]);
-		// var EmenyLanzadorArray=this.map.createFromObjects('objetos',[
-		// 	{gid:562, classType: Lanzador}]);
-		//this.AddColision();
+		var EmenyPersecutorArray = this.map.createFromObjects('objetos', [
+			{ gid: 564, classType: Persecutor, key: 'persecutor' }]);
+		EmenyPersecutorArray.forEach(element => {
+			element.setScale(2);
+		});
+
+		this.enemies.addMultiple(EmenyPersecutorArray);
+		var EmenyLanzadorArray = this.map.createFromObjects('objetos', [
+			{ gid: 565, classType: Lanzador, key: 'lanzador' }]);
+		EmenyLanzadorArray.forEach(element => {
+			element.setScale(2);
+		});
+		this.enemies.addMultiple(EmenyLanzadorArray);
+
+		console.log(EmenyPersecutorArray[0]);
+
+		//this.add.image(0, 0, 'nose').setOrigin(0, 0);
+
+		// scene.physics.world.on('collide', function(gameObject1, gameObject2, body1, body2) {
+
+		// 	if(gameObject1 === scene.player && scene.cartBoardBoxes.contains(gameObject2)){
+		// 		gameObject2.body.setImmovable(false);			
+		// 	}
+		// 	if( scene.enemies.contains(gameObject1)&& scene.cartBoardBoxes.contains(gameObject2)){
+		// 		console.log("algooo");
+		// 		gameObject2.setImmovable(true);
+		// 	}
+
+
+		// });	
 
 		//DIALOG
 		//EJEMPLO1:al interactuar con un objeto
@@ -73,12 +96,20 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		let trigger1 = new Trigger(scene, 300, 200, 30, 600);
 		this.physics.add.overlap(this.player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
 
-		
-		//obtener una nueva arma
-		let nuevaBotella = this.botella = new gameObject(scene,7200, 400,200,200,100,0, 'botella',0).setScale(0.2);
-		this.physics.add.overlap(this.player, nuevaBotella,()=>{this.player.HasNewWeapon('botella');nuevaBotella.destroy();});
 
-		
+		// //obtener una nueva arma
+		// let nuevaBotella = this.botella = new gameObject(this,7200, 400,200,200,100,0, 'botella',0).setScale(0.2);
+		// this.physics.add.overlap(this.player, nuevaBotella,()=>{this.player.HasNewWeapon('botella');nuevaBotella.destroy();});
+
+
+		//A BORRAR
+		let topo = new Topo(this, 300, 100);
+		topo.setScale(2);
+		//obtener una nueva arma
+		let nuevaBotella = new gameObject(this, 100, 400, 200, 200, 100, 0, 'botella', 0).setScale(0.2);
+		this.physics.add.overlap(this.player, nuevaBotella, () => { this.player.HasNewWeapon('botella'); nuevaBotella.destroy(); });
+		let hacha = new gameObject(this, 200, 400, 200, 200, 100, 0, 'hacha', 0).setScale(0.2);
+		this.physics.add.overlap(this.player, hacha, () => { this.player.HasNewWeapon('hacha'); hacha.destroy(); });
 	}
 
 	/*Mandarle a dialogManager el texto que tiene que printear*/
@@ -87,14 +118,15 @@ export default class LEVEL_01 extends LEVEL_BASE {
 	}
 
 
+
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {
 		this.hud.changeLifeValue(player.GetHP());
-		if(player.GetHP()<=0){
-			this.scene.start('restart'); 
-
+		if (player.GetHP() <= 0) {
+			this.scene.start('restart', { me: this });
+			this.soundManager.stopBGM("level1");
 		}
-		
+
 	}
 
 	/*Para pausar el dialogManager , llamado por el hud*/
@@ -106,9 +138,9 @@ export default class LEVEL_01 extends LEVEL_BASE {
 	}
 
 	update(t, dt) {
-		
+
 		//this.scene.start('menu'); 
-		
+
 	}
 
 }

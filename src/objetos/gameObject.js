@@ -42,7 +42,7 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
     moving() { //Función que mueve el sprite según su dirección
         this.body.setVelocityX(this.velX);
         this.body.setVelocityY(this.velY);
-
+        
         // Normaliza el movimiento y lo escala a la velocidad del objeto
         this.body.velocity.normalize().scale(this.speed);
 
@@ -54,24 +54,30 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
         // Rozamiento horizontal
         if (this.body.velocity.x > 5) {
             this.body.velocity.x -= this.fr;
+            this.emit('moving');
         }
         else if (this.body.velocity.x < -5) {
             this.body.velocity.x += this.fr;
+            this.emit('moving');
         }
         else if (this.body.velocity.x <= 5 && this.body.velocity.x > 0 || this.body.velocity.x >= -5 && this.body.velocity.x < 0) {
             this.body.velocity.x = 0;
+         
         }
 
         // Rozamiento vertical
         if (this.body.velocity.y > 5) {
             this.body.velocity.y -= 5;
+            this.emit('moving');
         }
         else if (this.body.velocity.y < -5) {
             this.body.velocity.y += this.fr;
+            this.emit('moving');
         }
         else if (this.body.velocity.y <= 5 && this.body.velocity.y > 0 || this.body.velocity.y >= -5 && this.body.velocity.y < 0) {
             this.body.velocity.y = 0;
         }
+       
     }
 
     setFriction(fr){
@@ -81,5 +87,6 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
     preUpdate(t, dt) {
         super.preUpdate(t,dt);
         this.depth = this.y;
+       
         }
 };

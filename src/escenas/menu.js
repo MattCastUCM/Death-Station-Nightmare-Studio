@@ -16,6 +16,8 @@ export default class Menu extends Phaser.Scene {
 		// Pintamos el fondo
 		var back = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
 		
+		this.soundManager.playBGM("menu");
+
 		// Pintamos el botón de Empezar
 		var sprite = this.add.image(this.sys.game.canvas.width - 340, this.sys.game.canvas.height - 190 , 'start')
 		sprite.setScale(0.9);
@@ -25,14 +27,20 @@ export default class Menu extends Phaser.Scene {
 		sprite.on('pointerover', () => {
 			sprite.setTint(0xff0000);
 	    });
-
 		// Al quitar el cursor de encima del botón, vuelve a su color original
 	    sprite.on('pointerout', () => {
 			sprite.clearTint();
 	    });
 
+		// Escuchamos los eventos del ratón cuando interactual con nuestro sprite de "Start"
+	    sprite.on('pointerdown', pointer => {
+	    	console.log("pulsando");
+			this.soundManager.play("click");
+	    });
+		
 		// Al pulsar el botón, hace un fade out
 	    sprite.on('pointerup', pointer => {
+			this.soundManager.stopBGM("menu");
 			sprite.disableInteractive();
 			this.cameras.main.fadeOut(500,0,0,0);
 	    });
