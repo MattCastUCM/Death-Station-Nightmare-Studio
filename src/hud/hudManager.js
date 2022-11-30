@@ -93,7 +93,6 @@ export default class HUD extends Phaser.Scene {
     pauseGame() {
         if (this.onPauseMenu) //se quiere resume
         {
-            console.log(this.level.dialogManager);
             this.dialogManager.scene.resume();
             this.onPauseMenu = false;
             if (!this.onDialog) this.level.scene.resume(); //si no estaba en diálogo
