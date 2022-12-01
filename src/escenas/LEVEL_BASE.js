@@ -1,12 +1,7 @@
+import gameObject from '../objetos/gameObject.js';
 import Player from '../objetos/player.js';
-// import Cat from '../objetos/Cat.js';
-// import EnemyManager from '../objetos/EnemyManager.js';
-// import CardBoard from '../objetos/CartBoard.js'
-// import WoodBox from '../objetos/WoodBox.js'
-// import Trigger from '../objetos/Trigger.js'
-// import gameObject from '../objetos/gameObject.js';
 /**
- * Escena principal.
+ * Clase base de la que heredan los niveles
  * @extends Phaser.Scene
  * 
  */
@@ -21,6 +16,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
      */
     constructor(level, nextlevel, tilemap, tilename, tileColision) {
         super({ key: level });
+
 
          //TILE MAP
          //this.level=level;
@@ -47,6 +43,8 @@ export default class LEVEL_BASE extends Phaser.Scene {
             setImmovable:true
          });
 
+    
+        this.cameras.main.fadeIn(500,0,0,0);
         //SoundManager
         this.soundManager = this.scene.get('soundManager');
 
@@ -55,7 +53,8 @@ export default class LEVEL_BASE extends Phaser.Scene {
         // Jugador
         this.player = new Player(this, 70, this.cameras.main.centerY, 15, 15, 8, 30, 500);
         this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
-        this.player.setScale(2.5);
+        this.player.setScale(2.5);             
+        this.player.fullCollider.setScale(2.5);
 
 
 
@@ -78,10 +77,12 @@ export default class LEVEL_BASE extends Phaser.Scene {
 
     }
 
+
     Next() {
         //this.scene.remove(this.hud);
         this.scene.start(this.nextlevel);
     }
+
 
      AddColision(){
          //colisión con tile map
@@ -100,10 +101,13 @@ export default class LEVEL_BASE extends Phaser.Scene {
          this.physics.add.collider(this.enemies, this.cartBoardBoxes);
          this.physics.add.collider(this.enemies, this.woodBoxes);
 
+
+    
          //dec
          this.physics.add.collider(this.objects,this.cartBoardBoxes);
          this.physics.add.collider(this.objects,this.player);
          this.physics.add.collider(this.objects,this.enemies);
+
 
 
 
@@ -117,8 +121,9 @@ export default class LEVEL_BASE extends Phaser.Scene {
          //Colisión enemigo
          this.physics.add.overlap(this.player, this.enemies, ()=>this.player.decreaseHP(), null);
 
-
     }
+
+    
     CreateMap() {
         this.map = this.make.tilemap({ key: this.mapname });
         this.tiles = this.map.addTilesetImage("mapa", this.tilename);

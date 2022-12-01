@@ -10,7 +10,7 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 //A BORRAR
 import Topo from '../objetos/Topo.js';
 /**
- * Escena principal.
+ * Nivel 1
  * @extends LEVEL_BASE
  */
 export default class LEVEL_01 extends LEVEL_BASE {
@@ -35,6 +35,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		this.soundManager.playBGM("level1");
 
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
+		
 		//Gato
 		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
 		//this.cats.add(gato);
@@ -92,7 +93,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		// });
 
 		//EJEMPLO 2: con Trigger
-		let trigger1 = new Trigger(this, 300, 200, 30, 600);
+		let trigger1 = new Trigger(scene, 300, 200, 30, 600);
 		this.physics.add.overlap(this.player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
 
 

@@ -12,7 +12,6 @@ export default class WoodBox extends gameObject {
 		scene.physics.add.existing(this);
 	}
 
-
 	// Destrucción de la caja, llamado por arma
 	destroyMe() {
 		this.setActive(false).setVisible(false);

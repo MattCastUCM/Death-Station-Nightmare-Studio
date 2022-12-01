@@ -8,7 +8,7 @@ import gameObject from '../objetos/gameObject.js';
 import dec from '../objetos/dec.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
 /**
- * Escena principal.
+ * Nivel 2
  * @extends LEVEL_BASE
  */
 export default class LEVEL_02 extends LEVEL_BASE {

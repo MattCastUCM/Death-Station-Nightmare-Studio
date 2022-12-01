@@ -104,15 +104,17 @@ export default class Lanzador extends Enemy {
 			// Si el jugador está a su izquierda y no está reproduciendo la animación hacia la izquierda, la reproduce
 			if (this.CalculateVectorX() < -100 && this.anims.currentAnim.key !== "leftLanzador") {
 				this.play("leftLanzador").anims.chain("shootLeft");
-				this.on("animationcomplete-leftLanzador", () => {
-					this.Shoot()
+				this.on("animationcomplete-leftLanzador", ()=>{	
+					this.shootBullet();
+					this.anims.restart();
 				});
 			}
 			// Si no, si el jugador está a su derecha y no está reproduciendo la animación hacia la derecha, la reproduce
 			else if (this.CalculateVectorX() > 100 && this.anims.currentAnim.key !== "rightLanzador") {
 				this.play("rightLanzador").anims.chain("shootRight");
-				this.on("animationcomplete-rightLanzador", () => {
-					this.Shoot()
+				this.on("animationcomplete-rightLanzador", ()=>{	
+					this.shootBullet();
+					this.anims.restart();
 				});
 			}
 			// Si no, si el jugador está en el medio,
@@ -120,19 +122,25 @@ export default class Lanzador extends Enemy {
 				// Si está por encima y no está reproduciendo la animación hacia arriba, la reproduce
 				if (this.CalculateVectorY() > 0 && this.anims.currentAnim.key !== "downLanzador") {
 					this.play("downLanzador").anims.chain("shootDown");
-					this.on("animationcomplete-downLanzador", () => {
-						this.Shoot()
+					this.on("animationcomplete-downLanzador", ()=>{	
+						this.shootBullet();
+						this.anims.restart();
 					});
 				}
 				// Si no, si está por debajo y no está reproduciendo la animación hacia abajo, la reproduce
 				else if (this.CalculateVectorY() < -10 && this.anims.currentAnim.key !== "upLanzador") {
 					this.play("upLanzador").anims.chain("shootUp");
-					this.on("animationcomplete-upLanzador", () => {
-						this.Shoot()
+					this.on("animationcomplete-upLanzador", ()=>{
+						this.shootBullet();
+						this.anims.restart();
 					});
 				}
 			}
 		}
 	}
 
+	shootBullet(){
+		new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY(), this.target);
+
+	}
 }
