@@ -10,7 +10,6 @@ import Player from '../objetos/player.js';
  * @extends Phaser.Scene
  * 
  */
-
 export default class LEVEL_BASE extends Phaser.Scene {
     /**
      * Constructora
@@ -54,7 +53,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
  
 
         // Jugador
-        this.player = new Player(this, 7000, this.cameras.main.centerY, 15, 15, 8, 30, 140);
+        this.player = new Player(this, 70, this.cameras.main.centerY, 15, 15, 8, 30, 500);
         this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
         this.player.setScale(2.5);
 
@@ -100,6 +99,14 @@ export default class LEVEL_BASE extends Phaser.Scene {
          //enemigos caja
          this.physics.add.collider(this.enemies, this.cartBoardBoxes);
          this.physics.add.collider(this.enemies, this.woodBoxes);
+
+         //dec
+         this.physics.add.collider(this.objects,this.cartBoardBoxes);
+         this.physics.add.collider(this.objects,this.player);
+         this.physics.add.collider(this.objects,this.enemies);
+
+
+
          // gato caja
          //this.physics.add.collider(this.cats, this.cartBoardBoxes);
          //this.physics.add.collider(this.cats, this.woodBoxes);

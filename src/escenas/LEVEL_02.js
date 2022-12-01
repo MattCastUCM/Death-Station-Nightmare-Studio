@@ -5,6 +5,7 @@ import Persecutor from '../objetos/Persecutor.js';
 import Lanzador from '../objetos/Lanzador.js';
 import Trigger from '../objetos/Trigger.js';
 import gameObject from '../objetos/gameObject.js';
+import dec from '../objetos/dec.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
 /**
  * Escena principal.
@@ -30,26 +31,53 @@ export default class LEVEL_02 extends LEVEL_BASE {
 			{ class: 'cardBoard', classType: CardBoard, key: 'cartBoard' }]);
 		this.cartBoardBoxes.addMultiple(cardBoardArray);
 		let woodBoxesArray = this.map.createFromObjects('objetos', [
-			{ name: 'woodBox', classType: WoodBox, key: 'woodBox' }]);
+			{ class: 'woodBox', classType: WoodBox, key: 'woodBox' }]);
 		this.woodBoxes.addMultiple(woodBoxesArray);
 		woodBoxesArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
 
 		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [
-			{ name: 'persecutor', classType: Persecutor, key: 'persecutor' }]);
+			{ class: 'persecutor', classType: Persecutor, key: 'persecutor' }]);
 		EmenyPersecutorArray.forEach(element => {
 			element.setScale(2);
 		});
 
 		this.enemies.addMultiple(EmenyPersecutorArray);
 		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [
-			{ name: 'lanzador', classType: Lanzador, key: 'lanzador' }]);
+			{ class: 'lanzador', classType: Lanzador, key: 'lanzador' }]);
 		EmenyLanzadorArray.forEach(element => {
 			element.setScale(2);
 		});
 		this.enemies.addMultiple(EmenyLanzadorArray);
 
+		//decolacion
+		// let Basuras = this.map.createFromObjects('dec', [
+		// 	{ class: 'basura', classType: dec, key: 'Basura' }]);
+		// let cabezas = this.map.createFromObjects('dec', [
+		// 	{ class: 'cabeza', classType: dec, key: 'cabeza' }]);
+		// let carritos = this.map.createFromObjects('dec', [
+		// 	{ class: 'carrito', classType: dec, key: 'carrito' }]);
+		// let carteles = this.map.createFromObjects('dec', [
+		// 	{ class: 'cartel', classType: dec, key: 'cartel2' }]);
+		// let doscarteles = this.map.createFromObjects('dec', [
+		// 	{ class: 'doscarteles', classType: dec, key: 'dos carteles' }]);
+		// let latas = this.map.createFromObjects('dec', [
+		// 	{ class: 'lata', classType: dec, key: 'Latas' }]);
+		// let maletas = this.map.createFromObjects('dec', [
+		// 	{ class: 'maleta', classType: dec, key: 'Maletas' }]);
+		// let panel= this.map.createFromObjects('dec', [
+		// 	{ class: 'panel', classType: dec, key: 'Panel' }]);
+		// let papeles=this.map.createFromObjects('dec',[
+		// 	{ class: 'papeles', classType: dec, key: 'Paneles' }]);
+		// let ratas= this.map.createFromObjects('dec', [
+		// 	{ class: 'rata', classType: dec, key: 'rata' }]);
+		// let señorsincabeza= this.map.createFromObjects('dec', [
+		// 	{ class: 'señor', classType: dec, key: 'señor' }]);
+		// let Sillas = this.map.createFromObjects('dec', [
+		// 	{ class: 'silla', classType: dec, key: 'Silla' }]);
+		let sillon = this.map.createFromObjects('dec', [
+			{ class: 'sillones', key: 'sillones' }]);
 		
 
 

@@ -40,8 +40,8 @@
             "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2094,
-                "y": 402
+                "x": 5354,
+                "y": 340
             }
         },
         "LEVEL_01.tmx#mapa": {
@@ -77,11 +77,11 @@
                 7,
                 4
             ],
-            "scale": 0.5,
-            "selectedLayer": 0,
+            "scale": 0.25,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 580,
-                "y": 1230
+                "x": 1100,
+                "y": 1420
             }
         },
         "LEVEL_02.tmx#Nivel Claudia": {
@@ -100,6 +100,21 @@
         },
         "LEVEL_02.tmx#obj": {
             "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "LEVEL_03.json": {
+            "scale": 0.33,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 4281.818181818182,
+                "y": 342.4242424242424
+            }
+        },
+        "LEVEL_03.json#mapa": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "LEVEL_03.json#obj": {
             "scaleInDock": 1
         },
         "LEVEL_03.tmx": {
@@ -238,7 +253,7 @@
         }
     },
     "last.exportedFilePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/mapas",
-    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/assets/Armas",
+    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/mapas/objetos",
     "map.fixedSize": true,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
@@ -249,12 +264,14 @@
         "LEVEL_01.tmx",
         "LEVEL_02.tmx",
         "LEVEL_03.tmx",
-        "level01.tmx"
+        "level01.tmx",
+        "LEVEL_03.json"
     ],
     "project": "pvli.tiled-project",
     "property.type": "bool",
     "recentFiles": [
         "LEVEL_01.tmx",
+        "LEVEL_03.json",
         "level01.tmx",
         "LEVEL_03.tmx",
         "LEVEL_02.tmx",

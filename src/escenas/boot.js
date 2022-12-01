@@ -43,7 +43,7 @@ export default class Boot extends Phaser.Scene {
 		this.load.image("dos carteles","assets/Nivel_assets_escalados/dos carteles.png");
 		this.load.image("Latas","assets/Nivel_assets_escalados/Latas.png");
 		this.load.image("Maletas","assets/Nivel_assets_escalados/Maletas.png");
-		this.load.image("Panel","assets/Nivel_assets_escalados/Panel.png");
+		this.load.image("Panel"  ,"assets/Nivel_assets_escalados/Panel.png");
 		this.load.image("Paneles","assets/Nivel_assets_escalados/Paneles.png");
 		this.load.image("rata","assets/Nivel_assets_escalados/rata.png");
 		this.load.image("señor sin cabeza","assets/Nivel_assets_escalados/señor sin cabeza.png");
