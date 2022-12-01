@@ -48,7 +48,7 @@ export default class Boot extends Phaser.Scene {
 		 this.load.image("tilesLevel2","assets/Nivel 2/estacion1.3.png")
 		 this.load.tilemapTiledJSON('level2',"assets/tilemaps/LEVEL_02.json");
 		 this.load.image("tileslevel3","assets/Nivel 3/mapa3.png")
-		 this.load.tilemapTiledJSON('level3',"mapas/LEVEL_03.json")
+		 this.load.tilemapTiledJSON('level3',"assets/tilemaps/LEVEL_03.json")
 
 		
 		// HUD........................................................................................
@@ -82,7 +82,7 @@ export default class Boot extends Phaser.Scene {
 		this.load.spritesheet('cartBoard', 'assets/objects/cajaCarton.png', { frameWidth: 64, frameHeight: 64 });
 
 		// Iluminación
-		this.load.image('mask', 'assets/enviroment/mask1.png');
+		this.load.image('mask', 'assets/HUD/mask1.png');
 
 		// Armas........................................................................................
 		this.load.spritesheet('navaja', 'assets/Armas/Cuchillo.png', { frameWidth: 210, frameHeight: 480 });

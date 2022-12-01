@@ -6,6 +6,9 @@ export default class Menu extends Phaser.Scene {
 	constructor() {
 		super({ key: 'menu' });
 	}
+	preload(){
+		this.soundManager = this.scene.get('soundManager');
+	}
 
 	/**
 	* Creación de los elementos de la escena

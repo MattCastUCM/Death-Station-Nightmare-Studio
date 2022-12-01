@@ -13,7 +13,6 @@ import level_map from './escenas/level_map.js';
 import LEVEL_01 from './escenas/LEVEL_01.js'
 import LEVEL_02 from './escenas/LEVEL_02.js'
 import LEVEL_03 from './escenas/LEVEL_03.JS';
-import Restart from './escenas/Restart.js';
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
