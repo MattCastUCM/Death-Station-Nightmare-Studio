@@ -15,10 +15,10 @@ export default class WoodBox extends gameObject {
 		
 	}
 
-
 	// Destrucción de la caja, llamado por arma
 	destroyMe() {
 		this.setActive(false).setVisible(false);
+		this.scene.soundManager.play("woodBoxExplosion");
 		this.destroy();
 	}
 

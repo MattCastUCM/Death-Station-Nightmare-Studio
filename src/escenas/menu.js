@@ -1,68 +1,57 @@
 /**
- * Escena de Menú.
+ * Escena del Menú.
  * @extends Phaser.Scene
  */
 export default class Menu extends Phaser.Scene {
-	/**
-	 * Escena principal.
-	 * @extends Phaser.Scene
-	 */
 	constructor() {
 		super({ key: 'menu' });
 	}
+	preload(){
+		this.soundManager = this.scene.get('soundManager');
+	}
 
 	/**
-	 * Cargamos todos los assets que vamos a necesitar
-	 */
-	preload(){
-		
-		this.load.image('start', 'assets/Mapa/NuevoStart.png');
-		this.load.image('fondo', 'assets/Mapa/image.png');
-		this.load.image('sangre', 'assets/Mapa/blood.png');
-		
-		//this.load.spritesheet('personaje', 'assets/personajes/Estudiante_1.png', {frameWidth: 32, frameHeight: 48})
-		//this.load.spritesheet('box', 'assets/Box/box.png', {frameWidth: 64, frameHeight: 64})
-	}
-	
-	/**
-	* Creación de los elementos de la escena principal de juego
+	* Creación de los elementos de la escena
 	*/
 	create() {
-		//Pintamos un fondo
-        
-		var back = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
-		back.setScale(0.75);
+		this.cameras.main.fadeIn(500,0,0,0);
 		
-		//var blood = this.add.image(this.sys.game.canvas.width - 340, this.sys.game.canvas.height - 140 , 'sangre')
-		//blood.setScale(0.29);
+		// Pintamos el fondo
+		var back = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
+		
+		this.soundManager.playBGM("menu");
 
-	
-		//Pintamos un botón de Empezar
+		// Pintamos el botón de Empezar
 		var sprite = this.add.image(this.sys.game.canvas.width - 340, this.sys.game.canvas.height - 190 , 'start')
 		sprite.setScale(0.9);
 		sprite.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
 
+		// Al poner el cursor encima del botón, cambia de color
+		sprite.on('pointerover', () => {
+			sprite.setTint(0xff0000);
+	    });
+		// Al quitar el cursor de encima del botón, vuelve a su color original
+	    sprite.on('pointerout', () => {
+			sprite.clearTint();
+	    });
+
 		// Escuchamos los eventos del ratón cuando interactual con nuestro sprite de "Start"
 	    sprite.on('pointerdown', pointer => {
 	    	console.log("pulsando");
+			this.soundManager.play("click");
 	    });
-
-	    sprite.on('pointerup', pointer => {
-			this.scene.start('LEVEL_01'); //Cambiamos a la escena de juego
-	    });
-
-		sprite.on('pointerover', () => {
-			console.log("hola")
-			sprite.setTint(0xff0000);
-			
 		
+		// Al pulsar el botón, hace un fade out
+	    sprite.on('pointerup', pointer => {
+			this.soundManager.stopBGM("menu");
+			sprite.disableInteractive();
+			this.cameras.main.fadeOut(500,0,0,0);
 	    });
+		// Al terminar el fade out, cambia a la escena del nivel 1
+		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
+			this.scene.start('level1Map');
+		});
 
-	    sprite.on('pointerout', () => {
-			console.log("adios")
-			sprite.clearTint();
-			
-	    });
 
 	}
 }

@@ -13,11 +13,12 @@ export default class DialogManager extends Phaser.Scene{
         this.dialogBox.setScale(1.4, 0.8);
         this.dialogBox.visible = false;
         this.dialogBox.setInteractive(); 
-        this.dialogBox.on('pointerup', pointer => { //al clickear sobre el cuadro de texto, salta al siguiente mensaje
+        this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+        this.enterKey.on('down', pointer => { //al clickear sobre el cuadro de texto, salta al siguiente mensaje
 			this.NextMessage();
 	    });
 
-
+''
         WebFont.load({
             google: {
                 families: ['VT323','Roboto','Freckle Face'] 

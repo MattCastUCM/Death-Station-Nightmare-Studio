@@ -7,6 +7,7 @@ export default class Enemy extends gameObject {
         this.collidedTime = 0;
         this.hasCollided = false;
         this.body.setImmovable(true); //para que no se mueva 
+        
     }
 
     // Sigue al jugador moviéndose hacia su posición
@@ -17,8 +18,8 @@ export default class Enemy extends gameObject {
 	damage(damagePoints){
         //console.log(this);
         if(!this.hasCollided){
-            console.log("daño");
             this.life -= damagePoints;
+            this.emit('damaged');
             this.hasCollided = true;
             if(this.life <= 0) this.Die();
             for(let i= 0; i<5; i= i+2){
