@@ -889,7 +889,7 @@
         {
          "columns":35,
          "firstgid":1,
-         "image":"..\/assets\/Mapa\/mapa2.png",
+         "image":"..\/Mapa\/mapa2.png",
          "imageheight":560,
          "imagewidth":1190,
          "margin":0,
@@ -916,19 +916,19 @@
          "tiles":[
                 {
                  "id":0,
-                 "image":"..\/assets\/objects\/cajaCarton.png",
+                 "image":"..\/objects\/cajaCarton.png",
                  "imageheight":63,
                  "imagewidth":55
                 }, 
                 {
                  "id":1,
-                 "image":"..\/assets\/objects\/cajaMadera.png",
+                 "image":"..\/objects\/cajaMadera.png",
                  "imageheight":72,
                  "imagewidth":55
                 }, 
                 {
                  "id":2,
-                 "image":"..\/assets\/objects\/palanca.png",
+                 "image":"..\/objects\/palanca.png",
                  "imageheight":73,
                  "imagewidth":58
                 }, 
@@ -958,7 +958,7 @@
                 }, 
                 {
                  "id":7,
-                 "image":"..\/assets\/Armas\/Hacha.png",
+                 "image":"..\/Armas\/Hacha.png",
                  "imageheight":100,
                  "imagewidth":220
                 }],

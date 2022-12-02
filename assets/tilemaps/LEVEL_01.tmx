@@ -4,18 +4,18 @@
   <export target="LEVEL_01.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="mapa" tilewidth="34" tileheight="34" tilecount="560" columns="35">
-  <image source="../assets/Mapa/mapa2.png" width="1190" height="560"/>
+  <image source="../Mapa/mapa2.png" width="1190" height="560"/>
  </tileset>
  <tileset firstgid="561" name="obj" tilewidth="220" tileheight="102" tilecount="8" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="0">
-   <image width="55" height="63" source="../assets/objects/cajaCarton.png"/>
+   <image width="55" height="63" source="../objects/cajaCarton.png"/>
   </tile>
   <tile id="1">
-   <image width="55" height="72" source="../assets/objects/cajaMadera.png"/>
+   <image width="55" height="72" source="../objects/cajaMadera.png"/>
   </tile>
   <tile id="2">
-   <image width="58" height="73" source="../assets/objects/palanca.png"/>
+   <image width="58" height="73" source="../objects/palanca.png"/>
   </tile>
   <tile id="3">
    <image width="74" height="99" source="objetos/persecutor.png"/>
@@ -30,7 +30,7 @@
    <image width="81" height="67" source="objetos/gato.png"/>
   </tile>
   <tile id="7">
-   <image width="220" height="100" source="../assets/Armas/Hacha.png"/>
+   <image width="220" height="100" source="../Armas/Hacha.png"/>
   </tile>
  </tileset>
  <layer id="1" name="fondo" width="315" height="20">

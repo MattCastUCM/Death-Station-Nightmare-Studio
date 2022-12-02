@@ -15,7 +15,7 @@ import Topo from '../objetos/Topo.js';
  */
 export default class LEVEL_01 extends LEVEL_BASE {
 	constructor() {
-		let nextlevel = "LEVEL_02";
+		let nextlevel = "level2Map";
 		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560);
 	}
 	/**
@@ -97,22 +97,13 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		this.physics.add.overlap(this.player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
 
 
-		// //obtener una nueva arma
-		// let nuevaBotella = this.botella = new gameObject(this,7200, 400,200,200,100,0, 'botella',0).setScale(0.2);
-		// this.physics.add.overlap(this.player, nuevaBotella,()=>{this.player.HasNewWeapon('botella');nuevaBotella.destroy();});
-
-
-		//A BORRAR
-		let topo = new Topo(this, 300, 100);
-		topo.setScale(2);
+		
 		//obtener una nueva arma
 		let nuevaBotella = new gameObject(this, 100, 400, 200, 200, 100, 0, 'botella', 0).setScale(0.2);
 		this.physics.add.overlap(this.player, nuevaBotella, () => { this.player.HasNewWeapon('botella'); nuevaBotella.destroy(); });
-		let hacha2 = this.map.createFromObjects('objetos', [{ name: 'hacha',  key: 'hacha' }]);
-		scene.physics.add.existing(hacha2[0]);
-	//console.log(hacha2);
-		//let hacha = new gameObject(this, 200, 400, 200, 200, 100, 0, 'hacha', 0).setScale(0.2);
-		scene.physics.add.overlap(this.player, hacha2[0], () => { this.player.HasNewWeapon('hacha'); hacha2[0].destroy(); });
+		let hacha = this.map.createFromObjects('objetos', [{ name: 'hacha',  key: 'hacha' }]);
+		scene.physics.add.existing(hacha[0]);
+		scene.physics.add.overlap(this.player, hacha[0], () => { this.player.HasNewWeapon('hacha'); hacha[0].destroy(); });
 	}
 
 	/*Mandarle a dialogManager el texto que tiene que printear*/

@@ -12,17 +12,17 @@
     "fileStates": {
         "": {
             "scaleInDock": 0.25,
-            "scaleInEditor": 1
+            "scaleInEditor": 0.25
         },
         "#mapa": {
             "dynamicWrapping": false
         },
         "LEVEL_01.json": {
-            "scale": 0.75,
+            "scale": 0.25,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 5345.333333333333,
-                "y": 330.66666666666663
+                "x": 1152,
+                "y": 444
             }
         },
         "LEVEL_01.json#mapa": {
@@ -37,16 +37,17 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 0.5,
-            "selectedLayer": 0,
+            "scale": 0.33,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 5354,
-                "y": 340
+                "x": 90.90909090909088,
+                "y": 342.4242424242424
             }
         },
         "LEVEL_01.tmx#mapa": {
             "dynamicWrapping": false,
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "LEVEL_01.tmx#obj": {
             "dynamicWrapping": true,
@@ -54,11 +55,11 @@
             "scaleInEditor": 0.5
         },
         "LEVEL_02.json": {
-            "scale": 0.25,
+            "scale": 0.0625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -124,
-                "y": -84
+                "x": 576,
+                "y": 568
             }
         },
         "LEVEL_02.json#Mapaç": {
@@ -68,20 +69,27 @@
             "dynamicWrapping": false,
             "scaleInDock": 1
         },
+        "LEVEL_02.json#dec": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "LEVEL_02.json#mapa": {
+            "scaleInDock": 1
+        },
         "LEVEL_02.json#obj": {
             "dynamicWrapping": true,
             "scaleInDock": 1
         },
         "LEVEL_02.tmx": {
             "expandedObjectLayers": [
-                7,
-                4
+                4,
+                7
             ],
-            "scale": 0.25,
+            "scale": 0.125,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1100,
-                "y": 1420
+                "x": 2192,
+                "y": 1120
             }
         },
         "LEVEL_02.tmx#Nivel Claudia": {
@@ -96,18 +104,19 @@
         "LEVEL_02.tmx#mapa": {
             "dynamicWrapping": false,
             "scaleInDock": 0.25,
-            "scaleInEditor": 1
+            "scaleInEditor": 0.33
         },
         "LEVEL_02.tmx#obj": {
             "dynamicWrapping": true,
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "LEVEL_03.json": {
             "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 4281.818181818182,
-                "y": 342.4242424242424
+                "x": 4272.727272727273,
+                "y": 346.969696969697
             }
         },
         "LEVEL_03.json#mapa": {
@@ -121,16 +130,17 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 0.33,
+            "scale": 0.25,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 4281.818181818182,
-                "y": 342.4242424242424
+                "x": 5996,
+                "y": 512
             }
         },
         "LEVEL_03.tmx#mapa": {
             "dynamicWrapping": false,
-            "scaleInDock": 0.5
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
         },
         "LEVEL_03.tmx#obj": {
             "dynamicWrapping": true,
@@ -178,8 +188,8 @@
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 5342.424242424242,
-                "y": 321.21212121212113
+                "x": 5336.363636363636,
+                "y": 322.72727272727275
             }
         },
         "level01.tmx#dec": {
@@ -207,11 +217,11 @@
             "scaleInEditor": 1
         },
         "level_03.tmx": {
-            "scale": 1,
+            "scale": 0.25,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 0,
-                "y": 0
+                "x": 6936,
+                "y": 462
             }
         },
         "level_03.tmx#mapa": {
@@ -222,6 +232,9 @@
             "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "level_03.tmx#obj": {
+            "scaleInDock": 1
         },
         "level_03.tmx#tren": {
             "dynamicWrapping": false,
@@ -234,8 +247,8 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 799,
-                "y": 287
+                "x": 798,
+                "y": 423
             }
         },
         "sin nombre.json#coin": {
@@ -253,7 +266,7 @@
         }
     },
     "last.exportedFilePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/mapas",
-    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/mapas/objetos",
+    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/assets/Nivel_assets_escalados",
     "map.fixedSize": true,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
@@ -263,24 +276,22 @@
     "openFiles": [
         "LEVEL_01.tmx",
         "LEVEL_02.tmx",
-        "LEVEL_03.tmx",
-        "level01.tmx",
-        "LEVEL_03.json"
+        "LEVEL_03.tmx"
     ],
     "project": "pvli.tiled-project",
     "property.type": "bool",
     "recentFiles": [
         "LEVEL_01.tmx",
-        "LEVEL_03.json",
-        "level01.tmx",
         "LEVEL_03.tmx",
         "LEVEL_02.tmx",
-        "LEVEL_04.tmx",
-        "level_03.tmx",
-        "sin nombre.json",
-        "level01.json",
+        "LEVEL_03.json",
         "LEVEL_01.json",
-        "LEVEL_02.json"
+        "LEVEL_02.json",
+        "level01.tmx",
+        "sin nombre.json",
+        "level_03.tmx",
+        "LEVEL_04.tmx",
+        "level01.json"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {
