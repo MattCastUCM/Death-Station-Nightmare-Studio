@@ -18,6 +18,7 @@ export default class Player extends gameObject {
         super(scene, x, y, w, h, offsetX, offsetY, 'personaje', spd);
         this.scene = scene;
         this.fullCollider = new gameObject(scene, x, y, w, 40, offsetX, -3, "", 0);
+        this.fullCollider.visible = false;
         this.hp = 100;
         this.hasCollided = false;
         this.elapsedTime = 0;

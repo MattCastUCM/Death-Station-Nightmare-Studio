@@ -36,19 +36,19 @@ class Navaja extends Weapon {
 
 class Botella extends Weapon {
     constructor(player) {
-        super(player, 'botella', 0.2, 0.2, 3, 5, 350);
+        super(player, 'botella', 0.2, 0.2, 3, 6, 350);
     }
 }
 
 class Barra extends Weapon {
     constructor(player) {
-        super(player, 'barra', 0.5, 0.2, 5, 7, 200);
+        super(player, 'barra', 0.5, 0.2, 2, 7, 200);
     }
 }
 
 class Hacha extends Weapon {
     constructor(player) {
-        super(player, 'hacha', 0.2, 0.2, 7, 5, 500);
+        super(player, 'hacha', 0.2, 0.2, 7, 4, 500);
     }
 }
 
@@ -235,7 +235,7 @@ class Brazo extends Phaser.GameObjects.Container {
         // Creamos tabla de offsets para el jugador
         this.offset = {
             up: {
-                x: 13, y: 31
+                x: 3, y: 16
             },
             right: {
                 x: 1, y: 8
@@ -244,7 +244,7 @@ class Brazo extends Phaser.GameObjects.Container {
                 x: 0, y: 23
             },
             left: {
-                x: -4, y: 48
+                x: -4, y: 8
             }
         }
 
@@ -278,7 +278,7 @@ class Brazo extends Phaser.GameObjects.Container {
                 // Se cambian las colisiones para que sean iguales al alcance del arma
                 this.collider.setReach(weapon.reach);
                 // Se activa el sonido correspondiente
-                //this.scene.soundManager.play(this.selected);
+                this.scene.soundManager.play(this.selected);
             },
             onComplete: function() {
                 this.brazo.visible = false;
@@ -286,8 +286,6 @@ class Brazo extends Phaser.GameObjects.Container {
                 this.brazo.attacking = false;
             }
         });
-
-        this.events = new Phaser.Events.EventEmitter();
     }
 
     preUpdate(t, dt) {
