@@ -31,6 +31,9 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		this.scene.launch('hud', { me: this });
 		this.hud = this.scene.get('hud');
 
+		//CAMARA
+		this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
+
 		//BGM
 		this.soundManager.playBGM("level1");
 

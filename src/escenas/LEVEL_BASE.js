@@ -16,8 +16,6 @@ export default class LEVEL_BASE extends Phaser.Scene {
      */
     constructor(level, nextlevel, tilemap, tilename, tileColision) {
         super({ key: level });
-
-
          //TILE MAP
          //this.level=level;
          this.nextlevel=nextlevel;
@@ -26,8 +24,6 @@ export default class LEVEL_BASE extends Phaser.Scene {
          this.numColision=tileColision;
      }
      create(){
-         
-         
  
          // Grupos
          this.enemies = this.physics.add.group({
@@ -80,6 +76,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
 
     Next() {
         //this.scene.remove(this.hud);
+        this.hud.scene.setVisible(false);
         this.scene.start(this.nextlevel);
     }
 
