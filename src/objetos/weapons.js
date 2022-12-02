@@ -18,7 +18,6 @@ class Weapon extends Phaser.GameObjects.Sprite {
         this.dmg = dmg;
         this.reach = reach;
         this.atkSpeed = atkSpeed;
-        this._player = player;
         // Añade el objeto a la escena
         this.scene.add.existing(this);
         this.setScale(scaleX, scaleY);
