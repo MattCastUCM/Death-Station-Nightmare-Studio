@@ -138,7 +138,8 @@ export default class Player extends gameObject {
         this.friction();
 
         // Si se pulsa hacia abajo
-        if (this.input.s.isDown &&
+        if (!this.weaponManager._attack.isAttacking &&
+            this.input.s.isDown &&
             !this.input.w.isDown) {
             // Comienza a reproducir la animación
             this.facing = "down";
@@ -159,7 +160,8 @@ export default class Player extends gameObject {
         }
 
         // Si se pulsa hacia arriba
-        if (this.input.w.isDown &&
+        if (!this.weaponManager._attack.isAttacking &&
+            this.input.w.isDown &&
             !this.input.s.isDown) {
             // Comienza a reproducir la animación
             this.facing = "up";
@@ -179,7 +181,8 @@ export default class Player extends gameObject {
         }
 
         // Si se pulsa hacia la izquierda
-        if (this.input.a.isDown &&
+        if (!this.weaponManager._attack.isAttacking &&
+            this.input.a.isDown &&
             !this.input.d.isDown) {
             // Comienza a  reproducir la animación
             this.facing = "left";
@@ -200,7 +203,8 @@ export default class Player extends gameObject {
         }
 
         // Si se pulsa hacia la derecha
-        if (this.input.d.isDown &&
+        if (!this.weaponManager._attack.isAttacking &&
+            this.input.d.isDown &&
             !this.input.a.isDown) {
             // Comienza a  reproducir la animación
             this.anims.isPlaying = true;
@@ -223,7 +227,8 @@ export default class Player extends gameObject {
 
 
         // Si se deja de pulsar, para la animación
-        if (Phaser.Input.Keyboard.JustUp(this.input.a) ||
+        if (this.weaponManager._attack.isAttacking ||
+            Phaser.Input.Keyboard.JustUp(this.input.a) ||
             Phaser.Input.Keyboard.JustUp(this.input.d) ||
             Phaser.Input.Keyboard.JustUp(this.input.w) ||
             Phaser.Input.Keyboard.JustUp(this.input.s)) {
