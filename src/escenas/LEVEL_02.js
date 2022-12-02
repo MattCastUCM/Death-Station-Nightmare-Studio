@@ -20,11 +20,15 @@ export default class LEVEL_02 extends LEVEL_BASE {
 	*/
 	create() {
 		super.create();
+		
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
         this.dialogManager = this.scene.get('dialogManager');
         this.hud = this.scene.get('hud');
+		this.hud.scene.setVisible(true);
         this.hud.changeLevel(2,this);
 		this.soundManager.playBGM("level2");
+
+		this.player.setPosicion(159,371);
 
 		let cardBoardArray = this.map.createFromObjects('objetos', [
 			{ gid:1395, classType: CardBoard, key: 'cartBoard' }]);

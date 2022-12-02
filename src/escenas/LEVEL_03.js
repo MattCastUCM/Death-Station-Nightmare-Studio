@@ -25,9 +25,14 @@ export default class LEVEL_03 extends LEVEL_BASE {
 		
         this.dialogManager = this.scene.get('dialogManager');
         this.hud = this.scene.get('hud');
+		this.hud.scene.setVisible(true);
         this.hud.changeLevel(3,this);
 
 		this.soundManager.playBGM("level3");
+
+		//CAMARA
+		this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
+
 		//Gato
 		 let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
 		 //this.cats.add(gato);
@@ -55,12 +60,12 @@ export default class LEVEL_03 extends LEVEL_BASE {
 			});
 		this.enemies.addMultiple(EmenyLanzadorArray);
 
-    //     var EmenyTopoArray=this.map.createFromObjects('objetos',[
-    //         {gid:565, classType: Topo,key:'topo'}]);
-    //         EmenyTopoArray.forEach(element => {
-    //            element.setScale(2);
-    //        });
-    //    this.enemies.addMultiple(EmenyTopoArray);
+        var EmenyTopoArray=this.map.createFromObjects('objetos',[
+            {gid:565, classType: Topo,key:'topo'}]);
+            EmenyTopoArray.forEach(element => {
+               element.setScale(2);
+           });
+       this.enemies.addMultiple(EmenyTopoArray);
 
         // Iluminación
 		const width = this.fondolayer.width

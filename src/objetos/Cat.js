@@ -66,8 +66,11 @@ export default class Cat extends gameObject {
 		// //añadir colisión con el mapa de la escena
 		this.scene.physics.add.collider(this, scene.colisionlayer, function (self) {
 			self.hasCollided();
-			console.log("collided cat");
 		});
+		this.scene.physics.add.collider(this, scene.objects, function (self) {
+			self.hasCollided();
+		});
+		this.scene.physics.add.collider(this, scene.player);
 
 		this.scene = scene;
 

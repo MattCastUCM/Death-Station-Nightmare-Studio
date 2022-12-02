@@ -81,6 +81,11 @@ export default class Player extends gameObject {
         this.vision.scale = 4;
     }
 
+    setPosicion(_x,_y){
+        this.x=_x;
+        this.y=_y;
+    }
+
     //llamado por hud cuando se pausa la escena
     stop() {
         this.move(0, 0);
