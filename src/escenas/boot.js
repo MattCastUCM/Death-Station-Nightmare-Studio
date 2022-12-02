@@ -111,38 +111,38 @@ export default class Boot extends Phaser.Scene {
 		// Audio........................................................................................
 		//bg
 		this.load.audio('menu', 'assets/audio/bgMusic/estacion.mp3');
-		this.load.audio('level3', 'assets/audio/bgMusic/level3.wav');
-		this.load.audio('level2', 'assets/audio/bgMusic/level2.wav');
-		this.load.audio('level1', 'assets/audio/bgMusic/level1.wav');
-		this.load.audio('level4', 'assets/audio/bgMusic/level4.wav');
-		this.load.audio('restart', 'assets/audio/bgMusic/dead.wav');
+		this.load.audio('level1', 'assets/audio/bgMusic/level1.mp3');
+		this.load.audio('level2', 'assets/audio/bgMusic/level2.mp3');
+		this.load.audio('level3', 'assets/audio/bgMusic/level3.mp3');
+		this.load.audio('level4', 'assets/audio/bgMusic/level4.mp3');
+		this.load.audio('restart', 'assets/audio/bgMusic/dead.mp3');
 	
 		//enemies
-		this.load.audio('cat1', 'assets/audio/soundEffects/enemy/Cat1.wav');
-		this.load.audio('cat2', 'assets/audio/soundEffects/enemy/Cat2.wav');
+		this.load.audio('cat1', 'assets/audio/soundEffects/enemy/Cat1.mp3');
+		this.load.audio('cat2', 'assets/audio/soundEffects/enemy/Cat2.mp3');
 		this.load.audio('lanzadorHurt', 'assets/audio/soundEffects/enemy/lanzador_hurt.mp3');
-		this.load.audio('lanzadorThrow', 'assets/audio/soundEffects/enemy/lanzador_throw.wav');
-		this.load.audio('persecutorGrowl1', 'assets/audio/soundEffects/enemy/persecutor_growl.wav');
-		this.load.audio('persecutorGrowl2', 'assets/audio/soundEffects/enemy/persecutor_growl2.wav');
-		this.load.audio('persecutorGrowl3', 'assets/audio/soundEffects/enemy/persecutor_growl3.wav');
+		this.load.audio('lanzadorThrow', 'assets/audio/soundEffects/enemy/lanzador_throw.mp3');
+		this.load.audio('persecutorGrowl1', 'assets/audio/soundEffects/enemy/persecutor_growl.mp3');
+		this.load.audio('persecutorGrowl2', 'assets/audio/soundEffects/enemy/persecutor_growl2.mp3');
+		this.load.audio('persecutorGrowl3', 'assets/audio/soundEffects/enemy/persecutor_growl3.mp3');
 		this.load.audio('persecutorHurt', 'assets/audio/soundEffects/enemy/persecutor_hurt.mp3');
 		this.load.audio('topoHurt', 'assets/audio/soundEffects/enemy/topo_hurt.mp3');
 		
 		//objects
-		this.load.audio('bulletDestroy', 'assets/audio/soundEffects/enemy/bullet_destroy.wav');
-		this.load.audio('cartBoard', 'assets/audio/soundEffects/objects/cartBox_Move.wav');
-		this.load.audio('woodBoxExplosion', 'assets/audio/soundEffects/objects/woodBox_Explosion.wav');
+		this.load.audio('bulletDestroy', 'assets/audio/soundEffects/enemy/bullet_destroy.mp3');
+		this.load.audio('cartBoard', 'assets/audio/soundEffects/objects/cartBox_Move.mp3');
+		this.load.audio('woodBoxExplosion', 'assets/audio/soundEffects/objects/woodBox_Explosion.mp3');
 		//player
-		this.load.audio('playerHurt', 'assets/audio/soundEffects/player/hurt.wav');
+		this.load.audio('playerHurt', 'assets/audio/soundEffects/player/hurt.mp3');
 		this.load.audio('pickWeapon', 'assets/audio/soundEffects/player/pickWeapon.mp3');
-		this.load.audio('selectWeapon', 'assets/audio/soundEffects/player/selectWeapon.wav');
+		this.load.audio('selectWeapon', 'assets/audio/soundEffects/player/selectWeapon.mp3');
 		this.load.audio('walk', 'assets/audio/soundEffects/player/walk.mp3');
 		
 		//weapon
-		this.load.audio('barra', 'assets/audio/soundEffects/weapon/barra.wav');
-		this.load.audio('botella', 'assets/audio/soundEffects/weapon/botella.wav');
+		this.load.audio('barra', 'assets/audio/soundEffects/weapon/barra.mp3');
+		this.load.audio('botella', 'assets/audio/soundEffects/weapon/botella.mp3');
 		this.load.audio('hacha', 'assets/audio/soundEffects/weapon/hacha.mp3');
-		this.load.audio('navaja', 'assets/audio/soundEffects/weapon/navaja.wav');
+		this.load.audio('navaja', 'assets/audio/soundEffects/weapon/navaja.mp3');
 		
 		//menu
 		this.load.audio('click', 'assets/audio/soundEffects/menu/click.mp3');
