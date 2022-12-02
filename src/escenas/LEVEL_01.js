@@ -15,7 +15,7 @@ import Topo from '../objetos/Topo.js';
  */
 export default class LEVEL_01 extends LEVEL_BASE {
 	constructor() {
-		let nextlevel = "LEVEL_03";
+		let nextlevel = "level2Map";
 		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560);
 	}
 	/**
@@ -28,7 +28,6 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		this.dialogManager = this.scene.get('dialogManager');
 
 		//HUD (y Pausa)
-
 		this.scene.launch('hud', { me: this });
 		this.hud = this.scene.get('hud');
 
@@ -39,33 +38,34 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		
 		//Gato
 		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
-		this.cats.add(gato);
-		var cardBoardArray = this.map.createFromObjects('objetos', [
+		//this.cats.add(gato);
+		let cardBoardArray = this.map.createFromObjects('objetos', [
 			{ gid: 561, classType: CardBoard, key: 'cartBoard' }]);
 
 
 		this.cartBoardBoxes.addMultiple(cardBoardArray);
-		var woodBoxesArray = this.map.createFromObjects('objetos', [
+		let woodBoxesArray = this.map.createFromObjects('objetos', [
 			{ gid: 562, classType: WoodBox, key: 'woodBox' }]);
 		this.woodBoxes.addMultiple(woodBoxesArray);
 		woodBoxesArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
-		var EmenyPersecutorArray = this.map.createFromObjects('objetos', [
+
+		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [
 			{ gid: 564, classType: Persecutor, key: 'persecutor' }]);
 		EmenyPersecutorArray.forEach(element => {
 			element.setScale(2);
 		});
 
 		this.enemies.addMultiple(EmenyPersecutorArray);
-		var EmenyLanzadorArray = this.map.createFromObjects('objetos', [
+		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [
 			{ gid: 565, classType: Lanzador, key: 'lanzador' }]);
 		EmenyLanzadorArray.forEach(element => {
 			element.setScale(2);
 		});
 		this.enemies.addMultiple(EmenyLanzadorArray);
 
-		console.log(EmenyPersecutorArray[0]);
+		
 
 		//this.add.image(0, 0, 'nose').setOrigin(0, 0);
 
@@ -97,19 +97,13 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		this.physics.add.overlap(this.player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
 
 
-		// //obtener una nueva arma
-		// let nuevaBotella = this.botella = new gameObject(this,7200, 400,200,200,100,0, 'botella',0).setScale(0.2);
-		// this.physics.add.overlap(this.player, nuevaBotella,()=>{this.player.HasNewWeapon('botella');nuevaBotella.destroy();});
-
-
-		//A BORRAR
-		let topo = new Topo(this, 300, 100);
-		topo.setScale(2);
+		
 		//obtener una nueva arma
 		let nuevaBotella = new gameObject(this, 100, 400, 200, 200, 100, 0, 'botella', 0).setScale(0.2);
 		this.physics.add.overlap(this.player, nuevaBotella, () => { this.player.HasNewWeapon('botella'); nuevaBotella.destroy(); });
-		let hacha = new gameObject(this, 200, 400, 200, 200, 100, 0, 'hacha', 0).setScale(0.2);
-		this.physics.add.overlap(this.player, hacha, () => { this.player.HasNewWeapon('hacha'); hacha.destroy(); });
+		let hacha = this.map.createFromObjects('objetos', [{ name: 'hacha',  key: 'hacha' }]);
+		scene.physics.add.existing(hacha[0]);
+		scene.physics.add.overlap(this.player, hacha[0], () => { this.player.HasNewWeapon('hacha'); hacha[0].destroy(); });
 	}
 
 	/*Mandarle a dialogManager el texto que tiene que printear*/

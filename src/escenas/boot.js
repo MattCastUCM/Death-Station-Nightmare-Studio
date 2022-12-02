@@ -29,6 +29,30 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('fondo', 'assets/Mapa/menu_bg.png');
 		this.load.image('sangre', 'assets/Mapa/blood.png');
 
+		 //tile map
+		 this.load.image("tiles","assets/Mapa/mapa2.png");
+		 this.load.tilemapTiledJSON('level1',"assets/tilemaps/LEVEL_01.json");
+		 this.load.image("tilesLevel2","assets/Nivel_assets_escalados/estacion1.3.png")
+		 this.load.tilemapTiledJSON('level2',"assets/tilemaps/LEVEL_02.json");
+		 this.load.image("tileslevel3","assets/Nivel 3/mapa3.png")
+		 this.load.tilemapTiledJSON('level3',"assets/tilemaps/LEVEL_03.json")
+
+		//dec
+		this.load.image("Basura","assets/Nivel_assets_escalados/Basura.png");
+		this.load.image("cabeza","assets/Nivel_assets_escalados/cabeza.png");
+		this.load.image("carrito","assets/Nivel_assets_escalados/carrito bebe.png");
+		this.load.image("cartel2","assets/Nivel_assets_escalados/cartel2.png");
+		this.load.image("dos carteles","assets/Nivel_assets_escalados/dos carteles.png");
+		this.load.image("Latas","assets/Nivel_assets_escalados/Latas.png");
+		this.load.image("Maletas","assets/Nivel_assets_escalados/Maletas.png");
+		this.load.image("Panel"  ,"assets/Nivel_assets_escalados/Panel.png");
+		this.load.image("Papeles","assets/Nivel_assets_escalados/Papeles.png");
+		this.load.image("rata","assets/Nivel_assets_escalados/rata.png");
+		this.load.image("señor sin cabeza","assets/Nivel_assets_escalados/señor sin cabeza.png");
+		this.load.image("Silla","assets/Nivel_assets_escalados/Silla.png");
+		this.load.image("sillones","assets/Nivel_assets_escalados/sillones.png");
+		//HUD
+
 		// Menú de reinicio........................................................................................
 		this.load.image('restartButton', 'assets/Mapa/restart.png');
 		this.load.image('fondoRestart', 'assets/Mapa/restartFondo.png');
@@ -40,15 +64,8 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('map3', 'assets/Mapa/metro_map_3.png');
 		this.load.image('map4', 'assets/Mapa/metro_map_4.png');
 		this.load.image('map5', 'assets/Mapa/metro_map_5.png');
-		
 
-		// Tilemap........................................................................................
-		this.load.image("tiles","assets/Mapa/mapa2.png");
-		this.load.tilemapTiledJSON('level1',"assets/tilemaps/LEVEL_01.json");
-		 this.load.image("tilesLevel2","assets/Nivel 2/estacion1.3.png")
-		 this.load.tilemapTiledJSON('level2',"assets/tilemaps/LEVEL_02.json");
-		 this.load.image("tileslevel3","assets/Nivel 3/mapa3.png")
-		 this.load.tilemapTiledJSON('level3',"assets/tilemaps/LEVEL_03.json")
+		
 
 		
 		// HUD........................................................................................
