@@ -111,6 +111,8 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		this.physics.add.overlap(this.player, nuevaBotella, () => { this.player.HasNewWeapon('botella'); nuevaBotella.destroy(); });
 		let hacha = new gameObject(this, 200, 400, 200, 200, 100, 0, 'hacha', 0).setScale(0.2);
 		this.physics.add.overlap(this.player, hacha, () => { this.player.HasNewWeapon('hacha'); hacha.destroy(); });
+		
+		let pruebaInteractiveObject = new InteractiveObjects(this, 200, 400, 20, 20, 0,0,'rataInmunda', 0, ["Prueba de rata"], this.player);
 	}
 	
 	
