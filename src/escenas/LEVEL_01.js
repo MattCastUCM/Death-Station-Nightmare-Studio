@@ -6,7 +6,7 @@ import Lanzador from '../objetos/Lanzador.js';
 import Trigger from '../objetos/Trigger.js';
 import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
-
+import InteractiveObjects from '../objetos/InteractiveObjects.js';
 //A BORRAR
 import Topo from '../objetos/Topo.js';
 /**
@@ -19,22 +19,22 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560);
 	}
 	/**
-	* Creación de los elementos de la escena principal de juego
-	*/
+	 * Creación de los elementos de la escena principal de juego
+	 */
 	create() {
 		super.create();
 		//DIALOGMANAGER
 		this.scene.launch('dialogManager');
 		this.dialogManager = this.scene.get('dialogManager');
-
+		
 		//HUD (y Pausa)
-
+		
 		this.scene.launch('hud', { me: this });
 		this.hud = this.scene.get('hud');
-
+		
 		//BGM
 		this.soundManager.playBGM("level1");
-
+		
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
 		
 		//Gato
@@ -51,6 +51,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		woodBoxesArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
+
 		var EmenyPersecutorArray = this.map.createFromObjects('objetos', [
 			{ gid: 564, classType: Persecutor, key: 'persecutor' }]);
 		EmenyPersecutorArray.forEach(element => {
@@ -100,7 +101,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		// //obtener una nueva arma
 		// let nuevaBotella = this.botella = new gameObject(this,7200, 400,200,200,100,0, 'botella',0).setScale(0.2);
 		// this.physics.add.overlap(this.player, nuevaBotella,()=>{this.player.HasNewWeapon('botella');nuevaBotella.destroy();});
-
+		
 
 		//A BORRAR
 		let topo = new Topo(this, 300, 100);
@@ -111,7 +112,8 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		let hacha = new gameObject(this, 200, 400, 200, 200, 100, 0, 'hacha', 0).setScale(0.2);
 		this.physics.add.overlap(this.player, hacha, () => { this.player.HasNewWeapon('hacha'); hacha.destroy(); });
 	}
-
+	
+	
 	/*Mandarle a dialogManager el texto que tiene que printear*/
 	newText(text) {
 		this.dialogManager.Init(text);
@@ -144,3 +146,4 @@ export default class LEVEL_01 extends LEVEL_BASE {
 	}
 
 }
+
