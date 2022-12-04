@@ -8,16 +8,12 @@ export default class Player extends gameObject {
      * @param {Scene} scene - escena en la que aparece
      * @param {number} x - coordenada x
      * @param {number} y - coordenada y
-     * @param {number} w - ancho
-     * @param {number} h - alto
-     * @param {number} offsetX - distancia entre la x del sprite y la x de su collider
-     * @param {number} offsetY - distancia entre la y del sprite y la y de su collider
-     * @param {number} spd - velocidad
      */
-    constructor(scene, x, y, w, h, offsetX, offsetY, spd) {
-        super(scene, x, y, w, h, offsetX, offsetY, 'personaje', spd);
+    constructor(scene, x, y) {
+        super(scene, x, y, 15, 15, 8, 30, 'personaje', 140);
         this.scene = scene;
-        this.fullCollider = new gameObject(scene, x, y, w, 40, offsetX, -3, "", 0);
+        this.fullCollider = new gameObject(scene, x, y, 15, 40, 8, -3, "", 0);
+        this.fullCollider.visible = false;
         this.hp = 100;
         this.hasCollided = false;
         this.elapsedTime = 0;
@@ -81,6 +77,11 @@ export default class Player extends gameObject {
         this.vision.scale = 4;
     }
 
+    setPosicion(_x,_y){
+        this.x=_x;
+        this.y=_y;
+    }
+
     //llamado por hud cuando se pausa la escena
     stop() {
         this.move(0, 0);
@@ -137,7 +138,8 @@ export default class Player extends gameObject {
         this.friction();
 
         // Si se pulsa hacia abajo
-        if (this.input.s.isDown &&
+        if (!this.weaponManager._attack.isAttacking &&
+            this.input.s.isDown &&
             !this.input.w.isDown) {
             // Comienza a reproducir la animación
             this.facing = "down";
@@ -158,7 +160,8 @@ export default class Player extends gameObject {
         }
 
         // Si se pulsa hacia arriba
-        if (this.input.w.isDown &&
+        if (!this.weaponManager._attack.isAttacking &&
+            this.input.w.isDown &&
             !this.input.s.isDown) {
             // Comienza a reproducir la animación
             this.facing = "up";
@@ -178,7 +181,8 @@ export default class Player extends gameObject {
         }
 
         // Si se pulsa hacia la izquierda
-        if (this.input.a.isDown &&
+        if (!this.weaponManager._attack.isAttacking &&
+            this.input.a.isDown &&
             !this.input.d.isDown) {
             // Comienza a  reproducir la animación
             this.facing = "left";
@@ -199,7 +203,8 @@ export default class Player extends gameObject {
         }
 
         // Si se pulsa hacia la derecha
-        if (this.input.d.isDown &&
+        if (!this.weaponManager._attack.isAttacking &&
+            this.input.d.isDown &&
             !this.input.a.isDown) {
             // Comienza a  reproducir la animación
             this.anims.isPlaying = true;
@@ -222,7 +227,8 @@ export default class Player extends gameObject {
 
 
         // Si se deja de pulsar, para la animación
-        if (Phaser.Input.Keyboard.JustUp(this.input.a) ||
+        if (this.weaponManager._attack.isAttacking ||
+            Phaser.Input.Keyboard.JustUp(this.input.a) ||
             Phaser.Input.Keyboard.JustUp(this.input.d) ||
             Phaser.Input.Keyboard.JustUp(this.input.w) ||
             Phaser.Input.Keyboard.JustUp(this.input.s)) {

@@ -13,7 +13,7 @@ import LEVEL_BASE from './LEVEL_BASE.js';
  */
 export default class LEVEL_03 extends LEVEL_BASE {
 	constructor() {
-		let nextlevel="LEVEL_04";
+		let nextlevel="level4Map";
 		super("LEVEL_03",nextlevel,'level3','tileslevel3',560);
 	}
 	/**
@@ -21,46 +21,51 @@ export default class LEVEL_03 extends LEVEL_BASE {
 	*/
 	create() {
 		super.create();
+		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
 		
         this.dialogManager = this.scene.get('dialogManager');
         this.hud = this.scene.get('hud');
-        this.hud.level=this;
+		this.hud.scene.setVisible(true);
+        this.hud.changeLevel(3,this);
 
 		this.soundManager.playBGM("level3");
-		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
+
+		//CAMARA
+		this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
+
 		//Gato
 		 let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
-		 this.cats.add(gato);
-		var cardBoardArray=this.map.createFromObjects('objetos',[
+		 //this.cats.add(gato);
+		 let cardBoardArray=this.map.createFromObjects('objetos',[
 			{gid:561, classType: CardBoard,key: 'cartBoard'}]);
 
 		
 		this.cartBoardBoxes.addMultiple(cardBoardArray);
-		var woodBoxesArray=this.map.createFromObjects('objetos',[
+		let woodBoxesArray=this.map.createFromObjects('objetos',[
 			{gid:562, classType: WoodBox,key: 'woodBox'}]);
 		this.woodBoxes.addMultiple(woodBoxesArray);
 		woodBoxesArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
-		var EmenyPersecutorArray=this.map.createFromObjects('objetos',[
+		let EmenyPersecutorArray=this.map.createFromObjects('objetos',[
 		 	{gid:563, classType: Persecutor,key:'persecutor'}]);
 		EmenyPersecutorArray.forEach(element => {
 			element.setScale(2);
 		});
 		this.enemies.addMultiple(EmenyPersecutorArray);
-		var EmenyLanzadorArray=this.map.createFromObjects('objetos',[
+		let EmenyLanzadorArray=this.map.createFromObjects('objetos',[
 		 	{gid:564, classType: Lanzador,key:'lanzador'}]);
 		EmenyLanzadorArray.forEach(element => {
 				element.setScale(2);
 			});
 		this.enemies.addMultiple(EmenyLanzadorArray);
 
-    //     var EmenyTopoArray=this.map.createFromObjects('objetos',[
-    //         {gid:565, classType: Topo,key:'topo'}]);
-    //         EmenyTopoArray.forEach(element => {
-    //            element.setScale(2);
-    //        });
-    //    this.enemies.addMultiple(EmenyTopoArray);
+        var EmenyTopoArray=this.map.createFromObjects('objetos',[
+            {gid:565, classType: Topo,key:'topo'}]);
+            EmenyTopoArray.forEach(element => {
+               element.setScale(2);
+           });
+       this.enemies.addMultiple(EmenyTopoArray);
 
         // Iluminación
 		const width = this.fondolayer.width
