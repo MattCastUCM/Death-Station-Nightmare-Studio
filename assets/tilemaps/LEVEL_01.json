@@ -78,8 +78,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":597.667,
-                 "y":506
+                 "x":347.667,
+                 "y":472
                 }, 
                 {
                  "class":"",
@@ -102,8 +102,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":1917,
-                 "y":490
+                 "x":245,
+                 "y":452
                 }, 
                 {
                  "class":"",
@@ -354,7 +354,7 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":5648,
+                 "x":5649.67,
                  "y":346
                 }, 
                 {
@@ -366,7 +366,7 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":5648,
+                 "x":5649,
                  "y":388.667
                 }, 
                 {
@@ -378,7 +378,7 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":5648,
+                 "x":5648.33,
                  "y":432
                 }, 
                 {
@@ -390,7 +390,7 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":5648,
+                 "x":5648.33,
                  "y":477.333
                 }, 
                 {
@@ -498,8 +498,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":7969.33,
-                 "y":269.75
+                 "x":7975.33,
+                 "y":277.333
                 }, 
                 {
                  "class":"",
@@ -558,8 +558,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":7969,
-                 "y":356
+                 "x":7977.33,
+                 "y":361.333
                 }, 
                 {
                  "class":"",
@@ -731,6 +731,18 @@
                 }, 
                 {
                  "class":"",
+                 "gid":561,
+                 "height":63,
+                 "id":68,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":55,
+                 "x":7882,
+                 "y":269.75
+                }, 
+                {
+                 "class":"",
                  "gid":562,
                  "height":72,
                  "id":69,
@@ -750,8 +762,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":201,
-                 "x":340,
-                 "y":533.939
+                 "x":10491.9999090909,
+                 "y":505.939484848485
                 }, 
                 {
                  "class":"",
@@ -762,8 +774,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":679,
-                 "y":480
+                 "x":85,
+                 "y":446
                 }, 
                 {
                  "class":"",
@@ -774,8 +786,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":2219,
-                 "y":340
+                 "x":175,
+                 "y":328
                 }, 
                 {
                  "class":"",
@@ -798,80 +810,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":74,
-                 "x":1361,
-                 "y":470
-                }, 
-                {
-                 "class":"",
-                 "gid":562,
-                 "height":72,
-                 "id":80,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":55,
-                 "x":9925,
-                 "y":278
-                }, 
-                {
-                 "class":"",
-                 "gid":562,
-                 "height":72,
-                 "id":81,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":55,
-                 "x":9925,
-                 "y":320
-                }, 
-                {
-                 "class":"",
-                 "gid":562,
-                 "height":72,
-                 "id":83,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":55,
-                 "x":9927,
-                 "y":392
-                }, 
-                {
-                 "class":"",
-                 "gid":562,
-                 "height":72,
-                 "id":84,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":55,
-                 "x":9925,
-                 "y":424
-                }, 
-                {
-                 "class":"",
-                 "gid":562,
-                 "height":72,
-                 "id":85,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":55,
-                 "x":9925,
-                 "y":478
-                }, 
-                {
-                 "class":"",
-                 "gid":568,
-                 "height":38,
-                 "id":86,
-                 "name":"hacha",
-                 "rotation":0,
-                 "visible":true,
-                 "width":80,
-                 "x":9444,
-                 "y":238
+                 "x":465,
+                 "y":408
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -880,7 +820,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":89,
+ "nextobjectid":78,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
@@ -889,7 +829,7 @@
         {
          "columns":35,
          "firstgid":1,
-         "image":"..\/Mapa\/mapa2.png",
+         "image":"..\/assets\/Mapa\/mapa2.png",
          "imageheight":560,
          "imagewidth":1190,
          "margin":0,
@@ -911,24 +851,24 @@
          "margin":0,
          "name":"obj",
          "spacing":0,
-         "tilecount":8,
-         "tileheight":102,
+         "tilecount":7,
+         "tileheight":124,
          "tiles":[
                 {
                  "id":0,
-                 "image":"..\/objects\/cajaCarton.png",
+                 "image":"..\/assets\/objects\/cajaCarton.png",
                  "imageheight":63,
                  "imagewidth":55
                 }, 
                 {
                  "id":1,
-                 "image":"..\/objects\/cajaMadera.png",
+                 "image":"..\/assets\/objects\/cajaMadera.png",
                  "imageheight":72,
                  "imagewidth":55
                 }, 
                 {
                  "id":2,
-                 "image":"..\/objects\/palanca.png",
+                 "image":"..\/assets\/objects\/palanca.png",
                  "imageheight":73,
                  "imagewidth":58
                 }, 
@@ -955,14 +895,8 @@
                  "image":"objetos\/gato.png",
                  "imageheight":67,
                  "imagewidth":81
-                }, 
-                {
-                 "id":7,
-                 "image":"..\/Armas\/Hacha.png",
-                 "imageheight":100,
-                 "imagewidth":220
                 }],
-         "tilewidth":220
+         "tilewidth":86
         }],
  "tilewidth":34,
  "type":"map",

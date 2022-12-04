@@ -3,7 +3,6 @@ import Player from '../objetos/player.js';
 /**
  * Clase base de la que heredan los niveles
  * @extends Phaser.Scene
- * 
  */
 export default class LEVEL_BASE extends Phaser.Scene {
     /**
@@ -16,38 +15,27 @@ export default class LEVEL_BASE extends Phaser.Scene {
      */
     constructor(level, nextlevel, tilemap, tilename, tileColision) {
         super({ key: level });
-         //TILE MAP
-         //this.level=level;
-         this.nextlevel=nextlevel;
-         this.mapname=tilemap;
-         this.tilename=tilename;
-         this.numColision=tileColision;
-     }
-     create(){
- 
-         // Grupos
-         this.enemies = this.physics.add.group({
-            
-         });
-         this.cartBoardBoxes = this.physics.add.group({
-            setImmovable:true
-         });
-         this.woodBoxes = this.physics.add.group({
-            setImmovable:true
-         });
-         this.objects=this.physics.add.group({
-            setImmovable:true
-         });
+        //TILE MAP
+        //this.level=level;
+        this.nextlevel = nextlevel;
+        this.mapname = tilemap;
+        this.tilename = tilename;
+        this.numColision = tileColision;
+    }
 
-    
+    create() {
         this.cameras.main.fadeIn(500,0,0,0);
         //SoundManager
         this.soundManager = this.scene.get('soundManager');
 
- 
+        // Grupos
+        this.enemies = this.physics.add.group();
+        this.cartBoardBoxes = this.physics.add.group();
+        this.woodBoxes = this.physics.add.group();
+        this.cats = this.physics.add.group();
 
         // Jugador
-        this.player = new Player(this, 70, this.cameras.main.centerY);
+        this.player = new Player(this, 100, this.cameras.main.centerY, 15, 15, 8, 30, 140);
         this.player.body.onCollide = true; // Activamos onCollide para poder detectar la colisión del player
         this.player.setScale(2.5);             
         this.player.fullCollider.setScale(2.5);
@@ -76,48 +64,35 @@ export default class LEVEL_BASE extends Phaser.Scene {
 
     Next() {
         //this.scene.remove(this.hud);
-        this.hud.scene.setVisible(false);
         this.scene.start(this.nextlevel);
     }
 
 
-     AddColision(){
-         //colisión con tile map
-         this.physics.add.collider(this.player,this.colisionlayer);
-         this.physics.add.collider(this.cartBoardBoxes,this.colisionlayer);
-         this.physics.add.collider(this.cartBoardBoxes, this.colisionlayer);
-         //this.physics.add.collider(this.cats,this.colisionlayer);
-         this.physics.add.collider(this.enemies,this.colisionlayer);
- 
-         //colisión player-cajas,cajas-cajas
-         this.physics.add.collider(this.woodBoxes, this.cartBoardBoxes);
-         this.physics.add.collider(this.cartBoardBoxes, this.cartBoardBoxes);
-         //this.physics.add.collider(this.player, this.cartBoardBoxes);
-         this.physics.add.collider(this.player, this.woodBoxes);
-         //enemigos caja
-         this.physics.add.collider(this.enemies, this.cartBoardBoxes);
-         this.physics.add.collider(this.enemies, this.woodBoxes);
+    AddColision() {
+        //colisión con tile map
+        this.physics.add.collider(this.player, this.colisionlayer);
+        this.physics.add.collider(this.cartBoardBoxes, this.colisionlayer);
+        this.physics.add.collider(this.cartBoardBoxes, this.colisionlayer);
+        // this.physics.add.collider(this.cats,this.colisionlayer);
+        this.physics.add.collider(this.enemies, this.colisionlayer);
 
+        //colisión player-cajas,cajas-cajas
+        this.physics.add.collider(this.woodBoxes, this.cartBoardBoxes);
+        this.physics.add.collider(this.cartBoardBoxes, this.cartBoardBoxes);
+        //this.physics.add.collider(this.player, this.cartBoardBoxes);
+        this.physics.add.collider(this.player, this.woodBoxes);
+        //enemigos caja
+        //this.physics.add.collider(this.enemies, this.cartBoardBoxes);
+        this.physics.add.collider(this.enemies, this.woodBoxes);
+        // gato caja
+        // this.physics.add.collider(this.cats, this.cartBoardBoxes);
+        // this.physics.add.collider(this.cats, this.woodBoxes);
 
-    
-         //dec
-         this.physics.add.collider(this.objects,this.cartBoardBoxes);
-         this.physics.add.collider(this.objects,this.player);
-         this.physics.add.collider(this.objects,this.enemies);
+        //this.physics.add.collider(this.enemies, this.enemies);
+        this.physics.add.collider(this.player, this.cats);
 
-
-
-
-         // gato caja
-         //this.physics.add.collider(this.cats, this.cartBoardBoxes);
-         //this.physics.add.collider(this.cats, this.woodBoxes);
- 
-         //this.physics.add.collider(this.enemies, this.enemies);
-         //this.physics.add.collider(this.player, this.cats);
- 
-         //Colisión enemigo
-         this.physics.add.overlap(this.player, this.enemies, ()=>this.player.decreaseHP(), null);
-
+        //Colisión enemigo
+        this.physics.add.overlap(this.player, this.enemies, () => this.player.decreaseHP(), null);
     }
 
     

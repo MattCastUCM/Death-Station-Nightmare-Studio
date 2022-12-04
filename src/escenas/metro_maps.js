@@ -14,21 +14,15 @@
 	create() {
 		this.cameras.main.fadeIn(500,0,0,0);
 
-		// Añade la imagen del mapa 
-		this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'map1');
-		let pressed = false;
-
-		// Tecla enter
-        this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		// Añade el logo 
+		let img = this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'map1');
+		img.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
 		
-		// Al pulsar el enter, comienza el fadeOut
-		this.enterKey.on('down', ()=> {
-			if(!pressed){
-				this.cameras.main.fadeOut(500,0,0,0);
-			}
-			pressed = true;
-	    });
-
+		// Al pulsar el botón
+		img.on('pointerdown', pointer => {
+			img.disableInteractive();
+			this.cameras.main.fadeOut(500,0,0,0);
+		});
 		// Al terminar el fade out, cambia a la escena del nivel 1
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
 			this.scene.start('LEVEL_01');
@@ -48,21 +42,15 @@ export class level2Map extends Phaser.Scene {
 	create() {
 		this.cameras.main.fadeIn(500,0,0,0);
 
-		// Añade la imagen del mapa 
-		this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'map2');
-		let pressed = false;
-
-		// Tecla enter
-        this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		// Añade el logo 
+		let img = this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'map2');
+		img.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
 		
-		// Al pulsar el enter, comienza el fadeOut
-		this.enterKey.on('down', ()=> {
-			if(!pressed){
-				this.cameras.main.fadeOut(500,0,0,0);
-			}
-			pressed = false;
-	    });
-
+		// Al pulsar el botón
+		img.on('pointerdown', pointer => {
+			img.disableInteractive();
+			this.cameras.main.fadeOut(500,0,0,0);
+		});
 		// Al terminar el fade out, cambia a la escena del nivel 1
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
 			this.scene.start('LEVEL_02');
@@ -82,21 +70,15 @@ export class level3Map extends Phaser.Scene {
 	create() {
 		this.cameras.main.fadeIn(500,0,0,0);
 
-		// Añade la imagen del mapa 
-		this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'map3');
-		let pressed = false;
-
-		// Tecla enter
-        this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		// Añade el logo 
+		let img = this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'map3');
+		img.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
 		
-		// Al pulsar el enter, comienza el fadeOut
-		this.enterKey.on('down', ()=> {
-			if(!pressed){
-				this.cameras.main.fadeOut(500,0,0,0);
-			}
-			pressed = false;
-	    });
-
+		// Al pulsar el botón
+		img.on('pointerdown', pointer => {
+			img.disableInteractive();
+			this.cameras.main.fadeOut(500,0,0,0);
+		});
 		// Al terminar el fade out, cambia a la escena del nivel 1
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
 			this.scene.start('LEVEL_03');
@@ -116,21 +98,15 @@ export class level4Map extends Phaser.Scene {
 	create() {
 		this.cameras.main.fadeIn(500,0,0,0);
 
-		// Añade la imagen del mapa 
-		this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'map4');
-		let pressed = false;
-
-		// Tecla enter
-        this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		// Añade el logo 
+		let img = this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'map4');
+		img.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
 		
-		// Al pulsar el enter, comienza el fadeOut
-		this.enterKey.on('down', ()=> {
-			if(!pressed){
-				this.cameras.main.fadeOut(500,0,0,0);
-			}
-			pressed = false;
-	    });
-
+		// Al pulsar el botón
+		img.on('pointerdown', pointer => {
+			img.disableInteractive();
+			this.cameras.main.fadeOut(500,0,0,0);
+		});
 		// Al terminar el fade out, cambia a la escena del nivel 1
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
 			this.scene.start('LEVEL_04');
@@ -151,24 +127,18 @@ export class endMap extends Phaser.Scene {
 	create() {
 		this.cameras.main.fadeIn(500,0,0,0);
 
-		// Añade la imagen del mapa 
-		this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'map5');
-		let pressed = false;
-
-		// Tecla enter
-        this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		// Añade el logo 
+		let img = this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'map5');
+		img.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
 		
-		// Al pulsar el enter, comienza el fadeOut
-		this.enterKey.on('down', ()=> {
-			if(!pressed){
-				this.cameras.main.fadeOut(500,0,0,0);
-			}
-			pressed = false;
-	    });
-
+		// Al pulsar el botón
+		img.on('pointerdown', pointer => {
+			img.disableInteractive();
+			this.cameras.main.fadeOut(500,0,0,0);
+		});
 		// Al terminar el fade out, cambia a la escena del nivel 1
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
-			this.scene.start('LEVEL_05');
+			this.scene.start('endGame');
 		});
 	}
 
