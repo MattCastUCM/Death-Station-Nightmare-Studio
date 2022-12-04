@@ -129,6 +129,11 @@ export default class Boot extends Phaser.Scene {
 		
 		//menu
 		this.load.audio('click', 'assets/audio/soundEffects/menu/click.mp3');
+
+		//interactuable objects
+		this.load.image('rataInmunda', 'assets/enemies/rock.png');
+		this.load.image('hombreSinCabeza', 'assets/enemies/rock.png');
+		this.load.image('exclamation', 'assets/enemies/interactiveObject.png');
 		//........................................................................................
 
 		
