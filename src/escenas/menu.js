@@ -47,9 +47,9 @@ export default class Menu extends Phaser.Scene {
 			sprite.disableInteractive();
 			this.cameras.main.fadeOut(500,0,0,0);
 	    });
-		// Al terminar el fade out, cambia a la escena del nivel 1
+		// Al terminar el fade out, cambia a la escena 1 de la intro
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
-			this.scene.start('level1Map');
+			this.scene.start('intro1');
 		});
 
 

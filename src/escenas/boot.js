@@ -29,6 +29,12 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('fondo', 'assets/Mapa/menu_bg.png');
 		this.load.image('sangre', 'assets/Mapa/blood.png');
 
+
+		// Introducción........................................................................................
+		this.load.image('introOutside', 'assets/intro/outside.png');
+		this.load.image('intrtoInside', 'assets/intro/inside.png');
+
+
 		 //tile map
 		 this.load.image("tiles","assets/Mapa/mapa2.png");
 		 this.load.tilemapTiledJSON('level1',"assets/tilemaps/LEVEL_01.json");
@@ -88,7 +94,7 @@ export default class Boot extends Phaser.Scene {
 	
 		// Enemigos........................................................................................
 		this.load.spritesheet('cat', 'assets/enemies/cat.png', { frameWidth: 34, frameHeight: 34 });
-		this.load.spritesheet('persecutor', 'assets/enemies/persecutr.png', { frameWidth: 64, frameHeight: 64 });
+		this.load.spritesheet('persecutor', 'assets/enemies/persecutor.png', { frameWidth: 64, frameHeight: 64 });
 		this.load.spritesheet('lanzador', 'assets/enemies/shooter.png', { frameWidth: 48, frameHeight: 48 });
 		this.load.spritesheet('topo', 'assets/enemies/mole.png', { frameWidth: 36, frameHeight: 32 });
 		// Roca
