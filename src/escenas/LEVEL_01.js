@@ -15,7 +15,7 @@ import Topo from '../objetos/Topo.js';
  */
 export default class LEVEL_01 extends LEVEL_BASE {
 	constructor() {
-		let nextlevel = "level2Map";
+		let nextlevel = "level3Map";
 		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560);
 	}
 	/**
@@ -38,7 +38,9 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		this.soundManager.playBGM("level1");
 
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
-		
+		let topoaux=new Topo(this,200,400);
+		topoaux.setScale(100);
+		this.enemies.add(topoaux);
 		//Gato
 		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
 		//this.cats.add(gato);
@@ -59,7 +61,6 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		EmenyPersecutorArray.forEach(element => {
 			element.setScale(2);
 		});
-
 		this.enemies.addMultiple(EmenyPersecutorArray);
 		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [
 			{ gid: 565, classType: Lanzador, key: 'lanzador' }]);
@@ -67,6 +68,9 @@ export default class LEVEL_01 extends LEVEL_BASE {
 			element.setScale(2);
 		});
 		this.enemies.addMultiple(EmenyLanzadorArray);
+		EmenyLanzadorArray.forEach(obj => {
+			obj.body.setImmovable();
+		});
 
 		
 

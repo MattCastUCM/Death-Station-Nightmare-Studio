@@ -90,7 +90,7 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('dialogBox', 'assets/HUD/textBox.png');
 
 		// Jugador........................................................................................
-		this.load.spritesheet('personaje', 'assets/player.png', { frameWidth: 32, frameHeight: 48 });
+		this.load.spritesheet('personaje', 'assets/characters/player.png', { frameWidth: 32, frameHeight: 48 });
 	
 		// Enemigos........................................................................................
 		this.load.spritesheet('cat', 'assets/enemies/cat.png', { frameWidth: 34, frameHeight: 34 });

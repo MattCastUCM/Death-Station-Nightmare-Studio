@@ -22,6 +22,10 @@ export default class Bullet  extends gameObject {
             scene.soundManager.play("bulletDestroy")
             self.destroy();
         });
+        this.scene.physics.add.overlap(this, scene.objects, function(self){ 
+            scene.soundManager.play("bulletDestroy")
+            self.destroy();
+        });
         this.scene.physics.add.collider(this, scene.colisionlayer, function(self){ 
             scene.soundManager.play("bulletDestroy")
             self.destroy();

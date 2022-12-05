@@ -7,7 +7,7 @@ export default class Topo extends Enemy {
 		this.originX = x;
 		this.originY = y;
 		this.hurtSound = "topoHurt";
-		this.target = scene.player;
+		//this.target = scene.player;
 
 		this.elapsedTime = 0;
 		//Creamos las animaciones
@@ -45,15 +45,17 @@ export default class Topo extends Enemy {
 	preUpdate(t, dt) {
 		super.preUpdate(t,dt);
 
-		let dist = Phaser.Math.Distance.BetweenPoints((this.originX,this.originY), this.target)
+		let dist = Phaser.Math.Distance.BetweenPoints(this, this.target)
 
 		// 
-		if (dist < 80){
+		if (dist < 400){
+			console.log(dist);
 			// Si se está reproduciendo la animación nothing,
 			// reproduce en cadena up, idle y down
-			if(this.elapsedTime > 1000 && this.anims.currentAnim.key === "nothing")
+			if(this.elapsedTime > 1000 && this.anims.currentAnim.key === "nothing"){
+				//this.body.enable = true;
 				this.play("upTopo").anims.chain("idleTopo").anims.chain("downTopo");
-			
+			}
 			// Si está apareciendo o desapareciendo, se desactiva su trigger
 			if(this.anims.currentAnim.key === "nothing" || this.anims.currentAnim.key === "upTopo" ||this.anims.currentAnim.key === "downTopo" )
 				this.body.enable = false;
@@ -72,7 +74,12 @@ export default class Topo extends Enemy {
 			this.elapsedTime += dt;
 	
 			// Bloquea el movimiento (HAY QUE CAMBIAR DE COLLIDER A TRIGGER)
-			this.move(0,0);
+			//this.move(0,0);
+		}
+		else if (dist > 400 && this.anims.currentAnim.key !== "nothing") {
+			this.play("nothing");
+		
+
 		}
 	}
 	

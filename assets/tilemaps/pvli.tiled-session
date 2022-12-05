@@ -82,14 +82,14 @@
         },
         "LEVEL_02.tmx": {
             "expandedObjectLayers": [
-                4,
-                7
+                7,
+                4
             ],
             "scale": 1.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 2532.6666666666665,
-                "y": 754
+                "x": 2709.333333333333,
+                "y": 866
             }
         },
         "LEVEL_02.tmx#Nivel Claudia": {
@@ -98,7 +98,7 @@
         },
         "LEVEL_02.tmx#dec": {
             "dynamicWrapping": true,
-            "scaleInDock": 1,
+            "scaleInDock": 0.25,
             "scaleInEditor": 0.25
         },
         "LEVEL_02.tmx#mapa": {

@@ -56,6 +56,9 @@ export default class LEVEL_02 extends LEVEL_BASE {
 			element.setScale(2);
 		});
 		this.enemies.addMultiple(EmenyLanzadorArray);
+		EmenyLanzadorArray.forEach(obj => {
+			obj.body.setImmovable();
+		});
 
 		//decolacion
 		let Basuras = this.map.createFromObjects('dec', [{ gid: 5,  key: 'Basura' }]);

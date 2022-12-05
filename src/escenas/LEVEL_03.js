@@ -8,7 +8,7 @@ import Trigger from '../objetos/Trigger.js';
 import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
 /**
- * Escena principal.
+ * Nivel 3
  * @extends LEVEL_BASE
  */
 export default class LEVEL_03 extends LEVEL_BASE {
@@ -34,19 +34,24 @@ export default class LEVEL_03 extends LEVEL_BASE {
 		this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
 
 		//Gato
-		 let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
-		 //this.cats.add(gato);
-		 let cardBoardArray=this.map.createFromObjects('objetos',[
-			{gid:561, classType: CardBoard,key: 'cartBoard'}]);
+		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
 
-		
+		 //Cajas
+		let cardBoardArray=this.map.createFromObjects('objetos',[
+			{gid:561, classType: CardBoard,key: 'cartBoard'}]);
 		this.cartBoardBoxes.addMultiple(cardBoardArray);
+		cardBoardArray.forEach(obj => {
+			obj.body.setImmovable();
+		});
+
 		let woodBoxesArray=this.map.createFromObjects('objetos',[
 			{gid:562, classType: WoodBox,key: 'woodBox'}]);
 		this.woodBoxes.addMultiple(woodBoxesArray);
 		woodBoxesArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
+
+		//Enemigos
 		let EmenyPersecutorArray=this.map.createFromObjects('objetos',[
 		 	{gid:563, classType: Persecutor,key:'persecutor'}]);
 		EmenyPersecutorArray.forEach(element => {
@@ -59,33 +64,41 @@ export default class LEVEL_03 extends LEVEL_BASE {
 				element.setScale(2);
 			});
 		this.enemies.addMultiple(EmenyLanzadorArray);
+		EmenyLanzadorArray.forEach(obj => {
+			obj.body.setImmovable();
+		});
 
-        var EmenyTopoArray=this.map.createFromObjects('objetos',[
+        let EmenyTopoArray=this.map.createFromObjects('objetos',[
             {gid:565, classType: Topo,key:'topo'}]);
             EmenyTopoArray.forEach(element => {
-               element.setScale(2);
+               element.setScale(12);
            });
+		console.log(EmenyTopoArray[0]);
        this.enemies.addMultiple(EmenyTopoArray);
 
+	   //let ptopo=new Topo(scene,300,100);
+
         // Iluminación
-		const width = this.fondolayer.width
-		const height = this.fondolayer.height
-		const rt = this.make.renderTexture({
-			width,
-			height
-		}, true)
-		rt.setDepth(1000);
+		// const width = this.fondolayer.width
+		// const height = this.fondolayer.height
+		// const rt = this.make.renderTexture({
+		// 	width,
+		// 	height
+		// }, true)
+
+
+		//rt.setDepth(1000);
 		// poner fondo a negro
 		//rt.fill(0x000000, 1)
 		// dibuja la escena vacia 
-		rt.draw(this.fondolayer)
+		//rt.draw(this.fondolayer)
 		//poner un toque de azul a mapa 
-		rt.setTint(0x5050b0)
+		//rt.setTint(0x5050b0)
 		//0x0a2948
 		//0x5050b0	// vision.scale =4;
 		//vision.startFollow(this.personaje);
-		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.player.vision);
-		rt.mask.invertAlpha = true;
+		// rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.player.vision);
+		// rt.mask.invertAlpha = true;
 
 
 		
