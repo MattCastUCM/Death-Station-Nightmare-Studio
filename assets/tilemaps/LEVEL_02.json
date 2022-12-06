@@ -781,7 +781,7 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":1292.16333333333,
+                 "x":1292.16,
                  "y":767.167
                 }, 
                 {
@@ -793,8 +793,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":1255.16333333333,
-                 "y":726.833666666667
+                 "x":1255.16,
+                 "y":726.834
                 }, 
                 {
                  "class":"cardBoard",
@@ -805,7 +805,7 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":1317.66333333333,
+                 "x":1317.66,
                  "y":727.167
                 }, 
                 {
@@ -1033,8 +1033,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":2055,
-                 "y":810
+                 "x":2053.5,
+                 "y":802
                 }, 
                 {
                  "class":"woodBox",
@@ -1045,8 +1045,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":2593,
-                 "y":1129.33333333333
+                 "x":2589,
+                 "y":1129.33
                 }, 
                 {
                  "class":"cardBoard",
@@ -1081,8 +1081,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":2822.66666666667,
-                 "y":929.333333333333
+                 "x":2822.67,
+                 "y":929.333
                 }, 
                 {
                  "class":"woodBox",
@@ -1333,8 +1333,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":2055,
-                 "y":855
+                 "x":2053.5,
+                 "y":849.5
                 }, 
                 {
                  "class":"cardBoard",
@@ -1345,8 +1345,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":2054,
-                 "y":916
+                 "x":2055,
+                 "y":894.5
                 }, 
                 {
                  "class":"woodBox",
@@ -1358,7 +1358,7 @@
                  "visible":true,
                  "width":55,
                  "x":2117,
-                 "y":861
+                 "y":852
                 }, 
                 {
                  "class":"cardBoard",
@@ -1513,8 +1513,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":1437.66666666667,
-                 "y":726.666666666667
+                 "x":1437.67,
+                 "y":726.667
                 }, 
                 {
                  "class":"cardBoard",
@@ -1525,8 +1525,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":1405.66666666667,
-                 "y":772.666666666667
+                 "x":1405.67,
+                 "y":772.667
                 }, 
                 {
                  "class":"cardBoard",
@@ -1549,7 +1549,7 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":2649.66666666667,
+                 "x":2649.67,
                  "y":1120
                 }, 
                 {
@@ -1561,7 +1561,7 @@
                  "rotation":0,
                  "visible":true,
                  "width":55,
-                 "x":2577.66666666667,
+                 "x":2577.67,
                  "y":994
                 }, 
                 {
@@ -1586,7 +1586,31 @@
                  "visible":true,
                  "width":55,
                  "x":2647,
-                 "y":1034.33333333333
+                 "y":1034.33
+                }, 
+                {
+                 "class":"woodBox",
+                 "gid":1396,
+                 "height":72,
+                 "id":253,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":55,
+                 "x":2652,
+                 "y":1173
+                }, 
+                {
+                 "class":"",
+                 "gid":1399,
+                 "height":28,
+                 "id":254,
+                 "name":"botella",
+                 "rotation":0,
+                 "visible":true,
+                 "width":65.3333333333333,
+                 "x":1586,
+                 "y":1175.33333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1595,7 +1619,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":253,
+ "nextobjectid":255,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
@@ -1734,8 +1758,8 @@
          "margin":0,
          "name":"obj",
          "spacing":0,
-         "tilecount":4,
-         "tileheight":102,
+         "tilecount":5,
+         "tileheight":140,
          "tiles":[
                 {
                  "class":"cardBoard",
@@ -1764,8 +1788,14 @@
                  "image":"objetos\/lanzador.png",
                  "imageheight":102,
                  "imagewidth":70
+                }, 
+                {
+                 "id":4,
+                 "image":"..\/Armas\/Botella.png",
+                 "imageheight":140,
+                 "imagewidth":380
                 }],
-         "tilewidth":74
+         "tilewidth":380
         }],
  "tilewidth":34,
  "type":"map",

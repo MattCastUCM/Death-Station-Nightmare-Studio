@@ -4,8 +4,7 @@ export default class Topo extends Enemy {
 
 	constructor(scene, x, y) {
 		super(scene, x, y, 20, 20, 8, 10, 'topo', 40, scene.player, 10);
-		this.originX = x;
-		this.originY = y;
+		
 		this.hurtSound = "topoHurt";
 		//this.target = scene.player;
 
@@ -48,8 +47,7 @@ export default class Topo extends Enemy {
 		let dist = Phaser.Math.Distance.BetweenPoints(this, this.target)
 
 		// 
-		if (dist < 400){
-			console.log(dist);
+		if (dist < 100){
 			// Si se está reproduciendo la animación nothing,
 			// reproduce en cadena up, idle y down
 			if(this.elapsedTime > 1000 && this.anims.currentAnim.key === "nothing"){
@@ -76,11 +74,7 @@ export default class Topo extends Enemy {
 			// Bloquea el movimiento (HAY QUE CAMBIAR DE COLLIDER A TRIGGER)
 			//this.move(0,0);
 		}
-		else if (dist > 400 && this.anims.currentAnim.key !== "nothing") {
-			this.play("nothing");
-		
 
-		}
 	}
 	
 

@@ -750,8 +750,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":201,
-                 "x":340,
-                 "y":533.939
+                 "x":842.98484848485,
+                 "y":506.666696969697
                 }, 
                 {
                  "class":"",
@@ -864,14 +864,26 @@
                 {
                  "class":"",
                  "gid":568,
-                 "height":38,
+                 "height":24,
                  "id":86,
                  "name":"hacha",
                  "rotation":0,
                  "visible":true,
-                 "width":80,
+                 "width":53.3333333333321,
                  "x":9444,
-                 "y":238
+                 "y":224
+                }, 
+                {
+                 "class":"",
+                 "gid":564,
+                 "height":99,
+                 "id":89,
+                 "name":"",
+                 "rotation":0,
+                 "visible":true,
+                 "width":74,
+                 "x":584.212,
+                 "y":377.273
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -880,7 +892,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":89,
+ "nextobjectid":92,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

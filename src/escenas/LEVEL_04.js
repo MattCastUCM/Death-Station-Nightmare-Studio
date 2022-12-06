@@ -7,13 +7,13 @@ import Trigger from '../objetos/Trigger.js';
 import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
 /**
- * Nivel 2
+ * Nivel 4
  * @extends LEVEL_BASE
  */
 export default class LEVEL_02 extends LEVEL_BASE {
 	constructor() {
-		let nextlevel="level3Map";
-		super("LEVEL_02",nextlevel,'level2','tilesLevel2',1394);
+		let nextlevel="level5Map";
+		super("LEVEL_04",nextlevel,'level4','tilesLevel4',1394);
 	}
 	/**
 	* Creación de los elementos de la escena principal de juego
@@ -25,8 +25,8 @@ export default class LEVEL_02 extends LEVEL_BASE {
         this.dialogManager = this.scene.get('dialogManager');
         this.hud = this.scene.get('hud');
 		this.hud.scene.setVisible(true);
-        this.hud.changeLevel(2,this);
-		this.soundManager.playBGM("level2");
+        this.hud.changeLevel(4,this);
+		this.soundManager.playBGM("level4");
 
 		this.player.setPosicion(159,371);
 
@@ -112,10 +112,35 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		let sillon = this.map.createFromObjects('dec', [{ gid: 15, key: 'sillones' }]);
 		this.objects.addMultiple(sillon);
 		sillon.forEach(s=>{s.body.setImmovable();});
+
+
+
+		let width = this.fondolayer.width
+		let height = this.fondolayer.height
+		let rt = this.make.renderTexture({
+			width,
+			height
+		}, true)
+
+
+		rt.setDepth(10000);
+		// poner fondo a negro
+		rt.fill(0x000000, 1)
+		// dibuja la escena vacia 
+		rt.draw(this.fondolayer)
+		//poner un toque de azul a mapa 
+		rt.setTint(0x0a2948)
+		//0x0a2948
+		//0x5050b0	
+		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.player.vision);
+		//invertir lo que se ver 
+		rt.mask.invertAlpha = true;
 		
-		let botella = this.map.createFromObjects('objetos', [{ name: 'botella',  key: 'botella' }]);
-		scene.physics.add.existing(botella[0]);
-		scene.physics.add.overlap(this.player, botella[0], () => { this.player.HasNewWeapon('botella'); botella[0].destroy(); });
+
+
+
+		
+		
 	}
 
 	/*Mandarle a dialogManager el texto que tiene que printear*/

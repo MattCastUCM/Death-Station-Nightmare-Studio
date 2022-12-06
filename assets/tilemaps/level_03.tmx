@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="252" height="20" tilewidth="34" tileheight="34" infinite="0" nextlayerid="4" nextobjectid="100">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="252" height="20" tilewidth="34" tileheight="34" infinite="0" nextlayerid="4" nextobjectid="102">
  <editorsettings>
   <export target="LEVEL_03.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="mapa" tilewidth="34" tileheight="34" tilecount="560" columns="35">
   <image source="../Nivel 3/mapa3.png" width="1190" height="560"/>
  </tileset>
- <tileset firstgid="561" name="obj" tilewidth="86" tileheight="102" tilecount="6" columns="0">
+ <tileset firstgid="561" name="obj" tilewidth="250" tileheight="102" tilecount="7" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="0">
    <image width="55" height="63" source="../objects/cajaCarton.png"/>
@@ -25,6 +25,9 @@
   </tile>
   <tile id="5">
    <image width="81" height="67" source="objetos/gato.png"/>
+  </tile>
+  <tile id="6">
+   <image width="250" height="30" source="../Armas/Barra.png"/>
   </tile>
  </tileset>
  <layer id="1" name="fondo" width="252" height="20">
@@ -153,8 +156,10 @@
   <object id="94" gid="561" x="2582.33" y="469.667" width="55" height="63"/>
   <object id="95" gid="562" x="2522" y="410" width="55" height="72"/>
   <object id="96" gid="562" x="2519" y="474" width="55" height="72"/>
-  <object id="97" gid="562" x="2647" y="405" width="55" height="72"/>
+  <object id="97" gid="562" x="2708" y="477" width="55" height="72"/>
   <object id="98" gid="562" x="2647" y="476" width="55" height="72"/>
-  <object id="99" gid="562" x="2703" y="339" width="55" height="72"/>
+  <object id="99" gid="562" x="2755" y="325" width="55" height="72"/>
+  <object id="100" name="barra" gid="567" x="2678.95" y="272.886" width="144.318" height="14.8588" rotation="54.9188"/>
+  <object id="101" gid="561" x="2642" y="405" width="55" height="63"/>
  </objectgroup>
 </map>

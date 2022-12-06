@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="120" height="90" tilewidth="34" tileheight="34" infinite="0" nextlayerid="10" nextobjectid="253">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="120" height="90" tilewidth="34" tileheight="34" infinite="0" nextlayerid="10" nextobjectid="255">
  <editorsettings>
   <export target="LEVEL_02.json" format="json"/>
  </editorsettings>
@@ -48,7 +48,7 @@
  <tileset firstgid="19" name="mapa" tilewidth="34" tileheight="34" tilecount="1376" columns="43">
   <image source="../Nivel_assets_escalados/estacion1.3.png" width="1493" height="1120"/>
  </tileset>
- <tileset firstgid="1395" name="obj" tilewidth="74" tileheight="102" tilecount="4" columns="0">
+ <tileset firstgid="1395" name="obj" tilewidth="380" tileheight="140" tilecount="5" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="0" class="cardBoard">
    <image width="55" height="63" source="../objects/cajaCarton.png"/>
@@ -61,6 +61,9 @@
   </tile>
   <tile id="3" class="lanzador">
    <image width="70" height="102" source="objetos/lanzador.png"/>
+  </tile>
+  <tile id="4">
+   <image width="380" height="140" source="../Armas/Botella.png"/>
   </tile>
  </tileset>
  <layer id="5" name="fondo" width="120" height="90" opacity="0.97">
@@ -321,8 +324,8 @@
   <object id="109" gid="1396" x="1186.67" y="1193.5" width="55" height="72"/>
   <object id="141" gid="1395" x="2053" y="744" width="55" height="63"/>
   <object id="146" gid="1395" x="2383" y="746" width="55" height="63"/>
-  <object id="147" gid="1396" x="2055" y="810" width="55" height="72"/>
-  <object id="152" gid="1396" x="2593" y="1129.33" width="55" height="72"/>
+  <object id="147" gid="1396" x="2053.5" y="802" width="55" height="72"/>
+  <object id="152" gid="1396" x="2589" y="1129.33" width="55" height="72"/>
   <object id="153" gid="1395" x="2865" y="1208" width="55" height="63"/>
   <object id="166" gid="1395" x="2580" y="1056" width="55" height="63"/>
   <object id="167" gid="1396" x="2822.67" y="929.333" width="55" height="72"/>
@@ -346,9 +349,9 @@
   <object id="209" gid="1395" x="657" y="520" width="55" height="63"/>
   <object id="210" gid="1395" x="653" y="568" width="55" height="63"/>
   <object id="228" gid="1395" x="2383" y="861" width="55" height="63"/>
-  <object id="229" gid="1396" x="2055" y="855" width="55" height="72"/>
-  <object id="230" gid="1395" x="2054" y="916" width="55" height="63"/>
-  <object id="231" gid="1396" x="2117" y="861" width="55" height="72"/>
+  <object id="229" gid="1396" x="2053.5" y="849.5" width="55" height="72"/>
+  <object id="230" gid="1395" x="2055" y="894.5" width="55" height="63"/>
+  <object id="231" gid="1396" x="2117" y="852" width="55" height="72"/>
   <object id="232" gid="1395" x="2191" y="925" width="55" height="63"/>
   <object id="234" gid="1395" x="2115" y="970" width="55" height="63"/>
   <object id="235" gid="1395" x="2198" y="857.667" width="55" height="63"/>
@@ -368,5 +371,7 @@
   <object id="250" gid="1395" x="2577.67" y="994" width="55" height="63"/>
   <object id="251" name="next" gid="18" x="2792" y="1918" width="125" height="300"/>
   <object id="252" gid="1395" x="2647" y="1034.33" width="55" height="63"/>
+  <object id="253" gid="1396" x="2652" y="1173" width="55" height="72"/>
+  <object id="254" name="botella" gid="1399" x="1586" y="1175.33" width="65.3333" height="28"/>
  </objectgroup>
 </map>

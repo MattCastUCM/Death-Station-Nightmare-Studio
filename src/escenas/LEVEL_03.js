@@ -71,34 +71,40 @@ export default class LEVEL_03 extends LEVEL_BASE {
         let EmenyTopoArray=this.map.createFromObjects('objetos',[
             {gid:565, classType: Topo,key:'topo'}]);
             EmenyTopoArray.forEach(element => {
-               element.setScale(12);
+               element.setScale(2);
            });
 		console.log(EmenyTopoArray[0]);
        this.enemies.addMultiple(EmenyTopoArray);
 
+	   let barra = this.map.createFromObjects('objetos', [{ name: 'barra',  key: 'barra' }]);
+		scene.physics.add.existing(barra[0]);
+		barra[0].body.setSize(50,300,true);
+		console.log(barra[0]);
+		scene.physics.add.overlap(this.player, barra[0], () => { this.player.HasNewWeapon('barra'); barra[0].destroy(); });
+
 	   //let ptopo=new Topo(scene,300,100);
 
         // Iluminación
-		// const width = this.fondolayer.width
-		// const height = this.fondolayer.height
-		// const rt = this.make.renderTexture({
-		// 	width,
-		// 	height
-		// }, true)
+		const width = this.fondolayer.width
+		const height = this.fondolayer.height
+		const rt = this.make.renderTexture({
+			width,
+			height
+		}, true)
 
 
-		//rt.setDepth(1000);
+		rt.setDepth(1000);
 		// poner fondo a negro
-		//rt.fill(0x000000, 1)
+		rt.fill(0x000000, 1)
 		// dibuja la escena vacia 
-		//rt.draw(this.fondolayer)
+		rt.draw(this.fondolayer)
 		//poner un toque de azul a mapa 
-		//rt.setTint(0x5050b0)
+		rt.setTint(0x5050b0)
 		//0x0a2948
 		//0x5050b0	// vision.scale =4;
 		//vision.startFollow(this.personaje);
-		// rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.player.vision);
-		// rt.mask.invertAlpha = true;
+		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.player.vision);
+		rt.mask.invertAlpha = true;
 
 
 		

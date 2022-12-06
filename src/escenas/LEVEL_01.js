@@ -6,9 +6,6 @@ import Lanzador from '../objetos/Lanzador.js';
 import Trigger from '../objetos/Trigger.js';
 import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
-
-//A BORRAR
-import Topo from '../objetos/Topo.js';
 /**
  * Nivel 1
  * @extends LEVEL_BASE
@@ -38,9 +35,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		this.soundManager.playBGM("level1");
 
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
-		let topoaux=new Topo(this,200,400);
-		topoaux.setScale(100);
-		this.enemies.add(topoaux);
+		
 		//Gato
 		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
 		//this.cats.add(gato);
@@ -106,8 +101,8 @@ export default class LEVEL_01 extends LEVEL_BASE {
 
 		
 		//obtener una nueva arma
-		let nuevaBotella = new gameObject(this, 100, 400, 200, 200, 100, 0, 'botella', 0).setScale(0.2);
-		this.physics.add.overlap(this.player, nuevaBotella, () => { this.player.HasNewWeapon('botella'); nuevaBotella.destroy(); });
+		//let nuevaBotella = new gameObject(this, 100, 400, 200, 200, 100, 0, 'botella', 0).setScale(0.2);
+		//this.physics.add.overlap(this.player, nuevaBotella, () => { this.player.HasNewWeapon('botella'); nuevaBotella.destroy(); });
 		let hacha = this.map.createFromObjects('objetos', [{ name: 'hacha',  key: 'hacha' }]);
 		scene.physics.add.existing(hacha[0]);
 		scene.physics.add.overlap(this.player, hacha[0], () => { this.player.HasNewWeapon('hacha'); hacha[0].destroy(); });
