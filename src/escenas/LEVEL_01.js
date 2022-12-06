@@ -7,8 +7,8 @@ import Trigger from '../objetos/Trigger.js';
 import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
 import InteractiveObjects from '../objetos/InteractiveObjects.js';
-//A BORRAR
-import Topo from '../objetos/Topo.js';
+
+
 /**
  * Nivel 1
  * @extends LEVEL_BASE
@@ -26,7 +26,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		//DIALOGMANAGER
 		this.scene.launch('dialogManager');
 		this.dialogManager = this.scene.get('dialogManager');
-		
+
 		//HUD (y Pausa)
 		this.scene.launch('hud', { me: this });
 		this.hud = this.scene.get('hud');

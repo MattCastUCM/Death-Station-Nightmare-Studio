@@ -1,4 +1,3 @@
-import gameObject from '../objetos/gameObject.js';
 import Player from '../objetos/player.js';
 /**
  * Clase base de la que heredan los niveles

@@ -28,7 +28,9 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 
 		//HUD (y Pausa)
 		this.scene.launch('hud', { me: this });
-		
+		this.hud = this.scene.get('hud');
+		this.scene.sleep(this.hud);
+
         //SoundManager
         this.soundManager = this.scene.get('soundManager');
 
@@ -38,6 +40,7 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 
 		this.player.setPosition(-50, 350)
 		this.player.setScale(1.8);
+		this.player.keyDown = true;
 
 
 		// Al pulsar el enter, comienza el fadeOut
@@ -55,31 +58,41 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 		this.timer = 0;
 		this.event1 = false;
 		this.event2 = false;
-		this.event3 = false;
-		this.event4 = false;
 	}
 
 	update(t,dt){
 
-		if (this.timer < 1000){
+		if (this.timer < 1200){
 			this.player.move(1,0);
 		}
-		else if (this.timer >= 1200 && this.timer < 1600){
+		else if (this.timer >= 1400 && this.timer < 1800){
 			this.player.setFrame(9);
 		}
-		else if (this.timer >= 1600 && this.timer < 2000){
+		else if (this.timer >= 2400 && this.timer < 2800){
 			this.player.setFrame(1);
 		}
-		else if (this.timer >= 2000 && this.timer < 2400){
-			this.player.setFrame(13);
-		}
-		else if (this.timer >= 2400 && this.timer < 2800){
-			// Poner exclamación
-		}
-		else if (!this.event1 && this.timer >= 2800 && this.timer < 2850){
+		else if (!this.event1 && this.timer >= 3000 && this.timer < 3250){
 			this.newText(["Menos mal que aún no se ha ido el tren...", "Si me subo ahora, puede que incluso llegue antes de lo previsto."]);
 			this.event1 = true;
 		}
+		else if (this.timer >= 3250 && this. timer < 3800){
+			this.player.move(0, -1);
+		}
+		else if (this.timer >= 3800 && this. timer < 4200){
+			this.player.move(1, 0);
+		}
+		else if (this.timer >= 4200 && this. timer < 5000){
+			this.player.move(0, -1);
+		}
+		else if (!this.event2 && this.timer >= 5000){
+			this.event2 = true;
+			this.cameras.main.fadeOut(500,0,0,0);
+		}
+
+		if(this.timer >= 2000 && this.timer < 3250){
+			this.player.setFrame(13);
+		}
+
 		this.timer += dt;
 	}
 

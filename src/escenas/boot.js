@@ -71,9 +71,10 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('map4', 'assets/Mapa/metro_map_4.png')
 		this.load.image('map5', 'assets/Mapa/metro_map_5.png');
 
-		
+
 		// HUD........................................................................................
 		this.load.image('heartImg', 'assets/HUD/corazon.png');
+		this.load.image('pausa', 'assets/HUD/pausa.png');
 		this.load.image('inventory', 'assets/HUD/inventario.png');
 		this.load.image('level1', 'assets/HUD/1.png');
 		this.load.image('level2', 'assets/HUD/2.png');
@@ -94,7 +95,7 @@ export default class Boot extends Phaser.Scene {
 
 		// Enemigos........................................................................................
 		this.load.spritesheet('cat', 'assets/enemies/cat.png', { frameWidth: 34, frameHeight: 34 });
-		this.load.spritesheet('persecutor', 'assets/enemies/persecutr.png', { frameWidth: 64, frameHeight: 64 });
+		this.load.spritesheet('persecutor', 'assets/enemies/persecutor.png', { frameWidth: 64, frameHeight: 64 });
 		this.load.spritesheet('lanzador', 'assets/enemies/shooter.png', { frameWidth: 48, frameHeight: 48 });
 		this.load.spritesheet('topo', 'assets/enemies/mole.png', { frameWidth: 36, frameHeight: 32 });
 		
