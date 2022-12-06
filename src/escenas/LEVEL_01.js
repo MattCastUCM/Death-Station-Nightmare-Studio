@@ -6,18 +6,24 @@ import Lanzador from '../objetos/Lanzador.js';
 import Trigger from '../objetos/Trigger.js';
 import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
+
+import InteractiveObjects from '../objetos/InteractiveObjects.js';
+
+
 /**
  * Nivel 1
  * @extends LEVEL_BASE
  */
 export default class LEVEL_01 extends LEVEL_BASE {
 	constructor() {
-		let nextlevel = "level3Map";
-		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560);
+
+		let nextlevel = "level2Map";
+		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560, false);
+
 	}
 	/**
-	* Creación de los elementos de la escena principal de juego
-	*/
+	 * Creación de los elementos de la escena principal de juego
+	 */
 	create() {
 		super.create();
 		//DIALOGMANAGER
@@ -33,7 +39,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 
 		//BGM
 		this.soundManager.playBGM("level1");
-
+		
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
 		
 		//Gato
@@ -67,7 +73,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 			obj.body.setImmovable();
 		});
 
-		
+	
 
 		//this.add.image(0, 0, 'nose').setOrigin(0, 0);
 
@@ -98,16 +104,17 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		let trigger1 = new Trigger(scene, 300, 200, 30, 600);
 		this.physics.add.overlap(this.player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
 
-
-		
 		//obtener una nueva arma
 		//let nuevaBotella = new gameObject(this, 100, 400, 200, 200, 100, 0, 'botella', 0).setScale(0.2);
 		//this.physics.add.overlap(this.player, nuevaBotella, () => { this.player.HasNewWeapon('botella'); nuevaBotella.destroy(); });
 		let hacha = this.map.createFromObjects('objetos', [{ name: 'hacha',  key: 'hacha' }]);
 		scene.physics.add.existing(hacha[0]);
 		scene.physics.add.overlap(this.player, hacha[0], () => { this.player.HasNewWeapon('hacha'); hacha[0].destroy(); });
+		
+		let pruebaInteractiveObject = new InteractiveObjects(this, 200, 400, 20, 20, 0,0,'rataInmunda', 0, ["Prueba de rata"], this.player);
 	}
-
+	
+	
 	/*Mandarle a dialogManager el texto que tiene que printear*/
 	newText(text) {
 		this.dialogManager.Init(text);
@@ -117,8 +124,8 @@ export default class LEVEL_01 extends LEVEL_BASE {
 
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {
-		this.hud.changeLifeValue(player.GetHP());
-		if (player.GetHP() <= 0) {
+		this.hud.changeLifeValue(player.hp);
+		if (player.hp <= 0) {
 			this.scene.start('restart', { me: this });
 			this.soundManager.stopBGM("level1");
 		}
@@ -133,10 +140,6 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		this.dialogManager.scene.resume();
 	}
 
-	update(t, dt) {
-
-		//this.scene.start('menu'); 
-
-	}
 
 }
+

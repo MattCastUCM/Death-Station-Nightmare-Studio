@@ -13,14 +13,13 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 export default class LEVEL_02 extends LEVEL_BASE {
 	constructor() {
 		let nextlevel="level3Map";
-		super("LEVEL_02",nextlevel,'level2','tilesLevel2',1394);
+		super("LEVEL_02",nextlevel,'level2','tilesLevel2',1394, false);
 	}
 	/**
 	* Creación de los elementos de la escena principal de juego
 	*/
 	create() {
 		super.create();
-		
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
         this.dialogManager = this.scene.get('dialogManager');
         this.hud = this.scene.get('hud');
@@ -28,7 +27,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
         this.hud.changeLevel(2,this);
 		this.soundManager.playBGM("level2");
 
-		this.player.setPosicion(159,371);
+		this.player.setPosition(159,371);
 
 		let cardBoardArray = this.map.createFromObjects('objetos', [
 			{ gid:1395, classType: CardBoard, key: 'cartBoard' }]);
@@ -53,7 +52,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [
 			{ gid: 1398, classType: Lanzador, key: 'lanzador' }]);
 		EmenyLanzadorArray.forEach(element => {
-			element.setScale(2);
+			element.setScale(2.5);
 		});
 		this.enemies.addMultiple(EmenyLanzadorArray);
 		EmenyLanzadorArray.forEach(obj => {
@@ -112,10 +111,12 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		let sillon = this.map.createFromObjects('dec', [{ gid: 15, key: 'sillones' }]);
 		this.objects.addMultiple(sillon);
 		sillon.forEach(s=>{s.body.setImmovable();});
+
 		
 		let botella = this.map.createFromObjects('objetos', [{ name: 'botella',  key: 'botella' }]);
 		scene.physics.add.existing(botella[0]);
 		scene.physics.add.overlap(this.player, botella[0], () => { this.player.HasNewWeapon('botella'); botella[0].destroy(); });
+
 	}
 
 	/*Mandarle a dialogManager el texto que tiene que printear*/
@@ -126,8 +127,8 @@ export default class LEVEL_02 extends LEVEL_BASE {
 
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {
-		this.hud.changeLifeValue(player.GetHP());
-		if(player.GetHP()<=0){
+		this.hud.changeLifeValue(player.hp);
+		if(player.hp<=0){
 			this.scene.start('restart', { me: this }); 
 			this.soundManager.stopBGM("level2");
 		}
@@ -139,12 +140,6 @@ export default class LEVEL_02 extends LEVEL_BASE {
 	}
 	resumeDialog() {
 		this.dialogManager.scene.resume();
-	}
-
-	update(t, dt) {
-		
-		//this.scene.start('menu'); 
-		
 	}
 
 }

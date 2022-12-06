@@ -88,7 +88,7 @@ export default class level_map extends Phaser.Scene {
 			woodBoxesContainer.list[i]=new WoodBox(this,woodBoxesContainer.list[i].x,woodBoxesContainer.list[i].y,woodBoxes);
 		}
 
-		let player = new Player(this, 50, this.cameras.main.centerY, 15, 15, 8, 30, 140);
+		let player = new Player(this, 50, this.cameras.main.centerY);
 		player.setScale(2.5);
 		let enemyManager = new EnemyManager(this);
 		this.enemies = this.physics.add.group();

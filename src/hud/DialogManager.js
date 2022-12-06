@@ -15,8 +15,8 @@ export default class DialogManager extends Phaser.Scene{
         this.dialogBox.setInteractive(); 
         this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         this.enterKey.on('down', pointer => { //al clickear sobre el cuadro de texto, salta al siguiente mensaje
-			this.NextMessage();
-	    });
+            this.NextMessage();
+        });
 
 ''
         WebFont.load({
@@ -29,8 +29,8 @@ export default class DialogManager extends Phaser.Scene{
             active: function() {
                 console.log("Fonts have been rendered")
             }
-        });
-    }
+            });
+        }
 
     Init(text) {
         this.text = text; //array de strings

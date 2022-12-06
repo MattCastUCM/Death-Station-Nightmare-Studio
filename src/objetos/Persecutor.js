@@ -49,10 +49,8 @@ export default class Persecutor extends Enemy {
 		});
 		this.play("idlePersecutor");
 
-
 		this.scene = scene;
 		this.on('damaged',()=>this.scene.soundManager.play(this.hurtSound));
-
 		
 
 	}

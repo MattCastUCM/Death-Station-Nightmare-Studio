@@ -63,16 +63,16 @@ export default class Cat extends gameObject {
 			{ dirX: 1, dirY: 0, anim: 'cat_right' }
 		]
 
-		// //añadir colisión con el mapa de la escena
-		this.scene.physics.add.collider(this, scene.colisionlayer, function (self) {
-			self.hasCollided();
-		});
-		this.scene.physics.add.collider(this, scene.objects, function (self) {
-			self.hasCollided();
-		});
-		this.scene.physics.add.collider(this, scene.player);
-
-		this.scene = scene;
+	// //añadir colisión con el mapa de la escena
+	this.scene.physics.add.collider(this, scene.colisionlayer, function (self) {
+		self.hasCollided();
+	});
+	this.scene.physics.add.collider(this, scene.objects, function (self) {
+		self.hasCollided();
+	});
+	this.scene.physics.add.collider(this, scene.player);
+		
+	this.scene = scene;
 
 	}
 	/*Cambia de dir por colisionar con la pared*/

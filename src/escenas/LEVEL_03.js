@@ -14,7 +14,7 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 export default class LEVEL_03 extends LEVEL_BASE {
 	constructor() {
 		let nextlevel="level4Map";
-		super("LEVEL_03",nextlevel,'level3','tileslevel3',560);
+		super("LEVEL_03",nextlevel,'level3','tileslevel3',560, false);
 	}
 	/**
 	* Creación de los elementos de la escena principal de juego
@@ -73,8 +73,8 @@ export default class LEVEL_03 extends LEVEL_BASE {
             EmenyTopoArray.forEach(element => {
                element.setScale(2);
            });
-		console.log(EmenyTopoArray[0]);
        this.enemies.addMultiple(EmenyTopoArray);
+
 
 	   let barra = this.map.createFromObjects('objetos', [{ name: 'barra',  key: 'barra' }]);
 		scene.physics.add.existing(barra[0]);
@@ -139,7 +139,6 @@ export default class LEVEL_03 extends LEVEL_BASE {
 		// //obtener una nueva arma
 		// let nuevaBotella = this.botella = new gameObject(this,7200, 400,200,200,100,0, 'botella',0).setScale(0.2);
 		// this.physics.add.overlap(this.player, nuevaBotella,()=>{this.player.HasNewWeapon('botella');nuevaBotella.destroy();});
-
 		
 	}
 
@@ -149,11 +148,10 @@ export default class LEVEL_03 extends LEVEL_BASE {
 	}
 
 
-
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {
-		this.hud.changeLifeValue(player.GetHP());
-		if(player.GetHP()<=0){
+		this.hud.changeLifeValue(player.hp);
+		if(player.hp<=0){
 			this.scene.start('restart', { me: this }); 
 			this.soundManager.stopBGM("level3");
 		}
@@ -166,12 +164,6 @@ export default class LEVEL_03 extends LEVEL_BASE {
 	}
 	resumeDialog() {
 		this.dialogManager.scene.resume();
-	}
-
-	update(t, dt) {
-		
-		//this.scene.start('menu'); 
-		
 	}
 
 }

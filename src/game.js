@@ -39,9 +39,9 @@ let config = {
 		zoom: 1
     },
     scene: [Boot, SoundManager,Menu, intro1, intro2,
-            level1Map, level2Map, level3Map, level4Map, endMap,
-            LEVEL_01, LEVEL_02, LEVEL_03, level_aux,
-            HUD, DialogManager, Restart,],
+        level1Map, level2Map, level3Map, level4Map, endMap,
+        LEVEL_01, LEVEL_02, LEVEL_03, level_aux,
+        HUD, DialogManager, Restart,],
     physics: { 
         default: 'arcade', 
         arcade: { 

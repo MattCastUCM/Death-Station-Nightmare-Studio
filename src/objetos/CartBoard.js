@@ -61,8 +61,4 @@ movingSound(){
 	}
 }
 
-
-
-
-
 }

@@ -9,6 +9,7 @@ export default class HUD extends Phaser.Scene {
     }
     init(level) { //escena de nivel
         this.level = level.me;
+        console.log(this.level);
     }
 
     create() {
