@@ -30,6 +30,8 @@ export default class LEVEL_03 extends LEVEL_BASE {
 
 		this.soundManager.playBGM("level3");
 
+		this.player.weaponManager.nextLevel(true,false,true);
+
 		//CAMARA
 		this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
 

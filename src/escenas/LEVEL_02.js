@@ -26,6 +26,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		this.hud.scene.setVisible(true);
         this.hud.changeLevel(2,this);
 		this.soundManager.playBGM("level2");
+		this.player.weaponManager.nextLevel(false,false,true);
 
 		this.player.setPosition(159,371);
 
@@ -100,7 +101,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		this.objects.addMultiple(ratas);
 		ratas.forEach(obj => {obj.body.setImmovable();});
 
-		let señorsincabeza= this.map.createFromObjects('dec', [{ gid: 13,  key: 'señor' }]);
+		let señorsincabeza= this.map.createFromObjects('dec', [{ gid: 13,  key: 'señor sin cabeza' }]);
 		this.objects.addMultiple(señorsincabeza);
 		señorsincabeza.forEach(obj => {obj.body.setImmovable();});
 

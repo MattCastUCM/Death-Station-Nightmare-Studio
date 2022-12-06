@@ -164,6 +164,11 @@ export default class WeaponManager extends gameObject {
     hasNewWeapon(weapon) {
         this._hasWeapon[weapon] = true;
     }
+    nextLevel(_botella,_barra,_hacha){
+        this._hasWeapon["botella"] = _botella;
+        this._hasWeapon["barra"] = _barra;
+        this._hasWeapon["hacha"] = _hacha;
+    }
     // Funciona debido a que extendemos de gameObject
     preUpdate(t, dt) {
         super.preUpdate(t, dt);

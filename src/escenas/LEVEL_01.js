@@ -39,6 +39,8 @@ export default class LEVEL_01 extends LEVEL_BASE {
 
 		//BGM
 		this.soundManager.playBGM("level1");
+
+		this.player.weaponManager.nextLevel(false,false,false);
 		
 		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
 		
