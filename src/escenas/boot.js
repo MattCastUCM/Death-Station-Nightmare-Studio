@@ -31,17 +31,19 @@ export default class Boot extends Phaser.Scene {
 
 		// Introducción................................................................
 		this.load.image('introOutside', 'assets/intro/outside.png');
-		this.load.image('intrtoInside', 'assets/intro/inside.png');
+		this.load.image('introInside', 'assets/intro/inside.png');
 
-		// Tilemap........................................................................................
-		this.load.image("tiles","assets/Mapa/mapa2.png");
-		this.load.tilemapTiledJSON('level1',"assets/tilemaps/LEVEL_01.json");
-		this.load.image("tilesLevel2","assets/Nivel 2/estacion1.3.png")
-	    this.load.tilemapTiledJSON('level2',"assets/tilemaps/LEVEL_02.json");
-	    this.load.image("tileslevel3","assets/Nivel 3/mapa3.png")
-	    this.load.tilemapTiledJSON('level3',"assets/tilemaps/LEVEL_03.json");
-		
-		//dec
+
+		 // Tilemap........................................................................................
+		 this.load.image("tiles","assets/Mapa/mapa2.png");
+		 this.load.tilemapTiledJSON('level1',"assets/tilemaps/LEVEL_01.json");
+		 this.load.image("tilesLevel2","assets/Nivel_assets_escalados/estacion1.3.png")
+		 this.load.tilemapTiledJSON('level2',"assets/tilemaps/LEVEL_02.json");
+		 this.load.image("tileslevel3","assets/Nivel 3/mapa3.png")
+		 this.load.tilemapTiledJSON('level3',"assets/tilemaps/LEVEL_03.json")
+
+
+		// Decoración........................................................................................
 		this.load.image("Basura","assets/Nivel_assets_escalados/Basura.png");
 		this.load.image("cabeza","assets/Nivel_assets_escalados/cabeza.png");
 		this.load.image("carrito","assets/Nivel_assets_escalados/carrito bebe.png");
@@ -55,7 +57,8 @@ export default class Boot extends Phaser.Scene {
 		this.load.image("señor sin cabeza","assets/Nivel_assets_escalados/señor sin cabeza.png");
 		this.load.image("Silla","assets/Nivel_assets_escalados/Silla.png");
 		this.load.image("sillones","assets/Nivel_assets_escalados/sillones.png");
-		
+
+
 		// Menú de reinicio........................................................................................
 		this.load.image('restartButton', 'assets/Mapa/restart.png');
 		this.load.image('fondoRestart', 'assets/Mapa/restartFondo.png');
@@ -67,11 +70,11 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('map3', 'assets/Mapa/metro_map_3.png');
 		this.load.image('map4', 'assets/Mapa/metro_map_4.png')
 		this.load.image('map5', 'assets/Mapa/metro_map_5.png');
+
 		
 		// HUD........................................................................................
 		this.load.image('heartImg', 'assets/HUD/corazon.png');
 		this.load.image('inventory', 'assets/HUD/inventario.png');
-		this.load.image('pausa', 'assets/HUD/pausa.png');
 		this.load.image('level1', 'assets/HUD/1.png');
 		this.load.image('level2', 'assets/HUD/2.png');
 		this.load.image('level3', 'assets/HUD/3.png');
@@ -79,13 +82,16 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('play', 'assets/HUD/play.png');
 		this.load.image('selected', 'assets/HUD/seleccionado.png');
 
+
 		// Diálogo........................................................................................
 		this.load.script('WebFont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
 		this.load.image('dialogBox', 'assets/HUD/textBox.png');
 
+
 		// Jugador........................................................................................
-		this.load.spritesheet('personaje', 'assets/player.png', { frameWidth: 32, frameHeight: 48 });
+		this.load.spritesheet('personaje', 'assets/characters/player.png', { frameWidth: 32, frameHeight: 48 });
 	
+
 		// Enemigos........................................................................................
 		this.load.spritesheet('cat', 'assets/enemies/cat.png', { frameWidth: 34, frameHeight: 34 });
 		this.load.spritesheet('persecutor', 'assets/enemies/persecutr.png', { frameWidth: 64, frameHeight: 64 });
@@ -95,13 +101,16 @@ export default class Boot extends Phaser.Scene {
 		// Roca
 		this.load.image('roca', 'assets/enemies/rock.png');
 		
+
 		// Obstáculos........................................................................................
 		this.load.spritesheet('woodBox', 'assets/objects/cajaMadera.png', { frameWidth: 64, frameHeight: 64 })
 		this.load.spritesheet('cartBoard', 'assets/objects/cajaCarton.png', { frameWidth: 64, frameHeight: 64 });
 
+
 		// Iluminación
 		this.load.image('mask', 'assets/HUD/mask1.png');
 
+		
 		// Armas........................................................................................
 		this.load.spritesheet('navaja', 'assets/Armas/Cuchillo.png', { frameWidth: 210, frameHeight: 480 });
 		this.load.spritesheet('botella', 'assets/Armas/Botella.png', { frameWidth: 140, frameHeight: 380 });

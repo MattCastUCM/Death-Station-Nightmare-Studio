@@ -167,7 +167,7 @@ export default class level_aux extends Phaser.Scene {
 
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {
-		this.hud.changeLifeValue(player.GetHP());
+		this.hud.changeLifeValue(player.hp);
 		
 	}
 

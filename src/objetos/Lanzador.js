@@ -73,23 +73,22 @@ export default class Lanzador extends Enemy {
 		this.play("idleLanzador");
 		this.on('damaged',()=>this.scene.soundManager.play(this.hurtSound));
 
+		this.vectorX = 0;
+		this.vectorY = 0;
 	}
 
-	CalculateVectorX() {
-		return this.target.GetPosX() - this.x;
-	}
-	CalculateVectorY() {
-		return this.target.GetPosY() - this.y;
-	}
 
-	Shoot() {
-		new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY(), this.target);
+	shoot() {
+		new Bullet(this.scene, this.x, this.y, this.vectorX, this.vectorY, this.target);
 		this.scene.soundManager.play(this.throwSound);
 		this.anims.restart();
 	}
+
+
 	preUpdate(t, dt) {
 		super.preUpdate(t, dt);
 
+		
 		// Distancia entre sí y el jugador
 		let dist = Phaser.Math.Distance.BetweenPoints(this, this.target)
 
@@ -101,37 +100,40 @@ export default class Lanzador extends Enemy {
 		// Si no, está dentro de rango y al empezar la animación de disparo (acabar la anterior)
 		// se genera un nuevo proyectil y se reinician las animaciones
 		else if (dist <= 400) {
+			this.vectorX = this.target.x- this.x;
+			this.vectorY = this.target.y - this.y;
+
 			// Si el jugador está a su izquierda y no está reproduciendo la animación hacia la izquierda, la reproduce
-			if (this.CalculateVectorX() < -100 && this.anims.currentAnim.key !== "leftLanzador") {
+			if (this.vectorX < -100 && this.anims.currentAnim.key !== "leftLanzador") {
 				this.play("leftLanzador").anims.chain("shootLeft");
 				this.on("animationcomplete-leftLanzador", ()=>{	
-					this.shootBullet();
+					this.shoot();
 					this.anims.restart();
 				});
 			}
 			// Si no, si el jugador está a su derecha y no está reproduciendo la animación hacia la derecha, la reproduce
-			else if (this.CalculateVectorX() > 100 && this.anims.currentAnim.key !== "rightLanzador") {
+			else if (this.vectorX > 100 && this.anims.currentAnim.key !== "rightLanzador") {
 				this.play("rightLanzador").anims.chain("shootRight");
 				this.on("animationcomplete-rightLanzador", ()=>{	
-					this.shootBullet();
+					this.shoot();
 					this.anims.restart();
 				});
 			}
 			// Si no, si el jugador está en el medio,
-			else if (this.CalculateVectorX() > -10 && this.CalculateVectorX() < 10) {
+			else if (this.vectorX > -10 && this.vectorX < 10) {
 				// Si está por encima y no está reproduciendo la animación hacia arriba, la reproduce
-				if (this.CalculateVectorY() > 0 && this.anims.currentAnim.key !== "downLanzador") {
+				if (this.vectorY > 0 && this.anims.currentAnim.key !== "downLanzador") {
 					this.play("downLanzador").anims.chain("shootDown");
 					this.on("animationcomplete-downLanzador", ()=>{	
-						this.shootBullet();
+						this.shoot();
 						this.anims.restart();
 					});
 				}
 				// Si no, si está por debajo y no está reproduciendo la animación hacia abajo, la reproduce
-				else if (this.CalculateVectorY() < -10 && this.anims.currentAnim.key !== "upLanzador") {
+				else if (this.vectorY < -10 && this.anims.currentAnim.key !== "upLanzador") {
 					this.play("upLanzador").anims.chain("shootUp");
 					this.on("animationcomplete-upLanzador", ()=>{
-						this.shootBullet();
+						this.shoot();
 						this.anims.restart();
 					});
 				}
@@ -139,8 +141,4 @@ export default class Lanzador extends Enemy {
 		}
 	}
 
-	shootBullet(){
-		new Bullet(this.scene, this.x, this.y, this.CalculateVectorX(), this.CalculateVectorY(), this.target);
-
-	}
 }

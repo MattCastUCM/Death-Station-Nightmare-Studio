@@ -13,7 +13,7 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 export default class LEVEL_02 extends LEVEL_BASE {
 	constructor() {
 		let nextlevel="level3Map";
-		super("LEVEL_02",nextlevel,'level2','tilesLevel2',1394);
+		super("LEVEL_02",nextlevel,'level2','tilesLevel2',1394, false);
 	}
 	/**
 	* Creación de los elementos de la escena principal de juego
@@ -27,7 +27,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
         this.hud.changeLevel(2,this);
 		this.soundManager.playBGM("level2");
 
-		this.player.setPosicion(159,371);
+		this.player.setPosition(159,371);
 
 		let cardBoardArray = this.map.createFromObjects('objetos', [
 			{ gid:1395, classType: CardBoard, key: 'cartBoard' }]);
@@ -52,7 +52,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [
 			{ gid: 1398, classType: Lanzador, key: 'lanzador' }]);
 		EmenyLanzadorArray.forEach(element => {
-			element.setScale(2);
+			element.setScale(2.5);
 		});
 		this.enemies.addMultiple(EmenyLanzadorArray);
 
@@ -118,8 +118,8 @@ export default class LEVEL_02 extends LEVEL_BASE {
 
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {
-		this.hud.changeLifeValue(player.GetHP());
-		if(player.GetHP()<=0){
+		this.hud.changeLifeValue(player.hp);
+		if(player.hp<=0){
 			this.scene.start('restart', { me: this }); 
 			this.soundManager.stopBGM("level2");
 		}
@@ -131,12 +131,6 @@ export default class LEVEL_02 extends LEVEL_BASE {
 	}
 	resumeDialog() {
 		this.dialogManager.scene.resume();
-	}
-
-	update(t, dt) {
-		
-		//this.scene.start('menu'); 
-		
 	}
 
 }
