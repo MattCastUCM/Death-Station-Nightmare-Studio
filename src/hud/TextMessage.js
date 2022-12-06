@@ -45,10 +45,10 @@ export default class TextMessage extends Phaser.GameObjects.Container {
 
     //crear objeto texto
     this.text = this.scene.add.text(this.x,this.y , "", {
-
-      fontFamily:'VT323',fontSize:26,color:'#454545'
-
+      color:'#454545'
     });
+    this.text.setFontFamily("VT323");
+    this.text.setFontSize(40);
 
     this.text.setWordWrapWidth(this.width - 20 * 2);
   }

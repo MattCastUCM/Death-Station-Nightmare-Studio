@@ -14,7 +14,7 @@ export default class LEVEL_BASE extends Phaser.Scene {
      * @param {string} tilename
      * @param {int} tileColision -hasta que numero
      */
-    constructor(level, nextlevel, tilemap, tilename, tileColision) {
+    constructor(level, nextlevel, tilemap, tilename, tileColision, isIntro) {
         super({ key: level });
          //TILE MAP
          //this.level=level;
@@ -22,6 +22,8 @@ export default class LEVEL_BASE extends Phaser.Scene {
          this.mapname=tilemap;
          this.tilename=tilename;
          this.numColision=tileColision;
+
+         this.isIntro = isIntro;
      }
      create(){
  
@@ -54,21 +56,22 @@ export default class LEVEL_BASE extends Phaser.Scene {
 
 
 
-
-        //camara que sigue a jugador (movimiento suave)
-        this.cameras.main.startFollow(this.player, this.cameras.FOLLOW_LOCKON, 0.1, 0.1);
-        //espacio de camara (si jugador sale de este espacio,la camara le sigue)
-        //this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
-        this.CreateMap();
-
-        this.levelGoal = this.map.createFromObjects('objetos', [
-            { name: 'next' }]);
-        this.levelGoal[0].visible = false;
-        this.physics.add.existing(this.levelGoal[0]);
-
-        this.physics.add.overlap(this.player, this.levelGoal[0], () => this.Next());
-
-        this.AddColision();
+        if(!this.isIntro){
+            //camara que sigue a jugador (movimiento suave)
+            this.cameras.main.startFollow(this.player, this.cameras.FOLLOW_LOCKON, 0.1, 0.1);
+            //espacio de camara (si jugador sale de este espacio,la camara le sigue)
+            //this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
+            this.CreateMap();
+    
+            this.levelGoal = this.map.createFromObjects('objetos', [
+                { name: 'next' }]);
+            this.levelGoal[0].visible = false;
+            this.physics.add.existing(this.levelGoal[0]);
+    
+            this.physics.add.overlap(this.player, this.levelGoal[0], () => this.Next());
+    
+            this.AddColision();            
+        }
 
 
     }
@@ -128,10 +131,5 @@ export default class LEVEL_BASE extends Phaser.Scene {
         this.colisionlayer = this.map.createLayer('colision', this.tiles, 0, 0);
         //poner colision a layer
         this.colisionlayer.setCollisionBetween(0, this.numColision);
-    }
-
-
-    update(t, dt) {
-
     }
 }

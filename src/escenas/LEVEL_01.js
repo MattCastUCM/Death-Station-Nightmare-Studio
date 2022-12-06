@@ -16,7 +16,7 @@ import Topo from '../objetos/Topo.js';
 export default class LEVEL_01 extends LEVEL_BASE {
 	constructor() {
 		let nextlevel = "level2Map";
-		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560);
+		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560, false);
 	}
 	/**
 	* Creación de los elementos de la escena principal de juego
@@ -118,8 +118,8 @@ export default class LEVEL_01 extends LEVEL_BASE {
 
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {
-		this.hud.changeLifeValue(player.GetHP());
-		if (player.GetHP() <= 0) {
+		this.hud.changeLifeValue(player.hp);
+		if (player.hp <= 0) {
 			this.scene.start('restart', { me: this });
 			this.soundManager.stopBGM("level1");
 		}
@@ -134,10 +134,5 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		this.dialogManager.scene.resume();
 	}
 
-	update(t, dt) {
-
-		//this.scene.start('menu'); 
-
-	}
 
 }

@@ -26,7 +26,7 @@ export default class SoundManager extends Phaser.Scene {
         };
         const bgm = {
             mute: false,
-            volume: 1,
+            volume: 0.1,
             rate: 1, //speed
             detune: 0,
             seek: 0,
@@ -68,7 +68,7 @@ export default class SoundManager extends Phaser.Scene {
         this.hacha =  { volume: 0.2, loop: false}
         
 
-        this.scene.start('menu');
+        this.scene.start('intro1');
     }
 
     play(name) {

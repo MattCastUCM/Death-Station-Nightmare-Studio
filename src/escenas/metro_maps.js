@@ -60,7 +60,7 @@ export class level2Map extends Phaser.Scene {
 			if(!pressed){
 				this.cameras.main.fadeOut(500,0,0,0);
 			}
-			pressed = false;
+			pressed = true;
 	    });
 
 		// Al terminar el fade out, cambia a la escena del nivel 1
@@ -94,7 +94,7 @@ export class level3Map extends Phaser.Scene {
 			if(!pressed){
 				this.cameras.main.fadeOut(500,0,0,0);
 			}
-			pressed = false;
+			pressed = true;
 	    });
 
 		// Al terminar el fade out, cambia a la escena del nivel 1
@@ -128,7 +128,7 @@ export class level4Map extends Phaser.Scene {
 			if(!pressed){
 				this.cameras.main.fadeOut(500,0,0,0);
 			}
-			pressed = false;
+			pressed = true;
 	    });
 
 		// Al terminar el fade out, cambia a la escena del nivel 1
@@ -163,7 +163,7 @@ export class endMap extends Phaser.Scene {
 			if(!pressed){
 				this.cameras.main.fadeOut(500,0,0,0);
 			}
-			pressed = false;
+			pressed = true;
 	    });
 
 		// Al terminar el fade out, cambia a la escena del nivel 1
