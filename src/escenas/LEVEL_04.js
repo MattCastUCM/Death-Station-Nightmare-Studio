@@ -3,6 +3,7 @@ import CardBoard from '../objetos/CartBoard.js';
 import WoodBox from '../objetos/WoodBox.js';
 import Persecutor from '../objetos/Persecutor.js';
 import Lanzador from '../objetos/Lanzador.js';
+import Topo from '../objetos/Topo.js';
 import Trigger from '../objetos/Trigger.js';
 import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
@@ -10,10 +11,10 @@ import LEVEL_BASE from './LEVEL_BASE.js';
  * Nivel 4
  * @extends LEVEL_BASE
  */
-export default class LEVEL_02 extends LEVEL_BASE {
+export default class LEVEL_04 extends LEVEL_BASE {
 	constructor() {
 		let nextlevel="level5Map";
-		super("LEVEL_04",nextlevel,'level4','tilesLevel4',1394);
+		super("LEVEL_04",nextlevel,'level4','tilesLevel4',6015);
 	}
 	/**
 	* Creación de los elementos de la escena principal de juego
@@ -28,31 +29,32 @@ export default class LEVEL_02 extends LEVEL_BASE {
         this.hud.changeLevel(4,this);
 		this.soundManager.playBGM("level4");
 		this.player.weaponManager.nextLevel(true,true,true);
+		this.player.vision.setScale(6);
 
-		this.player.setPosicion(159,371);
+		//this.player.setPosicion(159,371);
 
 		let cardBoardArray = this.map.createFromObjects('objetos', [
-			{ gid:1395, classType: CardBoard, key: 'cartBoard' }]);
+			{ gid:6034, classType: CardBoard, key: 'cartBoard' }]);
 		this.cartBoardBoxes.addMultiple(cardBoardArray);
 		cardBoardArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
 		let woodBoxesArray = this.map.createFromObjects('objetos', [
-			{ gid: 1396, classType: WoodBox, key: 'woodBox' }]);
+			{ gid: 6035, classType: WoodBox, key: 'woodBox' }]);
 		this.woodBoxes.addMultiple(woodBoxesArray);
 		woodBoxesArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
 
 		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [
-			{ gid: 1397, classType: Persecutor, key: 'persecutor' }]);
+			{ gid: 6032, classType: Persecutor, key: 'persecutor' }]);
 		EmenyPersecutorArray.forEach(element => {
 			element.setScale(2);
 		});
-
 		this.enemies.addMultiple(EmenyPersecutorArray);
+
 		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [
-			{ gid: 1398, classType: Lanzador, key: 'lanzador' }]);
+			{ gid: 6031, classType: Lanzador, key: 'lanzador' }]);
 		EmenyLanzadorArray.forEach(element => {
 			element.setScale(2);
 		});
@@ -61,56 +63,63 @@ export default class LEVEL_02 extends LEVEL_BASE {
 			obj.body.setImmovable();
 		});
 
+		let EmenyTopoArray=this.map.createFromObjects('objetos',[
+            {gid:6033, classType: Topo,key:'topo'}]);
+            EmenyTopoArray.forEach(element => {
+               element.setScale(2);
+           });
+       this.enemies.addMultiple(EmenyTopoArray);
+
 		//decolacion
-		let Basuras = this.map.createFromObjects('dec', [{ gid: 5,  key: 'Basura' }]);
+		let Basuras = this.map.createFromObjects('objetos', [{ gid: 6026,  key: 'Basura' }]);
 		this.objects.addMultiple(Basuras);
 		Basuras.forEach(obj => {obj.body.setImmovable();});
 
-		let cabezas = this.map.createFromObjects('dec', [{ gid: 18 ,  key: 'cabeza' }]);
+		let cabezas = this.map.createFromObjects('objetos', [{ gid: 6027 ,  key: 'cabeza' }]);
 		this.objects.addMultiple(cabezas);
 		cabezas.forEach(obj => {obj.body.setImmovable();});
 
-		let carritos = this.map.createFromObjects('dec', [{ gid: 7, key: 'carrito' }]);
+		let carritos = this.map.createFromObjects('objetos', [{ gid: 6028, key: 'carrito' }]);
 		this.objects.addMultiple(carritos);
 		carritos.forEach(obj => {obj.body.setImmovable();});
 
-		let carteles = this.map.createFromObjects('dec', [{ gid: 17,  key: 'cartel2' }]);
+		let carteles = this.map.createFromObjects('objetos', [{ gid: 6029,  key: 'cartel2' }]);
 		this.objects.addMultiple(carteles);
 		carteles.forEach(obj => {obj.body.setImmovable();});
 
-		let doscarteles = this.map.createFromObjects('dec', [{ gid: 16,  key: 'dos carteles' }]);
+		let doscarteles = this.map.createFromObjects('objetos', [{ gid: 6025,  key: 'dos carteles' }]);
 		this.objects.addMultiple(doscarteles);
 		doscarteles.forEach(obj => {obj.body.setImmovable();});
 
-		let latas = this.map.createFromObjects('dec', [{ gid: 8, key: 'Latas' }]);
+		let latas = this.map.createFromObjects('objetos', [{ gid: 6022, key: 'Latas' }]);
 		this.objects.addMultiple(latas);
 		latas.forEach(obj => {obj.body.setImmovable();});
 
-		let maletas = this.map.createFromObjects('dec', [{ gid: 9,  key: 'Maletas' }]);
+		let maletas = this.map.createFromObjects('objetos', [{ gid: 6017,  key: 'Maletas' }]);
 		this.objects.addMultiple(maletas);
 		maletas.forEach(obj => {obj.body.setImmovable();});
 
-		let panel= this.map.createFromObjects('dec', [{ gid: 10,  key: 'Panel' }]);
+		let panel= this.map.createFromObjects('objetos', [{ gid: 6018,  key: 'Panel' }]);
 		this.objects.addMultiple(panel);
 		panel.forEach(obj => {obj.body.setImmovable();});
 
-		let papeles=this.map.createFromObjects('dec',[{ gid: 11,  key: 'Papeles' }]);
+		let papeles=this.map.createFromObjects('objetos',[{ gid: 6019,  key: 'Papeles' }]);
 		this.objects.addMultiple(papeles);
 		papeles.forEach(obj => {obj.body.setImmovable();});
 
-		let ratas= this.map.createFromObjects('dec', [{ gid: 12, key: 'rata' }]);
+		let ratas= this.map.createFromObjects('objetos', [{ gid: 6020, key: 'rata' }]);
 		this.objects.addMultiple(ratas);
 		ratas.forEach(obj => {obj.body.setImmovable();});
 
-		let señorsincabeza= this.map.createFromObjects('dec', [{ gid: 13,  key: 'señor' }]);
+		let señorsincabeza= this.map.createFromObjects('objetos', [{ gid: 6021,  key: 'señor' }]);
 		this.objects.addMultiple(señorsincabeza);
 		señorsincabeza.forEach(obj => {obj.body.setImmovable();});
 
-		let Sillas = this.map.createFromObjects('dec', [{ gid: 14,  key: 'Silla' }]);
+		let Sillas = this.map.createFromObjects('objetos', [{ gid: 6024,  key: 'Silla' }]);
 		this.objects.addMultiple(Sillas);
 		Sillas.forEach(obj => {obj.body.setImmovable();});
 
-		let sillon = this.map.createFromObjects('dec', [{ gid: 15, key: 'sillones' }]);
+		let sillon = this.map.createFromObjects('objetos', [{ gid: 6023, key: 'sillones' }]);
 		this.objects.addMultiple(sillon);
 		sillon.forEach(s=>{s.body.setImmovable();});
 
@@ -130,7 +139,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		// dibuja la escena vacia 
 		rt.draw(this.fondolayer)
 		//poner un toque de azul a mapa 
-		rt.setTint(0x0a2948)
+		rt.setTint(0x5050b0)
 		//0x0a2948
 		//0x5050b0	
 		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.player.vision);
@@ -152,10 +161,10 @@ export default class LEVEL_02 extends LEVEL_BASE {
 
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {
-		this.hud.changeLifeValue(player.GetHP());
-		if(player.GetHP()<=0){
+		this.hud.changeLifeValue(player.hp);
+		if(player.hp<=0){
 			this.scene.start('restart', { me: this }); 
-			this.soundManager.stopBGM("level2");
+			this.soundManager.stopBGM("level4");
 		}
 	}
 

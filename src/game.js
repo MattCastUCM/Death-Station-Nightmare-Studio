@@ -7,6 +7,7 @@ import {level1Map, level2Map, level3Map, level4Map, endMap} from './escenas/metr
 import LEVEL_01 from './escenas/LEVEL_01.js'
 import LEVEL_02 from './escenas/LEVEL_02.js'
 import LEVEL_03 from './escenas/LEVEL_03.js';
+import LEVEL_04 from './escenas/LEVEL_04.js'
 import level_aux from './escenas/level_aux.js';
 import level_map from './escenas/level_map.js';
 import HUD from './hud/hudManager.js'
@@ -40,7 +41,7 @@ let config = {
     },
     scene: [Boot, SoundManager,Menu, intro1, intro2,
         level1Map, level2Map, level3Map, level4Map, endMap,
-        LEVEL_01, LEVEL_02, LEVEL_03, level_aux,
+        LEVEL_01, LEVEL_02, LEVEL_03,LEVEL_04, level_aux,
         HUD, DialogManager, Restart,],
     physics: { 
         default: 'arcade', 
