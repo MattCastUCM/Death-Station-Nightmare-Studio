@@ -144,6 +144,12 @@ export default class Boot extends Phaser.Scene {
 		
 
 		// Audio........................................................................................
+		//Cinemática
+		this.load.audio('accident', 'assets/audio/soundEffects/cinematic/accident.mp3');
+		this.load.audio('ambient', 'assets/audio/soundEffects/cinematic/ambient.mp3');
+		this.load.audio('trainHorn', 'assets/audio/soundEffects/cinematic/train_horn.mp3');
+
+		
 		// BGM
 		this.load.audio('menu', 'assets/audio/bgMusic/estacion.mp3');
 		this.load.audio('level1', 'assets/audio/bgMusic/level1.mp3');
@@ -182,6 +188,8 @@ export default class Boot extends Phaser.Scene {
 		
 		// Menú........................................................................................
 		this.load.audio('click', 'assets/audio/soundEffects/menu/click.mp3');
+		this.load.audio('dialogueJump', 'assets/audio/soundEffects/menu/dialogueJump.mp3');
+		this.load.audio('dialoguePop', 'assets/audio/soundEffects/menu/dialoguePop.mp3');
 		
 		// Objetos interactuables........................................................................................
 		this.load.image('rataInmunda', 'assets/enemies/rock.png');

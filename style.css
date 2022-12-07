@@ -164,41 +164,34 @@ nav a {
     padding-top: 2em;
     padding-bottom: 52m;
 } 
-
-/* #juego {
-    background: rgb(109, 109, 109);
-    margin: 2em auto;
-    border: 4px solid hsl(0, 100%, 30%);
-} 
- */
-
-
 /*SECTION---------------------------------------------------*/
 .about {
     padding: 2em 15em 2em 15em;
     /*centrar dentro del main*/
-    margin: 1em;
+  
 }
 
 .section-title {
     border: 3px solid rgb(153, 0, 0);
     text-align: center;
     color: #c5c5c5;
-    width: 600px;
+    width: 800px;
 
     font-size: 15px;
     padding: 1px;
     border-radius: 1.5em;
     margin: 3em auto;
     /*centrar dentro del main*/
-
+   
 }
+
 
 .texto {
     color: #c5c5c5;
     font-size: 0.8em;
     text-indent: 40px;
     line-height: 2;
+   
 }
 
 
@@ -212,6 +205,7 @@ ul {
 
 tr{
     color: #c5c5c5;
+   
     font-size: 0.8em;
     text-align: center;
     vertical-align: middle;

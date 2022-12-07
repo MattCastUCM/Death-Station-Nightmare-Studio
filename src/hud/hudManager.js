@@ -111,7 +111,7 @@ export default class HUD extends Phaser.Scene {
 
     //pausa o resume por el diálogo
     onDialogStarted() {
-        console.log(this.level.player);
+      
         this.onDialog = true;
         this.level.player.stop();
         this.level.scene.pause();
