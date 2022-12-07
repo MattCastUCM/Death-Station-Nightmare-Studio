@@ -31,44 +31,44 @@ export default class LEVEL_04 extends LEVEL_BASE {
 		this.player.weaponManager.nextLevel(true,true,true);
 		this.player.vision.setScale(6);
 
-		//this.player.setPosicion(159,371);
+		//this.player.setPosition(159,371);
 
-		let cardBoardArray = this.map.createFromObjects('objetos', [
-			{ gid:6034, classType: CardBoard, key: 'cartBoard' }]);
+		// Cajas de cartón
+		let cardBoardArray = this.map.createFromObjects('objetos', [{ gid: 6034, classType: CardBoard, key: 'cartBoard' }] );
 		this.cartBoardBoxes.addMultiple(cardBoardArray);
 		cardBoardArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
-		let woodBoxesArray = this.map.createFromObjects('objetos', [
-			{ gid: 6035, classType: WoodBox, key: 'woodBox' }]);
+
+		// Cajas de madera
+		let woodBoxesArray = this.map.createFromObjects('objetos', [{ gid: 6035, classType: WoodBox, key: 'woodBox' }] );		
 		this.woodBoxes.addMultiple(woodBoxesArray);
 		woodBoxesArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
 
-		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [
-			{ gid: 6032, classType: Persecutor, key: 'persecutor' }]);
-		EmenyPersecutorArray.forEach(element => {
-			element.setScale(2);
+		// Persecutores
+		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [{ gid: 6032, classType: Persecutor, key: 'persecutor' }] );
+		EmenyPersecutorArray.forEach(obj => {
+			obj.setScale(2);
 		});
 		this.enemies.addMultiple(EmenyPersecutorArray);
-
-		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [
-			{ gid: 6031, classType: Lanzador, key: 'lanzador' }]);
-		EmenyLanzadorArray.forEach(element => {
-			element.setScale(2);
-		});
-		this.enemies.addMultiple(EmenyLanzadorArray);
+		
+		// Lanzadores
+		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 6031, classType: Lanzador, key: 'lanzador' }]);
 		EmenyLanzadorArray.forEach(obj => {
+			obj.setScale(2.5);
 			obj.body.setImmovable();
 		});
+		this.enemies.addMultiple(EmenyLanzadorArray);
 
-		let EmenyTopoArray=this.map.createFromObjects('objetos',[
-            {gid:6033, classType: Topo,key:'topo'}]);
-            EmenyTopoArray.forEach(element => {
-               element.setScale(2);
-           });
+		// Topos
+        let EmenyTopoArray=this.map.createFromObjects('objetos',[{ gid:6033, classType: Topo,key:'topo' }] );
+        EmenyTopoArray.forEach(element => {
+            element.setScale(2);
+        });
        this.enemies.addMultiple(EmenyTopoArray);
+	   
 
 		//decolacion
 		let Basuras = this.map.createFromObjects('objetos', [{ gid: 6026,  key: 'Basura' }]);

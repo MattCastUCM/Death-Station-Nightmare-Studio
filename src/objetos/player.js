@@ -10,11 +10,11 @@ export default class Player extends gameObject {
      * @param {number} y - coordenada y
      */
     constructor(scene, x, y) {
-        super(scene, x, y, 15, 15, 8, 30, 'personaje', 140);
+        super(scene, x, y, 13, 10, 9, 34, 'personaje', 140);
         this.scene = scene;
 
         this.weaponManager = new WeaponManager(this);
-        this.fullCollider = new gameObject(scene, x, y, 15, 40, 8, -3, "", 0);
+        this.fullCollider = new gameObject(scene, x, y, 13, 40, 9, -5, "", 0);
         this.fullCollider.visible = false;
         
         this.hp = 100;
@@ -88,41 +88,36 @@ export default class Player extends gameObject {
             !this.input.w.isDown) {
             
             // Mueve el objeto
-            this.move(0, 1)
-
+            this.move(0, 1);
+            this.keyDown = true;
         }
-
         // Si se pulsa hacia arriba
         if (!this.weaponManager._attack.isAttacking &&
             this.input.w.isDown &&
             !this.input.s.isDown) {
 
             // Mueve el objeto
-            this.move(0, -1)
+            this.move(0, -1);
+            this.keyDown = true;
         }
-
         // Si se pulsa hacia la izquierda
         if (!this.weaponManager._attack.isAttacking &&
             this.input.a.isDown &&
             !this.input.d.isDown) {
 
             // Mueve el objeto
-            this.move(-1, 0)
-
+            this.move(-1, 0);
+            this.keyDown = true;
         }
-
         // Si se pulsa hacia la derecha
         if (!this.weaponManager._attack.isAttacking &&
             this.input.d.isDown &&
             !this.input.a.isDown) {
-            
+
             // Mueve el objeto
             this.move(1, 0)
-
             this.keyDown = true;
         }
-
-
         // Si se deja de pulsar, para la animación
         if (this.weaponManager._attack.isAttacking ||
             Phaser.Input.Keyboard.JustUp(this.input.a) ||
@@ -144,7 +139,13 @@ export default class Player extends gameObject {
             }
         }
 
-        if(this.body.velocity.x === 0 && this.body.velocity.y >= 1){
+        if(this.body.velocity.x === 0 && this.body.velocity.y === 0){
+            if(this.facing === "down") this.setFrame(1);
+            else if(this.facing === "left") this.setFrame(5);
+            else if(this.facing === "right") this.setFrame(9);
+            else if (this.facing === "up") this.setFrame(13);
+        }
+        else if(this.body.velocity.x === 0 && this.body.velocity.y >= 1){
             // Comienza a reproducir la animación
             this.facing = "down";
             this.anims.isPlaying = true;

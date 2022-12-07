@@ -23,6 +23,31 @@ export default class Boot extends Phaser.Scene {
 			progressBar.fillRect(350, 240, 300 * value, 30);
 		});
 
+		// Textos de cargando página........................................................................................
+		let width = this.cameras.main.width;
+		let height = this.cameras.main.height;
+		let loadingText = this.make.text({
+			x: width / 2,
+			y: height / 2 - 70,
+			text: 'Loading...',
+			style: {
+				font: '20px monospace',
+				fill: '#ffffff'
+			}
+		});
+		loadingText.setOrigin(0.5, 0.5);
+
+		let percentText = this.make.text({
+			x: width / 2,
+			y: height / 2 - 5,
+			text: '0%',
+			style: {
+				font: '18px monospace',
+				fill: '#ffffff'
+			}
+		});
+		percentText.setOrigin(0.5, 0);
+
 
 		// Menú inicial........................................................................................
 		this.load.image('start', 'assets/Mapa/start.png');
@@ -34,15 +59,15 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('introInside', 'assets/intro/inside.png');
 
 
-		 // Tilemap........................................................................................
-		 this.load.image("tiles","assets/Mapa/mapa2.png");
-		 this.load.tilemapTiledJSON('level1',"assets/tilemaps/LEVEL_01.json");
-		 this.load.image("tilesLevel2","assets/Nivel_assets_escalados/estacion1.3.png")
-		 this.load.tilemapTiledJSON('level2',"assets/tilemaps/LEVEL_02.json");
-		 this.load.image("tileslevel3","assets/Nivel 3/mapa3.png")
-		 this.load.tilemapTiledJSON('level3',"assets/tilemaps/LEVEL_03.json")
-		 this.load.image("tilesLevel4","assets/Nivel_assets_escalados/estacion2Final (2).png")
-		 this.load.tilemapTiledJSON('level4',"assets/tilemaps/LEVEL_04.json");
+		// Tilemap........................................................................................
+		this.load.image("tiles","assets/Mapa/mapa2.png");
+		this.load.tilemapTiledJSON('level1',"assets/tilemaps/LEVEL_01.json");
+		this.load.image("tilesLevel2","assets/Nivel_assets_escalados/estacion1.3.png")
+		this.load.tilemapTiledJSON('level2',"assets/tilemaps/LEVEL_02.json");
+		this.load.image("tileslevel3","assets/Nivel 3/mapa3.png")
+		this.load.tilemapTiledJSON('level3',"assets/tilemaps/LEVEL_03.json")
+		this.load.image("tilesLevel4","assets/Nivel_assets_escalados/estacion2Final (2).png")
+		this.load.tilemapTiledJSON('level4',"assets/tilemaps/LEVEL_04.json");
 
 
 		// Decoración........................................................................................
@@ -73,7 +98,6 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('map4', 'assets/Mapa/metro_map_4.png')
 		this.load.image('map5', 'assets/Mapa/metro_map_5.png');
 
-
 		// HUD........................................................................................
 		this.load.image('heartImg', 'assets/HUD/corazon.png');
 		this.load.image('pausa', 'assets/HUD/pausa.png');
@@ -84,7 +108,6 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('level4', 'assets/HUD/4.png');
 		this.load.image('play', 'assets/HUD/play.png');
 		this.load.image('selected', 'assets/HUD/seleccionado.png');
-
 
 		// Diálogo........................................................................................
 		this.load.script('WebFont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
@@ -100,7 +123,6 @@ export default class Boot extends Phaser.Scene {
 		this.load.spritesheet('persecutor', 'assets/enemies/persecutor.png', { frameWidth: 64, frameHeight: 64 });
 		this.load.spritesheet('lanzador', 'assets/enemies/shooter.png', { frameWidth: 48, frameHeight: 48 });
 		this.load.spritesheet('topo', 'assets/enemies/mole.png', { frameWidth: 36, frameHeight: 32 });
-		
 		// Roca
 		this.load.image('roca', 'assets/enemies/rock.png');
 		
@@ -110,7 +132,7 @@ export default class Boot extends Phaser.Scene {
 		this.load.spritesheet('cartBoard', 'assets/objects/cajaCarton.png', { frameWidth: 64, frameHeight: 64 });
 
 
-		// Iluminación
+		// Iluminación........................................................................................
 		this.load.image('mask', 'assets/HUD/mask1.png');
 
 		
@@ -122,7 +144,7 @@ export default class Boot extends Phaser.Scene {
 		
 
 		// Audio........................................................................................
-		//bg
+		// BGM
 		this.load.audio('menu', 'assets/audio/bgMusic/estacion.mp3');
 		this.load.audio('level1', 'assets/audio/bgMusic/level1.mp3');
 		this.load.audio('level2', 'assets/audio/bgMusic/level2.mp3');
@@ -130,7 +152,7 @@ export default class Boot extends Phaser.Scene {
 		this.load.audio('level4', 'assets/audio/bgMusic/level4.mp3');
 		this.load.audio('restart', 'assets/audio/bgMusic/dead.mp3');
 	
-		//enemies
+		// Enemigos........................................................................................
 		this.load.audio('cat1', 'assets/audio/soundEffects/enemy/Cat1.mp3');
 		this.load.audio('cat2', 'assets/audio/soundEffects/enemy/Cat2.mp3');
 		this.load.audio('lanzadorHurt', 'assets/audio/soundEffects/enemy/lanzador_hurt.mp3');
@@ -141,33 +163,33 @@ export default class Boot extends Phaser.Scene {
 		this.load.audio('persecutorHurt', 'assets/audio/soundEffects/enemy/persecutor_hurt.mp3');
 		this.load.audio('topoHurt', 'assets/audio/soundEffects/enemy/topo_hurt.mp3');
 		
-		//objects
+		// Objetos........................................................................................
 		this.load.audio('bulletDestroy', 'assets/audio/soundEffects/enemy/bullet_destroy.mp3');
 		this.load.audio('cartBoard', 'assets/audio/soundEffects/objects/cartBox_Move.mp3');
 		this.load.audio('woodBoxExplosion', 'assets/audio/soundEffects/objects/woodBox_Explosion.mp3');
-		//player
+		
+		// Jugador........................................................................................ 
 		this.load.audio('playerHurt', 'assets/audio/soundEffects/player/hurt.mp3');
 		this.load.audio('pickWeapon', 'assets/audio/soundEffects/player/pickWeapon.mp3');
 		this.load.audio('selectWeapon', 'assets/audio/soundEffects/player/selectWeapon.mp3');
 		this.load.audio('walk', 'assets/audio/soundEffects/player/walk.mp3');
 		
-		//weapon
+		// Armas........................................................................................
 		this.load.audio('barra', 'assets/audio/soundEffects/weapon/barra.mp3');
 		this.load.audio('botella', 'assets/audio/soundEffects/weapon/botella.mp3');
 		this.load.audio('hacha', 'assets/audio/soundEffects/weapon/hacha.mp3');
 		this.load.audio('navaja', 'assets/audio/soundEffects/weapon/navaja.mp3');
 		
-		//menu
+		// Menú........................................................................................
 		this.load.audio('click', 'assets/audio/soundEffects/menu/click.mp3');
 		
-		//interactuable objects...................................................................
+		// Objetos interactuables........................................................................................
 		this.load.image('rataInmunda', 'assets/enemies/rock.png');
 		this.load.image('hombreSinCabeza', 'assets/enemies/rock.png');
 		this.load.image('exclamation', 'assets/enemies/interactiveObject.png');
 		
 		//........................................................................................
 
-		
 		// Destruye la barra de cargando página
 		this.load.on('complete', function () {
 			progressBar.destroy();
@@ -176,30 +198,7 @@ export default class Boot extends Phaser.Scene {
 			percentText.destroy();
 		});
 	
-		// Textos
-		let width = this.cameras.main.width;
-		let height = this.cameras.main.height;
-		let loadingText = this.make.text({
-			x: width / 2,
-			y: height / 2 - 50,
-			text: 'Loading...',
-			style: {
-				font: '20px monospace',
-				fill: '#ffffff'
-			}
-		});
-		loadingText.setOrigin(0.5, 0.5);
-
-		let percentText = this.make.text({
-			x: width / 2,
-			y: height / 2 - 5,
-			text: '0%',
-			style: {
-				font: '18px monospace',
-				fill: '#ffffff'
-			}
-		});
-		percentText.setOrigin(0.5, 0);
+		
 	  }
 
 

@@ -7,13 +7,14 @@ export default class Cat extends gameObject {
 	 * @param {number} x - coordenada x
 	 * @param {number} y - coordenada y
 	 */
-	constructor(scene, x, y, w, h, offsetX, offsetY, spd) {
-		super(scene, x, y, w, h, offsetX, offsetY, 'cat', spd);
-		this.speed = spd; // Nuestra velocidad de movimiento será 140
+	constructor(scene, x, y) {
+		super(scene, x, y, 17, 17, 8, 16, 'cat', 140);
+		this.scene = scene;
+		
 		this.lastDirTime = 0; //tiempo transcurrido desde la ult vez q se cambió dir
 		this.lastColTime = 0; //tiempo transcurrido desde la ult colisión
 		this.maxTime = Phaser.Math.Between(1, 3); //tiempo límite para cambiar la dir en s, va a ser aleatorio cada vez
-		this.scene.add.existing(this); //Añadimos a la escena
+		
 		this.hasChangedDir = false; //ha cambiado la dir recientemente, se usa para que no cambia de dir aleatoriamente si se acaba de cambiar por colisión
 		this.body.pushable = false; //para que no lo pueda empujar el player
 		this.maxPlayerOffset = 1.5 * scene.sys.game.canvas.width; //la máxima distancia que se puede alejar del player
@@ -21,6 +22,8 @@ export default class Cat extends gameObject {
 		this.soundCounter = 0; //contador para emitir sonido
 		this.soundMax = 200; //frecuencia de emisión de sonido 
 		this.growlSound = ["cat1", "cat2"];
+
+
 		//Creamos las animaciones
 		this.scene.anims.create({
 			key: 'cat_idle',
@@ -55,13 +58,14 @@ export default class Cat extends gameObject {
 
 		// La animación a ejecutar según se genere el personaje será 'idle'
 		this.play('cat_idle');
-		//	this.cursors = scene.input.keyboard.createCursorKeys();
+
 		this.directions = [ //array que contiene la información de las direcciones
 			{ dirX: 0, dirY: -1, anim: 'cat_up' },
 			{ dirX: 0, dirY: 1, anim: 'cat_down' },
 			{ dirX: -1, dirY: 0, anim: 'cat_left' },
 			{ dirX: 1, dirY: 0, anim: 'cat_right' }
 		]
+
 
 	// //añadir colisión con el mapa de la escena
 	this.scene.physics.add.collider(this, scene.colisionlayer, function (self) {
@@ -72,9 +76,10 @@ export default class Cat extends gameObject {
 	});
 	this.scene.physics.add.collider(this, scene.player);
 		
-	this.scene = scene;
 
 	}
+
+	
 	/*Cambia de dir por colisionar con la pared*/
 	hasCollided() {
 		this.changeDir();
@@ -89,11 +94,6 @@ export default class Cat extends gameObject {
 		this.move(this.directions[index].dirX, this.directions[index].dirY); //llama al padre (gameObject) para cambiar de dirección
 	}
 
-	/**
-	 * Bucle principal del personaje, actualizamos su posición y ejecutamos acciones según el Input
-	 * @param {number} t - Tiempo total
-	 * @param {number} dt - Tiempo entre frames
-	 */
 
 	preUpdate(t, dt) {
 		// Es muy importante llamar al preUpdate del padre (Sprite), sino no se ejecutará la animación

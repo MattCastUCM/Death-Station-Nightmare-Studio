@@ -16,8 +16,7 @@ import InteractiveObjects from '../objetos/InteractiveObjects.js';
  */
 export default class LEVEL_01 extends LEVEL_BASE {
 	constructor() {
-
-		let nextlevel = "level4Map";
+		let nextlevel = "level2Map";
 		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560, false);
 
 	}
@@ -26,6 +25,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 	 */
 	create() {
 		super.create();
+
 		//DIALOGMANAGER
 		this.scene.launch('dialogManager');
 		this.dialogManager = this.scene.get('dialogManager');
@@ -42,73 +42,48 @@ export default class LEVEL_01 extends LEVEL_BASE {
 
 		this.player.weaponManager.nextLevel(false,false,false);
 		
-		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
+		let scene = this; // Nos guardamos una referencia a la escena
 		
 		//Gato
-		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
-		//this.cats.add(gato);
-		let cardBoardArray = this.map.createFromObjects('objetos', [
-			{ gid: 561, classType: CardBoard, key: 'cartBoard' }]);
+		let gato = new Cat(this, 200, 400);
+		gato.setScale(1.2);
+		//this.cats.add(gato);30, 30,
 
-
+		// Cajas de cartón
+		let cardBoardArray = this.map.createFromObjects('objetos', [{ gid: 561, classType: CardBoard, key: 'cartBoard' }] );
 		this.cartBoardBoxes.addMultiple(cardBoardArray);
-		let woodBoxesArray = this.map.createFromObjects('objetos', [
-			{ gid: 562, classType: WoodBox, key: 'woodBox' }]);
+		cardBoardArray.forEach(obj => {
+			obj.body.setImmovable();
+		});
+
+		// Cajas de madera
+		let woodBoxesArray = this.map.createFromObjects('objetos', [{ gid: 562, classType: WoodBox, key: 'woodBox' }] );		
 		this.woodBoxes.addMultiple(woodBoxesArray);
 		woodBoxesArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
 
-		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [
-			{ gid: 564, classType: Persecutor, key: 'persecutor' }]);
-		EmenyPersecutorArray.forEach(element => {
-			element.setScale(2);
+		// Persecutores
+		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [{ gid: 564, classType: Persecutor, key: 'persecutor' }] );
+		EmenyPersecutorArray.forEach(obj => {
+			obj.setScale(2);
 		});
 		this.enemies.addMultiple(EmenyPersecutorArray);
-		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [
-			{ gid: 565, classType: Lanzador, key: 'lanzador' }]);
-		EmenyLanzadorArray.forEach(element => {
-			element.setScale(2);
-		});
-		this.enemies.addMultiple(EmenyLanzadorArray);
+		
+		// Lanzadores
+		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 565, classType: Lanzador, key: 'lanzador' }]);
 		EmenyLanzadorArray.forEach(obj => {
+			obj.setScale(2.5);
 			obj.body.setImmovable();
 		});
-
-	
-
-		//this.add.image(0, 0, 'nose').setOrigin(0, 0);
-
-		// scene.physics.world.on('collide', function(gameObject1, gameObject2, body1, body2) {
-
-		// 	if(gameObject1 === scene.player && scene.cartBoardBoxes.contains(gameObject2)){
-		// 		gameObject2.body.setImmovable(false);			
-		// 	}
-		// 	if( scene.enemies.contains(gameObject1)&& scene.cartBoardBoxes.contains(gameObject2)){
-		// 		console.log("algooo");
-		// 		gameObject2.setImmovable(true);
-		// 	}
-
-
-		// });	
-
-		//DIALOG
-		//EJEMPLO1:al interactuar con un objeto
-		// this.physics.world.on('collide', function (gameObject1, gameObject2, body1, body2) {
-		// 	if (gameObject1 === gato && gameObject2 === woodBox1) {
-		// 		woodBox1.destroyMe();
-		// 		scene.newText(["No puede sbiiiiiiiiiiiiiiiiiiiiiiiiiibsaiwfibfjinhfnrnjsnksnfkjnfks< iibvywbrviwyriuwunksnfkjnfks", "Porqué es así"]); //array de strings
-
-		// 	}
-		// });
+		this.enemies.addMultiple(EmenyLanzadorArray);
+		
 
 		//EJEMPLO 2: con Trigger
 		let trigger1 = new Trigger(scene, 300, 200, 30, 600);
 		this.physics.add.overlap(this.player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
 
 		//obtener una nueva arma
-		//let nuevaBotella = new gameObject(this, 100, 400, 200, 200, 100, 0, 'botella', 0).setScale(0.2);
-		//this.physics.add.overlap(this.player, nuevaBotella, () => { this.player.HasNewWeapon('botella'); nuevaBotella.destroy(); });
 		let hacha = this.map.createFromObjects('objetos', [{ name: 'hacha',  key: 'hacha' }]);
 		scene.physics.add.existing(hacha[0]);
 		scene.physics.add.overlap(this.player, hacha[0], () => { this.player.HasNewWeapon('hacha'); hacha[0].destroy(); });

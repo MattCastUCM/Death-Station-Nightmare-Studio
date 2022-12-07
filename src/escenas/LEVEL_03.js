@@ -36,55 +36,52 @@ export default class LEVEL_03 extends LEVEL_BASE {
 		this.cameras.main.setDeadzone (0,this.cameras.main.centerY*2);
 
 		//Gato
-		let gato = new Cat(this, 200, 400, 30, 30, 4, 4, 140);
+		let gato = new Cat(this, 200, 400);
+		gato.setScale(1.2);
 
-		 //Cajas
-		let cardBoardArray=this.map.createFromObjects('objetos',[
-			{gid:561, classType: CardBoard,key: 'cartBoard'}]);
+		// Cajas de cartón
+		let cardBoardArray = this.map.createFromObjects('objetos', [{ gid: 561, classType: CardBoard, key: 'cartBoard' }] );
 		this.cartBoardBoxes.addMultiple(cardBoardArray);
 		cardBoardArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
 
-		let woodBoxesArray=this.map.createFromObjects('objetos',[
-			{gid:562, classType: WoodBox,key: 'woodBox'}]);
+		// Cajas de madera
+		let woodBoxesArray = this.map.createFromObjects('objetos', [{ gid: 562, classType: WoodBox, key: 'woodBox' }] );		
 		this.woodBoxes.addMultiple(woodBoxesArray);
 		woodBoxesArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
 
-		//Enemigos
-		let EmenyPersecutorArray=this.map.createFromObjects('objetos',[
-		 	{gid:563, classType: Persecutor,key:'persecutor'}]);
-		EmenyPersecutorArray.forEach(element => {
-			element.setScale(2);
+		// Persecutores
+		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [{ gid: 563, classType: Persecutor, key: 'persecutor' }] );
+		EmenyPersecutorArray.forEach(obj => {
+			obj.setScale(2);
 		});
 		this.enemies.addMultiple(EmenyPersecutorArray);
-		let EmenyLanzadorArray=this.map.createFromObjects('objetos',[
-		 	{gid:564, classType: Lanzador,key:'lanzador'}]);
-		EmenyLanzadorArray.forEach(element => {
-				element.setScale(2);
-			});
-		this.enemies.addMultiple(EmenyLanzadorArray);
+		
+		// Lanzadores
+		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 564, classType: Lanzador, key: 'lanzador' }]);
 		EmenyLanzadorArray.forEach(obj => {
+			obj.setScale(2.5);
 			obj.body.setImmovable();
 		});
+		this.enemies.addMultiple(EmenyLanzadorArray);
 
-        let EmenyTopoArray=this.map.createFromObjects('objetos',[
-            {gid:565, classType: Topo,key:'topo'}]);
-            EmenyTopoArray.forEach(element => {
-               element.setScale(2);
-           });
+		// Topos
+        let EmenyTopoArray=this.map.createFromObjects('objetos',[{ gid:565, classType: Topo,key:'topo' }] );
+        EmenyTopoArray.forEach(element => {
+            element.setScale(2);
+        });
        this.enemies.addMultiple(EmenyTopoArray);
 
 
-	   let barra = this.map.createFromObjects('objetos', [{ name: 'barra',  key: 'barra' }]);
+	    let barra = this.map.createFromObjects('objetos', [{ name: 'barra',  key: 'barra' }]);
 		scene.physics.add.existing(barra[0]);
 		barra[0].body.setSize(50,300,true);
 		console.log(barra[0]);
 		scene.physics.add.overlap(this.player, barra[0], () => { this.player.HasNewWeapon('barra'); barra[0].destroy(); });
 
-	   //let ptopo=new Topo(scene,300,100);
 
         // Iluminación
 		const width = this.fondolayer.width
@@ -108,30 +105,6 @@ export default class LEVEL_03 extends LEVEL_BASE {
 		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.player.vision);
 		rt.mask.invertAlpha = true;
 
-
-		
-		// scene.physics.world.on('collide', function(gameObject1, gameObject2, body1, body2) {
-			
-		// 	if(gameObject1 === scene.player && scene.cartBoardBoxes.contains(gameObject2)){
-		// 		gameObject2.body.setImmovable(false);			
-		// 	}
-		// 	if( scene.enemies.contains(gameObject1)&& scene.cartBoardBoxes.contains(gameObject2)){
-		// 		console.log("algooo");
-		// 		gameObject2.setImmovable(true);
-		// 	}
-
-			
-		// });	
-
-		//DIALOG
-		//EJEMPLO1:al interactuar con un objeto
-		// this.physics.world.on('collide', function (gameObject1, gameObject2, body1, body2) {
-		// 	if (gameObject1 === gato && gameObject2 === woodBox1) {
-		// 		woodBox1.destroyMe();
-		// 		scene.newText(["No puede sbiiiiiiiiiiiiiiiiiiiiiiiiiibsaiwfibfjinhfnrnjsnksnfkjnfks< iibvywbrviwyriuwunksnfkjnfks", "Porqué es así"]); //array de strings
-
-		// 	}
-		// });
 
 		//EJEMPLO 2: con Trigger
 		// let trigger1 = new Trigger(this, 300, 200, 30, 600);

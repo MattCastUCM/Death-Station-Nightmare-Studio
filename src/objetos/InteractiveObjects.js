@@ -1,7 +1,6 @@
 import gameObject from "./gameObject.js";
-import TextMessage from "../hud/TextMessage.js";
-import DialogManager from "../hud/DialogManager.js";
 import Trigger from '../objetos/Trigger.js';
+
 export default class InteractiveObjects extends gameObject {
     constructor(scene, x, y, w, h, offsetX, offsetY, texture, spd, text, target) {
         super(scene, x, y, w, h, offsetX, offsetY, texture, spd);
@@ -14,6 +13,7 @@ export default class InteractiveObjects extends gameObject {
         this.exclamation.visible = false;
         this.input = this.scene.input.keyboard.addKeys({f:Phaser.Input.Keyboard.KeyCodes.F});
     };
+    
     preUpdate(){
         this.playerBounds = this.target.getBounds();
         if(Phaser.Geom.Intersects.RectangleToRectangle(this.playerBounds, this.triggerBounds)){

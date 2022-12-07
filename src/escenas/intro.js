@@ -1,14 +1,12 @@
+import LEVEL_BASE from './LEVEL_BASE.js';
 /**
  * Escenas introductorias.
- * @extends Phaser.Scene
+ * @extends LEVEL_BASE
  */
-import Player from '../objetos/player.js';
-import LEVEL_BASE from './LEVEL_BASE.js';
-
- export class intro1 extends LEVEL_BASE {
+export class intro1 extends LEVEL_BASE {
 	constructor() {
-		let nextlevel = "level1Map";
-		super("intro1", nextlevel, '', 'tiles', 560, true);
+		let nextlevel = "intro2";
+		super("intro1", nextlevel, '', '', 560, true);
 	}
 
 	/**
@@ -21,11 +19,7 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 
 		// Añade la imagen del mapa 
 		this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'introOutside').setScale(0.7);
-		let pressed = false;
-
-		// Tecla enter
-        this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-
+		
 		//HUD (y Pausa)
 		this.scene.launch('hud', { me: this });
 		this.hud = this.scene.get('hud');
@@ -40,16 +34,13 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 
 		this.player.setPosition(-50, 350)
 		this.player.setScale(1.8);
-		this.player.keyDown = true;
+		this.input.keyboard.enabled = false;
+		
+
+		this.exclamation = this.add.image(158, 290,'exclamation').setScale(0.15);
+		this.exclamation.visible = false;
 
 
-		// Al pulsar el enter, comienza el fadeOut
-		this.enterKey.on('down', ()=> {
-			if(!pressed){
-				this.cameras.main.fadeOut(500,0,0,0);
-			}
-			pressed = true;
-	    });
 		// Al terminar el fade out, cambia a la escena del nivel 1
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
 			this.scene.start('intro2');
@@ -62,34 +53,31 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 
 	update(t,dt){
 
-		if (this.timer < 1200){
+		if (this.timer < 1400){
 			this.player.move(1,0);
 		}
-		else if (this.timer >= 1400 && this.timer < 1800){
-			this.player.setFrame(9);
-		}
-		else if (this.timer >= 2400 && this.timer < 2800){
+		else if (this.timer >= 2400 && this.timer < 3000){
 			this.player.setFrame(1);
 		}
-		else if (!this.event1 && this.timer >= 3000 && this.timer < 3250){
+		else if(this.timer >= 3400 && this.timer < 3800){
+			this.exclamation.visible = true;
+		}
+		else if(this.timer >= 3800 && this.timer < 4000){
+			this.exclamation.visible = false;
+		}
+		else if (!this.event1 && this.timer >= 3800 && this.timer < 4250){
 			this.newText(["Menos mal que aún no se ha ido el tren...", "Si me subo ahora, puede que incluso llegue antes de lo previsto."]);
 			this.event1 = true;
 		}
-		else if (this.timer >= 3250 && this. timer < 3800){
+		else if (this.timer >= 4250 && this. timer < 5600){
 			this.player.move(0, -1);
 		}
-		else if (this.timer >= 3800 && this. timer < 4200){
-			this.player.move(1, 0);
-		}
-		else if (this.timer >= 4200 && this. timer < 5000){
-			this.player.move(0, -1);
-		}
-		else if (!this.event2 && this.timer >= 5000){
+		else if (!this.event2 && this.timer >= 6500){
 			this.event2 = true;
 			this.cameras.main.fadeOut(500,0,0,0);
 		}
 
-		if(this.timer >= 2000 && this.timer < 3250){
+		if((this.timer >= 3000 && this.timer < 4250) || (this.timer >= 5600 && this. timer < 7000)){
 			this.player.setFrame(13);
 		}
 
@@ -102,35 +90,58 @@ import LEVEL_BASE from './LEVEL_BASE.js';
 }
 
 
-export class intro2 extends Phaser.Scene {
+export class intro2 extends LEVEL_BASE {
 	constructor() {
-		super({ key: 'intro2' });
+		let nextlevel = "level1Map";
+		super("intro2", nextlevel, '', '', 560, true);
 	}
 
-	/**
-	* Creación de los elementos de la escena
-	*/
 	create() {
+		super.create();
+
 		this.cameras.main.fadeIn(500,0,0,0);
+		this.cameras.main.shake(0.05, 500);
 
 		// Añade la imagen del mapa 
 		this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'introInside');
-		let pressed = false;
 
-		// Tecla enter
-        this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-		
-		// Al pulsar el enter, comienza el fadeOut
-		this.enterKey.on('down', ()=> {
-			if(!pressed){
-				this.cameras.main.fadeOut(500,0,0,0);
-			}
-			pressed = true;
-	    });
+		//HUD (y Pausa)
+		this.scene.launch('hud', { me: this });
+		this.hud = this.scene.get('hud');
+		this.scene.sleep(this.hud);
+
+        //SoundManager
+        this.soundManager = this.scene.get('soundManager');
+
+		//DIALOGMANAGER
+		this.scene.launch('dialogManager');
+		this.dialogueManager = this.scene.get('dialogManager');
+
+
+		this.player.setPosition(350, 230)
+		this.player.setScale(3.4);
+		this.player.setFrame(2);
+		this.input.keyboard.enabled = false;
+
+
 		// Al terminar el fade out, cambia a la escena del nivel 1
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
 			this.scene.start('level1Map');
 		});
+
+		this.timer = 0;
+		this.event1 = false;
+		this.event2 = false;
+	}
+
+	update(t,dt){
+
+
+		this.timer += dt;
+	}
+
+	newText(text) {
+		this.dialogueManager.Init(text);
 	}
 
 }

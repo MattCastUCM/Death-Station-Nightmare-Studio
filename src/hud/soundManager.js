@@ -8,7 +8,7 @@ export default class SoundManager extends Phaser.Scene {
     create() {
         const creatures = {
             mute: false,
-            volume: 0.3,
+            volume: 0.1,
             rate: 1, //speed
             detune: 0,
             seek: 0,
@@ -68,7 +68,7 @@ export default class SoundManager extends Phaser.Scene {
         this.hacha =  { volume: 0.2, loop: false}
         
 
-        this.scene.start('intro1');
+        this.scene.start('intro2');
     }
 
     play(name) {
