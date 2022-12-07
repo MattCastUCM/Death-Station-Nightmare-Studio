@@ -103,12 +103,12 @@ export class intro2 extends LEVEL_BASE {
 
 		this.cameras.main.fadeIn(1000, 0, 0, 0);
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_IN_COMPLETE, (cam, effect) => {
-			setTimeout(() => { // se resetea la escena al pasar 2s
+			setTimeout(() => { // se ejecuta al pasar 3s
 				this.soundManager.stopBGM("ambient");
 				this.soundManager.play("accident");
 				this.soundManager.play("trainHorn");
 				this.cameras.main.shake(350);
-			}, 2000);
+			}, 3000);
 
 
 		});
