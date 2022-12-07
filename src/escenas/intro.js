@@ -17,42 +17,43 @@ export class intro1 extends LEVEL_BASE {
 
 		this.cameras.main.fadeIn(500,0,0,0);
 
-		// Añade la imagen del mapa 
+		// Añade la imagen del fondo 
 		this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'introOutside').setScale(0.7);
 		
-		//HUD (y Pausa)
+		// HUD (y Pausa)
 		this.scene.launch('hud', { me: this });
 		this.hud = this.scene.get('hud');
 		this.scene.sleep(this.hud);
 
-        //SoundManager
+        // SoundManager
         this.soundManager = this.scene.get('soundManager');
 
-		//DIALOGMANAGER
+		// DialogueManager
 		this.scene.launch('dialogManager');
 		this.dialogueManager = this.scene.get('dialogManager');
 
+		// Jugador (con input desactivado)
 		this.player.setPosition(-50, 350)
 		this.player.setScale(1.8);
 		this.input.keyboard.enabled = false;
 		
-
+		// Imagen de la exclamación
 		this.exclamation = this.add.image(158, 290,'exclamation').setScale(0.15);
 		this.exclamation.visible = false;
 
+		this.timer = 0;
+		this.event1 = false;
+		this.event2 = false;
 
 		// Al terminar el fade out, cambia a la escena del nivel 1
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
 			this.scene.start('intro2');
 		});
 
-		this.timer = 0;
-		this.event1 = false;
-		this.event2 = false;
 	}
 
+	// Secuencia de eventos marcados por tiempo
 	update(t,dt){
-
 		if (this.timer < 1400){
 			this.player.move(1,0);
 		}
@@ -102,7 +103,7 @@ export class intro2 extends LEVEL_BASE {
 		this.cameras.main.fadeIn(500,0,0,0);
 		this.cameras.main.shake(0.05, 500);
 
-		// Añade la imagen del mapa 
+		// Añade la imagen del fondo 
 		this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'introInside');
 
 		//HUD (y Pausa)
@@ -110,30 +111,30 @@ export class intro2 extends LEVEL_BASE {
 		this.hud = this.scene.get('hud');
 		this.scene.sleep(this.hud);
 
-        //SoundManager
+        // SoundManager
         this.soundManager = this.scene.get('soundManager');
 
-		//DIALOGMANAGER
+		// DialogueManager
 		this.scene.launch('dialogManager');
 		this.dialogueManager = this.scene.get('dialogManager');
 
-
+		// Jugador (con input desactivado)
 		this.player.setPosition(350, 230)
 		this.player.setScale(3.4);
-		this.player.setFrame(2);
 		this.input.keyboard.enabled = false;
 
+		this.timer = 0;
+		this.event1 = false;
+		this.event2 = false;
 
 		// Al terminar el fade out, cambia a la escena del nivel 1
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
 			this.scene.start('level1Map');
 		});
 
-		this.timer = 0;
-		this.event1 = false;
-		this.event2 = false;
 	}
 
+	// Secuencia de eventos marcados por tiempo
 	update(t,dt){
 
 
