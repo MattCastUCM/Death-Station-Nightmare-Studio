@@ -33,23 +33,26 @@ export default class DialogManager extends Phaser.Scene {
     }
 
     Init(text) {
-        this.soundManager = this.scene.get('soundManager');
-        this.soundManager.play("dialoguePop");
-        
-        this.text = text; //array de strings
-
-        this.mesCount = 0; //contador para contar los mensajes ya imprimidos
-
-        //contenedor donde va a estar el texto, le pasa el primer texto
-        this.textMessage = new TextMessage(this, 145, this.sys.game.canvas.height - 130, this.sys.game.canvas.width - 250, this.text[this.mesCount]);
-
-        this.dialogBox.visible = true; //el cuadro de texto aparece
-
-        this.hud = this.scene.get('hud');
-
-        this.hud.onDialogStarted();
-
-    }
+        if(!this.onDialog){ //para que no entre otro diálogo
+            this.onDialog=true;
+            this.soundManager = this.scene.get('soundManager');
+            this.soundManager.play("dialoguePop");
+            
+            this.text = text; //array de strings
+            
+            this.mesCount = 0; //contador para contar los mensajes ya imprimidos
+            
+            //contenedor donde va a estar el texto, le pasa el primer texto
+            this.textMessage = new TextMessage(this, 145, this.sys.game.canvas.height - 130, this.sys.game.canvas.width - 250, this.text[this.mesCount]);
+            
+            this.dialogBox.visible = true; //el cuadro de texto aparece
+            
+            this.hud = this.scene.get('hud');
+            
+            this.hud.onDialogStarted();
+        }
+            
+        }
 
     /*Pasa el siguiente mensaje al contenedor, llamando a su método setNewMessage*/
     NextMessage() {
@@ -63,6 +66,7 @@ export default class DialogManager extends Phaser.Scene {
             this.dialogBox.visible = false; //hacer invisible el cuadro de texto
             this.hud.onDialogFinished();
             this.textMessage.onMessageFinished();
+            this.onDialog=false;
             return false;
         }
 
