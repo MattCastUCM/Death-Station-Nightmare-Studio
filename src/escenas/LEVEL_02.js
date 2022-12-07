@@ -53,12 +53,12 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		
 		// Lanzadores
 		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 1398, classType: Lanzador, key: 'lanzador' }]);
+		
+		this.enemies.addMultiple(EmenyLanzadorArray);
 		EmenyLanzadorArray.forEach(obj => {
 			obj.setScale(2.5);
 			obj.body.setImmovable();
 		});
-		this.enemies.addMultiple(EmenyLanzadorArray);
-		
 
 		// Decoración
 		let Basuras = this.map.createFromObjects('dec', [{ gid: 5,  key: 'Basura' }]);
