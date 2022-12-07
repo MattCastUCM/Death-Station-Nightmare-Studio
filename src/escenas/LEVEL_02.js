@@ -130,6 +130,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
 	DecreaseLife(player) {
 		this.hud.changeLifeValue(player.hp);
 		if(player.hp<=0){
+			this.hud.quitInventory('botella');
 			this.scene.start('restart', { me: this }); 
 			this.soundManager.stopBGM("level2");
 		}

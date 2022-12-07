@@ -19,7 +19,7 @@ export default class HUD extends Phaser.Scene {
         this.add.image(220, 18, 'heartImg').setOrigin(0, 0);
         this.healthBar = new healthBar(this, 30, 20, 180, 20, 10);
         //nivel
-        this.levelImg=this.add.image(800, 18, 'level1').setOrigin(0, 0);
+        this.levelImg = this.add.image(800, 18, 'level1').setOrigin(0, 0);
 
         let offset = 55; //el espacio al primer celda respecto del x del inventario
         let gap = 4; //espacio entre celdas del inventario
@@ -28,18 +28,18 @@ export default class HUD extends Phaser.Scene {
         //INVENTARIO
         this.inventoryImg = this.add.image(350, 470, 'inventory').setOrigin(0, 0);
         //imagen de armas
-        this.navaja = this.add.image(this.inventoryImg.x + offset - 6  , this.inventoryImg.y + (this.inventoryImg.height / 2), 'navaja').setOrigin(0.5, 0.6).setScale(0.12);
+        this.navaja = this.add.image(this.inventoryImg.x + offset - 6, this.inventoryImg.y + (this.inventoryImg.height / 2), 'navaja').setOrigin(0.5, 0.6).setScale(0.12);
         this.navaja.rotation -= 1;
 
-        this.hacha = this.add.image(this.inventoryImg.x + (offset + gap * 2) * 2-2 , this.inventoryImg.y + (this.inventoryImg.height / 2), 'hacha').setOrigin(0.5, 0.5).setScale(0.2);
+        this.hacha = this.add.image(this.inventoryImg.x + (offset + gap * 2) * 2 - 2, this.inventoryImg.y + (this.inventoryImg.height / 2), 'hacha').setOrigin(0.5, 0.5).setScale(0.2);
         this.hacha.rotation -= 1;
         this.hacha.visible = false;
-      
+
         this.botella = this.add.image(this.inventoryImg.x + (offset + gap) * 3 + 25, this.inventoryImg.y + (this.inventoryImg.height / 2), 'botella').setOrigin(0.5, 0.6).setScale(0.15);
         this.botella.rotation += 0.8;
         this.botella.visible = false;
-        
-        this.barra = this.add.image(this.inventoryImg.x + (offset + gap) * 4+ 42, this.inventoryImg.y + (this.inventoryImg.height / 2), 'barra').setOrigin(0.5, 0.5).setScale(0.2);
+
+        this.barra = this.add.image(this.inventoryImg.x + (offset + gap) * 4 + 42, this.inventoryImg.y + (this.inventoryImg.height / 2), 'barra').setOrigin(0.5, 0.5).setScale(0.2);
         this.barra.rotation += 0.8;
         this.barra.visible = false;
 
@@ -47,7 +47,7 @@ export default class HUD extends Phaser.Scene {
         this.selectedFrame = this.add.image(this.navaja.x, this.navaja.y, 'selected').setOrigin(0.5, 0.5).setScale(1);
 
 
-        
+
         //PAUSA 
         this.pauseButton = this.add.image(900, 13, 'pausa').setOrigin(0, 0);
         //Botón de play que aparece tras pausar la escen
@@ -76,9 +76,11 @@ export default class HUD extends Phaser.Scene {
     }
 
     /*cambiar de img*/
-    changeLevel(number,scene){
-        this.levelImg.setTexture("level"+number);
-        this.level=scene;
+    changeLevel(number, scene) {
+        this.levelImg.setTexture("level" + number);
+        this.level = scene;
+        this.healthBar.changeValue(100);
+        this.changeObject("navaja")
     }
     //llamado por player para indicarle a que arma se ha cambiado
     changeObject(weapon) {
@@ -89,6 +91,10 @@ export default class HUD extends Phaser.Scene {
     //llamado por player para informar de la nueva arma que tienne
     addInventory(weapon) {
         this[weapon].visible = true;
+    }
+    quitInventory(weapon) {
+        if (this[weapon].visible)
+            this[weapon].visible = false;
     }
     //menú pausa 
     pauseGame() {
@@ -111,7 +117,7 @@ export default class HUD extends Phaser.Scene {
 
     //pausa o resume por el diálogo
     onDialogStarted() {
-      
+
         this.onDialog = true;
         this.level.player.stop();
         this.level.scene.pause();
