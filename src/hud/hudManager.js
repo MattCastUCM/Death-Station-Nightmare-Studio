@@ -9,7 +9,7 @@ export default class HUD extends Phaser.Scene {
     }
     init(level) { //escena de nivel
         this.level = level.me;
-        console.log(this.level);
+
     }
 
     create() {
@@ -21,11 +21,62 @@ export default class HUD extends Phaser.Scene {
         //nivel
         this.levelImg = this.add.image(800, 18, 'level1').setOrigin(0, 0);
 
+        this.initPauseSystem();
+        this.initInventory();
+
+
+        this.onDialog = false; //si está en diálogo
+    }
+
+    initPauseSystem() {
+       
+        this.pauseInput = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+        this.pauseInput.on('down', pointer => { //al clickear sobre el cuadro de texto, salta al siguiente mensaje
+            this.pauseGame();
+            if (this.playButton.visible == false) this.playButton.visible = true;
+            else this.playButton.visible = false;
+        });
+        //PAUSA 
+        this.pauseButton = this.add.image(900, 13, 'pausa').setOrigin(0, 0);
+        //Botón de play que aparece tras pausar la escen
+        this.playButton = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'play').setScale(0.3);
+        //this.playButton.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
+        this.playButton.visible = false;
+        //this.playButton.on('pointerup', pointer => { this.pauseGame(); this.playButton.visible = false; });
+
+        //RESET
+        this.restartButton = this.add.image(this.scale.width / 2, this.scale.height / 2 - 150, 'restartButton')
+        this.restartButton.setScale(0.7);
+        this.restartButton.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
+
+        // Al poner el cursor encima del botón, cambia de color
+        this.restartButton.on('pointerover', () => {
+            this.restartButton.setTint(0xff0000);
+            this.soundManager.play("click");
+
+        });
+
+        // Al quitar el cursor de encima del botón, vuelve a su color original
+        this.restartButton.on('pointerout', () => {
+            this.restartButton.clearTint();
+        });
+
+        // Al pulsar el botón
+        this.restartButton.on('pointerup', pointer => {
+            this.soundManager.pause(false);
+            this.level.restart(); //Cambiamos a la escena de juego
+        });
+
+
+        //botón de pause
+        this.onPauseMenu = false;
+        //botón restart
+        this.restartButton.visible = false;
+    }
+
+    initInventory() {
         let offset = 55; //el espacio al primer celda respecto del x del inventario
         let gap = 4; //espacio entre celdas del inventario
-
-
-        //INVENTARIO
         this.inventoryImg = this.add.image(350, 470, 'inventory').setOrigin(0, 0);
         //imagen de armas
         this.navaja = this.add.image(this.inventoryImg.x + offset - 6, this.inventoryImg.y + (this.inventoryImg.height / 2), 'navaja').setOrigin(0.5, 0.6).setScale(0.12);
@@ -45,29 +96,6 @@ export default class HUD extends Phaser.Scene {
 
 
         this.selectedFrame = this.add.image(this.navaja.x, this.navaja.y, 'selected').setOrigin(0.5, 0.5).setScale(1);
-
-
-
-        //PAUSA 
-        this.pauseButton = this.add.image(900, 13, 'pausa').setOrigin(0, 0);
-        //Botón de play que aparece tras pausar la escen
-        this.playButton = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'play').setScale(0.3);
-        this.playButton.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
-        this.playButton.visible = false;
-        this.playButton.on('pointerup', pointer => { this.pauseGame(); this.playButton.visible = false; });
-
-        //botón de pause
-        this.onPauseMenu = false;
-        this.pauseButton.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
-
-        this.pauseButton.on('pointerup', pointer => {
-            this.pauseGame();
-            if (this.playButton.visible == false) this.playButton.visible = true;
-            else this.playButton.visible = false;
-
-        });
-
-        this.onDialog = false; //si está en diálogo
     }
 
     //hud le pasa a la barra de vida un nuevo valor
@@ -100,6 +128,7 @@ export default class HUD extends Phaser.Scene {
     pauseGame() {
         if (this.onPauseMenu) //se quiere resume
         {
+            this.restartButton.visible = false;
             this.dialogManager.scene.resume();
             this.onPauseMenu = false;
             if (!this.onDialog) this.level.scene.resume(); //si no estaba en diálogo
@@ -107,6 +136,7 @@ export default class HUD extends Phaser.Scene {
         }
 
         else { //pausa
+            this.restartButton.visible = true;
             this.level.player.stop();
             this.dialogManager.scene.pause();
             this.onPauseMenu = true;

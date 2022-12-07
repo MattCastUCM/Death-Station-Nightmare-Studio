@@ -122,6 +122,11 @@ export default class LEVEL_03 extends LEVEL_BASE {
 		this.dialogManager.Init(text);
 	}
 
+	restart() {
+		this.hud.quitInventory('barra');
+		this.soundManager.stopBGM("level3");
+		this.scene.start('LEVEL_03');
+	}
 
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {

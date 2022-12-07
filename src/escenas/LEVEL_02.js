@@ -125,6 +125,11 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		this.dialogManager.Init(text);
 	}
 
+	restart() {
+		this.hud.quitInventory('botella');
+		this.soundManager.stopBGM("level2");
+		this.scene.start('LEVEL_02');
+	}
 
 	/*Informa al player y al hud*/
 	DecreaseLife(player) {

@@ -87,9 +87,15 @@ export default class SoundManager extends Phaser.Scene {
         this[name].play();
     }
 
+    playWithListener(name,funct){
+        this[name] = this.sound.add([name], this[name]);
+        this[name].on('complete', funct); //cuando termine el audio, ejecuta la función pasada
+        this[name].play();
+    }
     stopBGM(name) {
         this[name].stop();
     }
+
     pause(bool) {
         this.sound.setMute(bool);
     }
