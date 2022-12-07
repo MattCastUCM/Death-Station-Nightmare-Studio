@@ -84,6 +84,7 @@ export default class Boot extends Phaser.Scene {
 		this.load.image("señor sin cabeza","assets/Nivel_assets_escalados/señor sin cabeza.png");
 		this.load.image("Silla","assets/Nivel_assets_escalados/Silla.png");
 		this.load.image("sillones","assets/Nivel_assets_escalados/sillones.png");
+		this.load.image("ojo","assets/Nivel 3/ojo.png");
 
 
 		// Menú de reinicio........................................................................................

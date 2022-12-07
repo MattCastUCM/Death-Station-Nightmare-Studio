@@ -11,7 +11,9 @@ export default class InteractiveObjects extends gameObject {
         this.scene = scene;
         let trigger1 = new Trigger(scene, x+w/2-16, y+h/2-16, w, h);  //para que se centre con el collider de la textura
         this.triggerBounds = trigger1.getBounds();
-        this.exclamation = this.scene.add.image(this.body.x - this.displayWidth/2,this.body.y - this.displayHeight*2,'exclamation').setScale(0.2).setOrigin(0,0); 
+        this.exclamation = this.scene.add.image(this.body.x - this.displayWidth/2,this.body.y - this.displayHeight/2,'exclamation').setScale(0.2).setOrigin(0,0); 
+        this.exclamation.depth = 10000;
+       
         this.exclamation.visible = false;
         this.input = this.scene.input.keyboard.addKeys({f:Phaser.Input.Keyboard.KeyCodes.F});
     };
