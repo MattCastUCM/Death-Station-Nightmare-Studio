@@ -101,17 +101,9 @@ export class intro2 extends LEVEL_BASE {
 	create() {
 		super.create();
 
-		this.cameras.main.fadeIn(1000, 0, 0, 0);
-		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_IN_COMPLETE, (cam, effect) => {
-			setTimeout(() => { // se ejecuta al pasar 3s
-				this.soundManager.stopBGM("ambient");
-				this.soundManager.play("accident");
-				this.soundManager.play("trainHorn");
-				this.cameras.main.shake(350);
-			}, 3000);
-
-
-		});
+		this.cameras.main.fadeIn(500, 0, 0, 0);
+		this.cameras.main.shake(20000, 0.001);
+		
 
 		// Añade la imagen del fondo 
 		this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'introInside');
@@ -137,24 +129,39 @@ export class intro2 extends LEVEL_BASE {
 		this.timer = 0;
 		this.event1 = false;
 		this.event2 = false;
-		this.cameras.main.on('camerashakecomplete', () => {
-			this.cameras.main.fadeOut(3000, 0, 0, 0);
-		});
-
-
-
-
-		// Al terminar el fade out, cambia a la escena del nivel 1
-		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-			this.scene.start('level1Map');
-		});
+		this.event3 = false;
+		this.event4 = false;
+		this.event5 = false;
 
 	}
 
 	// Secuencia de eventos marcados por tiempo
 	update(t, dt) {
-
-
+		if(!this.event1 && this.timer >= 2000 && this.timer < 2500){
+			this.cameras.main.fadeOut(500, 0, 0, 0);
+			this.event1 = true;
+		}
+		else if(!this.event2 && this.timer >= 2500 && this.timer < 3000){
+			this.cameras.main.fadeIn(500,0,0,0);
+		}
+		else if(!this.event3 && this.timer >= 4000 && this.timer < 4250){
+			this.newText(["Qué sueño..."]);
+	
+			this.event3 = true;
+		}
+		else if(!this.event4 && this.timer >= 5250 && this.timer < 5750){
+			this.cameras.main.fadeOut(500, 0, 0, 0);
+			this.event4 = true;
+		}
+		else if(!this.event5 && this.timer >= 5750 && this.timer < 6000){
+			this.newText(["Aún me queda un rato para llegar, no creo que importe si me duermo..."]);
+			this.event5 = true;
+		}
+		else if (!this.event6 && this.timer >= 6000){
+			//this.soundManager.stopBGM("ambient");
+			this.soundManager.play("accident");
+			this.soundManager.play("trainHorn");
+		}
 		this.timer += dt;
 	}
 
