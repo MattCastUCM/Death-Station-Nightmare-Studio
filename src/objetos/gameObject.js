@@ -88,5 +88,5 @@ export default class gameObject extends Phaser.GameObjects.Sprite {
         super.preUpdate(t,dt);
         this.depth = this.y;
        
-        }
+    }
 };
