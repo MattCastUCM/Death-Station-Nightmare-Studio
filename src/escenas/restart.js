@@ -47,8 +47,8 @@
 
 		// Al pulsar el botón
 	    sprite.on('pointerup', pointer => {
-			this.scene.start(this.level); //Cambiamos a la escena de juego
 			this.soundManager.stopBGM("restart");
+			this.scene.start(this.level); //Cambiamos a la escena de juego
 	    });
 
 		sprite.on('pointerover', () => {

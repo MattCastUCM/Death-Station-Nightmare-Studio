@@ -86,8 +86,10 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		//obtener una nueva arma
 		let hacha = this.map.createFromObjects('objetos', [{ name: 'hacha', key: 'hacha' }]);
 		scene.physics.add.existing(hacha[0]);
-		scene.physics.add.overlap(this.player, hacha[0], () => { this.player.HasNewWeapon('hacha'); hacha[0].destroy(); });
+		scene.physics.add.overlap(this.player, hacha[0], () => { this.newText(["Hay un hacha, quizás pueda usarlo para romper las cajas de madera..."]);this.player.HasNewWeapon('hacha'); hacha[0].destroy(); });
 
+
+		
 		let pruebaInteractiveObject = new InteractiveObjects(this, 200, 400, 20, 20, 0, 0, 'rataInmunda', 0, ["Prueba de rata"], this.player);
 	}
 
@@ -116,7 +118,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		this.soundManager.stopBGM("level1");
 		this.scene.start('LEVEL_01');
 	}
-	
+
 	/*Para pausar el dialogManager , llamado por el hud*/
 	pauseDialog() {
 		this.dialogManager.scene.pause();

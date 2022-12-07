@@ -64,6 +64,8 @@ export default class HUD extends Phaser.Scene {
         // Al pulsar el botón
         this.restartButton.on('pointerup', pointer => {
             this.soundManager.pause(false);
+            this.playButton.visible = false;
+            this.restartButton.visible=false;
             this.level.restart(); //Cambiamos a la escena de juego
         });
 
