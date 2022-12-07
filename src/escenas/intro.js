@@ -42,9 +42,10 @@ export class intro1 extends LEVEL_BASE {
 		this.exclamation = this.add.image(158, 290, 'exclamation').setScale(0.15);
 		this.exclamation.visible = false;
 
-		this.timer = 0;
-		this.event1 = false;
-		this.event2 = false;
+		// Array de eventos (inicialmente a false)
+		this.events = [];
+		for(let i = 0; i < 6; i++) this.events[i] = false;
+
 
 		// Al terminar el fade out, cambia a la escena del nivel 1
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
@@ -55,35 +56,44 @@ export class intro1 extends LEVEL_BASE {
 
 	// Secuencia de eventos marcados por tiempo
 	update(t, dt) {
-		if (this.timer < 1400) {
+		if (this.player.x < 159) {
 			this.player.move(1, 0);
 		}
-		else if (this.timer >= 2400 && this.timer < 3000) {
+		else if (!this.events[0]) {
+			this.player.move(0,0);
+			setTimeout( ()=>{this.events[0] = true}, 500);
+		}
+		else if(!this.events[1]){
 			this.player.setFrame(1);
+			setTimeout( ()=>{this.events[1] = true}, 700);
 		}
-		else if (this.timer >= 3400 && this.timer < 3800) {
+		else if(!this.events[2]){
+			this.player.setFrame(13);
+			setTimeout( ()=>{this.events[2] = true}, 700);
+		}
+		else if(!this.events[3]){
 			this.exclamation.visible = true;
+			setTimeout( ()=>{this.events[3] = true}, 500);
 		}
-		else if (this.timer >= 3800 && this.timer < 4000) {
+		else if(!this.events[4]){
 			this.exclamation.visible = false;
+			setTimeout( ()=>{this.events[4] = true}, 500);
 		}
-		else if (!this.event1 && this.timer >= 3800 && this.timer < 4250) {
+		else if(!this.events[5]){
 			this.newText(["Menos mal que aún no se ha ido el tren...", "Si me subo ahora, puede que incluso llegue antes de lo previsto."]);
-			this.event1 = true;
+			setTimeout( ()=>{this.events[5] = true}, 100);
 		}
-		else if (this.timer >= 4250 && this.timer < 5600) {
-			this.player.move(0, -1);
+		else if(this.player.y > 160){
+			this.player.move(0,-1);
 		}
-		else if (!this.event2 && this.timer >= 6500) {
-			this.event2 = true;
-			this.cameras.main.fadeOut(500, 0, 0, 0);
+		else if(!this.events[6] && this.player.y <= 160){
+			this.events[6] = true;
+			setTimeout( ()=>{this.cameras.main.fadeOut(500, 0, 0, 0);}, 1000);
 		}
 
-		if ((this.timer >= 3000 && this.timer < 4250) || (this.timer >= 5600 && this.timer < 7000)) {
+		if(this.events[3] && this.player.body.velocity.x === 0 && this.player.body.velocity.y === 0){
 			this.player.setFrame(13);
 		}
-
-		this.timer += dt;
 	}
 
 	newText(text) {
@@ -126,43 +136,65 @@ export class intro2 extends LEVEL_BASE {
 		this.player.setScale(3.4);
 		this.input.keyboard.enabled = false;
 
-		this.timer = 0;
-		this.event1 = false;
-		this.event2 = false;
-		this.event3 = false;
-		this.event4 = false;
-		this.event5 = false;
+		// Array de eventos (inicialmente a false)
+		this.events = [];
+		for(let i = 0; i < 6; i++) this.events[i] = false;
 
 	}
 
 	// Secuencia de eventos marcados por tiempo
 	update(t, dt) {
-		if(!this.event1 && this.timer >= 2000 && this.timer < 2500){
-			this.cameras.main.fadeOut(500, 0, 0, 0);
-			this.event1 = true;
+		this.player.setFrame(0);
+		
+		if(!this.events[0]){
+			this.events[0] = true;
+			this.events[1] = true;
+			this.events[2] = true;
+			this.events[3] = true;
+			this.events[4] = true;
+
+			setTimeout( ()=>{
+				this.cameras.main.fadeOut(500, 0, 0, 0);
+				
+				setTimeout( ()=>{
+					this.cameras.main.fadeIn(500,0,0,0);
+					setTimeout( ()=>{this.events[1] = false;}, 1500);
+				}, 1000);
+			}, 2000);
 		}
-		else if(!this.event2 && this.timer >= 2500 && this.timer < 3000){
-			this.cameras.main.fadeIn(500,0,0,0);
-		}
-		else if(!this.event3 && this.timer >= 4000 && this.timer < 4250){
+		else if(!this.events[1]){
+			this.events[1] = true;
+			this.events[2] = false;
 			this.newText(["Qué sueño..."]);
-	
-			this.event3 = true;
 		}
-		else if(!this.event4 && this.timer >= 5250 && this.timer < 5750){
-			this.cameras.main.fadeOut(500, 0, 0, 0);
-			this.event4 = true;
+		else if(!this.events[2]){
+			this.events[2] = true;
+			this.events[3] = true;
+			setTimeout( ()=>{
+				this.cameras.main.fadeOut(500, 0, 0, 0);
+				
+				setTimeout( ()=>{
+					this.cameras.main.fadeIn(500,0,0,0);
+					setTimeout( ()=>{this.events[3] = false;}, 1500);
+				}, 1000);
+			}, 2000);
 		}
-		else if(!this.event5 && this.timer >= 5750 && this.timer < 6000){
+		else if(!this.events[3]){
+			this.events[3] = true;
+			this.events[4] = false;
 			this.newText(["Aún me queda un rato para llegar, no creo que importe si me duermo..."]);
-			this.event5 = true;
 		}
-		else if (!this.event6 && this.timer >= 6000){
-			//this.soundManager.stopBGM("ambient");
-			this.soundManager.play("accident");
-			this.soundManager.play("trainHorn");
+		else if(!this.events[4]){
+			this.events[4] = true;
+			this.cameras.main.fadeOut(500, 0, 0, 0);
+			setTimeout( ()=>{
+				this.soundManager.play("trainHorn");
+				this.soundManager.playWithListener("accident", ()=>{
+					this.soundManager.stopBGM("ambient")
+					this.scene.start("level1Map");
+				});
+			}, 2000);
 		}
-		this.timer += dt;
 	}
 
 	newText(text) {
