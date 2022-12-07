@@ -13,7 +13,7 @@ import LEVEL_BASE from './LEVEL_BASE.js';
  */
 export default class LEVEL_04 extends LEVEL_BASE {
 	constructor() {
-		let nextlevel="level5Map";
+		let nextlevel="endMap";
 		super("LEVEL_04",nextlevel,'level4','tilesLevel4',6015);
 	}
 	/**

@@ -49,7 +49,7 @@ let config = {
            // gravity: { y:200 },
            
            //para la visibilidad de box collieder 
-           debug: true   
+           //debug: true   
         },
         checkCollision: {
             up: true,

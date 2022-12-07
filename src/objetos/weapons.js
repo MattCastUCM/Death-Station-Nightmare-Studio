@@ -230,7 +230,7 @@ class Brazo extends Phaser.GameObjects.Container {
         this._player = weaponManager._player;
         this.weapon = weaponManager.navaja;
 
-        this.add(new Phaser.GameObjects.Sprite(this.scene, 0, 0, 'brazo'));
+        //this.add(new Phaser.GameObjects.Sprite(this.scene, 0, 0, 'brazo'));
         this.add(weaponManager.navaja); this.add(weaponManager.botella); this.add(weaponManager.barra); this.add(weaponManager.hacha);
 
         this.scene.add.existing(this);

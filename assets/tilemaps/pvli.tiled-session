@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "LEVEL_04.tmx",
+    "activeFile": "LEVEL_01.tmx",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
         "."
@@ -37,11 +37,11 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 0.5,
+            "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 5340,
-                "y": 326
+                "x": 10868.181818181818,
+                "y": 439.39393939393943
             }
         },
         "LEVEL_01.tmx#mapa": {
@@ -89,7 +89,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 2416.666666666667,
-                "y": 854.5454545454546
+                "y": 857.5757575757576
             }
         },
         "LEVEL_02.tmx#Nivel Claudia": {
@@ -154,7 +154,7 @@
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 5553.030303030303,
+                "x": 5777.272727272727,
                 "y": 718.1818181818182
             }
         },
@@ -225,11 +225,11 @@
             "scaleInEditor": 1
         },
         "level_03.tmx": {
-            "scale": 1,
+            "scale": 0.25,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 2734.5,
-                "y": 303
+                "x": 9022,
+                "y": 624
             }
         },
         "level_03.tmx#mapa": {
@@ -293,11 +293,11 @@
     "project": "pvli.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "LEVEL_01.tmx",
-        "LEVEL_02.tmx",
-        "LEVEL_03.tmx",
-        "level_03.tmx",
         "LEVEL_04.tmx",
+        "level_03.tmx",
+        "LEVEL_03.tmx",
+        "LEVEL_02.tmx",
+        "LEVEL_01.tmx",
         "LEVEL_03.json",
         "LEVEL_01.json",
         "LEVEL_02.json",
