@@ -100,8 +100,11 @@ export class intro2 extends LEVEL_BASE {
 	create() {
 		super.create();
 
-		this.cameras.main.fadeIn(500,0,0,0);
-		this.cameras.main.shake(0.05, 500);
+		this.cameras.main.fadeIn(1000,0,0,0);
+		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_IN_COMPLETE, (cam,effect) => {
+			this.cameras.main.shake(350);
+		});
+		
 
 		// Añade la imagen del fondo 
 		this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'introInside');
@@ -126,6 +129,12 @@ export class intro2 extends LEVEL_BASE {
 		this.timer = 0;
 		this.event1 = false;
 		this.event2 = false;
+		this.cameras.main.on('camerashakecomplete',  ()=> {
+            this.cameras.main.fadeOut(3000,0,0,0);
+        });
+
+
+		
 
 		// Al terminar el fade out, cambia a la escena del nivel 1
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {

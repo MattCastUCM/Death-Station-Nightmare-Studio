@@ -111,7 +111,7 @@ export default class LEVEL_04 extends LEVEL_BASE {
 		this.objects.addMultiple(ratas);
 		ratas.forEach(obj => {obj.body.setImmovable();});
 
-		let señorsincabeza= this.map.createFromObjects('objetos', [{ gid: 6021,  key: 'señor' }]);
+		let señorsincabeza= this.map.createFromObjects('objetos', [{ gid: 6021,  key: 'señor sin cabeza' }]);
 		this.objects.addMultiple(señorsincabeza);
 		señorsincabeza.forEach(obj => {obj.body.setImmovable();});
 
