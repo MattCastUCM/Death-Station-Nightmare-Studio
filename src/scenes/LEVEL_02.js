@@ -176,7 +176,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
 
 
 	restart() {
-		this.hud.quitInventory('hacha');
+		this.hud.quitInventory('botella');
 		this.soundManager.stopBGM("level2");
 		this.scene.start('LEVEL_02');
 	}
