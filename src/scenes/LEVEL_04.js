@@ -141,7 +141,7 @@ export default class LEVEL_04 extends LEVEL_BASE {
 		// dibuja la escena vacia 
 		rt.draw(this.fondolayer)
 		//poner un toque de azul a mapa 
-		rt.setTint(0x5050b0)
+		rt.setTint(0x0a2948)
 		//0x0a2948
 		//0x5050b0	
 		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.player.vision);

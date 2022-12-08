@@ -1121,8 +1121,8 @@
   <object id="23" gid="6023" x="4550.33" y="1325.33" width="126" height="440"/>
   <object id="24" name="next" gid="6030" x="5860" y="615.818" width="81" height="191.242"/>
   <object id="25" gid="6027" x="678" y="1408" width="65" height="52"/>
-  <object id="26" gid="6035" x="1010.33" y="1421.33" width="55" height="72"/>
-  <object id="27" gid="6034" x="951.667" y="1413.33" width="55" height="63"/>
+  <object id="26" gid="6035" x="1008.83" y="1389.83" width="55" height="72"/>
+  <object id="27" gid="6034" x="951.667" y="1407.83" width="55" height="63"/>
   <object id="28" gid="6028" x="7" y="1412" width="75" height="72"/>
   <object id="29" gid="6029" x="12" y="322" width="124" height="119"/>
   <object id="30" gid="6026" x="1586" y="1493" width="68" height="118"/>
