@@ -128,8 +128,8 @@ export default class Boot extends Phaser.Scene {
 		
 
 		// Obstáculos........................................................................................
-		this.load.spritesheet('woodBox', 'assets/objects/cajaMadera.png', { frameWidth: 64, frameHeight: 64 })
-		this.load.spritesheet('cartBoard', 'assets/objects/cajaCarton.png', { frameWidth: 64, frameHeight: 64 });
+		this.load.image('woodBox', 'assets/objects/cajaMadera.png', { frameWidth: 64, frameHeight: 64 })
+		this.load.image('cartBoard', 'assets/objects/cajaCarton.png', { frameWidth: 64, frameHeight: 64 });
 
 
 		// Iluminación........................................................................................
@@ -137,10 +137,10 @@ export default class Boot extends Phaser.Scene {
 
 		
 		// Armas........................................................................................
-		this.load.spritesheet('navaja', 'assets/Armas/Cuchillo.png', { frameWidth: 210, frameHeight: 480 });
-		this.load.spritesheet('botella', 'assets/Armas/Botella.png', { frameWidth: 140, frameHeight: 380 });
-		this.load.spritesheet('barra', 'assets/Armas/Barra.png', { frameWidth: 32, frameHeight: 48 });
-		this.load.spritesheet('hacha', 'assets/Armas/Hacha.png', { frameWidth: 100, frameHeight: 220 });
+		this.load.image('navaja', 'assets/Armas/Cuchillo.png', { frameWidth: 210, frameHeight: 480 });
+		this.load.image('botella', 'assets/Armas/Botella.png', { frameWidth: 140, frameHeight: 380 });
+		this.load.image('barra', 'assets/Armas/Barra.png', { frameWidth: 32, frameHeight: 48 });
+		this.load.image('hacha', 'assets/Armas/Hacha.png', { frameWidth: 100, frameHeight: 220 });
 		
 
 		// Audio........................................................................................

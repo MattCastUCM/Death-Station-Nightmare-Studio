@@ -12,8 +12,9 @@ Este juego es un proyecto universitario.
 
 Se puede jugar aquí: [Death Station](https://mattcastucm.github.io/Death-Station-Nightmare-Studio/)
 
-![Hito 1 Cap 1](https://github.com/MattCastUCM/Death-Station-Nightmare-Studio/blob/main/documents/Level.png)
-
-![Hito 1 Cap 2](https://github.com/MattCastUCM/Death-Station-Nightmare-Studio/blob/main/documents/Menu.png)
-
 ¡Nos puedes seguir en nuestro Twitter! [Twitter](https://twitter.com/n1ghtm4r3stud10)
+
+![Hito 2 Cap 1](https://github.com/MattCastUCM/Death-Station-Nightmare-Studio/blob/main/documents/Level.png)
+
+![Hito 2 Cap 2](https://github.com/MattCastUCM/Death-Station-Nightmare-Studio/blob/main/documents/Menu.png)
+

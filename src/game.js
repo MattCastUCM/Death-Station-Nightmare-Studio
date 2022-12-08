@@ -11,7 +11,7 @@ import LEVEL_03 from './scenes/LEVEL_03.js';
 import LEVEL_04 from './scenes/LEVEL_04.js'
 
 import HUD from './hud/hudManager.js'
-import DialogManager from './hud/DialogManager.js'
+import DialogManager from './hud/dialogManager.js'
 
 
 /**
@@ -47,8 +47,8 @@ let config = {
         arcade: { 
            // gravity: { y:200 },
            
-           //para la visibilidad de box collieder 
-           //debug: true   
+           // Visibilidad de las colisiones 
+           debug: false   
         },
         checkCollision: {
             up: true,
