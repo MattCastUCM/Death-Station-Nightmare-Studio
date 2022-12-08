@@ -42,6 +42,7 @@ export default class DialogManager extends Phaser.Scene {
     initDialog(text) {
         // Si no está en un diálogo, lo inicia
         if(!this.onDialog) {
+            this.onDialog=true;
             // Reproduce un sonido
             this.soundManager = this.scene.get('soundManager');
             this.soundManager.play("dialogPop");
