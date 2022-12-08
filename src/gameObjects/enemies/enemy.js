@@ -1,4 +1,4 @@
-import gameObject from './gameObject.js';
+import gameObject from '../gameObject.js';
 
 export default class Enemy extends gameObject {
     /**

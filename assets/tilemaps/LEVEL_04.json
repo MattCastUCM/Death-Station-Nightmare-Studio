@@ -4335,7 +4335,7 @@
         {
          "columns":188,
          "firstgid":1,
-         "image":"..\/Nivel_assets_escalados\/estacion2Final (2).png",
+         "image":"..\/level 2-4\/estacion2Final (2).png",
          "imageheight":1120,
          "imagewidth":6424,
          "margin":0,
@@ -4362,79 +4362,79 @@
          "tiles":[
                 {
                  "id":0,
-                 "image":"..\/Nivel_assets_escalados\/Maletas.png",
+                 "image":"..\/level 2-4\/Maletas.png",
                  "imageheight":100,
                  "imagewidth":83
                 }, 
                 {
                  "id":1,
-                 "image":"..\/Nivel_assets_escalados\/Panel.png",
+                 "image":"..\/level 2-4\/Panel.png",
                  "imageheight":119,
                  "imagewidth":98
                 }, 
                 {
                  "id":2,
-                 "image":"..\/Nivel_assets_escalados\/Papeles.png",
+                 "image":"..\/level 2-4\/Papeles.png",
                  "imageheight":59,
                  "imagewidth":55
                 }, 
                 {
                  "id":3,
-                 "image":"..\/Nivel_assets_escalados\/rata.png",
+                 "image":"..\/level 2-4\/rata.png",
                  "imageheight":28,
                  "imagewidth":89
                 }, 
                 {
                  "id":4,
-                 "image":"..\/Nivel_assets_escalados\/se\u00f1or sin cabeza.png",
+                 "image":"..\/level 2-4\/se\u00f1or sin cabeza.png",
                  "imageheight":81,
                  "imagewidth":110
                 }, 
                 {
                  "id":5,
-                 "image":"..\/Nivel_assets_escalados\/Latas.png",
+                 "image":"..\/level 2-4\/Latas.png",
                  "imageheight":51,
                  "imagewidth":73
                 }, 
                 {
                  "id":6,
-                 "image":"..\/Nivel_assets_escalados\/sillones.png",
+                 "image":"..\/level 2-4\/sillones.png",
                  "imageheight":440,
                  "imagewidth":126
                 }, 
                 {
                  "id":7,
-                 "image":"..\/Nivel_assets_escalados\/Silla.png",
+                 "image":"..\/level 2-4\/Silla.png",
                  "imageheight":142,
                  "imagewidth":54
                 }, 
                 {
                  "id":8,
-                 "image":"..\/Nivel_assets_escalados\/dos carteles.png",
+                 "image":"..\/level 2-4\/dos carteles.png",
                  "imageheight":118,
                  "imagewidth":198
                 }, 
                 {
                  "id":9,
-                 "image":"..\/Nivel_assets_escalados\/Basura.png",
+                 "image":"..\/level 2-4\/Basura.png",
                  "imageheight":118,
                  "imagewidth":68
                 }, 
                 {
                  "id":10,
-                 "image":"..\/Nivel_assets_escalados\/cabeza.png",
+                 "image":"..\/level 2-4\/cabeza.png",
                  "imageheight":52,
                  "imagewidth":65
                 }, 
                 {
                  "id":11,
-                 "image":"..\/Nivel_assets_escalados\/carrito bebe.png",
+                 "image":"..\/level 2-4\/carrito bebe.png",
                  "imageheight":72,
                  "imagewidth":75
                 }, 
                 {
                  "id":12,
-                 "image":"..\/Nivel_assets_escalados\/cartel2.png",
+                 "image":"..\/level 2-4\/cartel2.png",
                  "imageheight":119,
                  "imagewidth":124
                 }, 

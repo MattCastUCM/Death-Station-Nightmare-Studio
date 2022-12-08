@@ -901,7 +901,7 @@
         {
          "columns":35,
          "firstgid":1,
-         "image":"..\/Mapa\/mapa2.png",
+         "image":"..\/level 1\/mapa2.png",
          "imageheight":560,
          "imagewidth":1190,
          "margin":0,
@@ -970,7 +970,7 @@
                 }, 
                 {
                  "id":7,
-                 "image":"..\/Armas\/Hacha.png",
+                 "image":"..\/weapons\/axe.png",
                  "imageheight":100,
                  "imagewidth":220
                 }],

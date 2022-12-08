@@ -4,48 +4,48 @@
   <export target="LEVEL_04.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="mapa" tilewidth="34" tileheight="34" tilecount="6016" columns="188">
-  <image source="../Nivel_assets_escalados/estacion2Final (2).png" width="6424" height="1120"/>
+  <image source="../level 2-4/estacion2Final (2).png" width="6424" height="1120"/>
  </tileset>
  <tileset firstgid="6017" name="obj" tilewidth="198" tileheight="440" tilecount="19" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="0">
-   <image width="83" height="100" source="../Nivel_assets_escalados/Maletas.png"/>
+   <image width="83" height="100" source="../level 2-4/Maletas.png"/>
   </tile>
   <tile id="1">
-   <image width="98" height="119" source="../Nivel_assets_escalados/Panel.png"/>
+   <image width="98" height="119" source="../level 2-4/Panel.png"/>
   </tile>
   <tile id="2">
-   <image width="55" height="59" source="../Nivel_assets_escalados/Papeles.png"/>
+   <image width="55" height="59" source="../level 2-4/Papeles.png"/>
   </tile>
   <tile id="3">
-   <image width="89" height="28" source="../Nivel_assets_escalados/rata.png"/>
+   <image width="89" height="28" source="../level 2-4/rata.png"/>
   </tile>
   <tile id="4">
-   <image width="110" height="81" source="../Nivel_assets_escalados/señor sin cabeza.png"/>
+   <image width="110" height="81" source="../level 2-4/señor sin cabeza.png"/>
   </tile>
   <tile id="5">
-   <image width="73" height="51" source="../Nivel_assets_escalados/Latas.png"/>
+   <image width="73" height="51" source="../level 2-4/Latas.png"/>
   </tile>
   <tile id="6">
-   <image width="126" height="440" source="../Nivel_assets_escalados/sillones.png"/>
+   <image width="126" height="440" source="../level 2-4/sillones.png"/>
   </tile>
   <tile id="7">
-   <image width="54" height="142" source="../Nivel_assets_escalados/Silla.png"/>
+   <image width="54" height="142" source="../level 2-4/Silla.png"/>
   </tile>
   <tile id="8">
-   <image width="198" height="118" source="../Nivel_assets_escalados/dos carteles.png"/>
+   <image width="198" height="118" source="../level 2-4/dos carteles.png"/>
   </tile>
   <tile id="9">
-   <image width="68" height="118" source="../Nivel_assets_escalados/Basura.png"/>
+   <image width="68" height="118" source="../level 2-4/Basura.png"/>
   </tile>
   <tile id="10">
-   <image width="65" height="52" source="../Nivel_assets_escalados/cabeza.png"/>
+   <image width="65" height="52" source="../level 2-4/cabeza.png"/>
   </tile>
   <tile id="11">
-   <image width="75" height="72" source="../Nivel_assets_escalados/carrito bebe.png"/>
+   <image width="75" height="72" source="../level 2-4/carrito bebe.png"/>
   </tile>
   <tile id="12">
-   <image width="124" height="119" source="../Nivel_assets_escalados/cartel2.png"/>
+   <image width="124" height="119" source="../level 2-4/cartel2.png"/>
   </tile>
   <tile id="13">
    <image width="81" height="67" source="objetos/gato.png"/>

@@ -50,9 +50,9 @@ export default class Boot extends Phaser.Scene {
 
 
 		// Menú inicial........................................................................................
-		this.load.image('start', 'assets/Mapa/start.png');
-		this.load.image('fondo', 'assets/Mapa/menu_bg.png');
-		this.load.image('sangre', 'assets/Mapa/blood.png');
+		this.load.image('start', 'assets/HUD/start.png');
+		this.load.image('fondo', 'assets/menus/menu_bg.png');
+		this.load.image('sangre', 'assets/HUD/blood.png');
 
 		// Introducción................................................................
 		this.load.image('introOutside', 'assets/intro/outside.png');
@@ -60,43 +60,43 @@ export default class Boot extends Phaser.Scene {
 
 
 		// Tilemap........................................................................................
-		this.load.image("tiles","assets/Mapa/mapa2.png");
+		this.load.image("tiles","assets/level 1/mapa2.png");
 		this.load.tilemapTiledJSON('level1',"assets/tilemaps/LEVEL_01.json");
-		this.load.image("tilesLevel2","assets/Nivel_assets_escalados/estacion1.3.png")
+		this.load.image("tilesLevel2","assets/level 2-4/estacion1.3.png")
 		this.load.tilemapTiledJSON('level2',"assets/tilemaps/LEVEL_02.json");
-		this.load.image("tileslevel3","assets/Nivel 3/mapa3.png")
+		this.load.image("tileslevel3","assets/level 3/mapa3.png")
 		this.load.tilemapTiledJSON('level3',"assets/tilemaps/LEVEL_03.json")
-		this.load.image("tilesLevel4","assets/Nivel_assets_escalados/estacion2Final (2).png")
+		this.load.image("tilesLevel4","assets/level 2-4/estacion2Final (2).png")
 		this.load.tilemapTiledJSON('level4',"assets/tilemaps/LEVEL_04.json");
 
 
 		// Decoración........................................................................................
-		this.load.image("Basura","assets/Nivel_assets_escalados/Basura.png");
-		this.load.image("cabeza","assets/Nivel_assets_escalados/cabeza.png");
-		this.load.image("carrito","assets/Nivel_assets_escalados/carrito bebe.png");
-		this.load.image("cartel2","assets/Nivel_assets_escalados/cartel2.png");
-		this.load.image("dos carteles","assets/Nivel_assets_escalados/dos carteles.png");
-		this.load.image("Latas","assets/Nivel_assets_escalados/Latas.png");
-		this.load.image("Maletas","assets/Nivel_assets_escalados/Maletas.png");
-		this.load.image("Panel"  ,"assets/Nivel_assets_escalados/Panel.png");
-		this.load.image("Papeles","assets/Nivel_assets_escalados/Papeles.png");
-		this.load.image("rata","assets/Nivel_assets_escalados/rata.png");
-		this.load.image("señor sin cabeza","assets/Nivel_assets_escalados/señor sin cabeza.png");
-		this.load.image("Silla","assets/Nivel_assets_escalados/Silla.png");
-		this.load.image("sillones","assets/Nivel_assets_escalados/sillones.png");
-		this.load.image("ojo","assets/Nivel 3/ojo.png");
+		this.load.image("Basura","assets/level 2-4/Basura.png");
+		this.load.image("cabeza","assets/level 2-4/cabeza.png");
+		this.load.image("carrito","assets/level 2-4/carrito bebe.png");
+		this.load.image("cartel2","assets/level 2-4/cartel2.png");
+		this.load.image("dos carteles","assets/level 2-4/dos carteles.png");
+		this.load.image("Latas","assets/level 2-4/Latas.png");
+		this.load.image("Maletas","assets/level 2-4/Maletas.png");
+		this.load.image("Panel"  ,"assets/level 2-4/Panel.png");
+		this.load.image("Papeles","assets/level 2-4/Papeles.png");
+		this.load.image("rata","assets/level 2-4/rata.png");
+		this.load.image("señor sin cabeza","assets/level 2-4/señor sin cabeza.png");
+		this.load.image("Silla","assets/level 2-4/Silla.png");
+		this.load.image("sillones","assets/level 2-4/sillones.png");
+		this.load.image("ojo","assets/level 3/ojo.png");
 
 		// Menú de reinicio........................................................................................
-		this.load.image('restartButton', 'assets/Mapa/restart.png');
-		this.load.image('fondoRestart', 'assets/Mapa/restartFondo.png');
+		this.load.image('restartButton', 'assets/HUD/restart.png');
+		this.load.image('fondoRestart', 'assets/HUD/restartFondo.png');
 
 		// Planos del metro........................................................................................
-		this.load.image('map', 'assets/Mapa/metro_map.png');
-		this.load.image('map1', 'assets/Mapa/metro_map_1.png');
-		this.load.image('map2', 'assets/Mapa/metro_map_2.png');
-		this.load.image('map3', 'assets/Mapa/metro_map_3.png');
-		this.load.image('map4', 'assets/Mapa/metro_map_4.png')
-		this.load.image('map5', 'assets/Mapa/metro_map_5.png');
+		this.load.image('map', 'assets/menus/metro_map.png');
+		this.load.image('map1', 'assets/menus/metro_map_1.png');
+		this.load.image('map2', 'assets/menus/metro_map_2.png');
+		this.load.image('map3', 'assets/menus/metro_map_3.png');
+		this.load.image('map4', 'assets/menus/metro_map_4.png')
+		this.load.image('map5', 'assets/menus/metro_map_5.png');
 
 		// HUD........................................................................................
 		this.load.image('heartImg', 'assets/HUD/corazon.png');
@@ -137,10 +137,10 @@ export default class Boot extends Phaser.Scene {
 
 		
 		// Armas........................................................................................
-		this.load.image('navaja', 'assets/Armas/Cuchillo.png', { frameWidth: 210, frameHeight: 480 });
-		this.load.image('botella', 'assets/Armas/Botella.png', { frameWidth: 140, frameHeight: 380 });
-		this.load.image('barra', 'assets/Armas/Barra.png', { frameWidth: 32, frameHeight: 48 });
-		this.load.image('hacha', 'assets/Armas/Hacha.png', { frameWidth: 100, frameHeight: 220 });
+		this.load.image('navaja', 'assets/weapons/knife.png', { frameWidth: 210, frameHeight: 480 });
+		this.load.image('botella', 'assets/weapons/bottle.png', { frameWidth: 140, frameHeight: 380 });
+		this.load.image('barra', 'assets/weapons/bar.png', { frameWidth: 32, frameHeight: 48 });
+		this.load.image('hacha', 'assets/weapons/axe.png', { frameWidth: 100, frameHeight: 220 });
 		
 
 		// Audio........................................................................................

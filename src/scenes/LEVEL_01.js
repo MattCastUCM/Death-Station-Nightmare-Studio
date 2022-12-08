@@ -1,11 +1,11 @@
 import LEVEL_BASE from './LEVEL_BASE.js';
-import CardBoard from '../objetos/cardBoard.js';
-import WoodBox from '../objetos/woodBox.js';
-import Cat from '../objetos/cat.js';
-import Persecutor from '../objetos/persecutor.js';
-import Lanzador from '../objetos/lanzador.js';
-import Trigger from '../objetos/trigger.js';
-import InteractiveObjects from '../objetos/interactiveObjects.js';
+import CardBoard from '../gameObjects/cardBoard.js';
+import WoodBox from '../gameObjects/woodBox.js';
+import Cat from '../gameObjects/enemies/cat.js';
+import Persecutor from '../gameObjects/enemies/persecutor.js';
+import Lanzador from '../gameObjects/enemies/shooter.js';
+import Trigger from '../gameObjects/trigger.js';
+import InteractiveObjects from '../gameObjects/interactiveObjects.js';
 
 export default class LEVEL_01 extends LEVEL_BASE {	
 	/**
@@ -21,6 +21,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 	// Creación de los elementos de la escena
 	create() {
 		super.create();
+		this.scene.start("level4Map");
 
 		//DIALOGMANAGER
 		this.scene.launch('dialogManager');

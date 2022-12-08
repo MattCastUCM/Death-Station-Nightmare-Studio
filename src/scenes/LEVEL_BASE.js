@@ -1,4 +1,4 @@
-import Player from '../objetos/player.js';
+import Player from '../gameObjects/player.js';
 /**
  * Clase base de la que heredan los niveles
  * @extends Phaser.Scene

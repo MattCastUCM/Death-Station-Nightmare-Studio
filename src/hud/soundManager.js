@@ -77,7 +77,7 @@ export default class SoundManager extends Phaser.Scene {
         this.hacha = { volume: 0.2, loop: false }
 
 
-        this.scene.start('menu');
+        this.scene.start('level1Map');
     }
 
 

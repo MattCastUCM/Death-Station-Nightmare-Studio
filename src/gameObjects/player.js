@@ -228,6 +228,7 @@ export default class Player extends gameObject {
     preUpdate(t, dt) {
         // IMPORTANTE llamar al preUpdate del padre para poder ejecutar la animación
         super.preUpdate(t, dt);
+        this.depth = this.fullCollider.y;
 
         // La máscara de iluminación se mueve con el personaje
         this.vision.x = this.x;
