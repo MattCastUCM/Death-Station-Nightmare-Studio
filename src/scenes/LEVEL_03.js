@@ -1,27 +1,27 @@
-import Cat from '../objetos/Cat.js';
-import CardBoard from '../objetos/CartBoard.js';
-import WoodBox from '../objetos/WoodBox.js';
-import Persecutor from '../objetos/Persecutor.js';
-import Lanzador from '../objetos/Lanzador.js';
-import Topo from '../objetos/Topo.js';
-import Trigger from '../objetos/Trigger.js';
-import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
-/**
- * Nivel 3
- * @extends LEVEL_BASE
- */
+import CardBoard from '../objetos/cardBoard.js';
+import WoodBox from '../objetos/woodBox.js';
+import Cat from '../objetos/Cat.js';
+import Persecutor from '../objetos/persecutor.js';
+import Lanzador from '../objetos/lanzador.js';
+import Trigger from '../objetos/trigger.js';
+import InteractiveObjects from '../objetos/InteractiveObjects.js';
+
 export default class LEVEL_03 extends LEVEL_BASE {
+	/**
+	 * Nivel 3
+	 * @extends LEVEL_BASE
+	 */
 	constructor() {
 		let nextlevel="level4Map";
 		super("LEVEL_03",nextlevel,'level3','tileslevel3',560, false);
 	}
-	/**
-	* Creación de los elementos de la escena principal de juego
-	*/
+
+
+	// Creación de los elementos de la escena
 	create() {
 		super.create();
-		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
+		let scene = this; // Nos guardamos una referencia a la escena
 		
         this.dialogManager = this.scene.get('dialogManager');
         this.hud = this.scene.get('hud');
@@ -104,42 +104,37 @@ export default class LEVEL_03 extends LEVEL_BASE {
 		//vision.startFollow(this.personaje);
 		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.player.vision);
 		rt.mask.invertAlpha = true;
-
-
-		//EJEMPLO 2: con Trigger
-		// let trigger1 = new Trigger(this, 300, 200, 30, 600);
-		// this.physics.add.overlap(this.player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
-
-		
-		// //obtener una nueva arma
-		// let nuevaBotella = this.botella = new gameObject(this,7200, 400,200,200,100,0, 'botella',0).setScale(0.2);
-		// this.physics.add.overlap(this.player, nuevaBotella,()=>{this.player.HasNewWeapon('botella');nuevaBotella.destroy();});
-		
+	
 	}
 
-	/*Mandarle a dialogManager el texto que tiene que printear*/
+	
+	// Le manda al DialogManager el texto que tiene que imprimir
 	newText(text) {
-		this.dialogManager.Init(text);
+		this.dialogManager.initDialog(text);
 	}
 
-	restart() {
-		this.hud.quitInventory('barra');
-		this.soundManager.stopBGM("level3");
-		this.scene.start('LEVEL_03');
-	}
 
-	/*Informa al player y al hud*/
+	// Informa al jugador y al HUD que ha bajado la vida
 	DecreaseLife(player) {
 		this.hud.changeLifeValue(player.hp);
-		if(player.hp<=0){
-			this.hud.quitInventory('barra');
-			this.scene.start('restart', { me: this }); 
-			this.soundManager.stopBGM("level3");
+		if (player.hp <= 0) {
+			this.hud.quitInventory('hacha');
+			this.scene.start('restart', { me: this });
+			this.soundManager.stopBGM("level1");
+
 		}
-		
+
 	}
 
-	/*Para pausar el dialogManager , llamado por el hud*/
+
+	restart() {
+		this.hud.quitInventory('hacha');
+		this.soundManager.stopBGM("level1");
+		this.scene.start('LEVEL_01');
+	}
+	
+	
+	// Pausa el DialogManager (llamado por el HUD)
 	pauseDialog() {
 		this.dialogManager.scene.pause();
 	}

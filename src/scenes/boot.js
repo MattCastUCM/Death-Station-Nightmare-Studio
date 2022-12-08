@@ -1,9 +1,9 @@
-/**
-* Escena inicial en la que se cargan todos
-* los assets necesarios para ejecutar el juego
-* @extends Phaser.Scene
-*/
 export default class Boot extends Phaser.Scene {
+	/**
+	 * Escena inicial en la que se cargan todos
+	 * los assets necesarios para ejecutar el juego
+	 * @extends Phaser.Scene
+	 */
 	constructor() {
 		super({ key: 'boot' });
 	}
@@ -85,7 +85,6 @@ export default class Boot extends Phaser.Scene {
 		this.load.image("Silla","assets/Nivel_assets_escalados/Silla.png");
 		this.load.image("sillones","assets/Nivel_assets_escalados/sillones.png");
 		this.load.image("ojo","assets/Nivel 3/ojo.png");
-
 
 		// Menú de reinicio........................................................................................
 		this.load.image('restartButton', 'assets/Mapa/restart.png');
@@ -189,8 +188,8 @@ export default class Boot extends Phaser.Scene {
 		
 		// Menú........................................................................................
 		this.load.audio('click', 'assets/audio/soundEffects/menu/click.mp3');
-		this.load.audio('dialogueJump', 'assets/audio/soundEffects/menu/dialogueJump.mp3');
-		this.load.audio('dialoguePop', 'assets/audio/soundEffects/menu/dialoguePop.mp3');
+		this.load.audio('dialogJump', 'assets/audio/soundEffects/menu/dialogJump.mp3');
+		this.load.audio('dialogPop', 'assets/audio/soundEffects/menu/dialogPop.mp3');
 		
 		// Objetos interactuables........................................................................................
 		this.load.image('rataInmunda', 'assets/enemies/rock.png');

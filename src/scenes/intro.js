@@ -1,17 +1,18 @@
 import LEVEL_BASE from './LEVEL_BASE.js';
+
 /**
- * Escenas introductorias.
+ * Escenas introductorias
  * @extends LEVEL_BASE
  */
+
 export class intro1 extends LEVEL_BASE {
 	constructor() {
 		let nextlevel = "intro2";
 		super("intro1", nextlevel, '', '', 560, true);
 	}
 
-	/**
-	* Creación de los elementos de la escena
-	*/
+
+	// Creación de los elementos de la escena
 	create() {
 		super.create();
 
@@ -29,9 +30,9 @@ export class intro1 extends LEVEL_BASE {
 		this.soundManager = this.scene.get('soundManager');
 		this.soundManager.playBGM("ambient");
 
-		// DialogueManager
+		// DialogManager
 		this.scene.launch('dialogManager');
-		this.dialogueManager = this.scene.get('dialogManager');
+		this.dialogManager = this.scene.get('dialogManager');
 
 		// Jugador (con input desactivado)
 		this.player.setPosition(-50, 350)
@@ -91,13 +92,13 @@ export class intro1 extends LEVEL_BASE {
 			setTimeout( ()=>{this.cameras.main.fadeOut(500, 0, 0, 0);}, 1000);
 		}
 
-		if(this.events[3] && this.player.body.velocity.x === 0 && this.player.body.velocity.y === 0){
+		if(this.events[2] && this.player.body.velocity.x === 0 && this.player.body.velocity.y === 0){
 			this.player.setFrame(13);
 		}
 	}
 
 	newText(text) {
-		this.dialogueManager.Init(text);
+		this.dialogManager.initDialog(text);
 	}
 }
 
@@ -107,7 +108,9 @@ export class intro2 extends LEVEL_BASE {
 		let nextlevel = "level1Map";
 		super("intro2", nextlevel, '', '', 560, true);
 	}
+	
 
+	// Creación de los elementos de la escena
 	create() {
 		super.create();
 
@@ -127,9 +130,9 @@ export class intro2 extends LEVEL_BASE {
 		this.soundManager = this.scene.get('soundManager');
 
 
-		// DialogueManager
+		// DialogManager
 		this.scene.launch('dialogManager');
-		this.dialogueManager = this.scene.get('dialogManager');
+		this.dialogManager = this.scene.get('dialogManager');
 
 		// Jugador (con input desactivado)
 		this.player.setPosition(350, 230)
@@ -198,7 +201,7 @@ export class intro2 extends LEVEL_BASE {
 	}
 
 	newText(text) {
-		this.dialogueManager.Init(text);
+		this.dialogManager.initDialog(text);
 	}
 
 }

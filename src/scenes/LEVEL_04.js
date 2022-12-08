@@ -1,28 +1,29 @@
-import Cat from '../objetos/Cat.js';
-import CardBoard from '../objetos/CartBoard.js';
-import WoodBox from '../objetos/WoodBox.js';
-import Persecutor from '../objetos/Persecutor.js';
-import Lanzador from '../objetos/Lanzador.js';
-import Topo from '../objetos/Topo.js';
-import Trigger from '../objetos/Trigger.js';
-import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
-/**
- * Nivel 4
- * @extends LEVEL_BASE
- */
+import CardBoard from '../objetos/cardBoard.js';
+import WoodBox from '../objetos/woodBox.js';
+import Cat from '../objetos/Cat.js';
+import Persecutor from '../objetos/persecutor.js';
+import Lanzador from '../objetos/lanzador.js';
+import Trigger from '../objetos/trigger.js';
+import InteractiveObjects from '../objetos/InteractiveObjects.js';
+
 export default class LEVEL_04 extends LEVEL_BASE {
+	/**
+	 * Nivel 4
+	 * @extends LEVEL_BASE
+	 */
 	constructor() {
 		let nextlevel="endMap";
 		super("LEVEL_04",nextlevel,'level4','tilesLevel4',6015);
 	}
-	/**
-	* Creación de los elementos de la escena principal de juego
-	*/
+	
+	
+	// Creación de los elementos de la escena
 	create() {
 		super.create();
 		
-		let scene = this; // Nos guardamos una referencia a la escena para usarla en la función anidada que viene a continuación
+		let scene = this; // Nos guardamos una referencia a la escena
+		
         this.dialogManager = this.scene.get('dialogManager');
         this.hud = this.scene.get('hud');
 		this.hud.scene.setVisible(true);
@@ -145,41 +146,42 @@ export default class LEVEL_04 extends LEVEL_BASE {
 		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.player.vision);
 		//invertir lo que se ver 
 		rt.mask.invertAlpha = true;
-		
 
-
-
-		
-		
 	}
 
-	/*Mandarle a dialogManager el texto que tiene que printear*/
+	
+	// Le manda al DialogManager el texto que tiene que imprimir
 	newText(text) {
-		this.dialogManager.Init(text);
+		this.dialogManager.initDialog(text);
 	}
 
 
-	/*Informa al player y al hud*/
+	// Informa al jugador y al HUD que ha bajado la vida
 	DecreaseLife(player) {
 		this.hud.changeLifeValue(player.hp);
-		if(player.hp<=0){
-			this.scene.start('restart', { me: this }); 
-			this.soundManager.stopBGM("level4");
+		if (player.hp <= 0) {
+			this.hud.quitInventory('hacha');
+			this.scene.start('restart', { me: this });
+			this.soundManager.stopBGM("level1");
+
 		}
+
 	}
 
-	/*Para pausar el dialogManager , llamado por el hud*/
+
+	restart() {
+		this.hud.quitInventory('hacha');
+		this.soundManager.stopBGM("level1");
+		this.scene.start('LEVEL_01');
+	}
+	
+	
+	// Pausa el DialogManager (llamado por el HUD)
 	pauseDialog() {
 		this.dialogManager.scene.pause();
 	}
 	resumeDialog() {
 		this.dialogManager.scene.resume();
-	}
-
-	update(t, dt) {
-		
-		//this.scene.start('menu'); 
-		
 	}
 
 }

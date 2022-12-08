@@ -1,28 +1,24 @@
-import Cat from '../objetos/Cat.js';
-import CardBoard from '../objetos/CartBoard.js';
-import WoodBox from '../objetos/WoodBox.js';
-import Persecutor from '../objetos/Persecutor.js';
-import Lanzador from '../objetos/Lanzador.js';
-import Trigger from '../objetos/Trigger.js';
-import gameObject from '../objetos/gameObject.js';
 import LEVEL_BASE from './LEVEL_BASE.js';
-
+import CardBoard from '../objetos/cardBoard.js';
+import WoodBox from '../objetos/woodBox.js';
+import Cat from '../objetos/Cat.js';
+import Persecutor from '../objetos/persecutor.js';
+import Lanzador from '../objetos/lanzador.js';
+import Trigger from '../objetos/trigger.js';
 import InteractiveObjects from '../objetos/InteractiveObjects.js';
 
-
-/**
- * Nivel 1
- * @extends LEVEL_BASE
- */
-export default class LEVEL_01 extends LEVEL_BASE {
+export default class LEVEL_01 extends LEVEL_BASE {	
+	/**
+	 * Nivel 1
+	 * @extends LEVEL_BASE
+	 */
 	constructor() {
 		let nextlevel = "level2Map";
 		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560, false);
-
 	}
-	/**
-	 * Creación de los elementos de la escena principal de juego
-	 */
+
+
+	// Creación de los elementos de la escena
 	create() {
 		super.create();
 
@@ -87,21 +83,18 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		let hacha = this.map.createFromObjects('objetos', [{ name: 'hacha', key: 'hacha' }]);
 		scene.physics.add.existing(hacha[0]);
 		scene.physics.add.overlap(this.player, hacha[0], () => { this.newText(["Hay un hacha, quizás pueda usarlo para romper las cajas de madera..."]);this.player.HasNewWeapon('hacha'); hacha[0].destroy(); });
-
-
 		
-		let pruebaInteractiveObject = new InteractiveObjects(this, 200, 400, 20, 20, 0, 0, 'rataInmunda', 0, ["Prueba de rata"], this.player);
+		let pruebaInteractiveObject = new InteractiveObjects(this, 200, 400, 20, 20, 0, 0, 'rataInmunda', ["Prueba de rata"], this.player);
 	}
 
 
-	/*Mandarle a dialogManager el texto que tiene que printear*/
+	// Le manda al DialogManager el texto que tiene que imprimir
 	newText(text) {
-		this.dialogManager.Init(text);
+		this.dialogManager.initDialog(text);
 	}
 
 
-
-	/*Informa al player y al hud*/
+	// Informa al jugador y al HUD que ha bajado la vida
 	DecreaseLife(player) {
 		this.hud.changeLifeValue(player.hp);
 		if (player.hp <= 0) {
@@ -113,13 +106,15 @@ export default class LEVEL_01 extends LEVEL_BASE {
 
 	}
 
+
 	restart() {
 		this.hud.quitInventory('hacha');
 		this.soundManager.stopBGM("level1");
 		this.scene.start('LEVEL_01');
 	}
+	
 
-	/*Para pausar el dialogManager , llamado por el hud*/
+	// Pausa el DialogManager (llamado por el HUD)
 	pauseDialog() {
 		this.dialogManager.scene.pause();
 	}
