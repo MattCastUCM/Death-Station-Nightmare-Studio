@@ -60,8 +60,8 @@ export default class SoundManager extends Phaser.Scene {
         this.persecutorHurt = creatures;
         this.lanzadorHurt = { volume: 0.05, loop: false }
         this.lanzadorThrow = objects;
-        this.cat1 = { volume: 0.03, loop: false }
-        this.cat2 = { volume: 0.03, loop: false }
+        this.cat1 = { volume: 0.02, loop: false }
+        this.cat2 = { volume: 0.02, loop: false }
 
         this.playerHurt = { volume: 0.5, loop: false }
         this.selectWeapon = { volume: 0.08, loop: false }

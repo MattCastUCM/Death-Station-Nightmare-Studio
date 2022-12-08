@@ -85,7 +85,6 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		scene.physics.add.existing(hacha[0]);
 		scene.physics.add.overlap(this.player, hacha[0], () => { this.newText(["Hay un hacha, quizás pueda usarlo para romper las cajas de madera..."]);this.player.HasNewWeapon('hacha'); hacha[0].destroy(); });
 		
-		let pruebaInteractiveObject = new InteractiveObjects(this, 200, 400, 20, 20, 'rataInmunda', ["Prueba de rata"], this.player);
 	}
 
 

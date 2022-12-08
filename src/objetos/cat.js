@@ -21,7 +21,7 @@ export default class Cat extends gameObject {
 		this.maxPlayerOffset = 1.5 * scene.sys.game.canvas.width; 		// La máxima distancia que se puede alejar del player
 
 		this.soundCounter = 0; 		// Contador para emitir sonido
-		this.soundMax = 200;		// Frecuencia de emisión de sonido 
+		this.soundMax = 300;		// Frecuencia de emisión de sonido 
 		this.growlSound = ["cat1", "cat2"];
 
 
@@ -130,7 +130,7 @@ export default class Cat extends gameObject {
 		// Gestiona el sonido
 		this.soundCounter++;
 		if (this.soundCounter > this.soundMax) {
-			this.soundMax = Phaser.Math.Between(300, 600); 		// Para que la frecuencia sea aleatoria
+			this.soundMax = Phaser.Math.Between(600, 1200); 		// Para que la frecuencia sea aleatoria
 			this.soundCounter = 0;
 			
 			// Elige entre 3 audios diferentes
