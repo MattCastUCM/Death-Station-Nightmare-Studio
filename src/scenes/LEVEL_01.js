@@ -13,7 +13,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 	 * @extends LEVEL_BASE
 	 */
 	constructor() {
-		let nextlevel = "level2Map";
+		let nextlevel = "level4Map";
 		super("LEVEL_01", nextlevel, 'level1', 'tiles', 560, false);
 	}
 
