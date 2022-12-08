@@ -31,7 +31,7 @@ export default class LEVEL_04 extends LEVEL_BASE {
         this.hud.changeLevel(4,this);
 		this.soundManager.playBGM("level4");
 		this.player.weaponManager.nextLevel(true,true,true);
-		this.player.vision.setScale(6);
+		this.player.vision.setScale(3);
 
 		//this.player.setPosition(159,371);
 
