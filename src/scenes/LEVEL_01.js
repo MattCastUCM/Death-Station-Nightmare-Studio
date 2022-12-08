@@ -76,14 +76,37 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		});
 
 
-		//EJEMPLO 2: con Trigger
-		let trigger1 = new Trigger(scene, 300, 200, 30, 600);
-		this.physics.add.overlap(this.player, trigger1, function () { scene.newText(["Dónde estoy", "Soy idiota"]); trigger1.destroy(); }); //array de strings
-
 		//obtener una nueva arma
 		let hacha = this.map.createFromObjects('objetos', [{ name: 'hacha', key: 'hacha' }]);
 		scene.physics.add.existing(hacha[0]);
 		scene.physics.add.overlap(this.player, hacha[0], () => { this.newText(["Hay un hacha, quizás pueda usarlo para romper las cajas de madera..."]);this.player.HasNewWeapon('hacha'); hacha[0].destroy(); });
+		
+		
+		// Monólogo inicial
+		this.input.keyboard.enabled = false;
+		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_IN_COMPLETE, (cam, effect) => {
+			setTimeout(()=>{
+				this.player.move(1,0);
+
+				setTimeout( ()=>{
+					this.player.move(0,-1);
+					
+					setTimeout( ()=>{
+						this.player.move(0,1);
+
+						setTimeout( ()=>{
+							this.player.move(0,0);
+							this.input.keyboard.enabled = true;
+							this.newText(["¿Dónde estoy...?", 
+							"Lo último que recuerdo es que me quedé dormido en el tren...",
+							"¿Me he pasado de parada...?", "¿Y por qué no hay nadie aquí?",
+							"Como sea, tengo que encontrar una manera de salir de aquí."])
+						}, 1000);
+					}, 1000);
+				}, 1000);
+			}, 500);	
+		});
+
 		
 	}
 
@@ -121,7 +144,6 @@ export default class LEVEL_01 extends LEVEL_BASE {
 	resumeDialog() {
 		this.dialogManager.scene.resume();
 	}
-
 
 }
 

@@ -37,7 +37,6 @@ export default class Menu extends Phaser.Scene {
 
 		// Escuchamos los eventos del ratón cuando interactual con nuestro sprite de "Start"
 	    sprite.on('pointerdown', pointer => {
-	    	console.log("pulsando");
 			this.soundManager.play("click");
 	    });
 		

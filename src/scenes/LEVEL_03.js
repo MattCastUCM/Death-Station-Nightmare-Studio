@@ -80,7 +80,6 @@ export default class LEVEL_03 extends LEVEL_BASE {
 	    let barra = this.map.createFromObjects('objetos', [{ name: 'barra',  key: 'barra' }]);
 		scene.physics.add.existing(barra[0]);
 		barra[0].body.setSize(50,300,true);
-		console.log(barra[0]);
 		scene.physics.add.overlap(this.player, barra[0], () => { this.player.HasNewWeapon('barra'); barra[0].destroy(); });
 
 

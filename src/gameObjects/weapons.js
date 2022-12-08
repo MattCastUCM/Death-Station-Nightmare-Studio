@@ -158,7 +158,6 @@ export default class WeaponManager extends gameObject {
             four: Phaser.Input.Keyboard.KeyCodes.FOUR
         })
 
-        console.log(this);
     }
 
     //se informa de que se ha desbloqueado una arma
@@ -205,7 +204,6 @@ export default class WeaponManager extends gameObject {
     }
 
     collision(self, obj1, obj2) {
-        //console.log("colisión con : ", obj2);
         if (self._attack.isAttacking) {
             // Si no existe la propiedad "damage", se ejecuta la segunda función
             //(obj2.damage || function() { console.log(obj2, "No tiene método damage"); })();

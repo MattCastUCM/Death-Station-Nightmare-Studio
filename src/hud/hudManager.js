@@ -133,7 +133,6 @@ export default class HUD extends Phaser.Scene {
     
     // Indica a qué arma se ha cambiado (llamado por el player)
     changeObject(weapon) {
-        // console.log(weapon);
         this.selectedFrame.x = this[weapon].x;
         this.selectedFrame.y = this[weapon].y;
     }

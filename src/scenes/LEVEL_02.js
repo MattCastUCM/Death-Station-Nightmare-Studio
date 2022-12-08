@@ -156,6 +156,21 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		new InteractiveObjects(this, 1900, 1800, 200, 100, '', ["Por aquí tampoco puedo pasar"], this.player);
 
 		new InteractiveObjects(this, 1200, 300, 100, 100, 'ojo', ["Ey,tú qué mirah"], this.player);
+	
+	
+		// Monólogo inicial
+		this.input.keyboard.enabled = false;
+		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_IN_COMPLETE, (cam, effect) => {
+			setTimeout(()=>{
+				this.player.move(0,1);
+
+				setTimeout( ()=>{
+					this.player.move(0,0);
+					this.input.keyboard.enabled = true;
+					this.newText(["¿Esto también está vacío?", "¿Dónde he ido a parar...?"]);
+				}, 1000);
+			}, 500);	
+		});
 	}
 
 
