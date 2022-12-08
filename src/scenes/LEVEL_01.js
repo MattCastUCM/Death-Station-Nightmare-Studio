@@ -21,7 +21,6 @@ export default class LEVEL_01 extends LEVEL_BASE {
 	// Creación de los elementos de la escena
 	create() {
 		super.create();
-		this.scene.start("level4Map");
 
 		//DIALOGMANAGER
 		this.scene.launch('dialogManager');
