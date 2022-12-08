@@ -161,7 +161,10 @@ export default class LEVEL_04 extends LEVEL_BASE {
 	DecreaseLife(player) {
 		this.hud.changeLifeValue(player.hp);
 		if (player.hp <= 0) {
-			this.restart();
+	
+			this.scene.start('restart', { me: this });
+			this.soundManager.stopBGM("level4");
+
 
 		}
 
