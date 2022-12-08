@@ -1,4 +1,4 @@
-import Enemy from './Enemy.js';
+import Enemy from './enemy.js';
 
 export default class Topo extends Enemy {
 	/**

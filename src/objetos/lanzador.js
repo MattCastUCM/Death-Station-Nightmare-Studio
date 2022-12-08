@@ -1,4 +1,4 @@
-import Enemy from './Enemy.js';
+import Enemy from './enemy.js';
 import Bullet from './bullet.js';
 
 export default class Lanzador extends Enemy {

@@ -1,11 +1,11 @@
 import LEVEL_BASE from './LEVEL_BASE.js';
 import CardBoard from '../objetos/cardBoard.js';
 import WoodBox from '../objetos/woodBox.js';
-import Cat from '../objetos/Cat.js';
+import Cat from '../objetos/cat.js';
 import Persecutor from '../objetos/persecutor.js';
 import Lanzador from '../objetos/lanzador.js';
 import Trigger from '../objetos/trigger.js';
-import InteractiveObjects from '../objetos/InteractiveObjects.js';
+import InteractiveObjects from '../objetos/interactiveObjects.js';
 
 export default class LEVEL_01 extends LEVEL_BASE {	
 	/**
@@ -40,6 +40,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 
 		let scene = this; // Nos guardamos una referencia a la escena
 
+
 		//Gato
 		let gato = new Cat(this, 200, 400);
 		gato.setScale(1.2);
@@ -60,16 +61,16 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		});
 
 		// Persecutores
-		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [{ gid: 564, classType: Persecutor, key: 'persecutor' }]);
-		EmenyPersecutorArray.forEach(obj => {
+		let EnemyPersecutorArray = this.map.createFromObjects('objetos', [{ gid: 564, classType: Persecutor, key: 'persecutor' }]);
+		EnemyPersecutorArray.forEach(obj => {
 			obj.setScale(2);
 		});
-		this.enemies.addMultiple(EmenyPersecutorArray);
+		this.enemies.addMultiple(EnemyPersecutorArray);
 
 		// Lanzadores
-		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 565, classType: Lanzador, key: 'lanzador' }]);	
-		this.enemies.addMultiple(EmenyLanzadorArray);
-		EmenyLanzadorArray.forEach(obj => {
+		let EnemyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 565, classType: Lanzador, key: 'lanzador' }]);	
+		this.enemies.addMultiple(EnemyLanzadorArray);
+		EnemyLanzadorArray.forEach(obj => {
 			obj.setScale(2.5);
 			obj.body.setImmovable();
 		});
@@ -84,7 +85,7 @@ export default class LEVEL_01 extends LEVEL_BASE {
 		scene.physics.add.existing(hacha[0]);
 		scene.physics.add.overlap(this.player, hacha[0], () => { this.newText(["Hay un hacha, quizás pueda usarlo para romper las cajas de madera..."]);this.player.HasNewWeapon('hacha'); hacha[0].destroy(); });
 		
-		let pruebaInteractiveObject = new InteractiveObjects(this, 200, 400, 20, 20, 0, 0, 'rataInmunda', ["Prueba de rata"], this.player);
+		let pruebaInteractiveObject = new InteractiveObjects(this, 200, 400, 20, 20, 'rataInmunda', ["Prueba de rata"], this.player);
 	}
 
 

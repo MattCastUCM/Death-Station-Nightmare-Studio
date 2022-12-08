@@ -10,12 +10,9 @@ export default class InteractiveObjects extends gameObject {
      * @param {number} y - coordenada y
      * @param {number} w - ancho
      * @param {number} h - alto
-     * @param {number} offsetX - distancia entre la x del sprite y la x de su collider
-     * @param {number} offsetY - distancia entre la y del sprite y la y de su collider
-     * @param {number} offsetY - distancia entre la y del sprite y la y de su collider
      */
-    constructor(scene, x, y, w, h, offsetX, offsetY, texture, text, target) {
-        super(scene, x, y, w, h, offsetX, offsetY, texture, 0);
+    constructor(scene, x, y, w, h, texture, text, target) {
+        super(scene, x, y, w, h, 0, 0, texture, 0);
 
         this.exclamation = this.scene.add.image(this.body.x - this.displayWidth/2,this.body.y - this.displayHeight * 2,'exclamation').setScale(0.2).setOrigin(0,0); 
         this.exclamation.depth = 10000;

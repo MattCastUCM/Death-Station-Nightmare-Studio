@@ -1,11 +1,11 @@
 import LEVEL_BASE from './LEVEL_BASE.js';
 import CardBoard from '../objetos/cardBoard.js';
 import WoodBox from '../objetos/woodBox.js';
-import Cat from '../objetos/Cat.js';
+import Cat from '../objetos/cat.js';
 import Persecutor from '../objetos/persecutor.js';
 import Lanzador from '../objetos/lanzador.js';
 import Trigger from '../objetos/trigger.js';
-import InteractiveObjects from '../objetos/InteractiveObjects.js';
+import InteractiveObjects from '../objetos/interactiveObjects.js';
 
 export default class LEVEL_02 extends LEVEL_BASE {
 	/**
@@ -22,8 +22,8 @@ export default class LEVEL_02 extends LEVEL_BASE {
 	create() {
 		super.create();
 		let scene = this; // Nos guardamos una referencia a la escena
-		
-        this.dialogManager = this.scene.get('dialogManager');
+
+		this.dialogManager = this.scene.get('dialogManager');
         this.hud = this.scene.get('hud');
 		this.hud.scene.setVisible(true);
         this.hud.changeLevel(2, this);
@@ -47,17 +47,17 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		});
 
 		// Persecutores
-		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [{ gid: 1397, classType: Persecutor, key: 'persecutor' }] );
-		EmenyPersecutorArray.forEach(obj => {
+		let EnemyPersecutorArray = this.map.createFromObjects('objetos', [{ gid: 1397, classType: Persecutor, key: 'persecutor' }] );
+		EnemyPersecutorArray.forEach(obj => {
 			obj.setScale(2);
 		});
-		this.enemies.addMultiple(EmenyPersecutorArray);
+		this.enemies.addMultiple(EnemyPersecutorArray);
 		
 		// Lanzadores
-		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 1398, classType: Lanzador, key: 'lanzador' }]);
+		let EnemyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 1398, classType: Lanzador, key: 'lanzador' }]);
 		
-		this.enemies.addMultiple(EmenyLanzadorArray);
-		EmenyLanzadorArray.forEach(obj => {
+		this.enemies.addMultiple(EnemyLanzadorArray);
+		EnemyLanzadorArray.forEach(obj => {
 			obj.setScale(2.5);
 			obj.body.setImmovable();
 		});
@@ -123,36 +123,36 @@ export default class LEVEL_02 extends LEVEL_BASE {
 
 		// Objetos interactivos:
 		// Panel de estación
-		new InteractiveObjects(this, 80, 450, 140, 140, '', ["¿Desde cuándo había tantas estaciones?", "¿Estaré soñando?"], this.player);
-		new InteractiveObjects(this, 1700, 660, 200, 140, '', ["Haber en qué estación estamos...", "Creo que es isifihfeowfhooajdw"], this.player);
+		new InteractiveObjects(this, 80, 450, 140, 140,'', ["¿Desde cuándo había tantas estaciones?", "¿Estaré soñando?"], this.player);
+		new InteractiveObjects(this, 1700, 660, 200, 140,'', ["A ver en qué estación estamos...", "Creo que es isifihfeowfhooajdw"], this.player);
 
 		// Pizarra
-		new InteractiveObjects(this, 2150, 643, 140, 140, '', ["¿Quién habrá puesto esto?", "No seré yo..."], this.player);
+		new InteractiveObjects(this, 2150, 643, 140, 140, '', ["¿Quién habrá puesto esto?", "No habré sido yo..."], this.player);
 
 		// Papelera
-		new InteractiveObjects(this, 50, 840, 80, 60, '', ["A ver qué hay aquí...", "Uy, un examen que ha sacado un 0"], this.player);
-		new InteractiveObjects(this, 50, 1600, 80, 100, '', ["Uffffffff qué mal huele"], this.player);
+		new InteractiveObjects(this, 50, 840, 80, 60,'', ["A ver qué hay aquí...", "Uy, un examen que en el que han sacado un 0"], this.player);
+		new InteractiveObjects(this, 50, 1600, 80, 100,'', ["Uffffffff qué mal huele"], this.player);
 
 		// Cabeza
 		new InteractiveObjects(this, 30, 1850, 80, 80, '', ["Ay, que se le ha salido un ojo"], this.player);
 		new InteractiveObjects(this, 2350, 750, 80, 80, '', ["Me gusta su ojo"], this.player);
-		new InteractiveObjects(this, 2400, 1850, 80, 80, '', ["¿Qué es lo que le sale de su boca?", "Ohh, coca cola"], this.player);
+		new InteractiveObjects(this, 2400, 1850, 80, 80, '', ["¿Qué es lo que le sale de su boca?", "Ohhh, coca cola"], this.player);
 
 		// Rata
-		new InteractiveObjects(this, 40, 940, 100, 50, '', ["Miau,miau", "Ah no, si es una rata", "Yiuuu"], this.player);
+		new InteractiveObjects(this, 40, 940, 100, 50,'', ["Miau, miau", "Ah no, si es una rata", "Yiuuu"], this.player);
 
 		// Bebé
 		new InteractiveObjects(this, 2850, 400, 80, 80, '', ["¿Porqué la cabeza de este bebé es cuadrada?", "Será el hijo de Steve"], this.player);
 
 		// Maleta
-		new InteractiveObjects(this, 2750, 1100, 100, 100, '', ["Malditas maletas que me tapan el camino"], this.player);
+		new InteractiveObjects(this, 2750, 1100, 100, 100,'', ["Malditas maletas que me tapan el camino"], this.player);
 		new InteractiveObjects(this, 1300, 1200, 200, 200, '', ["Porqué hay tantas maletaaaas", "Arrrghhhh"], this.player);
 
 		// Hombre sin cabeza
-		new InteractiveObjects(this, 1900, 1250, 80, 80, '', ["Pobre hombre", "Me suena haber visto su cabeza..."], this.player);
+		new InteractiveObjects(this, 1900, 1250, 80, 80,'', ["Pobre hombre", "Me suena haber visto su cabeza..."], this.player);
 
 		// Lata
-		new InteractiveObjects(this, 2600, 1140, 80, 80, '', ["Dentro hay restos de aceitunas"], this.player);
+		new InteractiveObjects(this, 2600, 1140, 80, 80,'', ["Dentro hay restos de aceitunas"], this.player);
 		new InteractiveObjects(this, 1900, 1800, 200, 100, '', ["Por aquí tampoco puedo pasar"], this.player);
 
 		new InteractiveObjects(this, 1200, 300, 100, 100, 'ojo', ["Ey,tú qué mirah"], this.player);

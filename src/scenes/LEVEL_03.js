@@ -1,11 +1,12 @@
 import LEVEL_BASE from './LEVEL_BASE.js';
 import CardBoard from '../objetos/cardBoard.js';
 import WoodBox from '../objetos/woodBox.js';
-import Cat from '../objetos/Cat.js';
+import Cat from '../objetos/cat.js';
 import Persecutor from '../objetos/persecutor.js';
 import Lanzador from '../objetos/lanzador.js';
+import Topo from '../objetos/topo.js';
 import Trigger from '../objetos/trigger.js';
-import InteractiveObjects from '../objetos/InteractiveObjects.js';
+import InteractiveObjects from '../objetos/interactiveObjects.js';
 
 export default class LEVEL_03 extends LEVEL_BASE {
 	/**
@@ -54,26 +55,26 @@ export default class LEVEL_03 extends LEVEL_BASE {
 		});
 
 		// Persecutores
-		let EmenyPersecutorArray = this.map.createFromObjects('objetos', [{ gid: 563, classType: Persecutor, key: 'persecutor' }] );
-		EmenyPersecutorArray.forEach(obj => {
+		let EnemyPersecutorArray = this.map.createFromObjects('objetos', [{ gid: 563, classType: Persecutor, key: 'persecutor' }] );
+		EnemyPersecutorArray.forEach(obj => {
 			obj.setScale(2);
 		});
-		this.enemies.addMultiple(EmenyPersecutorArray);
+		this.enemies.addMultiple(EnemyPersecutorArray);
 		
 		// Lanzadores
-		let EmenyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 564, classType: Lanzador, key: 'lanzador' }]);
-		this.enemies.addMultiple(EmenyLanzadorArray);
-		EmenyLanzadorArray.forEach(obj => {
+		let EnemyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 564, classType: Lanzador, key: 'lanzador' }]);
+		this.enemies.addMultiple(EnemyLanzadorArray);
+		EnemyLanzadorArray.forEach(obj => {
 			obj.setScale(2.5);
 			obj.body.setImmovable();
 		});
 
 		// Topos
-        let EmenyTopoArray=this.map.createFromObjects('objetos',[{ gid:565, classType: Topo,key:'topo' }] );
-        EmenyTopoArray.forEach(element => {
+        let EnemyTopoArray=this.map.createFromObjects('objetos',[{ gid:565, classType: Topo,key:'topo' }] );
+        EnemyTopoArray.forEach(element => {
             element.setScale(2);
         });
-       this.enemies.addMultiple(EmenyTopoArray);
+       this.enemies.addMultiple(EnemyTopoArray);
 
 
 	    let barra = this.map.createFromObjects('objetos', [{ name: 'barra',  key: 'barra' }]);
