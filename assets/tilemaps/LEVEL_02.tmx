@@ -6,47 +6,47 @@
  <tileset firstgid="1" name="dec" tilewidth="198" tileheight="440" tilecount="13" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="4" class="Basura">
-   <image width="68" height="118" source="../Nivel_assets_escalados/Basura.png"/>
+   <image width="68" height="118" source="../level 2-4/Basura.png"/>
   </tile>
   <tile id="6" class="carrito">
-   <image width="75" height="72" source="../Nivel_assets_escalados/carrito bebe.png"/>
+   <image width="75" height="72" source="../level 2-4/carrito bebe.png"/>
   </tile>
   <tile id="7" class="latas">
-   <image width="73" height="51" source="../Nivel_assets_escalados/Latas.png"/>
+   <image width="73" height="51" source="../level 2-4/Latas.png"/>
   </tile>
   <tile id="8" class="maletas">
-   <image width="83" height="100" source="../Nivel_assets_escalados/Maletas.png"/>
+   <image width="83" height="100" source="../level 2-4/Maletas.png"/>
   </tile>
   <tile id="9" class="panel">
-   <image width="98" height="119" source="../Nivel_assets_escalados/Panel.png"/>
+   <image width="98" height="119" source="../level 2-4/Panel.png"/>
   </tile>
   <tile id="10" class="papeles">
-   <image width="55" height="59" source="../Nivel_assets_escalados/Papeles.png"/>
+   <image width="55" height="59" source="../level 2-4/Papeles.png"/>
   </tile>
   <tile id="11" class="rata">
-   <image width="89" height="28" source="../Nivel_assets_escalados/rata.png"/>
+   <image width="89" height="28" source="../level 2-4/rata.png"/>
   </tile>
   <tile id="12" class="señor">
-   <image width="110" height="81" source="../Nivel_assets_escalados/señor sin cabeza.png"/>
+   <image width="110" height="81" source="../level 2-4/señor sin cabeza.png"/>
   </tile>
   <tile id="13" class="silla">
-   <image width="54" height="142" source="../Nivel_assets_escalados/Silla.png"/>
+   <image width="54" height="142" source="../level 2-4/Silla.png"/>
   </tile>
   <tile id="14" class="sillones">
-   <image width="126" height="440" source="../Nivel_assets_escalados/sillones.png"/>
+   <image width="126" height="440" source="../level 2-4/sillones.png"/>
   </tile>
   <tile id="15" class="doscarteles">
-   <image width="198" height="118" source="../Nivel_assets_escalados/dos carteles.png"/>
+   <image width="198" height="118" source="../level 2-4/dos carteles.png"/>
   </tile>
   <tile id="16" class="cartel">
-   <image width="124" height="119" source="../Nivel_assets_escalados/cartel2.png"/>
+   <image width="124" height="119" source="../level 2-4/cartel2.png"/>
   </tile>
   <tile id="17" class="cabeza">
-   <image width="65" height="52" source="../Nivel_assets_escalados/cabeza.png"/>
+   <image width="65" height="52" source="../level 2-4/cabeza.png"/>
   </tile>
  </tileset>
  <tileset firstgid="19" name="mapa" tilewidth="34" tileheight="34" tilecount="1376" columns="43">
-  <image source="../Nivel_assets_escalados/estacion1.3.png" width="1493" height="1120"/>
+  <image source="../level 2-4/estacion1.3.png" width="1493" height="1120"/>
  </tileset>
  <tileset firstgid="1395" name="obj" tilewidth="380" tileheight="140" tilecount="5" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
@@ -63,7 +63,7 @@
    <image width="70" height="102" source="objetos/lanzador.png"/>
   </tile>
   <tile id="4">
-   <image width="380" height="140" source="../Armas/Botella.png"/>
+   <image width="380" height="140" source="../weapons/bottle.png"/>
   </tile>
  </tileset>
  <layer id="5" name="fondo" width="120" height="90" opacity="0.97">

@@ -1069,7 +1069,7 @@
         {
          "columns":35,
          "firstgid":1,
-         "image":"..\/Nivel 3\/mapa3.png",
+         "image":"..\/level 3\/mapa3.png",
          "imageheight":560,
          "imagewidth":1190,
          "margin":0,
@@ -1132,7 +1132,7 @@
                 }, 
                 {
                  "id":6,
-                 "image":"..\/Armas\/Barra.png",
+                 "image":"..\/weapons\/bar.png",
                  "imageheight":30,
                  "imagewidth":250
                 }],

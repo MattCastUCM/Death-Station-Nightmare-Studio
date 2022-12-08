@@ -1643,91 +1643,91 @@
                 {
                  "class":"Basura",
                  "id":4,
-                 "image":"..\/Nivel_assets_escalados\/Basura.png",
+                 "image":"..\/level 2-4\/Basura.png",
                  "imageheight":118,
                  "imagewidth":68
                 }, 
                 {
                  "class":"carrito",
                  "id":6,
-                 "image":"..\/Nivel_assets_escalados\/carrito bebe.png",
+                 "image":"..\/level 2-4\/carrito bebe.png",
                  "imageheight":72,
                  "imagewidth":75
                 }, 
                 {
                  "class":"latas",
                  "id":7,
-                 "image":"..\/Nivel_assets_escalados\/Latas.png",
+                 "image":"..\/level 2-4\/Latas.png",
                  "imageheight":51,
                  "imagewidth":73
                 }, 
                 {
                  "class":"maletas",
                  "id":8,
-                 "image":"..\/Nivel_assets_escalados\/Maletas.png",
+                 "image":"..\/level 2-4\/Maletas.png",
                  "imageheight":100,
                  "imagewidth":83
                 }, 
                 {
                  "class":"panel",
                  "id":9,
-                 "image":"..\/Nivel_assets_escalados\/Panel.png",
+                 "image":"..\/level 2-4\/Panel.png",
                  "imageheight":119,
                  "imagewidth":98
                 }, 
                 {
                  "class":"papeles",
                  "id":10,
-                 "image":"..\/Nivel_assets_escalados\/Papeles.png",
+                 "image":"..\/level 2-4\/Papeles.png",
                  "imageheight":59,
                  "imagewidth":55
                 }, 
                 {
                  "class":"rata",
                  "id":11,
-                 "image":"..\/Nivel_assets_escalados\/rata.png",
+                 "image":"..\/level 2-4\/rata.png",
                  "imageheight":28,
                  "imagewidth":89
                 }, 
                 {
                  "class":"se\u00f1or",
                  "id":12,
-                 "image":"..\/Nivel_assets_escalados\/se\u00f1or sin cabeza.png",
+                 "image":"..\/level 2-4\/se\u00f1or sin cabeza.png",
                  "imageheight":81,
                  "imagewidth":110
                 }, 
                 {
                  "class":"silla",
                  "id":13,
-                 "image":"..\/Nivel_assets_escalados\/Silla.png",
+                 "image":"..\/level 2-4\/Silla.png",
                  "imageheight":142,
                  "imagewidth":54
                 }, 
                 {
                  "class":"sillones",
                  "id":14,
-                 "image":"..\/Nivel_assets_escalados\/sillones.png",
+                 "image":"..\/level 2-4\/sillones.png",
                  "imageheight":440,
                  "imagewidth":126
                 }, 
                 {
                  "class":"doscarteles",
                  "id":15,
-                 "image":"..\/Nivel_assets_escalados\/dos carteles.png",
+                 "image":"..\/level 2-4\/dos carteles.png",
                  "imageheight":118,
                  "imagewidth":198
                 }, 
                 {
                  "class":"cartel",
                  "id":16,
-                 "image":"..\/Nivel_assets_escalados\/cartel2.png",
+                 "image":"..\/level 2-4\/cartel2.png",
                  "imageheight":119,
                  "imagewidth":124
                 }, 
                 {
                  "class":"cabeza",
                  "id":17,
-                 "image":"..\/Nivel_assets_escalados\/cabeza.png",
+                 "image":"..\/level 2-4\/cabeza.png",
                  "imageheight":52,
                  "imagewidth":65
                 }],
@@ -1736,7 +1736,7 @@
         {
          "columns":43,
          "firstgid":19,
-         "image":"..\/Nivel_assets_escalados\/estacion1.3.png",
+         "image":"..\/level 2-4\/estacion1.3.png",
          "imageheight":1120,
          "imagewidth":1493,
          "margin":0,
@@ -1791,7 +1791,7 @@
                 }, 
                 {
                  "id":4,
-                 "image":"..\/Armas\/Botella.png",
+                 "image":"..\/weapons\/bottle.png",
                  "imageheight":140,
                  "imagewidth":380
                 }],

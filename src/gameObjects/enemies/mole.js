@@ -52,9 +52,9 @@ export default class Topo extends Enemy {
 		let dist = Phaser.Math.Distance.BetweenPoints(this, this.target)
 
 		// Si está cerca del jugador
-		if (dist < 100){
+		if (dist < 150){
 			// Si se está reproduciendo la animación nothing, reproduce en cadena up, idle y down
-			if(this.elapsedTime > 1000 && this.anims.currentAnim.key === "nothing"){
+			if(this.elapsedTime > 500 && this.anims.currentAnim.key === "nothing"){
 				this.play("upTopo").anims.chain("idleTopo").anims.chain("downTopo");
 			}
 			// Si está apareciendo o desapareciendo, se desactiva su trigger

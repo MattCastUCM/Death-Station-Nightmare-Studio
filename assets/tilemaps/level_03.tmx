@@ -4,7 +4,7 @@
   <export target="LEVEL_03.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="mapa" tilewidth="34" tileheight="34" tilecount="560" columns="35">
-  <image source="../Nivel 3/mapa3.png" width="1190" height="560"/>
+  <image source="../level 3/mapa3.png" width="1190" height="560"/>
  </tileset>
  <tileset firstgid="561" name="obj" tilewidth="250" tileheight="102" tilecount="7" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
@@ -27,7 +27,7 @@
    <image width="81" height="67" source="objetos/gato.png"/>
   </tile>
   <tile id="6">
-   <image width="250" height="30" source="../Armas/Barra.png"/>
+   <image width="250" height="30" source="../weapons/bar.png"/>
   </tile>
  </tileset>
  <layer id="1" name="fondo" width="252" height="20">
