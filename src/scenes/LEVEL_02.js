@@ -157,7 +157,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
 
 		new InteractiveObjects(this, 1200, 300, 100, 100, 'ojo', ["Ey,tú qué mirah"], this.player);
 	
-	
+		/*
 		// Monólogo inicial
 		this.input.keyboard.enabled = false;
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_IN_COMPLETE, (cam, effect) => {
@@ -171,6 +171,7 @@ export default class LEVEL_02 extends LEVEL_BASE {
 				}, 1000);
 			}, 500);	
 		});
+		*/
 	}
 
 
