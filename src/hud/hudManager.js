@@ -43,23 +43,23 @@ export default class HUD extends Phaser.Scene {
         // Al pulsar la p, activa o desactiva el icono de play según se vea o no 
         this.pauseInput.on('down', pointer => { 
             this.pauseGame();
-            if (!this.playButton.visible) this.playButton.visible = true;
-            else this.playButton.visible = false;
+            //if (!this.playButton.visible) this.playButton.visible = true;
+            //else this.playButton.visible = false;
         });
 
         // Botón de pausa 
         this.pauseButton = this.add.image(900, 13, 'pausa').setOrigin(0, 0);
         
         // Botón de play que aparece tras pausar la escena
-        this.playButton = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'play').setScale(0.3);
-        this.playButton.visible = false;
+        //this.playButton = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'play').setScale(0.3);
+        //this.playButton.visible = false;
         // this.playButton.setInteractive(); // Hacemos el sprite interactivo para que lance eventos
         // this.playButton.on('pointerup', pointer => { this.pauseGame(); this.playButton.visible = false; });
 
 
         // Botón de restart
-        this.restartButton = this.add.image(this.scale.width / 2, this.scale.height / 2 - 150, 'restartButton')
-        this.restartButton.setScale(0.7);
+        this.restartButton = this.add.image(this.scale.width / 2, this.scale.height / 2, 'restartButton')
+        this.restartButton.setScale(0.8);
         this.restartButton.setInteractive();    // Hacemos el sprite interactivo para que lance eventos
 
         // Al poner el cursor encima del botón, cambia de color
@@ -75,7 +75,7 @@ export default class HUD extends Phaser.Scene {
         // Al pulsar el botón, se reinicia la escena
         this.restartButton.on('pointerup', pointer => {
             this.soundManager.pause(false);
-            this.playButton.visible = false;
+            //this.playButton.visible = false;
             this.restartButton.visible=false;
             this.level.restart(); 
         });
