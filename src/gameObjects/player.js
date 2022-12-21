@@ -25,39 +25,6 @@ export default class Player extends gameObject {
         
         this.soundCounter = 0; //contador para emitir sonido
 		this.soundMax=25; //frecuencia de emisión de sonido 
-        
-        // Creamos las animaciones
-        this.scene.anims.create({
-            key: 'idle',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 1, end: 1 }),
-            frameRate: 5,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'up',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 12, end: 15 }),
-            frameRate: 5,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'down',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 0, end: 3 }),
-            frameRate: 5,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'left',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 4, end: 7 }),
-            frameRate: 5,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'right',
-            frames: scene.anims.generateFrameNumbers('personaje', { start: 8, end: 11 }),
-            frameRate: 5,
-            repeat: -1
-        });
-
        
         // La animación a ejecutar según se genere será 'idle'
         this.play('idle');

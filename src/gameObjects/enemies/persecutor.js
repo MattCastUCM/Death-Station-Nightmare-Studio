@@ -21,40 +21,10 @@ export default class Persecutor extends Enemy {
 		this.growlSound = ["persecutorGrowl1","persecutorGrowl2","persecutorGrowl3"];
 		this.hurtSound = "persecutorHurt";
 
-		// Creamos las animaciones
-		this.scene.anims.create({
-			key: 'idlePersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', { start: 18, end: 18 }),
-			frameRate: 5,
-			repeat: -1
-		});
-		this.scene.anims.create({
-			key: 'upPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', { start: 0, end: 8 }),
-			frameRate: 5,
-			repeat: -1
-		});
-		this.scene.anims.create({
-			key: 'downPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', { start: 18, end: 26 }),
-			frameRate: 5,
-			repeat: -1
-		});
-		this.scene.anims.create({
-			key: 'leftPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', { start: 9, end: 17 }),
-			frameRate: 5,
-			repeat: -1
-		});
-		this.scene.anims.create({
-			key: 'rightPersecutor',
-			frames: scene.anims.generateFrameNumbers('persecutor', { start: 27, end: 36 }),
-			frameRate: 5,
-			repeat: -1
-		});
-		this.play("idlePersecutor");
-
+		
 		this.scene = scene;
+		this.play('idlePersecutor');
+
 		this.on('damaged',()=>this.scene.soundManager.play(this.hurtSound));
 		
 

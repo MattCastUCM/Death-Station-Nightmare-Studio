@@ -46,9 +46,6 @@ export default class HUD extends Phaser.Scene {
             //if (!this.playButton.visible) this.playButton.visible = true;
             //else this.playButton.visible = false;
         });
-
-        // Botón de pausa 
-        this.pauseButton = this.add.image(900, 13, 'pausa').setOrigin(0, 0);
         
         // Botón de play que aparece tras pausar la escena
         //this.playButton = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'play').setScale(0.3);

@@ -100,7 +100,6 @@ export default class Boot extends Phaser.Scene {
 
 		// HUD........................................................................................
 		this.load.image('heartImg', 'assets/HUD/corazon.png');
-		this.load.image('pausa', 'assets/HUD/pausa.png');
 		this.load.image('inventory', 'assets/HUD/inventario.png');
 		this.load.image('level1', 'assets/HUD/1.png');
 		this.load.image('level2', 'assets/HUD/2.png');
@@ -196,6 +195,7 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('hombreSinCabeza', 'assets/enemies/rock.png');
 		this.load.image('exclamation', 'assets/enemies/interactiveObject.png');
 		
+	
 		//........................................................................................
 
 		// Destruye la barra de cargando página
@@ -214,6 +214,186 @@ export default class Boot extends Phaser.Scene {
 	* Creación de la escena. En este caso, solo cambiamos a la escena del menú
 	*/
 	create() {
+			//Crear animaciones................................................................
+			//player
+			this.anims.create({
+				key: 'idle',
+				frames: this.anims.generateFrameNumbers('personaje', { start: 1, end: 1 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'up',
+				frames: this.anims.generateFrameNumbers('personaje', { start: 12, end: 15 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'down',
+				frames: this.anims.generateFrameNumbers('personaje', { start: 0, end: 3 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'left',
+				frames: this.anims.generateFrameNumbers('personaje', { start: 4, end: 7 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'right',
+				frames: this.anims.generateFrameNumbers('personaje', { start: 8, end: 11 }),
+				frameRate: 5,
+				repeat: -1
+			});
+
+			//cat
+			this.anims.create({
+				key: 'cat_idle',
+				frames: this.anims.generateFrameNumbers('cat', { start: 1, end: 1 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'cat_up',
+				frames: this.anims.generateFrameNumbers('cat', { start: 9, end: 11 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'cat_down',
+				frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 2 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'cat_left',
+				frames: this.anims.generateFrameNumbers('cat', { start: 3, end: 5 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'cat_right',
+				frames: this.anims.generateFrameNumbers('cat', { start: 6, end: 8 }),
+				frameRate: 5,
+				repeat: -1
+			});
+	
+
+			//persecutor
+			this.anims.create({
+				key: 'idlePersecutor',
+				frames: this.anims.generateFrameNumbers('persecutor', { start: 18, end: 18 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'upPersecutor',
+				frames: this.anims.generateFrameNumbers('persecutor', { start: 0, end: 8 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'downPersecutor',
+				frames: this.anims.generateFrameNumbers('persecutor', { start: 18, end: 26 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'leftPersecutor',
+				frames: this.anims.generateFrameNumbers('persecutor', { start: 9, end: 17 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'rightPersecutor',
+				frames: this.anims.generateFrameNumbers('persecutor', { start: 27, end: 36 }),
+				frameRate: 5,
+				repeat: -1
+			});
+
+			//shooter
+			this.anims.create({
+				key: 'idleLanzador',
+				frames: this.anims.generateFrameNumbers('lanzador', { start: 0, end: 5 }),
+				frameRate: 5,
+				repeat: -1
+			});
+			this.anims.create({
+				key: 'upLanzador',
+				frames: this.anims.generateFrameNumbers('lanzador', { start: 56, end: 64 }),
+				frameRate: 5,
+				repeat: 0
+			});
+			this.anims.create({
+				key: 'downLanzador',
+				frames: this.anims.generateFrameNumbers('lanzador', { start: 14, end: 21 }),
+				frameRate: 5,
+				repeat: 0
+			});
+			this.anims.create({
+				key: 'leftLanzador',
+				frames: this.anims.generateFrameNumbers('lanzador', { start: 28, end: 36 }),
+				frameRate: 5,
+				repeat: 0
+			});
+			this.anims.create({
+				key: 'rightLanzador',
+				frames: this.anims.generateFrameNumbers('lanzador', { start: 42, end: 50 }),
+				frameRate: 5,
+				repeat: 0
+			});
+			this.anims.create({
+				key: 'shootUp',
+				frames: this.anims.generateFrameNumbers('lanzador', { start: 65, end: 69 }),
+				frameRate: 5,
+				repeat: 0
+			});
+			this.anims.create({
+				key: 'shootDown',
+				frames: this.anims.generateFrameNumbers('lanzador', { start: 22, end: 27 }),
+				frameRate: 5,
+				repeat: 0
+			});
+			this.anims.create({
+				key: 'shootLeft',
+				frames: this.anims.generateFrameNumbers('lanzador', { start: 37, end: 41 }),
+				frameRate: 5,
+				repeat: 0
+			});
+			this.anims.create({
+				key: 'shootRight',
+				frames: this.anims.generateFrameNumbers('lanzador', { start: 51, end: 55 }),
+				frameRate: 5,
+				repeat: 0
+			});
+
+			//mole
+			this.anims.create({
+				key: 'idleTopo',
+				frames: this.anims.generateFrameNumbers('topo', {start:6, end:10}),
+				frameRate: 7,
+				repeat: 2
+			});
+			this.anims.create({
+				key: 'upTopo',
+				frames: this.anims.generateFrameNumbers('topo', {start:1, end:5}),
+				frameRate: 7,
+				repeat: 0
+			});
+			this.anims.create({
+				key: 'downTopo',
+				frames: this.anims.generateFrameNumbers('topo', {start:5, end:0}),
+				frameRate: 7,
+				repeat: 0
+			});
+			this.anims.create({
+				key: 'nothing',
+				frames: this.anims.generateFrameNumbers('topo', {start:0, end:0}),
+				frameRate: 7,
+				repeat: -1
+			});
+
 		this.scene.start('soundManager');
 	}
 }

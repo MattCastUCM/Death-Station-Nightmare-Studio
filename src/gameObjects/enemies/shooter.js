@@ -15,62 +15,7 @@ export default class Lanzador extends Enemy {
 		this.shootTime = 10;
 		this.throwSound = "lanzadorThrow";
 		this.hurtSound = "lanzadorHurt";
-
-		// Creamos las animaciones
-		this.scene.anims.create({
-			key: 'idleLanzador',
-			frames: scene.anims.generateFrameNumbers('lanzador', { start: 0, end: 5 }),
-			frameRate: 5,
-			repeat: -1
-		});
-		this.scene.anims.create({
-			key: 'upLanzador',
-			frames: scene.anims.generateFrameNumbers('lanzador', { start: 56, end: 64 }),
-			frameRate: 5,
-			repeat: 0
-		});
-		this.scene.anims.create({
-			key: 'downLanzador',
-			frames: scene.anims.generateFrameNumbers('lanzador', { start: 14, end: 21 }),
-			frameRate: 5,
-			repeat: 0
-		});
-		this.scene.anims.create({
-			key: 'leftLanzador',
-			frames: scene.anims.generateFrameNumbers('lanzador', { start: 28, end: 36 }),
-			frameRate: 5,
-			repeat: 0
-		});
-		this.scene.anims.create({
-			key: 'rightLanzador',
-			frames: scene.anims.generateFrameNumbers('lanzador', { start: 42, end: 50 }),
-			frameRate: 5,
-			repeat: 0
-		});
-		this.scene.anims.create({
-			key: 'shootUp',
-			frames: scene.anims.generateFrameNumbers('lanzador', { start: 65, end: 69 }),
-			frameRate: 5,
-			repeat: 0
-		});
-		this.scene.anims.create({
-			key: 'shootDown',
-			frames: scene.anims.generateFrameNumbers('lanzador', { start: 22, end: 27 }),
-			frameRate: 5,
-			repeat: 0
-		});
-		this.scene.anims.create({
-			key: 'shootLeft',
-			frames: scene.anims.generateFrameNumbers('lanzador', { start: 37, end: 41 }),
-			frameRate: 5,
-			repeat: 0
-		});
-		this.scene.anims.create({
-			key: 'shootRight',
-			frames: scene.anims.generateFrameNumbers('lanzador', { start: 51, end: 55 }),
-			frameRate: 5,
-			repeat: 0
-		});
+		
 		this.scene = scene;
 		this.play("idleLanzador");
 		this.on('damaged',()=>this.scene.soundManager.play(this.hurtSound));

@@ -13,33 +13,7 @@ export default class Topo extends Enemy {
 		
 		this.elapsedTime = 0;
 		this.hurtSound = "topoHurt";
-
-		// Creamos las animaciones
-		this.scene.anims.create({
-			key: 'idleTopo',
-			frames: scene.anims.generateFrameNumbers('topo', {start:6, end:10}),
-			frameRate: 7,
-			repeat: 2
-		});
-		this.scene.anims.create({
-			key: 'upTopo',
-			frames: scene.anims.generateFrameNumbers('topo', {start:1, end:5}),
-			frameRate: 7,
-			repeat: 0
-		});
-		this.scene.anims.create({
-			key: 'downTopo',
-			frames: scene.anims.generateFrameNumbers('topo', {start:5, end:0}),
-			frameRate: 7,
-			repeat: 0
-		});
-		this.scene.anims.create({
-			key: 'nothing',
-			frames: scene.anims.generateFrameNumbers('topo', {start:0, end:0}),
-			frameRate: 7,
-			repeat: -1
-		});
-
+		
 		this.body.setImmovable(true);
 		this.play("nothing");
 		this.on('damaged',()=>this.scene.soundManager.play(this.hurtSound));

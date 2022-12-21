@@ -24,39 +24,6 @@ export default class Cat extends gameObject {
 		this.soundMax = 300;		// Frecuencia de emisión de sonido 
 		this.growlSound = ["cat1", "cat2"];
 
-
-		// Creamos las animaciones
-		this.scene.anims.create({
-			key: 'cat_idle',
-			frames: scene.anims.generateFrameNumbers('cat', { start: 1, end: 1 }),
-			frameRate: 5,
-			repeat: -1
-		});
-		this.scene.anims.create({
-			key: 'cat_up',
-			frames: scene.anims.generateFrameNumbers('cat', { start: 9, end: 11 }),
-			frameRate: 5,
-			repeat: -1
-		});
-		this.scene.anims.create({
-			key: 'cat_down',
-			frames: scene.anims.generateFrameNumbers('cat', { start: 0, end: 2 }),
-			frameRate: 5,
-			repeat: -1
-		});
-		this.scene.anims.create({
-			key: 'cat_left',
-			frames: scene.anims.generateFrameNumbers('cat', { start: 3, end: 5 }),
-			frameRate: 5,
-			repeat: -1
-		});
-		this.scene.anims.create({
-			key: 'cat_right',
-			frames: scene.anims.generateFrameNumbers('cat', { start: 6, end: 8 }),
-			frameRate: 5,
-			repeat: -1
-		});
-
 		// La animación a ejecutar según se genere el personaje será 'idle'
 		this.play('cat_idle');
 
