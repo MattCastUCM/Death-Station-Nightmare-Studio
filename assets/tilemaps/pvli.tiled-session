@@ -40,8 +40,8 @@
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 5354.545454545454,
-                "y": 339.39393939393943
+                "x": 807.5757575757575,
+                "y": 339.3939393939394
             }
         },
         "LEVEL_01.tmx#mapa": {
@@ -85,11 +85,11 @@
                 4,
                 7
             ],
-            "scale": 0.33,
-            "selectedLayer": 0,
+            "scale": 0.5,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 2037.8787878787878,
-                "y": 1524.2424242424245
+                "x": 143,
+                "y": 816
             }
         },
         "LEVEL_02.tmx#Nivel Claudia": {
@@ -103,7 +103,7 @@
         },
         "LEVEL_02.tmx#mapa": {
             "dynamicWrapping": false,
-            "scaleInDock": 0.125,
+            "scaleInDock": 0.33,
             "scaleInEditor": 0.33
         },
         "LEVEL_02.tmx#obj": {
@@ -276,7 +276,7 @@
         }
     },
     "last.exportedFilePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/assets/tilemaps",
-    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/assets/objects",
+    "last.imagePath": "C:/Users/likan/Desktop/PVLI proyecto/PVLI-UCM-22-23/assets/level 2-4",
     "map.fixedSize": true,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
@@ -291,7 +291,7 @@
         "LEVEL_04.tmx"
     ],
     "project": "pvli.tiled-project",
-    "property.type": "bool",
+    "property.type": "int",
     "recentFiles": [
         "LEVEL_01.tmx",
         "LEVEL_04.tmx",

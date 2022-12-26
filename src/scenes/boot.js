@@ -58,6 +58,12 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('introOutside', 'assets/intro/outside.png');
 		this.load.image('introInside', 'assets/intro/inside.png');
 
+		//Cinemática Final
+		this.load.image('outro1', 'assets/outro/cinematic_final1.png');
+		this.load.image('outro2', 'assets/outro/cinematic_final2.png');
+		this.load.image('outro3', 'assets/outro/cinematic_final3.png');
+		this.load.image('outro4', 'assets/outro/cinematic_final4.png');
+		this.load.image('outro5', 'assets/outro/cinematic_final5.png');
 
 		// Tilemap........................................................................................
 		this.load.image("tiles","assets/level 1/mapa2.png");
@@ -85,6 +91,7 @@ export default class Boot extends Phaser.Scene {
 		this.load.image("Silla","assets/level 2-4/Silla.png");
 		this.load.image("sillones","assets/level 2-4/sillones.png");
 		this.load.image("ojo","assets/level 3/ojo.png");
+		this.load.image("escalera","assets/level 2-4/Escaleras.png")
 
 		// Menú de reinicio........................................................................................
 		this.load.image('restartButton', 'assets/HUD/restartButton.png');
@@ -147,7 +154,9 @@ export default class Boot extends Phaser.Scene {
 		this.load.audio('accident', 'assets/audio/soundEffects/cinematic/accident.mp3');
 		this.load.audio('ambient', 'assets/audio/soundEffects/cinematic/ambient.mp3');
 		this.load.audio('trainHorn', 'assets/audio/soundEffects/cinematic/train_horn.mp3');
-
+		this.load.audio('night', 'assets/audio/soundEffects/cinematic/night.mp3');
+		this.load.audio('sudden', 'assets/audio/soundEffects/cinematic/sudden.mp3');
+		this.load.audio('terror', 'assets/audio/soundEffects/cinematic/terror.mp3');
 		
 		// BGM
 		this.load.audio('menu', 'assets/audio/bgMusic/estacion.mp3');

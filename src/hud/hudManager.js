@@ -155,10 +155,10 @@ export default class HUD extends Phaser.Scene {
             if (!this.onDialog) this.level.scene.resume(); //si no estaba en diálogo
             this.soundManager.pause(false);
         }
-        // Si no, lp pausa
+        // Si no, lo pausa
         else {
             this.restartButton.visible = true;
-            this.level.player.stop();
+            if(this.level.player!=null)  this.level.player.stop();
             this.dialogManager.scene.pause();
             this.onPauseMenu = true;
             if (!this.onDialog) this.level.scene.pause(); //si ya no estaba pausado por el diálogo
@@ -170,7 +170,7 @@ export default class HUD extends Phaser.Scene {
     // Pausa el juego al iniciar un diálogo
     onDialogStarted() {
         this.onDialog = true;
-        this.level.player.stop();
+        if(this.level.player!=null)  this.level.player.stop();
         this.level.scene.pause();
     }
 
@@ -178,6 +178,8 @@ export default class HUD extends Phaser.Scene {
     onDialogFinished() {
         this.onDialog = false;
         this.level.scene.resume();
+        this.events.emit('dialogFinished'); 
+        
     }
 
 
