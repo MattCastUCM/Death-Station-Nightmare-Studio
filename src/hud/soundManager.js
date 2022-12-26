@@ -31,7 +31,7 @@ export default class SoundManager extends Phaser.Scene {
         };
         const bgm = {
             mute: false,
-            volume: 1,
+            volume: 0.8,
             rate: 1,    //speed
             detune: 0,
             seek: 0,
@@ -41,7 +41,10 @@ export default class SoundManager extends Phaser.Scene {
 
         // Asigna a cada audio una determinada configuración 
         this.ambient = { volume: 0.1, loop: true };
+        this.night = { volume: 0.1, loop: true };
         this.accident = { volume: 0.07, loop: false };
+        this.terror = { volume: 0.07, loop: false };
+        this.sudden = { volume: 0.03, loop: false };
         this.trainHorn = { volume: 0.1, loop: false };
         this.dialogPop = { volume: 0.03, loop: false };
         this.dialogJump = { volume: 0.03, loop: false };
@@ -59,7 +62,7 @@ export default class SoundManager extends Phaser.Scene {
         this.persecutorGrowl3 = creatures;
         this.persecutorHurt = creatures;
         this.lanzadorHurt = { volume: 0.05, loop: false }
-        this.lanzadorThrow = objects;
+        this.lanzadorThrow = { volume: 0.03, loop: false }
         this.cat1 = { volume: 0.02, loop: false }
         this.cat2 = { volume: 0.02, loop: false }
 
@@ -67,7 +70,7 @@ export default class SoundManager extends Phaser.Scene {
         this.selectWeapon = { volume: 0.08, loop: false }
         this.walk = { volume: 0.03, loop: false }
 
-        this.bulletDestroy = objects;
+        this.bulletDestroy = { volume: 0.02, loop: false }
         this.cartBoard = { volume: 0.04, loop: false }
         this.woodBoxExplosion = { volume: 0.8, loop: false }
 
@@ -84,6 +87,9 @@ export default class SoundManager extends Phaser.Scene {
     // Reproduce el audio con el nombre que recibe
     play(name) {
         this.sound.add([name], this[name]).play();
+    }
+    playConfig(name,v) {
+        this.sound.add([name], {volume:v}).play();
     }
 
     // Reproduce la música de fondo con el nombre de audio que recibe

@@ -150,7 +150,8 @@ export class endMap extends Phaser.Scene {
 	*/
 	create() {
 		this.cameras.main.fadeIn(500,0,0,0);
-
+		this.soundManager = this.scene.get('soundManager');
+		this.soundManager.stopBGM("level4");
 		// Añade la imagen del mapa 
 		this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'map5');
 		let pressed = false;
@@ -166,9 +167,9 @@ export class endMap extends Phaser.Scene {
 			pressed = true;
 	    });
 
-		// Al terminar el fade out, cambia a la escena del nivel 1
+		
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam,effect) => {
-			this.scene.start('menu');
+			setTimeout( ()=>this.scene.start('outro'), 1500);
 		});
 	}
 

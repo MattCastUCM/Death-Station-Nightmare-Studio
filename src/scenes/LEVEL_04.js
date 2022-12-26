@@ -28,12 +28,12 @@ export default class LEVEL_04 extends LEVEL_BASE {
         this.dialogManager = this.scene.get('dialogManager');
         this.hud = this.scene.get('hud');
 		this.hud.scene.setVisible(true);
-        this.hud.changeLevel(4,this);
+       // this.hud.changeLevel(4,this);
 		this.soundManager.playBGM("level4");
 		this.player.weaponManager.nextLevel(true,true,true);
 		this.player.vision.setScale(3);
 
-		//this.player.setPosition(159,371);
+		this.player.setPosition(5800,371);
 
 		// Cajas de cartón
 		let cardBoardArray = this.map.createFromObjects('objetos', [{ gid: 6034, classType: CardBoard, key: 'cartBoard' }] );
