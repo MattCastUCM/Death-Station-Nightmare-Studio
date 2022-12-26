@@ -33,28 +33,28 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		this.player.setPosition(159, 371);
 
 		// Cajas de cartón
-		let cardBoardArray = this.map.createFromObjects('objetos', [{ gid: 1395, classType: CardBoard, key: 'cartBoard' }] );
+		let cardBoardArray = this.map.createFromObjects('objetos', [{ gid: 1396, classType: CardBoard, key: 'cartBoard' }] );
 		this.cartBoardBoxes.addMultiple(cardBoardArray);
 		cardBoardArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
 
 		// Cajas de madera
-		let woodBoxesArray = this.map.createFromObjects('objetos', [{ gid: 1396, classType: WoodBox, key: 'woodBox' }] );		
+		let woodBoxesArray = this.map.createFromObjects('objetos', [{ gid: 1397, classType: WoodBox, key: 'woodBox' }] );		
 		this.woodBoxes.addMultiple(woodBoxesArray);
 		woodBoxesArray.forEach(obj => {
 			obj.body.setImmovable();
 		});
 
 		// Persecutores
-		let EnemyPersecutorArray = this.map.createFromObjects('objetos', [{ gid: 1397, classType: Persecutor, key: 'persecutor' }] );
+		let EnemyPersecutorArray = this.map.createFromObjects('objetos', [{ gid: 1398, classType: Persecutor, key: 'persecutor' }] );
 		EnemyPersecutorArray.forEach(obj => {
 			obj.setScale(2);
 		});
 		this.enemies.addMultiple(EnemyPersecutorArray);
 		
 		// Lanzadores
-		let EnemyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 1398, classType: Lanzador, key: 'lanzador' }]);
+		let EnemyLanzadorArray = this.map.createFromObjects('objetos', [{ gid: 1399, classType: Lanzador, key: 'lanzador' }]);
 		
 		this.enemies.addMultiple(EnemyLanzadorArray);
 		EnemyLanzadorArray.forEach(obj => {
@@ -114,6 +114,8 @@ export default class LEVEL_02 extends LEVEL_BASE {
 		let sillon = this.map.createFromObjects('dec', [{ gid: 15, key: 'sillones' }]);
 		this.objects.addMultiple(sillon);
 		sillon.forEach(s=>{s.body.setImmovable();});
+
+		let escalera=this.map.createFromObjects('dec',[{name:'escalera',key:'escalera'}])
 
 		
 		let botella = this.map.createFromObjects('objetos', [{ name: 'botella',  key: 'botella' }]);

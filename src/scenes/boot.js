@@ -85,6 +85,7 @@ export default class Boot extends Phaser.Scene {
 		this.load.image("Silla","assets/level 2-4/Silla.png");
 		this.load.image("sillones","assets/level 2-4/sillones.png");
 		this.load.image("ojo","assets/level 3/ojo.png");
+		this.load.image("escalera","assets/level 2-4/Escaleras.png")
 
 		// Menú de reinicio........................................................................................
 		this.load.image('restartButton', 'assets/HUD/restartButton.png');
