@@ -15,7 +15,7 @@ export default class outro extends LEVEL_BASE {
 	create() {
 	
 		this.cameras.main.fadeIn(500, 255 ,255, 255);
-		this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'outro1');
+		this.img=this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'outro1');
 		//HUD (y Pausa)
 		this.scene.launch('hud', { me: this });
 		this.hud = this.scene.get('hud');
@@ -38,7 +38,6 @@ export default class outro extends LEVEL_BASE {
 
 	// Secuencia de eventos marcados por tiempo
 	update(t, dt) {
-        console.log(this.actualEvent);
         if( this.actualEvent==0 && ! this.eventFinished ){
             this.eventFinished=true;
 			setTimeout( ()=>{
@@ -67,21 +66,18 @@ export default class outro extends LEVEL_BASE {
 			
 		}
 		else if(this.actualEvent==2 ){
-           // this.eventFinished=true;
 			this.newText(["....¿Dónde estoy?"]);
 		}
         else if(this.actualEvent==3 && !this.eventFinished){
             this.eventFinished=true;
 			setTimeout( ()=>{
-                this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'outro2');
-				//this.cameras.main.fadeOut(500, 0, 0, 0);
-				
+                this.img.setTexture('outro2');
+
 				setTimeout( ()=>{
-                    this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'outro3');
-					//this.cameras.main.fadeIn(500,0,0,0);
+                    this.img.setTexture('outro3');
 					setTimeout( ()=>{
                         this.actualEvent++;this.eventFinished=false;
-                        this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'outro1');
+                        this.img.setTexture( 'outro1');
                     }, 1500);
 				}, 1000);
 			}, 500);
@@ -101,16 +97,16 @@ export default class outro extends LEVEL_BASE {
             this.eventFinished=true;
             setTimeout( ()=>{
                 this.soundManager.stopBGM("night")
-                this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'outro4');
+                this.img.setTexture('outro4');
                 this.soundManager.playWithListener("cat1", ()=>{ 
-                    this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'outro5');
+                    this.img.setTexture('outro5');
                     this.newText(["......??!!"]);
                     this.soundManager.play("terror")});
             
             }, 2000);
         
         }
-        else if(this.actualEvent==7 &&!this.eventFinished){
+        else if(this.actualEvent>6 &&!this.eventFinished){
             this.eventFinished=true;
             setTimeout( ()=>{
                 this.cameras.main.fadeOut(200, 0, 0, 0);
