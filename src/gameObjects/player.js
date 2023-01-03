@@ -52,49 +52,73 @@ export default class Player extends gameObject {
     
     // Gestiona el input
     getInput(){
+        //this.move(0, 0);
         // Si se pulsa hacia abajo
         if (!this.weaponManager._attack.isAttacking &&
             this.input.s.isDown &&
             !this.input.w.isDown) {
-            
+            if(this.input.a.isDown){
+                this.move(-0.7,0.7);
+            }
+            else if(this.input.d.isDown){
+                this.move(0.7,0.7);
+            }
+            else{
+                this.move(0, 1);
+            }
             // Mueve el objeto
-            this.move(0, 1);
             this.keyDown = true;
         }
         // Si se pulsa hacia arriba
         if (!this.weaponManager._attack.isAttacking &&
             this.input.w.isDown &&
             !this.input.s.isDown) {
-
+            if(this.input.a.isDown){
+                this.move(-0.7,-0.7);
+            }
+            else if(this.input.d.isDown){
+                this.move(0.7,-0.7);
+            }
+            else{
+                this.move(0, -1);
+            }
             // Mueve el objeto
-            this.move(0, -1);
             this.keyDown = true;
         }
         // Si se pulsa hacia la izquierda
         if (!this.weaponManager._attack.isAttacking &&
             this.input.a.isDown &&
             !this.input.d.isDown) {
-
-            // Mueve el objeto
-            this.move(-1, 0);
+            if(this.input.w.isDown){
+                this.move(-0.7,-0.7);
+            }
+            else if(this.input.s.isDown){
+                this.move(-0.7,0.7);
+            }
+            else{
+                this.move(-1, 0);
+            }
             this.keyDown = true;
         }
         // Si se pulsa hacia la derecha
         if (!this.weaponManager._attack.isAttacking &&
             this.input.d.isDown &&
             !this.input.a.isDown) {
-
-            // Mueve el objeto
-            this.move(1, 0)
+            if(this.input.w.isDown){
+                this.move(0.7,-0.7);
+            }
+            else if(this.input.s.isDown){
+                this.move(0.7,0.7);
+            }
+            else{
+                this.move(1, 0);
+            }
             this.keyDown = true;
         }
-        // Si se deja de pulsar, para la animación
-        if (this.weaponManager._attack.isAttacking ||
-            Phaser.Input.Keyboard.JustUp(this.input.a) ||
-            Phaser.Input.Keyboard.JustUp(this.input.d) ||
-            Phaser.Input.Keyboard.JustUp(this.input.w) ||
-            Phaser.Input.Keyboard.JustUp(this.input.s)) {
-            this.move(0, 0)
+
+        // Si ataca, para la animación
+        if (this.weaponManager._attack.isAttacking ) {
+            this.move(0, 0);
             this.anims.isPlaying = false;
             this.keyDown = false;
         }
@@ -135,7 +159,7 @@ export default class Player extends gameObject {
                 this.play('up');
             }
         }
-        else if(this.body.velocity.x <= -1 && this.body.velocity.y === 0){
+        else if(this.body.velocity.x <= -1 ){
             // Comienza a  reproducir la animación
             this.facing = "left";
             this.anims.isPlaying = true;
@@ -144,7 +168,7 @@ export default class Player extends gameObject {
                 this.play('left');
             }
         }
-        else if(this.body.velocity.x >= 1 && this.body.velocity.y === 0){
+        else if(this.body.velocity.x >= 1 ){
             // Comienza a  reproducir la animación
             this.facing = "right";
             this.anims.isPlaying = true;
